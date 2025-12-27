@@ -1,0 +1,80 @@
+/*
+ * Copyright 2016 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.noop;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import com.oltpbenchmark.api.AbstractTestWorker;
+import com.oltpbenchmark.api.BenchmarkModule;
+import com.oltpbenchmark.api.Procedure;
+import com.oltpbenchmark.api.Worker;
+import com.oltpbenchmark.catalog.Table;
+import com.oltpbenchmark.util.SQLUtil;
+import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
+import org.junit.Test;
+
+public class TestNoOpWorkerWithSessionSetupFile extends AbstractTestWorker<NoOpBenchmark> {
+
+  public TestNoOpWorkerWithSessionSetupFile() {
+    super(
+        null,
+        Paths.get("src", "test", "resources", "benchmarks", "noop", "sessionSetupFile-hsqldb.sql")
+            .toAbsolutePath()
+            .toString());
+  }
+
+  @Override
+  public List<Class<? extends Procedure>> procedures() {
+    return TestNoOpBenchmark.PROCEDURE_CLASSES;
+  }
+
+  @Override
+  public Class<NoOpBenchmark> benchmarkClass() {
+    return NoOpBenchmark.class;
+  }
+
+  @Test
+  public void testSessionSetupFile() throws Exception {
+    // Check that there is no session setup file assigned to the worker's config
+    assertNotNull("Session setup file should not be null", this.workConf.getSessionSetupFile());
+
+    List<Worker<? extends BenchmarkModule>> workers = this.benchmark.makeWorkers();
+    Worker<?> worker = workers.get(0);
+    assertNotNull(
+        "Session setup file should not be null",
+        worker.getWorkloadConfiguration().getSessionSetupFile());
+
+    // Make sure there are no rows in the table
+    this.testExecuteWork();
+
+    Table catalog_tbl = this.catalog.getTable("FAKE2");
+    String sql = SQLUtil.getCountSQL(this.workConf.getDatabaseType(), catalog_tbl);
+    try (Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql); ) {
+
+      assertNotNull(result);
+
+      boolean adv = result.next();
+      assertTrue(sql, adv);
+
+      int count = result.getInt(1);
+      assertTrue("FAKE2 table should have more 0 rows.", count > 0);
+    }
+  }
+}

@@ -1,0 +1,313 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.tpcc.procedures;
+
+import com.oltpbenchmark.api.SQLStmt;
+import com.oltpbenchmark.benchmarks.tpcc.TPCCConstants;
+import com.oltpbenchmark.benchmarks.tpcc.TPCCUtil;
+import com.oltpbenchmark.benchmarks.tpcc.TPCCWorker;
+import com.oltpbenchmark.benchmarks.tpcc.pojo.Customer;
+import com.oltpbenchmark.benchmarks.tpcc.pojo.Oorder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class OrderStatus extends TPCCProcedure {
+
+  private static final Logger LOG = LoggerFactory.getLogger(OrderStatus.class);
+
+  public SQLStmt ordStatGetNewestOrdSQL =
+      new SQLStmt(
+          """
+        SELECT O_ID, O_CARRIER_ID, O_ENTRY_D
+          FROM  %s
+         WHERE O_W_ID = ?
+           AND O_D_ID = ?
+           AND O_C_ID = ?
+         ORDER BY O_ID DESC LIMIT 1
+    """
+              .formatted(TPCCConstants.TABLENAME_OPENORDER));
+
+  public SQLStmt ordStatGetOrderLinesSQL =
+      new SQLStmt(
+          """
+        SELECT OL_I_ID, OL_SUPPLY_W_ID, OL_QUANTITY, OL_AMOUNT, OL_DELIVERY_D
+          FROM  %s
+         WHERE OL_O_ID = ?
+           AND OL_D_ID = ?
+           AND OL_W_ID = ?
+    """
+              .formatted(TPCCConstants.TABLENAME_ORDERLINE));
+
+  public SQLStmt payGetCustSQL =
+      new SQLStmt(
+          """
+        SELECT C_FIRST, C_MIDDLE, C_LAST, C_STREET_1, C_STREET_2,
+               C_CITY, C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM,
+               C_DISCOUNT, C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE
+          FROM  %s
+         WHERE C_W_ID = ?
+           AND C_D_ID = ?
+           AND C_ID = ?
+    """
+              .formatted(TPCCConstants.TABLENAME_CUSTOMER));
+
+  public SQLStmt customerByNameSQL =
+      new SQLStmt(
+          """
+        SELECT C_FIRST, C_MIDDLE, C_ID, C_STREET_1, C_STREET_2, C_CITY,
+               C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM, C_DISCOUNT,
+               C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE
+          FROM  %s
+         WHERE C_W_ID = ?
+           AND C_D_ID = ?
+           AND C_LAST = ?
+         ORDER BY C_FIRST
+    """
+              .formatted(TPCCConstants.TABLENAME_CUSTOMER));
+
+  public void run(
+      Connection conn,
+      Random gen,
+      int w_id,
+      int numWarehouses,
+      int terminalDistrictLowerID,
+      int terminalDistrictUpperID,
+      TPCCWorker w)
+      throws SQLException {
+
+    int d_id = TPCCUtil.randomNumber(terminalDistrictLowerID, terminalDistrictUpperID, gen);
+    int y = TPCCUtil.randomNumber(1, 100, gen);
+
+    boolean c_by_name;
+    String c_last = null;
+    int c_id = -1;
+
+    if (y <= 60) {
+      c_by_name = true;
+      c_last = TPCCUtil.getNonUniformRandomLastNameForRun(gen);
+    } else {
+      c_by_name = false;
+      c_id = TPCCUtil.getCustomerID(gen);
+    }
+
+    Customer c;
+
+    if (c_by_name) {
+      c = getCustomerByName(w_id, d_id, c_last, conn);
+    } else {
+      c = getCustomerById(w_id, d_id, c_id, conn);
+    }
+
+    Oorder o = getOrderDetails(conn, w_id, d_id, c);
+
+    // 가장 최근 주문의 주문 항목을 조회합니다.
+    List<String> orderLines = getOrderLines(conn, w_id, d_id, o.o_id, c);
+
+    if (LOG.isTraceEnabled()) {
+      StringBuilder sb = new StringBuilder();
+      sb.append("\n");
+      sb.append("+-------------------------- ORDER-STATUS -------------------------+\n");
+      sb.append(" Date: ");
+      sb.append(TPCCUtil.getCurrentTime());
+      sb.append("\n\n Warehouse: ");
+      sb.append(w_id);
+      sb.append("\n District:  ");
+      sb.append(d_id);
+      sb.append("\n\n Customer:  ");
+      sb.append(c.c_id);
+      sb.append("\n   Name:    ");
+      sb.append(c.c_first);
+      sb.append(" ");
+      sb.append(c.c_middle);
+      sb.append(" ");
+      sb.append(c.c_last);
+      sb.append("\n   Balance: ");
+      sb.append(c.c_balance);
+      sb.append("\n\n");
+      if (o.o_id == -1) {
+        sb.append(" Customer has no orders placed.\n");
+      } else {
+        sb.append(" Order-Number: ");
+        sb.append(o.o_id);
+        sb.append("\n    Entry-Date: ");
+        sb.append(o.o_entry_d);
+        sb.append("\n    Carrier-Number: ");
+        sb.append(o.o_carrier_id);
+        sb.append("\n\n");
+        if (orderLines.size() != 0) {
+          sb.append(" [Supply_W - Item_ID - Qty - Amount - Delivery-Date]\n");
+          for (String orderLine : orderLines) {
+            sb.append(" ");
+            sb.append(orderLine);
+            sb.append("\n");
+          }
+        } else {
+          LOG.trace(" This Order has no Order-Lines.\n");
+        }
+      }
+      sb.append("+-----------------------------------------------------------------+\n\n");
+      LOG.trace(sb.toString());
+    }
+  }
+
+  private Oorder getOrderDetails(Connection conn, int w_id, int d_id, Customer c)
+      throws SQLException {
+    try (PreparedStatement ordStatGetNewestOrd =
+        this.getPreparedStatement(conn, ordStatGetNewestOrdSQL)) {
+
+      // 고객의 가장 최신 주문을 찾습니다.
+      // 최신 주문의 운송사와 주문일을 가져옵니다.
+
+      ordStatGetNewestOrd.setInt(1, w_id);
+      ordStatGetNewestOrd.setInt(2, d_id);
+      ordStatGetNewestOrd.setInt(3, c.c_id);
+
+      try (ResultSet rs = ordStatGetNewestOrd.executeQuery()) {
+
+        if (!rs.next()) {
+          String msg =
+              String.format(
+                  "No order records for CUSTOMER [C_W_ID=%d, C_D_ID=%d, C_ID=%d]",
+                  w_id, d_id, c.c_id);
+
+          throw new RuntimeException(msg);
+        }
+        Oorder o = new Oorder();
+        o.o_id = rs.getInt("O_ID");
+        o.o_carrier_id = rs.getInt("O_CARRIER_ID");
+        o.o_entry_d = rs.getTimestamp("O_ENTRY_D");
+        return o;
+      }
+    }
+  }
+
+  private List<String> getOrderLines(Connection conn, int w_id, int d_id, int o_id, Customer c)
+      throws SQLException {
+    List<String> orderLines = new ArrayList<>();
+
+    try (PreparedStatement ordStatGetOrderLines =
+        this.getPreparedStatement(conn, ordStatGetOrderLinesSQL)) {
+      ordStatGetOrderLines.setInt(1, o_id);
+      ordStatGetOrderLines.setInt(2, d_id);
+      ordStatGetOrderLines.setInt(3, w_id);
+
+      try (ResultSet rs = ordStatGetOrderLines.executeQuery()) {
+
+        while (rs.next()) {
+          StringBuilder sb = new StringBuilder();
+          sb.append("[");
+          sb.append(rs.getLong("OL_SUPPLY_W_ID"));
+          sb.append(" - ");
+          sb.append(rs.getLong("OL_I_ID"));
+          sb.append(" - ");
+          sb.append(rs.getLong("OL_QUANTITY"));
+          sb.append(" - ");
+          sb.append(TPCCUtil.formattedDouble(rs.getDouble("OL_AMOUNT")));
+          sb.append(" - ");
+          if (rs.getTimestamp("OL_DELIVERY_D") != null) {
+            sb.append(rs.getTimestamp("OL_DELIVERY_D"));
+          } else {
+            sb.append("99-99-9999");
+          }
+          sb.append("]");
+          orderLines.add(sb.toString());
+        }
+      }
+
+      if (orderLines.isEmpty()) {
+        String msg =
+            String.format(
+                "Order record had no order line items [C_W_ID=%d, C_D_ID=%d, C_ID=%d, O_ID=%d]",
+                w_id, d_id, c.c_id, o_id);
+        LOG.trace(msg);
+      }
+    }
+
+    return orderLines;
+  }
+
+  // 주의: 트랜잭션 간 코드가 중복되어 있지만, 각각 PreparedStatement를 유지하기 위해 그대로 둡니다.
+  public Customer getCustomerById(int c_w_id, int c_d_id, int c_id, Connection conn)
+      throws SQLException {
+
+    try (PreparedStatement payGetCust = this.getPreparedStatement(conn, payGetCustSQL)) {
+
+      payGetCust.setInt(1, c_w_id);
+      payGetCust.setInt(2, c_d_id);
+      payGetCust.setInt(3, c_id);
+
+      try (ResultSet rs = payGetCust.executeQuery()) {
+
+        if (!rs.next()) {
+          String msg =
+              String.format(
+                  "Failed to get CUSTOMER [C_W_ID=%d, C_D_ID=%d, C_ID=%d]", c_w_id, c_d_id, c_id);
+
+          throw new RuntimeException(msg);
+        }
+
+        Customer c = TPCCUtil.newCustomerFromResults(rs);
+        c.c_id = c_id;
+        c.c_last = rs.getString("C_LAST");
+        return c;
+      }
+    }
+  }
+
+  // 주의: 이 코드 역시 다른 트랜잭션에서 반복되지만 별도의 Statement를 위해 유지합니다.
+  public Customer getCustomerByName(int c_w_id, int c_d_id, String c_last, Connection conn)
+      throws SQLException {
+    ArrayList<Customer> customers = new ArrayList<>();
+
+    try (PreparedStatement customerByName = this.getPreparedStatement(conn, customerByNameSQL)) {
+
+      customerByName.setInt(1, c_w_id);
+      customerByName.setInt(2, c_d_id);
+      customerByName.setString(3, c_last);
+
+      try (ResultSet rs = customerByName.executeQuery()) {
+        while (rs.next()) {
+          Customer c = TPCCUtil.newCustomerFromResults(rs);
+          c.c_id = rs.getInt("C_ID");
+          c.c_last = c_last;
+          customers.add(c);
+        }
+      }
+    }
+
+    if (customers.size() == 0) {
+      String msg =
+          String.format(
+              "Failed to get CUSTOMER [C_W_ID=%d, C_D_ID=%d, C_LAST=%s]", c_w_id, c_d_id, c_last);
+
+      throw new RuntimeException(msg);
+    }
+
+    // TPC-C 2.5.2.2: 위치 n / 2를 올림하여 정수로 사용하며, 계산은 1부터 시작합니다.
+    int index = customers.size() / 2;
+    if (customers.size() % 2 == 0) {
+      index -= 1;
+    }
+    return customers.get(index);
+  }
+}
