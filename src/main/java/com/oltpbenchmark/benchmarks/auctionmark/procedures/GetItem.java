@@ -1,0 +1,84 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.auctionmark.procedures;
+
+import com.oltpbenchmark.api.Procedure;
+import com.oltpbenchmark.api.SQLStmt;
+import com.oltpbenchmark.benchmarks.auctionmark.AuctionMarkConstants;
+import com.oltpbenchmark.util.SQLUtil;
+import java.sql.*;
+
+/**
+ * Get Item Information Returns all of the attributes for a particular item
+ *
+ * @author pavlo
+ */
+public class GetItem extends Procedure {
+
+  // -----------------------------------------------------------------
+  // STATEMENTS
+  // -----------------------------------------------------------------
+
+  public final SQLStmt getItem =
+      new SQLStmt(
+          "SELECT "
+              + AuctionMarkConstants.ITEM_COLUMNS_STR
+              + " FROM "
+              + AuctionMarkConstants.TABLENAME_ITEM
+              + " WHERE i_id = ? AND i_u_id = ?");
+
+  public final SQLStmt getUser =
+      new SQLStmt(
+          "SELECT u_id, u_rating, u_created, u_sattr0, u_sattr1, u_sattr2, u_sattr3, u_sattr4, r_name "
+              + "  FROM "
+              + AuctionMarkConstants.TABLENAME_USERACCT
+              + ", "
+              + AuctionMarkConstants.TABLENAME_REGION
+              + " WHERE u_id = ? AND u_r_id = r_id");
+
+  // -----------------------------------------------------------------
+  // RUN METHOD
+  // -----------------------------------------------------------------
+
+  public Object[][] run(
+      Connection conn, Timestamp[] benchmarkTimes, String item_id, String seller_id)
+      throws SQLException {
+
+    Object[] item_row = null;
+    try (PreparedStatement item_stmt =
+        this.getPreparedStatement(conn, getItem, item_id, seller_id)) {
+      try (ResultSet item_results = item_stmt.executeQuery()) {
+        if (!item_results.next()) {
+          throw new UserAbortException("Invalid item " + item_id);
+        }
+        item_row = SQLUtil.getRowAsArray(item_results);
+      }
+    }
+
+    Object[] user_row = null;
+    try (PreparedStatement user_stmt = this.getPreparedStatement(conn, getUser, seller_id)) {
+      try (ResultSet user_results = user_stmt.executeQuery()) {
+        if (!user_results.next()) {
+          throw new UserAbortException("Invalid user id " + seller_id);
+        }
+        user_row = SQLUtil.getRowAsArray(user_results);
+      }
+    }
+
+    return (new Object[][] {item_row, user_row});
+  }
+}

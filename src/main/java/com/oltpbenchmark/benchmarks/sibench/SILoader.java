@@ -1,0 +1,88 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.sibench;
+
+import com.oltpbenchmark.api.Loader;
+import com.oltpbenchmark.api.LoaderThread;
+import com.oltpbenchmark.catalog.Table;
+import com.oltpbenchmark.util.SQLUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public final class SILoader extends Loader<SIBenchmark> {
+  private final int num_record;
+
+  public SILoader(SIBenchmark benchmark) {
+    super(benchmark);
+    this.num_record = (int) Math.round(SIConstants.RECORD_COUNT * this.scaleFactor);
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("# of RECORDS:  {}", this.num_record);
+    }
+  }
+
+  @Override
+  public List<LoaderThread> createLoaderThreads() {
+    List<LoaderThread> threads = new ArrayList<>();
+    final int numLoaders = this.benchmark.getWorkloadConfiguration().getLoaderThreads();
+    final int itemsPerThread = Math.max(this.num_record / numLoaders, 1);
+    final int numRecordThreads = (int) Math.ceil((double) this.num_record / itemsPerThread);
+
+    // SITEST
+    for (int i = 0; i < numRecordThreads; i++) {
+      final int lo = i * itemsPerThread + 1;
+      final int hi = Math.min(this.num_record, (i + 1) * itemsPerThread);
+
+      threads.add(
+          new LoaderThread(this.benchmark) {
+            @Override
+            public void load(Connection conn) throws SQLException {
+              loadSITest(conn, lo, hi);
+            }
+          });
+    }
+
+    return threads;
+  }
+
+  private void loadSITest(Connection conn, int lo, int hi) throws SQLException {
+    Random rand = this.benchmark.rng();
+    Table catalog_tbl = this.benchmark.getCatalog().getTable("SITEST");
+
+    String sql = SQLUtil.getInsertSQL(catalog_tbl, this.getDatabaseType());
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+      int batch = 0;
+      for (int i = lo; i <= hi; i++) {
+        stmt.setInt(1, i);
+        stmt.setInt(2, rand.nextInt(Integer.MAX_VALUE));
+        stmt.addBatch();
+
+        if (++batch >= workConf.getBatchSize()) {
+          stmt.executeBatch();
+
+          batch = 0;
+        }
+      }
+      if (batch > 0) {
+        stmt.executeBatch();
+      }
+    }
+  }
+}

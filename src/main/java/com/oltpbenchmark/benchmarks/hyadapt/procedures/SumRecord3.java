@@ -1,0 +1,46 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.hyadapt.procedures;
+
+import com.oltpbenchmark.api.Procedure;
+import com.oltpbenchmark.api.SQLStmt;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class SumRecord3 extends Procedure {
+  public final SQLStmt sumStmt =
+      new SQLStmt(
+          "SELECT FIELD198  + FIELD206 + FIELD169 + FIELD119 + FIELD9 + FIELD220 + FIELD2 + FIELD230 + FIELD212 + FIELD164 + FIELD111 + FIELD136 + FIELD106 + FIELD8 + FIELD112 + FIELD4 + FIELD234 + FIELD147 + FIELD35 + FIELD114 + FIELD89 + FIELD127 + FIELD144 + FIELD71 + FIELD186 + "
+              + "FIELD34 + FIELD145 + FIELD124 + FIELD146 + FIELD7 + FIELD40 + FIELD227 + FIELD59 + FIELD190 + FIELD249 + FIELD157 + FIELD38 + FIELD64 + FIELD134 + FIELD167 + FIELD63 + FIELD178 + FIELD156 + FIELD94 + FIELD84 + FIELD187 + FIELD153 + FIELD158 + FIELD42 + FIELD236 + "
+              + "FIELD83 + FIELD182 + FIELD107 + FIELD76 + FIELD58 + FIELD102 + FIELD96 + FIELD31 + FIELD244 + FIELD54 + FIELD37 + FIELD228 + FIELD24 + FIELD120 + FIELD92 + FIELD233 + FIELD170 + FIELD209 + FIELD93 + FIELD12 + FIELD47 + FIELD200 + FIELD248 + FIELD171 + FIELD22 "
+              + "FROM htable WHERE FIELD1>?");
+
+  public void run(Connection conn, int keyname) throws SQLException {
+    try (PreparedStatement stmt = this.getPreparedStatement(conn, sumStmt)) {
+      stmt.setInt(1, keyname);
+      int sum = -1;
+      try (ResultSet r = stmt.executeQuery()) {
+        if (r.next()) {
+          sum = r.getInt(1);
+        }
+      }
+      assert sum != -1;
+    }
+  }
+}

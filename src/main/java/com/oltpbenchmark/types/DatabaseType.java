@@ -1,0 +1,132 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 있지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 제공되며 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한 및 조건을 반드시 따르십시오.
+ *
+ */
+
+package com.oltpbenchmark.types;
+
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 프레임워크가 지원하는 데이터베이스 관리 시스템 목록입니다.
+ *
+ * @author pavlo
+ */
+public enum DatabaseType {
+  AMAZONRDS(true, false),
+  CASSANDRA(true, true),
+  COCKROACHDB(false, false, true),
+  DB2(true, false),
+  H2(true, false),
+  HSQLDB(false, false),
+  POSTGRES(false, false, true, true),
+  MARIADB(true, false),
+  MONETDB(false, false),
+  MYROCKS(true, false),
+  MYSQL(true, false),
+  NOISEPAGE(false, false),
+  NUODB(true, false),
+  ORACLE(true, false),
+  SINGLESTORE(true, false),
+  SPANNER(false, true),
+  SQLAZURE(true, true, true),
+  SQLITE(true, false),
+  SQLSERVER(true, true, true, true),
+  TIBERO(true, false),
+  TIMESTEN(true, false),
+  PHOENIX(true, true);
+
+  DatabaseType(
+      boolean escapeNames,
+      boolean includeColNames,
+      boolean loadNeedsUpdateColumnSequence,
+      boolean needsMonitoringPrefix) {
+    this.escapeNames = escapeNames;
+    this.includeColNames = includeColNames;
+    this.loadNeedsUpdateColumnSequence = loadNeedsUpdateColumnSequence;
+    this.needsMonitoringPrefix = needsMonitoringPrefix;
+  }
+
+  DatabaseType(
+      boolean escapeNames, boolean includeColNames, boolean loadNeedsUpdateColumnSequence) {
+    this(escapeNames, includeColNames, loadNeedsUpdateColumnSequence, false);
+  }
+
+  DatabaseType(boolean escapeNames, boolean includeColNames) {
+    this(escapeNames, includeColNames, false, false);
+  }
+
+  /** 이 플래그가 true이면 프레임워크가 INSERT 쿼리에서 이름을 이스케이프합니다. */
+  private final boolean escapeNames;
+
+  /** 이 플래그가 true이면 데이터를 로드하기 위한 INSERT 쿼리 생성 시 컬럼 이름을 포함합니다. */
+  private final boolean includeColNames;
+
+  /** 이 플래그가 true이면 데이터를 로드한 뒤 컬럼 순서를 갱신하도록 시도합니다. */
+  private final boolean loadNeedsUpdateColumnSequence;
+
+  /** 이 플래그가 true이면 프레임워크가 각 쿼리에 모니터링 접두사를 추가합니다. */
+  private final boolean needsMonitoringPrefix;
+
+  // ---------------------------------------------------------------
+  // ACCESSORS
+  // ----------------------------------------------------------------
+
+  /**
+   * @return 대상 DB 유형으로 데이터를 로드할 SQL을 생성할 때 컬럼/테이블 이름을 이스케이프해야 하면 true
+   */
+  public boolean shouldEscapeNames() {
+    return (this.escapeNames);
+  }
+
+  /**
+   * @return 대상 DB 유형으로 데이터를 로드할 SQL을 생성할 때 컬럼 이름을 포함해야 하면 true
+   */
+  public boolean shouldIncludeColumnNames() {
+    return (this.includeColNames);
+  }
+
+  /**
+   * @return 데이터를 로드한 후 컬럼 순서를 갱신해야 하면 true
+   */
+  public boolean shouldUpdateColumnSequenceAfterLoad() {
+    return (this.loadNeedsUpdateColumnSequence);
+  }
+
+  /**
+   * @return 각 쿼리에 모니터링 접두사를 추가해야 하면 true
+   */
+  public boolean shouldCreateMonitoringPrefix() {
+    return (this.needsMonitoringPrefix);
+  }
+
+  // ----------------------------------------------------------------
+  // STATIC METHODS + MEMBERS
+  // ----------------------------------------------------------------
+
+  protected static final Map<Integer, DatabaseType> idx_lookup = new HashMap<>();
+  protected static final Map<String, DatabaseType> name_lookup = new HashMap<>();
+
+  static {
+    for (DatabaseType vt : EnumSet.allOf(DatabaseType.class)) {
+      DatabaseType.idx_lookup.put(vt.ordinal(), vt);
+      DatabaseType.name_lookup.put(vt.name().toUpperCase(), vt);
+    }
+  }
+
+  public static DatabaseType get(String name) {
+    return (DatabaseType.name_lookup.get(name.toUpperCase()));
+  }
+}

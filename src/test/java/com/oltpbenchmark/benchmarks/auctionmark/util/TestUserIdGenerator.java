@@ -1,0 +1,272 @@
+/*
+ * Copyright 2015 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.auctionmark.util;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+
+import com.oltpbenchmark.benchmarks.auctionmark.AuctionMarkConstants;
+import com.oltpbenchmark.util.CollectionUtil;
+import com.oltpbenchmark.util.Histogram;
+import com.oltpbenchmark.util.RandomDistribution.Zipf;
+import com.oltpbenchmark.util.RandomGenerator;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * UserId 생성기 테스트 클래스입니다.
+ *
+ * @author pavlo
+ */
+public class TestUserIdGenerator {
+
+  private static final int NUM_CLIENTS = 10;
+  private static final int NUM_USERS = 1000;
+  private static final RandomGenerator rand =
+      new RandomGenerator(0); // (int)System.currentTimeMillis());
+
+  private static final Zipf randomNumItems =
+      new Zipf(
+          rand,
+          AuctionMarkConstants.ITEM_ITEMS_PER_SELLER_MIN,
+          AuctionMarkConstants.ITEM_ITEMS_PER_SELLER_MAX,
+          1.0001);
+
+  private final Histogram<Long> users_per_item_count = new Histogram<Long>();
+
+  @Before
+  public void setUp() throws Exception {
+    for (long i = 0; i < NUM_USERS; i++) {
+      this.users_per_item_count.put((long) randomNumItems.nextInt());
+    } // FOR
+    assertEquals(NUM_USERS, this.users_per_item_count.getSampleCount());
+  }
+
+  /** 클라이언트 확인 테스트 */
+  @Test
+  public void testCheckClient() throws Exception {
+    int num_clients = 10;
+    UserIdGenerator generator;
+
+    // 각 클라이언트 ID -> UserIds의 매핑을 생성합니다
+    Map<Integer, Collection<UserId>> clientIds = new HashMap<>();
+    Map<Integer, UserIdGenerator> clientGenerators = new HashMap<>();
+    for (int client = 0; client < num_clients; client++) {
+      generator = new UserIdGenerator(users_per_item_count, num_clients, client);
+      Collection<UserId> users =
+          CollectionUtil.addAll(new HashSet<>(), CollectionUtil.iterable(generator).iterator());
+      assertFalse(users.isEmpty());
+      clientIds.put(client, users);
+      clientGenerators.put(client, generator);
+    } // FOR
+
+    // 그런 다음 모든 User ID를 다시 반복하여 각 UserId가
+    // 예상된 클라이언트에 매핑 가능한지 확인합니다
+    generator = new UserIdGenerator(users_per_item_count, num_clients);
+    int ctr = 0;
+    for (UserId user_id : CollectionUtil.iterable(generator)) {
+      assertNotNull(user_id);
+      boolean found = false;
+      for (int client = 0; client < num_clients; client++) {
+        boolean expected = clientIds.get(client).contains(user_id);
+        if (expected) assertFalse(found);
+        boolean actual = clientGenerators.get(client).checkClient(user_id);
+        assertEquals(String.format("[%03d] %d / %s", ctr, client, user_id), expected, actual);
+        found = (found || expected);
+        ctr++;
+      } // FOR
+      assertTrue(user_id.toString(), found);
+    } // FOR
+  }
+
+  /** 위치로 이동 테스트 */
+  @Test
+  public void testSeekToPosition() throws Exception {
+    UserIdGenerator generator = new UserIdGenerator(users_per_item_count, 1);
+    final int num_users = (int) (generator.getTotalUsers() - 1);
+
+    int itemCount = rand.nextInt(users_per_item_count.getMaxValue().intValue() - 1);
+    generator.setCurrentItemCount(itemCount);
+    //	    System.err.println("itemCount = " + itemCount);
+
+    int cur_position = generator.getCurrentPosition();
+    int new_position = rand.number(cur_position, num_users);
+    //        System.err.println(users_per_item_count);
+    //        System.err.println("cur_position = " + cur_position);
+    //        System.err.println("new_position = " + new_position);
+    generator.setCurrentItemCount(0);
+    UserId expected = null;
+    for (int i = 0; i <= new_position; i++) {
+      assertTrue(generator.hasNext());
+      expected = generator.next();
+      assertNotNull(expected);
+    } // FOR
+
+    generator.setCurrentItemCount(0);
+    UserId user_id = generator.seekToPosition(new_position);
+    assertNotNull(user_id);
+    //        System.err.println(user_id);
+    assertEquals(expected, user_id);
+  }
+
+  /** 클라이언트 ID로 위치 이동 테스트 */
+  @Test
+  public void testSeekToPositionClientId() throws Exception {
+    int num_clients = 10;
+    UserIdGenerator generator = new UserIdGenerator(users_per_item_count, num_clients);
+    final int num_users = (int) (generator.getTotalUsers() - 1);
+
+    Map<Integer, UserId> expectedIds = new TreeMap<Integer, UserId>();
+    while (generator.hasNext()) {
+      int position = generator.getCurrentPosition();
+      UserId user_id = generator.next();
+      assertNotNull(user_id);
+      expectedIds.put(position, user_id);
+    } // WHILE
+    //        System.err.println(StringUtil.formatMaps(expectedIds));
+
+    for (int client = 0; client < num_clients; client++) {
+      generator = new UserIdGenerator(users_per_item_count, num_clients, client);
+
+      // 무작위로 이동하여 위치당 동일한 UserId를 얻는지 확인합니다
+      for (int i = 0; i < NUM_USERS; i++) {
+        // 주어진 위치를 넘어서 이 클라이언트에 대한 UserId가 더 이상 없을 수 있으므로
+        // null일 수 있습니다
+        int position = rand.nextInt(num_users);
+        UserId user_id = generator.seekToPosition(position);
+        if (user_id == null) continue;
+
+        // 클라이언트 ID를 사용했으므로 생성기가 더 앞으로 건너뛸 수 있으므로
+        // 다시 돌아가서 위치를 가져와야 합니다
+        position = generator.getCurrentPosition();
+        UserId expected = expectedIds.get(position);
+        assertNotNull(expected);
+
+        assertEquals("Position: " + position, expected, user_id);
+      } // FOR
+    } // FOR
+  }
+
+  /** 모든 사용자 테스트 */
+  @Test
+  public void testAllUsers() throws Exception {
+    UserIdGenerator generator = new UserIdGenerator(users_per_item_count, NUM_CLIENTS);
+    Set<UserId> seen = new HashSet<UserId>();
+    assert (generator.hasNext());
+    for (UserId u_id : CollectionUtil.iterable(generator)) {
+      assertNotNull(u_id);
+      assert (seen.contains(u_id) == false) : "Duplicate " + u_id;
+      seen.add(u_id);
+      //	        System.err.println(u_id);
+    } // FOR
+    assertEquals(NUM_USERS, seen.size());
+  }
+
+  /** 클라이언트별 테스트 */
+  @Test
+  public void testPerClient() throws Exception {
+    Histogram<Integer> clients_h = new Histogram<Integer>();
+    Set<UserId> all_seen = new HashSet<UserId>();
+    for (int client = 0; client < NUM_CLIENTS; client++) {
+      UserIdGenerator generator = new UserIdGenerator(users_per_item_count, NUM_CLIENTS, client);
+      Set<UserId> seen = new HashSet<UserId>();
+      assert (generator.hasNext());
+      for (UserId u_id : CollectionUtil.iterable(generator)) {
+        assertNotNull(u_id);
+        assert (seen.contains(u_id) == false) : "Duplicate " + u_id;
+        assert (all_seen.contains(u_id) == false) : "Duplicate " + u_id;
+        seen.add(u_id);
+        all_seen.add(u_id);
+      } // FOR
+      assertNotSame(Integer.toString(client), NUM_USERS, seen.size());
+      assertFalse(Integer.toString(client), seen.isEmpty());
+      clients_h.put(client, seen.size());
+    } // FOR
+    assertEquals(NUM_USERS, all_seen.size());
+
+    // 모두 동일한 수의 UserId를 가지고 있는지 확인합니다
+    Integer last_cnt = null;
+    for (Integer client : clients_h.values()) {
+      if (last_cnt != null) {
+        assertEquals(client.toString(), last_cnt, clients_h.get(client));
+      }
+      last_cnt = clients_h.get(client);
+    } // FOR
+    //	    System.err.println(clients_h);
+  }
+
+  /** 단일 클라이언트 테스트 */
+  @Test
+  public void testSingleClient() throws Exception {
+    // 먼저 모든 클라이언트에 대한 UserIdGenerator를 생성하고
+    // 예상되는 모든 UserId 집합을 가져옵니다
+    UserIdGenerator generator = new UserIdGenerator(users_per_item_count, 1);
+    Set<UserId> expected = new HashSet<UserId>();
+    for (UserId u_id : CollectionUtil.iterable(generator)) {
+      assertNotNull(u_id);
+      assert (expected.contains(u_id) == false) : "Duplicate " + u_id;
+      expected.add(u_id);
+    } // FOR
+
+    // 이제 클라이언트가 하나만 있는 새로운 생성기를 만듭니다. 즉,
+    // 동일한 모든 UserId를 다시 받아야 합니다
+    Set<UserId> actual = new HashSet<UserId>();
+    generator = new UserIdGenerator(users_per_item_count, 1, 0);
+    for (UserId u_id : CollectionUtil.iterable(generator)) {
+      assertNotNull(u_id);
+      assert (actual.contains(u_id) == false) : "Duplicate " + u_id;
+      assert (expected.contains(u_id)) : "Unexpected " + u_id;
+      actual.add(u_id);
+    } // FOR
+    assertEquals(expected.size(), actual.size());
+  }
+
+  /** 현재 크기 설정 테스트 */
+  @Test
+  public void testSetCurrentSize() throws Exception {
+    // 먼저 무작위 ClientId에 대한 UserIdGenerator를 생성하고
+    // 이 클라이언트에 대해 예상되는 모든 UserId 집합을 채웁니다
+    Random rand = new Random();
+    int client = rand.nextInt(NUM_CLIENTS);
+    UserIdGenerator generator = new UserIdGenerator(users_per_item_count, NUM_CLIENTS, client);
+    Set<UserId> seen = new HashSet<UserId>();
+    for (UserId u_id : CollectionUtil.iterable(generator)) {
+      assertNotNull(u_id);
+      assert (seen.contains(u_id) == false) : "Duplicate " + u_id;
+      seen.add(u_id);
+    } // FOR
+
+    // 이제 setCurrentSize()를 사용하여 어디로 이동하든 항상 동일한 UserId를
+    // 다시 받는지 확인합니다
+    for (int i = 0; i < 10; i++) {
+      int size = rand.nextInt((int) (users_per_item_count.getMaxValue() + 1));
+      generator.setCurrentItemCount(size);
+      for (UserId u_id : CollectionUtil.iterable(generator)) {
+        assertNotNull(u_id);
+        assert (seen.contains(u_id)) : "Unexpected " + u_id;
+      } // FOR
+    } // FOR
+  }
+}

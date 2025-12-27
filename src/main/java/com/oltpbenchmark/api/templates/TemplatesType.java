@@ -1,0 +1,75 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한 및 조건을 준수해 주세요.
+ *
+ */
+
+//
+// 이 파일은 JavaTM XML 바인딩 아키텍처(JAXB) 참조 구현 v2.3.0.1에 의해 생성되었습니다.
+// <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a>를 참고하십시오.
+// 원본 스키마를 다시 컴파일하면 여기 수정한 내용은 모두 사라집니다.
+// 생성 일자: 2023.11.16 UTC 오전 08:29:59
+//
+
+package com.oltpbenchmark.api.templates;
+
+import jakarta.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * templatesType 복합 유형을 위한 Java 클래스입니다.
+ *
+ * <p>아래 스키마 조각은 이 클래스가 포함하는 내용을 명세합니다.
+ *
+ * <pre>
+ * &lt;complexType name="templatesType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="template" type="{}templateType" maxOccurs="unbounded"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+    name = "templatesType",
+    propOrder = {"template"})
+public class TemplatesType {
+
+  @XmlElement(required = true)
+  protected List<TemplateType> template;
+
+  /**
+   * template 속성 값을 반환합니다.
+   *
+   * <p>이 접근자는 스냅샷이 아닌 실제 리스트를 참조하기 때문에, 반환된 리스트를 변경하면 JAXB 객체에도 반영됩니다. 그래서 template 속성에는 별도의 <CODE>
+   * set</CODE> 메서드가 없습니다.
+   *
+   * <p>예를 들어 새로운 항목을 추가하려면 다음과 같이 합니다:
+   *
+   * <pre>
+   * getTemplate().add(newItem);
+   * </pre>
+   *
+   * <p>리스트에는 다음 타입의 객체들이 허용됩니다: {@link TemplateType}
+   */
+  public List<TemplateType> getTemplateList() {
+    if (this.template == null) {
+      this.template = new ArrayList<TemplateType>();
+    }
+    return this.template;
+  }
+}

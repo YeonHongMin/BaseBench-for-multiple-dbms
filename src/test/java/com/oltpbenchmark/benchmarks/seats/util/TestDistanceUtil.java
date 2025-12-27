@@ -1,0 +1,53 @@
+/*
+ * Copyright 2015 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.seats.util;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class TestDistanceUtil {
+
+  /** 거리 테스트 */
+  @Test
+  public void testDistance() throws Exception {
+    // { 위도, 경도 }
+    double[][] locations = {
+      {39.175278, -76.668333}, // Baltimore-Washington, USA (BWI)
+      {-22.808889, -43.243611}, // Rio de Janeiro, Brazil (GIG)
+      {40.633333, -73.783333}, // New York, USA (JFK)
+      {-33.946111, 151.177222}, // Syndey, Austrailia (SYD)
+    };
+    // 마일 단위 예상 거리
+    double[] expected = {
+      4796, // BWI->GIG
+      183, // BWI->JFK
+      9787, // BWI->SYD
+      4802, // GIG->JFK
+      8402, // GIG->SYD
+      9950, // JFK->SYD
+    };
+
+    int e = 0;
+    for (int i = 0; i < locations.length - 1; i++) {
+      double[] loc0 = locations[i];
+      for (int j = i + 1; j < locations.length; j++) {
+        double[] loc1 = locations[j];
+        double distance = Math.round(DistanceUtil.distance(loc0[0], loc0[1], loc1[0], loc1[1]));
+        assertEquals(expected[e++], distance, 0.0001f);
+      } // FOR
+    } // FOR
+  }
+}

@@ -1,0 +1,120 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.tpcc;
+
+import static com.oltpbenchmark.benchmarks.tpcc.TPCCConfig.*;
+
+import com.oltpbenchmark.benchmarks.tpcc.pojo.Customer;
+import com.oltpbenchmark.util.RandomGenerator;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
+
+public class TPCCUtil {
+
+  /**
+   * 주어진 ResultSet의 현재 행에서 Customer 객체를 생성합니다. ResultSet 종료는 호출자가 책임집니다.
+   *
+   * @param rs 접근 중인 ResultSet을 원하는 행으로 위치시킵니다.
+   * @return 생성된 Customer 객체
+   * @throws SQLException 행에서 데이터를 가져오는 중 문제가 발생하면 던집니다.
+   */
+  public static Customer newCustomerFromResults(ResultSet rs) throws SQLException {
+    Customer c = new Customer();
+    // TODO: 컬럼 인덱스를 사용하면 더 빠르게 처리할 수 있습니다.
+    c.c_first = rs.getString("c_first");
+    c.c_middle = rs.getString("c_middle");
+    c.c_street_1 = rs.getString("c_street_1");
+    c.c_street_2 = rs.getString("c_street_2");
+    c.c_city = rs.getString("c_city");
+    c.c_state = rs.getString("c_state");
+    c.c_zip = rs.getString("c_zip");
+    c.c_phone = rs.getString("c_phone");
+    c.c_credit = rs.getString("c_credit");
+    c.c_credit_lim = rs.getFloat("c_credit_lim");
+    c.c_discount = rs.getFloat("c_discount");
+    c.c_balance = rs.getFloat("c_balance");
+    c.c_ytd_payment = rs.getFloat("c_ytd_payment");
+    c.c_payment_cnt = rs.getInt("c_payment_cnt");
+    c.c_since = rs.getTimestamp("c_since");
+    return c;
+  }
+
+  private static final RandomGenerator ran = new RandomGenerator(0);
+
+  public static String randomStr(int strLen) {
+    if (strLen > 1) {
+      return ran.astring(strLen - 1, strLen - 1);
+    } else {
+      return "";
+    }
+  }
+
+  public static String randomNStr(int stringLength) {
+    if (stringLength > 0) {
+      return ran.nstring(stringLength, stringLength);
+    } else {
+      return "";
+    }
+  }
+
+  public static String getCurrentTime() {
+    return dateFormat.format(new java.util.Date());
+  }
+
+  public static String formattedDouble(double d) {
+    String dS = "" + d;
+    return dS.length() > 6 ? dS.substring(0, 6) : dS;
+  }
+
+  // TODO: TPCC-C 2.1.6: 비균일 랜덤 숫자 생성 시 아이템 ID,
+  // 고객 ID 및 고객 이름 상수는 한 번만 선택하여 재사용해야 합니다.
+
+  // 현재는 이 매개변수 셋을 고정값으로 둡니다. 매번 생성하는 것이 바람직합니다.
+  private static final int OL_I_ID_C = 7911; // 범위 [0, 8191]
+  private static final int C_ID_C = 259; // 범위 [0, 1023]
+  // 참고: TPC-C 2.1.6.1에서는 abs(C_LAST_LOAD_C - C_LAST_RUN_C)가 [65, 119] 범위 안에 있어야 한다고 명시합니다.
+  private static final int C_LAST_LOAD_C = 157; // 범위 [0, 255]
+  private static final int C_LAST_RUN_C = 223; // 범위 [0, 255]
+
+  public static int getItemID(Random r) {
+    return nonUniformRandom(8191, OL_I_ID_C, 1, configItemCount, r);
+  }
+
+  public static int getCustomerID(Random r) {
+    return nonUniformRandom(1023, C_ID_C, 1, configCustPerDist, r);
+  }
+
+  public static String getLastName(int num) {
+    return nameTokens[num / 100] + nameTokens[(num / 10) % 10] + nameTokens[num % 10];
+  }
+
+  public static String getNonUniformRandomLastNameForRun(Random r) {
+    return getLastName(nonUniformRandom(255, C_LAST_RUN_C, 0, 999, r));
+  }
+
+  public static String getNonUniformRandomLastNameForLoad(Random r) {
+    return getLastName(nonUniformRandom(255, C_LAST_LOAD_C, 0, 999, r));
+  }
+
+  public static int randomNumber(int min, int max, Random r) {
+    return (int) (r.nextDouble() * (max - min + 1) + min);
+  }
+
+  public static int nonUniformRandom(int A, int C, int min, int max, Random r) {
+    return (((randomNumber(0, A, r) | randomNumber(min, max, r)) + C) % (max - min + 1)) + min;
+  }
+}

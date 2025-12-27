@@ -1,0 +1,90 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+//
+// 이 파일은 JavaTM Architecture for XML Binding(JAXB) Reference
+// Implementation, vJAXB 2.1.10에 의해 생성되었습니다.
+// 자세한 내용은 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>를 참조하십시오.
+// 이 파일에 대한 수정 사항은 소스 스키마를 다시 컴파일하면 손실됩니다.
+// 생성일: 2011.12.28 오후 11:42:38 EST
+//
+
+package com.oltpbenchmark.api.dialects;
+
+import jakarta.xml.bind.annotation.*;
+
+/**
+ * statementType 복합 타입에 대한 Java 클래스입니다.
+ *
+ * <p>다음 스키마 조각은 이 클래스에 포함될 것으로 예상되는 내용을 지정합니다.
+ *
+ * <pre>
+ * &lt;complexType name="statementType">
+ *   &lt;simpleContent>
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *     &lt;/extension>
+ *   &lt;/simpleContent>
+ * &lt;/complexType>
+ * </pre>
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+    name = "statementType",
+    propOrder = {"value"})
+public class StatementType {
+
+  @XmlValue protected String value;
+
+  @XmlAttribute(required = true)
+  protected String name;
+
+  /**
+   * value 속성의 값을 가져옵니다.
+   *
+   * @return 가능한 객체는 {@link String }입니다.
+   */
+  public String getValue() {
+    return value;
+  }
+
+  /**
+   * value 속성의 값을 설정합니다.
+   *
+   * @param value 허용되는 객체는 {@link String }입니다.
+   */
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  /**
+   * name 속성의 값을 가져옵니다.
+   *
+   * @return 가능한 객체는 {@link String }입니다.
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * name 속성의 값을 설정합니다.
+   *
+   * @param value 허용되는 객체는 {@link String }입니다.
+   */
+  public void setName(String value) {
+    this.name = value;
+  }
+}

@@ -1,0 +1,188 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.seats.util;
+
+import com.oltpbenchmark.benchmarks.seats.SEATSConstants;
+import com.oltpbenchmark.util.CompositeId;
+import java.sql.Timestamp;
+import java.util.Comparator;
+import java.util.Objects;
+
+public final class FlightId extends CompositeId implements Comparable<FlightId> {
+
+  private static final int[] COMPOSITE_BITS = {
+    LONG_MAX_DIGITS, // AIRLINE_ID
+    LONG_MAX_DIGITS, // DEPART AIRPORT_ID
+    LONG_MAX_DIGITS, // ARRIVE AIRPORT_ID
+    LONG_MAX_DIGITS // DEPART DATE
+  };
+
+  /** 이 항공편의 항공사 */
+  private long airline_id;
+
+  /** 출발 공항의 ID */
+  private long depart_airport_id;
+
+  /** 도착 공항의 ID */
+  private long arrive_airport_id;
+
+  /** 벤치마크 시작 날짜부터 분 단위로 계산한 항공편의 출발 시간입니다. */
+  private long depart_date;
+
+  /**
+   * 생성자
+   *
+   * @param airline_id - 이 항공편의 항공사
+   * @param depart_airport_id - 출발 공항의 ID
+   * @param arrive_airport_id - 도착 공항의 ID
+   * @param benchmark_start - 벤치마크 데이터가 시작되는 기준 날짜(과거 일수 포함)
+   * @param flight_date - 항공편의 출발 날짜
+   */
+  public FlightId(
+      long airline_id,
+      long depart_airport_id,
+      long arrive_airport_id,
+      Timestamp benchmark_start,
+      Timestamp flight_date) {
+    this.airline_id = airline_id;
+    this.depart_airport_id = depart_airport_id;
+    this.arrive_airport_id = arrive_airport_id;
+    this.depart_date = FlightId.calculateFlightDate(benchmark_start, flight_date);
+  }
+
+  /**
+   * 생성자. encode()로 생성된 복합 ID를 전체 객체로 변환합니다.
+   *
+   * @param composite_id
+   */
+  public FlightId(String composite_id) {
+    this.set(composite_id);
+  }
+
+  public void set(String composite_id) {
+    this.decode(composite_id);
+  }
+
+  @Override
+  public String encode() {
+    return (this.encode(COMPOSITE_BITS));
+  }
+
+  @Override
+  public void decode(String composite_id) {
+    String[] values = super.decode(composite_id, COMPOSITE_BITS);
+    this.airline_id = Long.parseLong(values[0]);
+    this.depart_airport_id = Long.parseLong(values[1]);
+    this.arrive_airport_id = Long.parseLong(values[2]);
+    this.depart_date = Long.parseLong(values[3]);
+  }
+
+  @Override
+  public String[] toArray() {
+    return (new String[] {
+      Long.toString(this.airline_id),
+      Long.toString(this.depart_airport_id),
+      Long.toString(this.arrive_airport_id),
+      Long.toString(this.depart_date)
+    });
+  }
+
+  /**
+   * @param benchmark_start
+   * @param flight_date
+   * @return
+   */
+  protected static long calculateFlightDate(Timestamp benchmark_start, Timestamp flight_date) {
+    return (flight_date.getTime() - benchmark_start.getTime()) / 3600000; // 60s * 60m * 1000
+  }
+
+  /**
+   * @return the id
+   */
+  public long getAirlineId() {
+    return airline_id;
+  }
+
+  /**
+   * @return the depart_airport_id
+   */
+  public long getDepartAirportId() {
+    return depart_airport_id;
+  }
+
+  /**
+   * @return the arrive_airport_id
+   */
+  public long getArriveAirportId() {
+    return arrive_airport_id;
+  }
+
+  public long getDepartDate() {
+    return depart_date;
+  }
+
+  /**
+   * @return 항공편 출발 날짜
+   */
+  public Timestamp getDepartDateAsTimestamp(Timestamp benchmark_start) {
+    return (new Timestamp(
+        benchmark_start.getTime()
+            + (this.depart_date * SEATSConstants.MILLISECONDS_PER_MINUTE * 60)));
+  }
+
+  public boolean isUpcoming(Timestamp benchmark_start, long past_days) {
+    Timestamp depart_date = this.getDepartDateAsTimestamp(benchmark_start);
+    return ((depart_date.getTime() - benchmark_start.getTime())
+        >= (past_days * SEATSConstants.MILLISECONDS_PER_DAY));
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "FlightId{airline=%d,depart=%d,arrive=%d,date=%s}",
+        this.airline_id, this.depart_airport_id, this.arrive_airport_id, this.depart_date);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    FlightId flightId = (FlightId) o;
+    return airline_id == flightId.airline_id
+        && depart_airport_id == flightId.depart_airport_id
+        && arrive_airport_id == flightId.arrive_airport_id
+        && depart_date == flightId.depart_date;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(airline_id, depart_airport_id, arrive_airport_id, depart_date);
+  }
+
+  @Override
+  public int compareTo(FlightId o) {
+    return Comparator.comparingLong(FlightId::getAirlineId)
+        .thenComparingLong(FlightId::getDepartAirportId)
+        .thenComparingLong(FlightId::getArriveAirportId)
+        .thenComparingLong(FlightId::getDepartDate)
+        .compare(this, o);
+  }
+}

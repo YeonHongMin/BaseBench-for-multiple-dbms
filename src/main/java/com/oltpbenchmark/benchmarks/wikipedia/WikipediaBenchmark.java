@@ -1,0 +1,127 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+package com.oltpbenchmark.benchmarks.wikipedia;
+
+import com.oltpbenchmark.WorkloadConfiguration;
+import com.oltpbenchmark.api.BenchmarkModule;
+import com.oltpbenchmark.api.Loader;
+import com.oltpbenchmark.api.Worker;
+import com.oltpbenchmark.benchmarks.wikipedia.data.RevisionHistograms;
+import com.oltpbenchmark.benchmarks.wikipedia.procedures.AddWatchList;
+import com.oltpbenchmark.util.RandomDistribution.IntegerFlatHistogram;
+import com.oltpbenchmark.util.TextGenerator;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public final class WikipediaBenchmark extends BenchmarkModule {
+  private static final Logger LOG = LoggerFactory.getLogger(WikipediaBenchmark.class);
+
+  protected final IntegerFlatHistogram commentLength;
+  protected final IntegerFlatHistogram minorEdit;
+  private final IntegerFlatHistogram[] revisionDeltas;
+
+  protected final int num_users;
+  protected final int num_pages;
+
+  public WikipediaBenchmark(WorkloadConfiguration workConf) {
+    super(workConf);
+
+    this.commentLength = new IntegerFlatHistogram(this.rng(), RevisionHistograms.COMMENT_LENGTH);
+    this.minorEdit = new IntegerFlatHistogram(this.rng(), RevisionHistograms.MINOR_EDIT);
+    this.revisionDeltas = new IntegerFlatHistogram[RevisionHistograms.REVISION_DELTA_SIZES.length];
+    for (int i = 0; i < this.revisionDeltas.length; i++) {
+      this.revisionDeltas[i] =
+          new IntegerFlatHistogram(this.rng(), RevisionHistograms.REVISION_DELTAS[i]);
+    }
+
+    this.num_users =
+        (int)
+            Math.ceil(WikipediaConstants.USERS * this.getWorkloadConfiguration().getScaleFactor());
+    this.num_pages =
+        (int)
+            Math.ceil(WikipediaConstants.PAGES * this.getWorkloadConfiguration().getScaleFactor());
+  }
+
+  /**
+   * Special function that takes in a char field that represents the last version of the page and
+   * then do some permutation on it. This ensures that each revision looks somewhat similar to
+   * previous one so that we just don't have a bunch of random text fields for the same page.
+   *
+   * @param orig_text
+   * @return
+   */
+  protected char[] generateRevisionText(char[] orig_text) {
+    // Figure out how much we are going to change
+    // If the delta is greater than the length of the original
+    // text, then we will just cut our length in half.
+    // Where is your god now?
+    // There is probably some sort of minimal size that we should adhere to,
+    // but it's 12:30am and I simply don't feel like dealing with that now
+    IntegerFlatHistogram h = null;
+    for (int i = 0; i < this.revisionDeltas.length - 1; i++) {
+      if (orig_text.length <= RevisionHistograms.REVISION_DELTA_SIZES[i]) {
+        h = this.revisionDeltas[i];
+      }
+    }
+    if (h == null) {
+      h = this.revisionDeltas[this.revisionDeltas.length - 1];
+    }
+
+    int delta = h.nextValue();
+    if (orig_text.length + delta <= 0) {
+      delta = -1 * (int) Math.round(orig_text.length / 1.5);
+      if (Math.abs(delta) == orig_text.length && delta < 0) {
+        delta /= 2;
+      }
+    }
+    if (delta != 0) {
+      orig_text = TextGenerator.resizeText(this.rng(), orig_text, delta);
+    }
+
+    // 텍스트를 약간 순열합니다. 이렇게 하면 텍스트가 마지막 리비전과 약간 다르게 됩니다
+    orig_text = TextGenerator.permuteText(this.rng(), orig_text);
+
+    return (orig_text);
+  }
+
+  @Override
+  protected Package getProcedurePackageImpl() {
+    return (AddWatchList.class.getPackage());
+  }
+
+  @Override
+  protected List<Worker<? extends BenchmarkModule>> makeWorkersImpl() {
+    LOG.debug(
+        String.format(
+            "Initializing %d %s",
+            this.workConf.getTerminals(), WikipediaWorker.class.getSimpleName()));
+
+    List<Worker<? extends BenchmarkModule>> workers = new ArrayList<>();
+    for (int i = 0; i < this.workConf.getTerminals(); ++i) {
+      WikipediaWorker worker = new WikipediaWorker(this, i);
+      workers.add(worker);
+    }
+    return workers;
+  }
+
+  @Override
+  protected Loader<WikipediaBenchmark> makeLoaderImpl() {
+    return new WikipediaLoader(this);
+  }
+}

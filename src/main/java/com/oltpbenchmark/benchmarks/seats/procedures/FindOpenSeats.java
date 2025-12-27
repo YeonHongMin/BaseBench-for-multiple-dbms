@@ -1,0 +1,152 @@
+/*
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+ *
+ */
+
+/* This file is part of VoltDB.
+ * Copyright (C) 2009 Vertica Systems Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+package com.oltpbenchmark.benchmarks.seats.procedures;
+
+import com.oltpbenchmark.api.Procedure;
+import com.oltpbenchmark.api.SQLStmt;
+import com.oltpbenchmark.benchmarks.seats.SEATSConstants;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class FindOpenSeats extends Procedure {
+  private static final Logger LOG = LoggerFactory.getLogger(FindOpenSeats.class);
+
+  public final SQLStmt GetFlight =
+      new SQLStmt(
+          "SELECT F_STATUS, F_BASE_PRICE, F_SEATS_TOTAL, F_SEATS_LEFT, "
+              + "       (F_BASE_PRICE + (F_BASE_PRICE * (1 - (F_SEATS_LEFT / F_SEATS_TOTAL)))) AS F_PRICE "
+              + "  FROM "
+              + SEATSConstants.TABLENAME_FLIGHT
+              + " WHERE F_ID = ?");
+
+  public final SQLStmt GetSeats =
+      new SQLStmt(
+          "SELECT R_ID, R_F_ID, R_SEAT "
+              + "  FROM "
+              + SEATSConstants.TABLENAME_RESERVATION
+              + " WHERE R_F_ID = ?");
+
+  public Object[][] run(Connection conn, String f_id) throws SQLException {
+
+    // 150개 좌석
+    final long[] seatmap =
+        new long[] {
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+        };
+
+    double base_price = 0.0;
+    long seats_total = 0;
+    long seats_left = 0;
+    double seat_price = 0.0;
+
+    // 먼저 항공편의 기본 가격과 남은 좌석 수를 사용하여 좌석 가격을 계산합니다.
+    try (PreparedStatement f_stmt = this.getPreparedStatement(conn, GetFlight)) {
+      f_stmt.setString(1, f_id);
+      try (ResultSet f_results = f_stmt.executeQuery()) {
+        if (f_results.next()) {
+
+          // long status = results[0].getLong(0);
+          base_price = f_results.getDouble(2);
+          seats_total = f_results.getLong(3);
+          seats_left = f_results.getLong(4);
+          seat_price = f_results.getDouble(5);
+        } else {
+          LOG.warn(
+              "flight {} had no seats; this may be a data problem or a code problem.  previously this threw an unhandled exception.",
+              f_id);
+        }
+      }
+    }
+
+    // TODO: 이것이 SQL과 일치하지 않는 이유를 파악하세요.
+    //   가능한 설명: 부동 소수점 숫자는 근사값입니다.
+    //                         (예: 0.01)의 정확한 표현이 없습니다.
+    //                         일부 데이터베이스(예: PostgreSQL)는 중간 값에 대해
+    //                         numeric과 같은 정확한 타입을 사용합니다. (이것은
+    //                         java.math.BigDecimal과 거의 동일합니다.)
+    double _seat_price = base_price + (base_price * (1.0 - (seats_left / (double) seats_total)));
+
+    LOG.debug(
+        String.format(
+            "Flight %s - SQL[%.2f] <-> JAVA[%.2f] [basePrice=%f, total=%d, left=%d]",
+            f_id, seat_price, _seat_price, base_price, seats_total, seats_left));
+
+    // 그런 다음 남은 좌석의 좌석 맵을 구성합니다.
+    try (PreparedStatement s_stmt = this.getPreparedStatement(conn, GetSeats)) {
+      s_stmt.setString(1, f_id);
+      try (ResultSet s_results = s_stmt.executeQuery()) {
+        while (s_results.next()) {
+          long r_id = s_results.getLong(1);
+          int seatnum = s_results.getInt(3);
+
+          LOG.debug(String.format("Reserved Seat: fid %s / rid %d / seat %d", f_id, r_id, seatnum));
+
+          seatmap[seatnum] = 1;
+        }
+      }
+    }
+
+    int ctr = 0;
+    Object[][] returnResults = new Object[SEATSConstants.FLIGHTS_NUM_SEATS][];
+    for (int i = 0; i < seatmap.length; ++i) {
+      if (seatmap[i] == -1) {
+        // 첫 번째 좌석에 대해 더 많이 청구합니다.
+        double price = seat_price * (i < SEATSConstants.FLIGHTS_FIRST_CLASS_OFFSET ? 2.0 : 1.0);
+        Object[] row = new Object[] {f_id, i, price};
+        returnResults[ctr++] = row;
+        if (ctr == returnResults.length) {
+          break;
+        }
+      }
+    }
+
+    return returnResults;
+  }
+}
