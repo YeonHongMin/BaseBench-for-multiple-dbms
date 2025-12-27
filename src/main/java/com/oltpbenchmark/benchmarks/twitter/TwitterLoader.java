@@ -234,8 +234,9 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
 
   /**
    * @throws SQLException
-   * @author Djellel 여기서 무엇이 일어나나요?: 각 사용자(팔로워)에 대해 팔로우하는 사용자 수(팔로위 목록)를 선택한 다음 해당 목록을 채우기 위해 사용자를 선택합니다. 선택은 분포를 기반으로 합니다. 참고: 상관관계를 피하기 위해 두 가지 다른 분포를 사용합니다:
-   *     ZipfianGenerator (가장 많이 팔로우되는 사용자 설명) ScrambledZipfianGenerator (활발한 트위터 사용자 설명)
+   * @author Djellel 여기서 무엇이 일어나나요?: 각 사용자(팔로워)에 대해 팔로우하는 사용자 수(팔로위 목록)를 선택한 다음 해당 목록을 채우기 위해 사용자를
+   *     선택합니다. 선택은 분포를 기반으로 합니다. 참고: 상관관계를 피하기 위해 두 가지 다른 분포를 사용합니다: ZipfianGenerator (가장 많이 팔로우되는
+   *     사용자 설명) ScrambledZipfianGenerator (활발한 트위터 사용자 설명)
    */
   protected void loadFollowData(Connection conn, int lo, int hi) throws SQLException {
 

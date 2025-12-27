@@ -37,12 +37,12 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
-  /**
-   * 합성 위키피디아 데이터 로더
-   *
-   * @author pavlo
-   * @author djellel
-   */
+/**
+ * 합성 위키피디아 데이터 로더
+ *
+ * @author pavlo
+ * @author djellel
+ */
 public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
 
   /** UserId -> # of Revisions */
@@ -234,8 +234,8 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     return threads;
   }
 
-    /** 사용자 계정 */
-    private void loadUsers(Connection conn, int lo, int hi) throws SQLException {
+  /** 사용자 계정 */
+  private void loadUsers(Connection conn, int lo, int hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_USER);
 
     SQLUtil.setIdentityInsert(conn, getDatabaseType(), catalog_tbl, true);
@@ -315,8 +315,8 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
-    /** 페이지 */
-    private void loadPages(Connection conn, int lo, int hi) throws SQLException {
+  /** 페이지 */
+  private void loadPages(Connection conn, int lo, int hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_PAGE);
 
     SQLUtil.setIdentityInsert(conn, getDatabaseType(), catalog_tbl, true);
@@ -379,8 +379,8 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
-    /** 관심 목록 */
-    private void loadWatchlist(Connection conn) throws SQLException {
+  /** 관심 목록 */
+  private void loadWatchlist(Connection conn) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_WATCHLIST);
 
     String sql = SQLUtil.getInsertSQL(catalog_tbl, this.getDatabaseType());
@@ -461,8 +461,8 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
-    /** 리비전 */
-    private void loadRevision(Connection conn) throws SQLException {
+  /** 리비전 */
+  private void loadRevision(Connection conn) throws SQLException {
 
     // TEXT
     Table textTable = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_TEXT);

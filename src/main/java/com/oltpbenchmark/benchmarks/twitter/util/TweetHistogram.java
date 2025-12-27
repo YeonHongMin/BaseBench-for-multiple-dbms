@@ -22,8 +22,7 @@ import com.oltpbenchmark.util.Histogram;
  * 트윗 길이의 히스토그램. 이것은 다음에서 파생되었습니다:
  * http://simplymeasured.com/blog/2010/06/lakers-vs-celtics-social-media-breakdown-nba/
  *
- * <p>그리고 다음에 표시된 분포와 일치하는 것으로 보입니다:
- * http://blog.hubspot.com/Portals/249/sotwitter09.pdf
+ * <p>그리고 다음에 표시된 분포와 일치하는 것으로 보입니다: http://blog.hubspot.com/Portals/249/sotwitter09.pdf
  *
  * @author pavlo
  */

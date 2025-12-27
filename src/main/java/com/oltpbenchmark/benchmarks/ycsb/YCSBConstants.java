@@ -22,9 +22,7 @@ public abstract class YCSBConstants {
 
   public static final int NUM_FIELDS = 10;
 
-  /**
-   * USERTABLE에서 각 필드의 최대 크기입니다. 참고: 코드에서 이 값을 증가시키면 모든 DDL 파일을 업데이트해야 합니다.
-   */
+  /** USERTABLE에서 각 필드의 최대 크기입니다. 참고: 코드에서 이 값을 증가시키면 모든 DDL 파일을 업데이트해야 합니다. */
   public static final int MAX_FIELD_SIZE = 100; // chars
 
   /** 각 스레드가 로드할 레코드 수입니다. */
