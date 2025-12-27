@@ -1,6 +1,6 @@
 # BenchBase
 
-`BaseBench의 한국어 번역 버젼입니다.
+## BaseBench의 한국어 번역 버젼입니다.
 
 [![BenchBase (Java with Maven)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml)
 
