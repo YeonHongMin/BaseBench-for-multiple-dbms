@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*
  *  저작권 2015 OLTPBenchmark 프로젝트
@@ -18,6 +19,8 @@
  */
 
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.benchmarks.templated;
 
 import static org.junit.Assert.assertNotNull;
@@ -55,6 +58,7 @@ public class TestTemplatedWorker extends AbstractTestWorker<TemplatedBenchmark> 
 
   public TestTemplatedWorker() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Technically we aren't creating this schema with the
     // TemplatedBenchmark, but specifying the DDL that we are using (see
     // below) allows some other checks to pass.
@@ -62,15 +66,24 @@ public class TestTemplatedWorker extends AbstractTestWorker<TemplatedBenchmark> 
     // 기술적으로는 TemplatedBenchmark로 이 스키마를 생성하는 것이 아니지만,
     // 사용 중인 DDL을 지정하면(아래 참조) 다른 일부 검사가 통과할 수 있습니다.
 >>>>>>> master
+=======
+    // Technically we aren't creating this schema with the
+    // TemplatedBenchmark, but specifying the DDL that we are using (see
+    // below) allows some other checks to pass.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     super(DDL_OVERRIDE_PATH);
   }
 
   public static void setWorkloadConfigXml(WorkloadConfiguration workConf) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Load the configuration file so we can parse the query_template_file value.
 =======
     // query_template_file 값을 파싱할 수 있도록 설정 파일을 로드합니다.
 >>>>>>> master
+=======
+    // Load the configuration file so we can parse the query_template_file value.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try {
       XMLConfiguration xmlConf = DBWorkload.buildConfiguration(SAMPLE_TEMPLATED_CONFIG);
       workConf.setXmlConfig(xmlConf);
@@ -87,6 +100,7 @@ public class TestTemplatedWorker extends AbstractTestWorker<TemplatedBenchmark> 
   @Override
   public List<Class<? extends Procedure>> procedures() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Note: the first time this is called is before the benchmark is
     // initialized, so it should return nothing.
     // It's only populated after the config is loaded for the benchmark.
@@ -94,6 +108,11 @@ public class TestTemplatedWorker extends AbstractTestWorker<TemplatedBenchmark> 
     // 참고: 처음 호출될 때는 벤치마크가 초기화되기 전이므로 아무것도 반환하지 않아야 합니다.
     // 벤치마크의 설정이 로드된 후에만 채워집니다.
 >>>>>>> master
+=======
+    // Note: the first time this is called is before the benchmark is
+    // initialized, so it should return nothing.
+    // It's only populated after the config is loaded for the benchmark.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     List<Class<? extends Procedure>> procedures = new ArrayList<>();
     if (this.benchmark != null) {
       procedures = this.benchmark.getProcedureClasses();
@@ -115,10 +134,14 @@ public class TestTemplatedWorker extends AbstractTestWorker<TemplatedBenchmark> 
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Create a second benchmark to re/ab/use for loading the database (tpcc in this case).
 =======
     // 데이터베이스 로드를 위해 두 번째 벤치마크를 생성합니다(이 경우 tpcc).
 >>>>>>> master
+=======
+    // Create a second benchmark to re/ab/use for loading the database (tpcc in this case).
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     WorkloadConfiguration tpccWorkConf = new WorkloadConfiguration();
     tpccWorkConf.setDatabaseType(this.workConf.getDatabaseType());
     tpccWorkConf.setUrl(this.workConf.getUrl());

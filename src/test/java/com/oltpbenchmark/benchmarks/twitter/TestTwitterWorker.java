@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*
  *  저작권 2015 OLTPBenchmark 프로젝트
@@ -18,6 +19,8 @@
  */
 
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.benchmarks.twitter;
 
 import com.oltpbenchmark.api.AbstractTestWorker;
@@ -26,10 +29,14 @@ import java.util.List;
 import org.junit.Ignore;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Ignore("the testcase is under development")
 =======
 @Ignore("테스트 케이스가 개발 중입니다")
 >>>>>>> master
+=======
+@Ignore("the testcase is under development")
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class TestTwitterWorker extends AbstractTestWorker<TwitterBenchmark> {
 
   @Override

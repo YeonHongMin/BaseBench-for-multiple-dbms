@@ -2,6 +2,9 @@
  * Copyright 2020 Trino
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -156,20 +162,28 @@ public class SupplierGenerator implements Iterable<List<Object>> {
       String comment = commentRandom.nextValue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Add supplier complaints or commendation to the comment
 =======
       // 공급자 불만 또는 추천을 주석에 추가
 >>>>>>> master
+=======
+      // Add supplier complaints or commendation to the comment
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int bbbCommentRandomValue = bbbCommentRandom.nextValue();
       if (bbbCommentRandomValue <= BBB_COMMENTS_PER_SCALE_BASE) {
         StringBuilder buffer = new StringBuilder(comment);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // select random place for BBB comment
         int noise = bbbJunkRandom.nextInt(0, (comment.length() - BBB_COMMENT_LENGTH));
         int offset = bbbOffsetRandom.nextInt(0, (comment.length() - (BBB_COMMENT_LENGTH + noise)));
 
         // select complaint or recommendation
+<<<<<<< HEAD
 =======
         // BBB 주석을 위한 무작위 위치 선택
         int noise = bbbJunkRandom.nextInt(0, (comment.length() - BBB_COMMENT_LENGTH));
@@ -177,6 +191,8 @@ public class SupplierGenerator implements Iterable<List<Object>> {
 
         // 불만 또는 추천 선택
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         String type;
         if (bbbTypeRandom.nextValue() < BBB_COMPLAINT_PERCENT) {
           type = BBB_COMPLAINT_TEXT;
@@ -185,16 +201,22 @@ public class SupplierGenerator implements Iterable<List<Object>> {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // write base text (e.g., "Customer ")
         buffer.replace(offset, offset + BBB_BASE_TEXT.length(), BBB_BASE_TEXT);
 
         // write complaint or commendation text (e.g., "Complaints" or "Recommends")
+<<<<<<< HEAD
 =======
         // 기본 텍스트 작성 (예: "Customer ")
         buffer.replace(offset, offset + BBB_BASE_TEXT.length(), BBB_BASE_TEXT);
 
         // 불만 또는 추천 텍스트 작성 (예: "Complaints" 또는 "Recommends")
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         buffer.replace(
             BBB_BASE_TEXT.length() + offset + noise,
             BBB_BASE_TEXT.length() + offset + noise + type.length(),

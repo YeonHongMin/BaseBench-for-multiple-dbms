@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -53,6 +59,9 @@ public class SEATSProfile {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // PERSISTENT DATA MEMBERS
   // ----------------------------------------------------------------
 
@@ -88,6 +97,7 @@ public class SEATSProfile {
   protected Long reservation_upcoming_offset = null;
 
   /** The number of reservations initially created. */
+<<<<<<< HEAD
 =======
   // 영구 데이터 멤버
   // ----------------------------------------------------------------
@@ -121,34 +131,49 @@ public class SEATSProfile {
 
   /** 처음에 생성된 예약 수입니다. */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   protected long num_reservations = 0L;
 
   /** TODO */
   protected final Map<String, Histogram<String>> histograms = new HashMap<>();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * Each AirportCode will have a histogram of the number of flights that depart from that airport
    * to all the other airports
    */
+<<<<<<< HEAD
 =======
   /** 각 AirportCode는 해당 공항에서 다른 모든 공항으로 출발하는 항공편 수의 히스토그램을 가집니다. */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   protected final Map<String, Histogram<String>> airport_histograms = new HashMap<>();
 
   protected final Map<String, Map<String, Long>> code_id_xref = new HashMap<>();
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // TRANSIENT DATA MEMBERS
 =======
   // 임시 데이터 멤버
 >>>>>>> master
+=======
+  // TRANSIENT DATA MEMBERS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------
 
   protected final SEATSBenchmark benchmark;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * We want to maintain a small cache of FlightIds so that the SEATSClient has something to work
    * with. We obviously don't want to store the entire set here
@@ -175,6 +200,7 @@ public class SEATSProfile {
 
   // ----------------------------------------------------------------
   // CONSTRUCTOR
+<<<<<<< HEAD
 =======
   /** SEATSClient가 작업할 수 있도록 FlightIds의 작은 캐시를 유지하려고 합니다. 전체 세트를 여기에 저장하는 것은 명백히 원하지 않습니다. */
   protected final transient LinkedList<FlightId> cached_flight_ids = new LinkedList<>();
@@ -197,6 +223,8 @@ public class SEATSProfile {
   // ----------------------------------------------------------------
   // 생성자
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------
 
   public SEATSProfile(SEATSBenchmark benchmark, RandomGenerator rng) {
@@ -205,10 +233,14 @@ public class SEATSProfile {
     this.airline_data_dir = benchmark.getDataDir();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Tuple Code to Tuple Id Mapping
 =======
     // 튜플 코드를 튜플 ID로 매핑
 >>>>>>> master
+=======
+    // Tuple Code to Tuple Id Mapping
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (String[] xref : SEATSConstants.CODE_TO_ID_COLUMNS) {
 
       String tableName = xref[0];
@@ -228,6 +260,9 @@ public class SEATSProfile {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // In this data structure, the key will be the name of the dependent
     // column and the value will be the name of the foreign key parent
     // column. We then use this in conjunction with the Key->Id mapping
@@ -237,6 +272,7 @@ public class SEATSProfile {
     // 'USA' in the AP_CO_ID column. We can use mapping to get the id number
     // for 'USA'. Long winded and kind of screwy, but hey what else are
     // you going to do?
+<<<<<<< HEAD
 =======
     // 이 데이터 구조에서 키는 종속 컬럼의 이름이 되고 값은 외래 키 부모
     // 컬럼의 이름이 됩니다. 그런 다음 Key->Id 매핑과 함께 사용하여
@@ -246,6 +282,8 @@ public class SEATSProfile {
     // 'USA'의 ID 번호를 얻을 수 있습니다. 장황하고 다소 이상하지만,
     // 다른 방법이 있을까요?
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (Table catalog_tbl : benchmark.getCatalog().getTables()) {
       for (Column catalog_col : catalog_tbl.getColumns()) {
         Column catalog_fkey_col = catalog_col.getForeignKey();
@@ -266,10 +304,14 @@ public class SEATSProfile {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // SAVE / LOAD PROFILE
 =======
   // 프로필 저장 / 로드
 >>>>>>> master
+=======
+  // SAVE / LOAD PROFILE
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------
 
   /** Save the profile information into the database */

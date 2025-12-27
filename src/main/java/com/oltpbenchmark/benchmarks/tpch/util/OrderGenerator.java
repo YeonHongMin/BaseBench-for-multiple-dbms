@@ -2,6 +2,9 @@
  * Copyright 2020 Trino
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -53,10 +59,14 @@ public class OrderGenerator implements Iterable<List<Object>> {
   public static final int SCALE_BASE = 1_500_000;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // portion with have no orders
 =======
   // 주문이 없는 부분
 >>>>>>> master
+=======
+  // portion with have no orders
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final int CUSTOMER_MORTALITY = 3;
 
   private static final int ORDER_DATE_MIN = MIN_GENERATE_DATE;
@@ -198,10 +208,14 @@ public class OrderGenerator implements Iterable<List<Object>> {
       int orderDate = orderDateRandom.nextValue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // generate customer key, taking into account customer mortality rate
 =======
       // 고객 사망률을 고려하여 고객 키 생성
 >>>>>>> master
+=======
+      // generate customer key, taking into account customer mortality rate
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       long customerKey = customerKeyRandom.nextValue();
       int delta = 1;
       while (customerKey % CUSTOMER_MORTALITY == 0) {

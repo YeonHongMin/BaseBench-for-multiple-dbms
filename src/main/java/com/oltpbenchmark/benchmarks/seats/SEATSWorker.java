@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -74,10 +80,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   private static final Logger LOG = LoggerFactory.getLogger(SEATSWorker.class);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Airline Benchmark Transactions */
 =======
   /** 항공사 벤치마크 트랜잭션 */
 >>>>>>> master
+=======
+  /** Airline Benchmark Transactions */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private enum Transaction {
     DeleteReservation(DeleteReservation.class),
     FindFlights(FindFlights.class),
@@ -93,10 +103,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @SuppressWarnings("unused") // never read
 =======
     @SuppressWarnings("unused") // 읽히지 않음
 >>>>>>> master
+=======
+    @SuppressWarnings("unused") // never read
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     public final Class<? extends Procedure> proc_class;
 
     public final String displayName;
@@ -127,10 +141,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // RESERVED SEAT BITMAPS
 =======
   // 예약된 좌석 비트맵
 >>>>>>> master
+=======
+  // RESERVED SEAT BITMAPS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
 
   public enum CacheType {
@@ -181,10 +199,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns true if the given BitSet for a Flight has all of its seats reserved
 =======
    * 주어진 항공편의 BitSet이 모든 좌석이 예약되어 있으면 true를 반환합니다.
 >>>>>>> master
+=======
+   * Returns true if the given BitSet for a Flight has all of its seats reserved
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param seats
    * @return
@@ -196,10 +218,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns true if the given Customer already has a reservation booked on the target Flight
 =======
    * 주어진 고객이 이미 대상 항공편에 예약이 있으면 true를 반환합니다.
 >>>>>>> master
+=======
+   * Returns true if the given Customer already has a reservation booked on the target Flight
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param customer_id
    * @param flight_id
@@ -212,10 +238,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // ADDITIONAL DATA MEMBERS
 =======
   // 추가 데이터 멤버
 >>>>>>> master
+=======
+  // ADDITIONAL DATA MEMBERS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
 
   private final SEATSProfile profile;
@@ -224,6 +254,7 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * When a customer looks for an open seat, they will then attempt to book that seat in a new
    * reservation. Some of them will want to change their seats. This data structure represents a
    * customer that is queued to change their seat.
@@ -231,6 +262,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
    * 고객이 빈 좌석을 찾으면 새 예약에서 해당 좌석을 예약하려고 시도합니다. 일부 고객은 좌석을 변경하고 싶어 합니다. 이 데이터 구조는 좌석 변경을 위해 대기 중인 고객을
    * 나타냅니다.
 >>>>>>> master
+=======
+   * When a customer looks for an open seat, they will then attempt to book that seat in a new
+   * reservation. Some of them will want to change their seats. This data structure represents a
+   * customer that is queued to change their seat.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   protected static class Reservation {
     public final long id;
@@ -268,10 +304,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
       Reservation r = (Reservation) obj;
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Ignore id!
 =======
       // ID는 무시합니다!
 >>>>>>> master
+=======
+      // Ignore id!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       return (this.seatnum == r.seatnum
           && this.flight_id.equals(r.flight_id)
           && this.customer_id.equals(r.customer_id));
@@ -287,10 +327,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // REQUIRED METHODS
 =======
   // 필수 메서드
 >>>>>>> master
+=======
+  // REQUIRED METHODS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
 
   public SEATSWorker(SEATSBenchmark benchmark, int id) {
@@ -311,10 +355,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure we have the information we need in the BenchmarkProfile
 =======
     // BenchmarkProfile에 필요한 정보가 있는지 확인합니다.
 >>>>>>> master
+=======
+    // Make sure we have the information we need in the BenchmarkProfile
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String error_msg = null;
     if (this.profile.getFlightIdCount() == 0) {
       error_msg = "The benchmark profile does not have any flight ids.";
@@ -328,10 +376,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Fire off a FindOpenSeats so that we can prime ourselves
 =======
     // FindOpenSeats를 실행하여 초기화합니다.
 >>>>>>> master
+=======
+    // Fire off a FindOpenSeats so that we can prime ourselves
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     FindOpenSeats proc = this.getProcedure(FindOpenSeats.class);
     try (Connection conn = getBenchmark().makeConnection()) {
       this.executeFindOpenSeats(conn, proc);
@@ -350,10 +402,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
     Transaction txn = Transaction.get(txnType.getName());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get the Procedure handle
 =======
     // Procedure 핸들을 가져옵니다.
 >>>>>>> master
+=======
+    // Get the Procedure handle
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Procedure proc = this.getProcedure(txnType);
     if (LOG.isDebugEnabled()) {
       LOG.debug("Attempting to execute {}", proc);

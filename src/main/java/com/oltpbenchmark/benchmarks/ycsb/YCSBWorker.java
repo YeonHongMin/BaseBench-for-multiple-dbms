@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -46,10 +52,14 @@ import java.util.ArrayList;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * YCSBWorker Implementation I forget who really wrote this but I fixed it up in 2016...
 =======
  * YCSBWorker 구현체 누가 실제로 이걸 썼는지 기억이 안 나지만 2016년에 고쳤습니다...
 >>>>>>> master
+=======
+ * YCSBWorker Implementation I forget who really wrote this but I fixed it up in 2016...
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -80,15 +90,20 @@ class YCSBWorker extends Worker<YCSBBenchmark> {
 
     synchronized (YCSBWorker.class) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // We must know where to start inserting
 =======
       // 삽입을 시작할 위치를 알아야 합니다
 >>>>>>> master
+=======
+      // We must know where to start inserting
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (insertRecord == null) {
         insertRecord = new CounterGenerator(init_record_count);
       }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // This is a minor speed-up to avoid having to invoke the hashmap look-up
     // everytime we want to execute a txn. This is important to do on
@@ -97,6 +112,11 @@ class YCSBWorker extends Worker<YCSBBenchmark> {
     // 이것은 트랜잭션을 실행할 때마다 해시맵 조회를 호출하는 것을 피하기 위한
     // 사소한 속도 향상입니다. 코어가 많지 않은 클라이언트 머신에서는 중요합니다
 >>>>>>> master
+=======
+    // This is a minor speed-up to avoid having to invoke the hashmap look-up
+    // everytime we want to execute a txn. This is important to do on
+    // a client machine with not a lot of cores
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.procUpdateRecord = this.getProcedure(UpdateRecord.class);
     this.procScanRecord = this.getProcedure(ScanRecord.class);
     this.procReadRecord = this.getProcedure(ReadRecord.class);

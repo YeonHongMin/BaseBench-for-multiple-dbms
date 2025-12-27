@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -40,10 +46,14 @@ public abstract class VoterConstants {
   public static final String TABLENAME_LOCATIONS = "area_code_state";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Initialize some common constants and variables
 =======
   // 일반적인 상수 및 변수 초기화
 >>>>>>> master
+=======
+  // Initialize some common constants and variables
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String[] CONTESTANT_NAMES =
       new String[] {
         "Edwina Burnam",
@@ -61,10 +71,14 @@ public abstract class VoterConstants {
       };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Domain data: matching lists of Area codes and States
 =======
   // 도메인 데이터: 지역 코드와 주 목록 매칭
 >>>>>>> master
+=======
+  // Domain data: matching lists of Area codes and States
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final short[] AREA_CODES =
       new short[] {
         907, 205, 256, 334, 251, 870, 501, 479, 480, 602, 623, 928, 520, 341, 764, 628, 831, 925,

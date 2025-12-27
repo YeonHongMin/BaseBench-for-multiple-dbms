@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -48,10 +54,14 @@ public class UpdatePage extends Procedure {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // STATEMENTS
 =======
   // 문장들
 >>>>>>> master
+=======
+  // STATEMENTS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
   public SQLStmt insertText =
       new SQLStmt(
@@ -155,10 +165,14 @@ public class UpdatePage extends Procedure {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // RUN
 =======
   // 실행
 >>>>>>> master
+=======
+  // RUN
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
 
   public void run(
@@ -179,10 +193,14 @@ public class UpdatePage extends Procedure {
     final String timestamp = TimeUtil.getCurrentTimeString14();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // INSERT NEW TEXT
 =======
     // 새 텍스트 삽입
 >>>>>>> master
+=======
+    // INSERT NEW TEXT
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     long nextTextId;
     long nextRevId;
 
@@ -192,10 +210,14 @@ public class UpdatePage extends Procedure {
       ps.setInt(param++, pageId);
       ps.setString(param++, pageText);
 <<<<<<< HEAD
+<<<<<<< HEAD
       ps.setString(param++, "utf-8"); // This is an error
 =======
       ps.setString(param++, "utf-8"); // 이것은 오류입니다
 >>>>>>> master
+=======
+      ps.setString(param++, "utf-8"); // This is an error
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       execute(conn, ps);
 
       try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -205,10 +227,14 @@ public class UpdatePage extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // INSERT NEW REVISION
 =======
     // 새 리비전 삽입
 >>>>>>> master
+=======
+    // INSERT NEW REVISION
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
     try (PreparedStatement ps =
         this.getPreparedStatementReturnKeys(conn, insertRevision, new int[] {1})) {
@@ -233,6 +259,7 @@ public class UpdatePage extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // I'm removing AND page_latest = "+a.revisionId+" from the query, since
     // it creates sometimes problem with the data, and page_id is a PK
     // anyway
@@ -240,6 +267,11 @@ public class UpdatePage extends Procedure {
     // 쿼리에서 AND page_latest = "+a.revisionId+"를 제거합니다, 왜냐하면
     // 데이터에 문제가 생기기 때문이고, page_id는 PK이므로
 >>>>>>> master
+=======
+    // I'm removing AND page_latest = "+a.revisionId+" from the query, since
+    // it creates sometimes problem with the data, and page_id is a PK
+    // anyway
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement ps = this.getPreparedStatement(conn, updatePage)) {
       int param = 1;
       ps.setLong(param++, nextRevId);
@@ -273,11 +305,15 @@ public class UpdatePage extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // REMOVED
     // sql="INSERT INTO `cu_changes` () VALUES ();";
     // st.addBatch(sql);
 
     // SELECT WATCHING USERS
+<<<<<<< HEAD
 =======
     // 제거됨
     // sql="INSERT INTO `cu_changes` () VALUES ();";
@@ -285,6 +321,8 @@ public class UpdatePage extends Procedure {
 
     // 관심 있는 사용자 선택
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     ArrayList<Integer> wlUser = new ArrayList<>();
     try (PreparedStatement ps = this.getPreparedStatement(conn, selectWatchList)) {
       int param = 1;
@@ -301,12 +339,17 @@ public class UpdatePage extends Procedure {
 
     // =====================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
     // UPDATING WATCHLIST: txn3 (not always, only if someone is watching the
     // page, might be part of txn2)
 =======
     // 관심 목록 업데이트: txn3 (항상 그런 것은 아니며, 누군가 페이지를 보고 있는 경우에만,
     // txn2의 일부일 수 있음)
 >>>>>>> master
+=======
+    // UPDATING WATCHLIST: txn3 (not always, only if someone is watching the
+    // page, might be part of txn2)
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // =====================================================================
     if (!wlUser.isEmpty()) {
 
@@ -324,17 +367,23 @@ public class UpdatePage extends Procedure {
 
       // =====================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // UPDATING USER AND LOGGING STUFF: txn4 (might still be part of
       // txn2)
       // =====================================================================
 
       // This seems to be executed only if the page is watched, and once
+<<<<<<< HEAD
 =======
       // 사용자 및 로깅 정보 업데이트: txn4 (아직 txn2의 일부일 수 있음)
       // =====================================================================
 
       // 이것은 페이지가 관심 목록에 있는 경우에만 한 번 실행되는 것 같습니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       try (PreparedStatement ps = this.getPreparedStatement(conn, selectUser)) {
         int param = 1;
@@ -348,11 +397,16 @@ public class UpdatePage extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // This is always executed, sometimes as a separate transaction,
     // sometimes together with the previous one
 =======
     // 이것은 항상 실행되며, 때로는 별도의 트랜잭션으로, 때로는 이전 것과 함께 실행됩니다
 >>>>>>> master
+=======
+    // This is always executed, sometimes as a separate transaction,
+    // sometimes together with the previous one
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
     try (PreparedStatement ps = this.getPreparedStatement(conn, insertLogging)) {
       int param = 1;

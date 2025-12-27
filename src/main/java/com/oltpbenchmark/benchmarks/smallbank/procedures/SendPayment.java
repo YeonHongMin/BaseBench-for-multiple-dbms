@@ -5,6 +5,9 @@
  *  Yale University
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Permission is hereby granted, free of charge, to any person obtaining
  *  a copy of this software and associated documentation files (the
  *  "Software"), to deal in the Software without restriction, including
@@ -23,6 +26,7 @@
  *  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  *  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  *  OTHER DEALINGS IN THE SOFTWARE.
+<<<<<<< HEAD
 =======
  *  이 소프트웨어 및 관련 문서 파일(이하 "소프트웨어")의 복사본을 얻는 모든 사람에게
  *  무료로 소프트웨어를 다루는 권한이 부여됩니다. 여기에는 제한 없이 사용, 복사, 수정,
@@ -38,6 +42,8 @@
  *  손해 또는 기타 책임에 대해서도 저작자는 책임을 지지 않습니다. 소프트웨어 또는
  *  소프트웨어의 사용 또는 기타 거래와 관련하여 발생하는 경우에도 마찬가지입니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.smallbank.procedures;
 
@@ -51,10 +57,14 @@ import java.sql.SQLException;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * SendPayment Procedure
 =======
  * 송금 프로시저
 >>>>>>> master
+=======
+ * SendPayment Procedure
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -76,10 +86,14 @@ public class SendPayment extends Procedure {
   public void run(Connection conn, long sendAcct, long destAcct, double amount)
       throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get Account Information
 =======
     // 계정 정보 가져오기
 >>>>>>> master
+=======
+    // Get Account Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt0 = this.getPreparedStatement(conn, GetAccount, sendAcct)) {
       try (ResultSet r0 = stmt0.executeQuery()) {
         if (!r0.next()) {
@@ -99,10 +113,14 @@ public class SendPayment extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get the sender's account balance
 =======
     // 송신자의 계정 잔액 가져오기
 >>>>>>> master
+=======
+    // Get the sender's account balance
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double balance;
 
     try (PreparedStatement balStmt0 =
@@ -119,10 +137,14 @@ public class SendPayment extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure that they have enough money
 =======
     // 충분한 돈이 있는지 확인합니다.
 >>>>>>> master
+=======
+    // Make sure that they have enough money
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (balance < amount) {
       String msg =
           String.format(
@@ -132,19 +154,27 @@ public class SendPayment extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Debt
 =======
     // 차변
 >>>>>>> master
+=======
+    // Debt
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement updateStmt =
         this.getPreparedStatement(conn, UpdateCheckingBalance, amount * -1d, sendAcct)) {
       updateStmt.executeUpdate();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Credit
 =======
     // 대변
 >>>>>>> master
+=======
+    // Credit
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement updateStmt =
         this.getPreparedStatement(conn, UpdateCheckingBalance, amount, destAcct)) {
       updateStmt.executeUpdate();

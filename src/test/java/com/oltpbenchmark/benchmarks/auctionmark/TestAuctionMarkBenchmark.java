@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark;
@@ -74,10 +80,14 @@ public class TestAuctionMarkBenchmark extends AbstractTestBenchmarkModule<Auctio
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testCategoryParser */
 =======
   /** 카테고리 파서 테스트 */
 >>>>>>> master
+=======
+  /** testCategoryParser */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCategoryParser() throws Exception {
     CategoryParser categoryParser = new CategoryParser();
@@ -86,16 +96,22 @@ public class TestAuctionMarkBenchmark extends AbstractTestBenchmarkModule<Auctio
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testSupplementalClasses */
   @Test
   public void testSupplementalClasses() throws Exception {
     // Check to make sure that we have something...
+<<<<<<< HEAD
 =======
   /** 보조 클래스 테스트 */
   @Test
   public void testSupplementalClasses() throws Exception {
     // 무언가가 있는지 확인합니다...
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<TransactionType, Procedure> procs = this.benchmark.getProcedures();
     assertNotNull(procs);
   }

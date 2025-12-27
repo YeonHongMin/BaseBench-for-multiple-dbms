@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -41,11 +47,16 @@ import java.sql.Time;
 public class InsertTweet extends Procedure {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // FIXME: Carlo is this correct? 1) added_tweets is empty initially 2) id is supposed to be not
   // null
 =======
   // FIXME: Carlo 이것이 맞나요? 1) added_tweets는 초기에 비어있습니다 2) id는 null이 아니어야 합니다
 >>>>>>> master
+=======
+  // FIXME: Carlo is this correct? 1) added_tweets is empty initially 2) id is supposed to be not
+  // null
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public final SQLStmt insertTweet =
       new SQLStmt(
           "INSERT INTO "

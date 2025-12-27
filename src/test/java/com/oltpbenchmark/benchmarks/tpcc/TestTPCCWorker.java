@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*
  *  저작권 2015 OLTPBenchmark 프로젝트
@@ -18,6 +19,8 @@
  */
 
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.benchmarks.tpcc;
 
 import com.oltpbenchmark.api.AbstractTestWorker;

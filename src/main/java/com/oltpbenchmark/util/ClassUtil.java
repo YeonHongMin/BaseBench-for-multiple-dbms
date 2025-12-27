@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -44,12 +50,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * @author pavlo
  */
 =======
 /** 작성자: pavlo */
 >>>>>>> master
+=======
+/** 작성자: pavlo */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public abstract class ClassUtil {
   private static final Logger LOG = LoggerFactory.getLogger(ClassUtil.class);
 
@@ -58,10 +68,14 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get the generic types for the given field
 =======
    * 지정된 필드의 제네릭 타입 매개변수를 가져옵니다.
 >>>>>>> master
+=======
+   * 지정된 필드의 제네릭 타입 매개변수를 가져옵니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param field
    * @return
@@ -78,10 +92,14 @@ public abstract class ClassUtil {
 
   private static void getGenericTypesImpl(ParameterizedType ptype, List<Class<?>> classes) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // list the actual type arguments
 =======
     // 실제 타입 인자를 나열합니다.
 >>>>>>> master
+=======
+    // 실제 타입 인자를 나열합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (Type t : ptype.getActualTypeArguments()) {
       if (t instanceof Class) {
         //                System.err.println("C: " + t);
@@ -97,11 +115,15 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return an ordered list of all the sub-classes for a given class Useful when dealing with
    * generics
 =======
    * 지정된 클래스의 서브클래스를 계층 순서대로 반환합니다. 제네릭 처리 시 유용합니다.
 >>>>>>> master
+=======
+   * 지정된 클래스의 서브클래스를 계층 순서대로 반환합니다. 제네릭 처리 시 유용합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param element_class
    * @return
@@ -122,10 +144,14 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get a set of all of the interfaces that the element_class implements
 =======
    * element_class가 구현한 모든 인터페이스의 집합을 반환합니다.
 >>>>>>> master
+=======
+   * element_class가 구현한 모든 인터페이스의 집합을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param element_class
    * @return
@@ -162,10 +188,15 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 매개변수 배열에 대응하는 생성자를 target_class에서 검색합니다.
    *
 >>>>>>> master
+=======
+   * 매개변수 배열에 대응하는 생성자를 target_class에서 검색합니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param <T>
    * @param target_class
    * @param params
@@ -178,12 +209,17 @@ public abstract class ClassUtil {
       return (target_class.getConstructor(params));
     } catch (NoSuchMethodException ex) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // The first time we get this it can be ignored
       // We'll try to be nice and find a match for them
 =======
       // 처음에는 무시해도 됩니다.
       // 가능한 후보를 찾아보기 위해 노력합니다.
 >>>>>>> master
+=======
+      // 처음에는 무시해도 됩니다.
+      // 가능한 후보를 찾아보기 위해 노력합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       error = ex;
     }
 
@@ -227,10 +263,15 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 현재 스레드 컨텍스트 ClassLoader를 사용하여 클래스 이름을 찾아 반환합니다.
    *
 >>>>>>> master
+=======
+   * 현재 스레드 컨텍스트 ClassLoader를 사용하여 클래스 이름을 찾아 반환합니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param class_name
    * @return
    */
@@ -240,10 +281,15 @@ public abstract class ClassUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 지정된 ClassLoader를 통해 클래스 이름에 맞는 Class 객체를 반환합니다.
    *
 >>>>>>> master
+=======
+   * 지정된 ClassLoader를 통해 클래스 이름에 맞는 Class 객체를 반환합니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param loader
    * @param class_name
    * @return

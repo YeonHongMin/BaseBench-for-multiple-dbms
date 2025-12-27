@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2020 Trino
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
  */
 package com.oltpbenchmark.util;
 
@@ -30,12 +34,17 @@ package com.oltpbenchmark.util;
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 package com.oltpbenchmark.util;
 
 /** 주어진 범위에서 랜덤 long 값을 생성하는 클래스입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class RowRandomBoundedLong {
   private final RowRandomLong randomLong;
   private final RowRandomInt randomInt;

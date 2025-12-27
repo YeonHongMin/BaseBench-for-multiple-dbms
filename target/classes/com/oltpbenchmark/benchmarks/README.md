@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 # Benchmark Implementations
 
 Each directory has the following layout:
@@ -9,6 +12,7 @@ Each directory has the following layout:
 * `procedures` - The implementations for all of the transaction types in the benchmark.
 
 Benchmark specific `dialects` and `ddls` files are now stored in the `src/main/resources` directory.
+<<<<<<< HEAD
 =======
 # 벤치마크 구현
 
@@ -21,3 +25,5 @@ Benchmark specific `dialects` and `ddls` files are now stored in the `src/main/r
 
 벤치마크별 `dialects` 및 `ddls` 파일은 이제 `src/main/resources` 디렉터리에 저장됩니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d

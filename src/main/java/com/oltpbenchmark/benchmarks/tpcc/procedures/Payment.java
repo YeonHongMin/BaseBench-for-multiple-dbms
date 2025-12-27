@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
  * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
  * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
@@ -23,7 +26,10 @@
  * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다.
  * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -191,10 +197,14 @@ public class Payment extends TPCCProcedure {
 
     if (c.c_credit.equals("BC")) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // bad credit
 =======
       // 불량 신용 케이스
 >>>>>>> master
+=======
+      // 불량 신용 케이스
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       c.c_data =
           getCData(
               conn, w_id, districtID, customerDistrictID, customerWarehouseID, paymentAmount, c);
@@ -203,10 +213,14 @@ public class Payment extends TPCCProcedure {
 
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // GoodCredit
 =======
       // 양호한 신용
 >>>>>>> master
+=======
+      // 양호한 신용
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       updateBalance(conn, customerDistrictID, customerWarehouseID, c);
     }
@@ -332,12 +346,17 @@ public class Payment extends TPCCProcedure {
       payUpdateWhse.setBigDecimal(1, BigDecimal.valueOf(paymentAmount));
       payUpdateWhse.setInt(2, w_id);
 <<<<<<< HEAD
+<<<<<<< HEAD
       // MySQL reports deadlocks due to lock upgrades:
       // t1: read w_id = x; t2: update w_id = x; t1 update w_id = x
 =======
       // MySQL은 락 업그레이드 때문에 데드락을 보고합니다:
       // t1: w_id = x 읽기; t2: w_id = x 수정; t1: w_id = x 수정
 >>>>>>> master
+=======
+      // MySQL은 락 업그레이드 때문에 데드락을 보고합니다:
+      // t1: w_id = x 읽기; t2: w_id = x 수정; t1: w_id = x 수정
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int result = payUpdateWhse.executeUpdate();
       if (result == 0) {
         throw new RuntimeException("W_ID=" + w_id + " not found!");
@@ -380,10 +399,14 @@ public class Payment extends TPCCProcedure {
 
     if (y <= 60) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // 60% lookups by last name
 =======
       // 60%는 성(last name)으로 조회합니다.
 >>>>>>> master
+=======
+      // 60%는 성(last name)으로 조회합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       c =
           getCustomerByName(
               customerWarehouseID,
@@ -392,10 +415,14 @@ public class Payment extends TPCCProcedure {
               conn);
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // 40% lookups by customer ID
 =======
       // 40%는 고객 ID로 조회합니다.
 >>>>>>> master
+=======
+      // 40%는 고객 ID로 조회합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       c =
           getCustomerById(
               customerWarehouseID, customerDistrictID, TPCCUtil.getCustomerID(gen), conn);
@@ -585,11 +612,15 @@ public class Payment extends TPCCProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // attention duplicated code across trans... ok for now to maintain separate
   // prepared statements
 =======
   // 주의: 트랜잭션 간 코드가 중복되지만, 별도 PreparedStatement 유지를 위해 그대로 둡니다.
 >>>>>>> master
+=======
+  // 주의: 트랜잭션 간 코드가 중복되지만, 별도 PreparedStatement 유지를 위해 그대로 둡니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public Customer getCustomerById(int c_w_id, int c_d_id, int c_id, Connection conn)
       throws SQLException {
 
@@ -614,11 +645,15 @@ public class Payment extends TPCCProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // attention this code is repeated in other transacitons... ok for now to
   // allow for separate statements.
 =======
   // 주의: 이 코드도 다른 트랜잭션에서 반복되지만, 별도 Statement를 위해 유지합니다.
 >>>>>>> master
+=======
+  // 주의: 이 코드도 다른 트랜잭션에서 반복되지만, 별도 Statement를 위해 유지합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public Customer getCustomerByName(
       int c_w_id, int c_d_id, String customerLastName, Connection conn) throws SQLException {
     ArrayList<Customer> customers = new ArrayList<>();
@@ -648,12 +683,16 @@ public class Payment extends TPCCProcedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // TPC-C 2.5.2.2: Position n / 2 rounded up to the next integer, but
     // that
     // counts starting from 1.
 =======
     // TPC-C 2.5.2.2: 위치 n / 2를 올림하여 정수로 사용하며, 계산은 1부터 시작합니다.
 >>>>>>> master
+=======
+    // TPC-C 2.5.2.2: 위치 n / 2를 올림하여 정수로 사용하며, 계산은 1부터 시작합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int index = customers.size() / 2;
     if (customers.size() % 2 == 0) {
       index -= 1;

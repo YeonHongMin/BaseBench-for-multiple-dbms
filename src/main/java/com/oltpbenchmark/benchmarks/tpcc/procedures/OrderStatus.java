@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
  * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
  * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
@@ -23,7 +26,10 @@
  * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다.
  * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -135,10 +141,14 @@ public class OrderStatus extends TPCCProcedure {
     Oorder o = getOrderDetails(conn, w_id, d_id, c);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // retrieve the order lines for the most recent order
 =======
     // 가장 최근 주문의 주문 항목을 조회합니다.
 >>>>>>> master
+=======
+    // 가장 최근 주문의 주문 항목을 조회합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     List<String> orderLines = getOrderLines(conn, w_id, d_id, o.o_id, c);
 
     if (LOG.isTraceEnabled()) {
@@ -194,12 +204,17 @@ public class OrderStatus extends TPCCProcedure {
         this.getPreparedStatement(conn, ordStatGetNewestOrdSQL)) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // find the newest order for the customer
       // retrieve the carrier & order date for the most recent order.
 =======
       // 고객의 가장 최신 주문을 찾습니다.
       // 최신 주문의 운송사와 주문일을 가져옵니다.
 >>>>>>> master
+=======
+      // 고객의 가장 최신 주문을 찾습니다.
+      // 최신 주문의 운송사와 주문일을 가져옵니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       ordStatGetNewestOrd.setInt(1, w_id);
       ordStatGetNewestOrd.setInt(2, d_id);
@@ -270,11 +285,15 @@ public class OrderStatus extends TPCCProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // attention duplicated code across trans... ok for now to maintain separate
   // prepared statements
 =======
   // 주의: 트랜잭션 간 코드가 중복되어 있지만, 각각 PreparedStatement를 유지하기 위해 그대로 둡니다.
 >>>>>>> master
+=======
+  // 주의: 트랜잭션 간 코드가 중복되어 있지만, 각각 PreparedStatement를 유지하기 위해 그대로 둡니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public Customer getCustomerById(int c_w_id, int c_d_id, int c_id, Connection conn)
       throws SQLException {
 
@@ -303,11 +322,15 @@ public class OrderStatus extends TPCCProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // attention this code is repeated in other transacitons... ok for now to
   // allow for separate statements.
 =======
   // 주의: 이 코드 역시 다른 트랜잭션에서 반복되지만 별도의 Statement를 위해 유지합니다.
 >>>>>>> master
+=======
+  // 주의: 이 코드 역시 다른 트랜잭션에서 반복되지만 별도의 Statement를 위해 유지합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public Customer getCustomerByName(int c_w_id, int c_d_id, String c_last, Connection conn)
       throws SQLException {
     ArrayList<Customer> customers = new ArrayList<>();
@@ -337,11 +360,15 @@ public class OrderStatus extends TPCCProcedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // TPC-C 2.5.2.2: Position n / 2 rounded up to the next integer, but
     // that counts starting from 1.
 =======
     // TPC-C 2.5.2.2: 위치 n / 2를 올림하여 정수로 사용하며, 계산은 1부터 시작합니다.
 >>>>>>> master
+=======
+    // TPC-C 2.5.2.2: 위치 n / 2를 올림하여 정수로 사용하며, 계산은 1부터 시작합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int index = customers.size() / 2;
     if (customers.size() % 2 == 0) {
       index -= 1;

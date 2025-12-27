@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark;
@@ -60,10 +66,14 @@ public class TestAuctionMarkLoader extends AbstractTestLoader<AuctionMarkBenchma
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSaveLoadProfile */
 =======
   /** 프로필 저장/로드 테스트 */
 >>>>>>> master
+=======
+  /** testSaveLoadProfile */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSaveLoadProfile() throws Exception {
     AuctionMarkProfile.clearCachedProfile();
@@ -87,12 +97,16 @@ public class TestAuctionMarkLoader extends AbstractTestLoader<AuctionMarkBenchma
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testLoadProfilePerClient */
   @Test
   public void testLoadProfilePerClient() throws Exception {
     // We don't have to reload our cached profile here
     // We just want to make sure that each client's profile contains a unique
     // set of ItemInfo records that are not found in any other profile's lists
+<<<<<<< HEAD
 =======
   /** 클라이언트별 프로필 로드 테스트 */
   @Test
@@ -101,6 +115,8 @@ public class TestAuctionMarkLoader extends AbstractTestLoader<AuctionMarkBenchma
     // 각 클라이언트의 프로필이 고유한 ItemInfo 레코드 집합을 포함하고 있으며
     // 다른 프로필의 목록에는 없는지 확인하기만 하면 됩니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int num_clients = 9;
     this.workConf.setTerminals(num_clients);
     AuctionMarkLoader loader = (AuctionMarkLoader) super.testLoadWithReturn();
@@ -121,6 +137,7 @@ public class TestAuctionMarkLoader extends AbstractTestLoader<AuctionMarkBenchma
         assertNotNull(items);
         for (ItemInfo itemInfo : items) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           // Make sure we haven't seen it another list for this client
           assertFalse(itemInfo.toString(), clientItemInfos.contains(itemInfo));
           // Nor that we have seen it in any other client
@@ -129,6 +146,11 @@ public class TestAuctionMarkLoader extends AbstractTestLoader<AuctionMarkBenchma
           assertFalse(itemInfo.toString(), clientItemInfos.contains(itemInfo));
           // 다른 클라이언트에서 본 적도 없는지 확인합니다
 >>>>>>> master
+=======
+          // Make sure we haven't seen it another list for this client
+          assertFalse(itemInfo.toString(), clientItemInfos.contains(itemInfo));
+          // Nor that we have seen it in any other client
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           assertFalse(itemInfo.toString(), allItemInfos.contains(itemInfo));
         } // FOR
         clientItemInfos.addAll(items);

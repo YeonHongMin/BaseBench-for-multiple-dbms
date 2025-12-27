@@ -5,6 +5,9 @@
  *  Yale University
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Permission is hereby granted, free of charge, to any person obtaining
  *  a copy of this software and associated documentation files (the
  *  "Software"), to deal in the Software without restriction, including
@@ -23,6 +26,7 @@
  *  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  *  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  *  OTHER DEALINGS IN THE SOFTWARE.
+<<<<<<< HEAD
 =======
  *  이 소프트웨어 및 관련 문서 파일(이하 "소프트웨어")의 복사본을 얻는 모든 사람에게
  *  무료로 소프트웨어를 다루는 권한이 부여됩니다. 여기에는 제한 없이 사용, 복사, 수정,
@@ -38,6 +42,8 @@
  *  손해 또는 기타 책임에 대해서도 저작자는 책임을 지지 않습니다. 소프트웨어 또는
  *  소프트웨어의 사용 또는 기타 거래와 관련하여 발생하는 경우에도 마찬가지입니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.smallbank.procedures;
 
@@ -51,10 +57,14 @@ import java.sql.SQLException;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * TransactSavings Procedure Original version by Mohammad Alomari and Michael Cahill
 =======
  * 저축 거래 프로시저 원본 버전: Mohammad Alomari 및 Michael Cahill
 >>>>>>> master
+=======
+ * TransactSavings Procedure Original version by Mohammad Alomari and Michael Cahill
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -75,10 +85,14 @@ public class TransactSavings extends Procedure {
 
   public void run(Connection conn, String custName, double amount) throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // First convert the custName to the acctId
 =======
     // 먼저 custName을 acctId로 변환합니다.
 >>>>>>> master
+=======
+    // First convert the custName to the acctId
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     long custId;
 
     try (PreparedStatement stmt = this.getPreparedStatement(conn, GetAccount, custName)) {
@@ -92,10 +106,14 @@ public class TransactSavings extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get Balance Information
 =======
     // 잔액 정보 가져오기
 >>>>>>> master
+=======
+    // Get Balance Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
     double balance;
 
@@ -111,10 +129,14 @@ public class TransactSavings extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure that they have enough
 =======
     // 충분한지 확인합니다.
 >>>>>>> master
+=======
+    // Make sure that they have enough
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (balance < 0) {
       String msg =
           String.format(
@@ -123,10 +145,14 @@ public class TransactSavings extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Then update their savings balance
 =======
     // 그런 다음 저축 잔액을 업데이트합니다.
 >>>>>>> master
+=======
+    // Then update their savings balance
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt =
         this.getPreparedStatement(conn, UpdateSavingsBalance, amount, custId)) {
       stmt.executeUpdate();

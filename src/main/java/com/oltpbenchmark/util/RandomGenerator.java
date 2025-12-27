@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -40,6 +46,7 @@ public class RandomGenerator extends Random {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Constructor
    *
    * @param seed
@@ -48,6 +55,11 @@ public class RandomGenerator extends Random {
    *
    * @param seed 시드 값
 >>>>>>> master
+=======
+   * 생성자
+   *
+   * @param seed 시드 값
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public RandomGenerator(int seed) {
     super(seed);
@@ -55,18 +67,24 @@ public class RandomGenerator extends Random {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns a random int value between minimum and maximum (inclusive)
    *
    * @param minimum
    * @param maximum
    * @returns a int in the range [minimum, maximum]. Note that this is inclusive.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 최소값과 최대값(포함) 사이에서 랜덤 int 값을 반환합니다.
    *
    * @param minimum
    * @param maximum
    * @return 범위 [minimum, maximum]의 난수
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public int number(int minimum, int maximum) {
 
@@ -79,10 +97,14 @@ public class RandomGenerator extends Random {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns a random long value between minimum and maximum (inclusive)
 =======
    * 최소값과 최대값(포함) 사이에서 랜덤 long 값을 반환합니다.
 >>>>>>> master
+=======
+   * 최소값과 최대값(포함) 사이에서 랜덤 long 값을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param minimum
    * @param maximum
@@ -93,10 +115,14 @@ public class RandomGenerator extends Random {
     long range_size = (maximum - minimum) + 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // error checking and 2^x checking removed for simplicity.
 =======
     // 단순화를 위해 에러 검사와 2^x 검사를 생략했습니다.
 >>>>>>> master
+=======
+    // 단순화를 위해 에러 검사와 2^x 검사를 생략했습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     long bits, val;
     do {
       bits = (this.nextLong() << 1) >>> 1;
@@ -109,10 +135,15 @@ public class RandomGenerator extends Random {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 지정된 소수 자릿수 범위 내에서 난수를 생성합니다.
    *
 >>>>>>> master
+=======
+   * 지정된 소수 자릿수 범위 내에서 난수를 생성합니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param decimal_places
    * @param minimum
    * @param maximum
@@ -132,16 +163,21 @@ public class RandomGenerator extends Random {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * @returns a random alphabetic string with length in range [minimum_length, maximum_length].
    */
 =======
   /** 길이가 [minimum_length, maximum_length]인 알파벳 문자열을 반환합니다. */
 >>>>>>> master
+=======
+  /** 길이가 [minimum_length, maximum_length]인 알파벳 문자열을 반환합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public String astring(int minimum_length, int maximum_length) {
     return randomString(minimum_length, maximum_length, 'a', 26);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /**
    * @returns a random numeric string with length in range [minimum_length, maximum_length].
@@ -149,16 +185,24 @@ public class RandomGenerator extends Random {
 =======
   /** 길이가 [minimum_length, maximum_length]인 숫자 문자열을 반환합니다. */
 >>>>>>> master
+=======
+  /** 길이가 [minimum_length, maximum_length]인 숫자 문자열을 반환합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public String nstring(int minimum_length, int maximum_length) {
     return randomString(minimum_length, maximum_length, '0', 10);
   }
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 지정된 범위와 기본 문자에 따라 랜덤 문자열을 만듭니다.
    *
 >>>>>>> master
+=======
+   * 지정된 범위와 기본 문자에 따라 랜덤 문자열을 만듭니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param minimum_length
    * @param maximum_length
    * @param base

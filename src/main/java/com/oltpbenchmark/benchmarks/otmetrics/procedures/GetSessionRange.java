@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -39,13 +45,19 @@ import java.util.List;
 public class GetSessionRange extends Procedure {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * We do it this way because not all JDBC drivers support using arrays to fill in var-length
    * parameters
    */
+<<<<<<< HEAD
 =======
   /** 모든 JDBC 드라이버가 배열을 사용하여 가변 길이 매개변수를 채우는 것을 지원하지 않기 때문에 이 방법을 사용합니다. */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private final String baseSQL =
       "SELECT * FROM observations"
           + " WHERE source_id = ?"
@@ -93,10 +105,14 @@ public class GetSessionRange extends Procedure {
     assert (stmt != null);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Bombs away!
 =======
     // 실행!
 >>>>>>> master
+=======
+    // Bombs away!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (ResultSet results = stmt.executeQuery()) {
       while (results.next()) {
         int cols = results.getMetaData().getColumnCount();

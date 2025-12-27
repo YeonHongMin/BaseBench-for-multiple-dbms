@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -46,10 +52,14 @@ import org.slf4j.LoggerFactory;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * SmallBank Benchmark Work Driver Fuck yo couch.
 =======
  * SmallBank 벤치마크 작업 드라이버
 >>>>>>> master
+=======
+ * SmallBank Benchmark Work Driver Fuck yo couch.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -73,6 +83,7 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
     super(benchmarkModule, id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // This is a minor speed-up to avoid having to invoke the hashmap look-up
     // everytime we want to execute a txn. This is important to do on
     // a client machine with not a lot of cores
@@ -80,6 +91,11 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
     // 이것은 트랜잭션을 실행할 때마다 해시맵 조회를 호출하는 것을 피하기 위한
     // 작은 속도 향상입니다. 코어가 많지 않은 클라이언트 머신에서 이렇게 하는 것이 중요합니다.
 >>>>>>> master
+=======
+    // This is a minor speed-up to avoid having to invoke the hashmap look-up
+    // everytime we want to execute a txn. This is important to do on
+    // a client machine with not a lot of cores
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.procAmalgamate = this.getProcedure(Amalgamate.class);
     this.procBalance = this.getProcedure(Balance.class);
     this.procDepositChecking = this.getProcedure(DepositChecking.class);
@@ -100,21 +116,29 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
       this.custIdsBuffer[i] = this.rng.nextLong();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // They can never be the same!
 =======
       // 절대 같을 수 없습니다!
 >>>>>>> master
+=======
+      // They can never be the same!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (i > 0 && this.custIdsBuffer[i - 1] == this.custIdsBuffer[i]) {
         i--;
         continue;
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // If we only need one acctId, break out here.
       if (i == 0 && !needsTwoAccts) {
         break;
       }
       // If we need two acctIds, then we need to go generate the second one
+<<<<<<< HEAD
 =======
       // 하나의 acctId만 필요한 경우 여기서 중단합니다.
       if (i == 0 && !needsTwoAccts) {
@@ -122,6 +146,8 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
       }
       // 두 개의 acctId가 필요한 경우 두 번째 것을 생성해야 합니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (i == 0) {
         continue;
       }
@@ -137,29 +163,41 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
     Class<? extends Procedure> procClass = txnType.getProcedureClass();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Amalgamate
 =======
     // 통합
 >>>>>>> master
+=======
+    // Amalgamate
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (procClass.equals(Amalgamate.class)) {
       this.generateCustIds(true);
       this.procAmalgamate.run(conn, this.custIdsBuffer[0], this.custIdsBuffer[1]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Balance
 =======
       // 잔액
 >>>>>>> master
+=======
+      // Balance
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     } else if (procClass.equals(Balance.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
       this.procBalance.run(conn, custName);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // DepositChecking
 =======
       // 당좌 예금
 >>>>>>> master
+=======
+      // DepositChecking
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     } else if (procClass.equals(DepositChecking.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
@@ -167,10 +205,14 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
           conn, custName, SmallBankConstants.PARAM_DEPOSIT_CHECKING_AMOUNT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // SendPayment
 =======
       // 송금
 >>>>>>> master
+=======
+      // SendPayment
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     } else if (procClass.equals(SendPayment.class)) {
       this.generateCustIds(true);
       this.procSendPayment.run(
@@ -180,10 +222,14 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
           SmallBankConstants.PARAM_SEND_PAYMENT_AMOUNT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // TransactSavings
 =======
       // 저축 거래
 >>>>>>> master
+=======
+      // TransactSavings
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     } else if (procClass.equals(TransactSavings.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
@@ -191,10 +237,14 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
           conn, custName, SmallBankConstants.PARAM_TRANSACT_SAVINGS_AMOUNT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // WriteCheck
 =======
       // 수표 작성
 >>>>>>> master
+=======
+      // WriteCheck
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     } else if (procClass.equals(WriteCheck.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);

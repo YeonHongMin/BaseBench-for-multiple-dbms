@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2020 Trino
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
  */
 package com.oltpbenchmark.util;
 
@@ -30,12 +34,17 @@ package com.oltpbenchmark.util;
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 package com.oltpbenchmark.util;
 
 /** long 기반 선형 합동 난수 생성기입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class RowRandomLong {
   private static final long MULTIPLIER = 6364136223846793005L;
   private static final long INCREMENT = 1;
@@ -46,6 +55,7 @@ public class RowRandomLong {
   private int usage;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * Creates a new random number generator with the specified seed and specified number of random
    * values per row.
@@ -53,16 +63,23 @@ public class RowRandomLong {
 =======
   /** 지정된 시드와 행당 난수 개수로 새로운 생성기를 초기화합니다. */
 >>>>>>> master
+=======
+  /** 지정된 시드와 행당 난수 개수로 새로운 생성기를 초기화합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public RowRandomLong(long seed, int seedsPerRow) {
     this.seed = seed;
     this.seedsPerRow = seedsPerRow;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Get a random value between lowValue (inclusive) and highValue (inclusive). */
 =======
   /** lowValue 이상 highValue 이하 범위에서 난수 값을 반환합니다. */
 >>>>>>> master
+=======
+  /** lowValue 이상 highValue 이하 범위에서 난수 값을 반환합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   protected long nextLong(long lowValue, long highValue) {
     nextRand();
 
@@ -78,6 +95,7 @@ public class RowRandomLong {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * Advances the random number generator to the start of the sequence for the next row. Each row
    * uses a specified number of random values, so the random number generator can be quickly
@@ -86,11 +104,15 @@ public class RowRandomLong {
 =======
   /** 다음 행 시퀀스를 시작하도록 난수 생성기를 이동합니다. 각 행은 지정된 개수의 난수를 사용하며, 파티셔닝된 데이터를 빠르게 처리할 수 있습니다. */
 >>>>>>> master
+=======
+  /** 다음 행 시퀀스를 시작하도록 난수 생성기를 이동합니다. 각 행은 지정된 개수의 난수를 사용하며, 파티셔닝된 데이터를 빠르게 처리할 수 있습니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void rowFinished() {
     advanceSeed32(seedsPerRow - usage);
     usage = 0;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /**
    * Advance the specified number of rows. Advancing to a specific row is needed for partitioned
@@ -103,15 +125,24 @@ public class RowRandomLong {
   public void advanceRows(long rowCount) {
     // 현재 행을 마무리합니다.
 >>>>>>> master
+=======
+  /** 지정된 행 수만큼 난수를 전진시킵니다. 파티셔닝된 데이터에서는 특정 행으로 이동할 때 필요합니다. */
+  public void advanceRows(long rowCount) {
+    // 현재 행을 마무리합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (usage != 0) {
       rowFinished();
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // advance the seed
 =======
     // 시드를 이동합니다.
 >>>>>>> master
+=======
+    // 시드를 이동합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     advanceSeed32(seedsPerRow * rowCount);
   }
 
@@ -122,18 +153,24 @@ public class RowRandomLong {
     long multiplier = MULTIPLIER_32;
     while (count > 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // testing for oddness, this seems portable
       if (count % 2 != 0) {
         seed = (multiplier * seed) % MODULUS_32;
       }
       // integer division, truncates
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // 홀수 여부를 확인하며, 이 방식은 이식성이 있습니다.
       if (count % 2 != 0) {
         seed = (multiplier * seed) % MODULUS_32;
       }
       // 정수 나눗셈은 소수점 이하를 버립니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       count = count / 2;
       multiplier = (multiplier * multiplier) % MODULUS_32;
     }

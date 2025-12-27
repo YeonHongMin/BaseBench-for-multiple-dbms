@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -84,10 +90,14 @@ public class FindOpenSeats extends Procedure {
   public Object[][] run(Connection conn, String f_id) throws SQLException {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // 150 seats
 =======
     // 150개 좌석
 >>>>>>> master
+=======
+    // 150 seats
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     final long[] seatmap =
         new long[] {
           -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -105,11 +115,16 @@ public class FindOpenSeats extends Procedure {
     double seat_price = 0.0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // First calculate the seat price using the flight's base price
     // and the number of seats that remaining
 =======
     // 먼저 항공편의 기본 가격과 남은 좌석 수를 사용하여 좌석 가격을 계산합니다.
 >>>>>>> master
+=======
+    // First calculate the seat price using the flight's base price
+    // and the number of seats that remaining
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement f_stmt = this.getPreparedStatement(conn, GetFlight)) {
       f_stmt.setString(1, f_id);
       try (ResultSet f_results = f_stmt.executeQuery()) {
@@ -129,12 +144,16 @@ public class FindOpenSeats extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // TODO: Figure out why this doesn't match the SQL
     //   Possible explanation: Floating point numbers are approximations;
     //                         there is no exact representation of (for example) 0.01.
     //                         Some databases (like PostgreSQL) will use exact types,
     //                         such as numeric, for intermediate values.  (This is
     //                         more-or-less equivalent to java.math.BigDecimal.)
+<<<<<<< HEAD
 =======
     // TODO: 이것이 SQL과 일치하지 않는 이유를 파악하세요.
     //   가능한 설명: 부동 소수점 숫자는 근사값입니다.
@@ -143,6 +162,8 @@ public class FindOpenSeats extends Procedure {
     //                         numeric과 같은 정확한 타입을 사용합니다. (이것은
     //                         java.math.BigDecimal과 거의 동일합니다.)
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double _seat_price = base_price + (base_price * (1.0 - (seats_left / (double) seats_total)));
 
     LOG.debug(
@@ -151,10 +172,14 @@ public class FindOpenSeats extends Procedure {
             f_id, seat_price, _seat_price, base_price, seats_total, seats_left));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Then build the seat map of the remaining seats
 =======
     // 그런 다음 남은 좌석의 좌석 맵을 구성합니다.
 >>>>>>> master
+=======
+    // Then build the seat map of the remaining seats
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement s_stmt = this.getPreparedStatement(conn, GetSeats)) {
       s_stmt.setString(1, f_id);
       try (ResultSet s_results = s_stmt.executeQuery()) {
@@ -174,10 +199,14 @@ public class FindOpenSeats extends Procedure {
     for (int i = 0; i < seatmap.length; ++i) {
       if (seatmap[i] == -1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Charge more for the first seats
 =======
         // 첫 번째 좌석에 대해 더 많이 청구합니다.
 >>>>>>> master
+=======
+        // Charge more for the first seats
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         double price = seat_price * (i < SEATSConstants.FLIGHTS_FIRST_CLASS_OFFSET ? 2.0 : 1.0);
         Object[] row = new Object[] {f_id, i, price};
         returnResults[ctr++] = row;

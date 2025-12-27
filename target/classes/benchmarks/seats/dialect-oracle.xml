@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<?xml version="1.0"?>
+<dialects>
+    <dialect type="ORACLE">
+        <procedure name="LoadConfig">
+            <statement name="getFlights">
+                 SELECT f_id FROM FLIGHT WHERE ROWNUM &lt;= 10000 ORDER BY F_DEPART_TIME DESC
+            </statement>
+        </procedure>
+    </dialect>
+</dialects>
+=======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
+<?xml version="1.0"?>
+<dialects>
+    <dialect type="ORACLE">
+        <procedure name="LoadConfig">
+            <statement name="getFlights">
+                 SELECT f_id FROM FLIGHT WHERE ROWNUM &lt;= 10000 ORDER BY F_DEPART_TIME DESC
+            </statement>
+        </procedure>
+    </dialect>
+</dialects>
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d

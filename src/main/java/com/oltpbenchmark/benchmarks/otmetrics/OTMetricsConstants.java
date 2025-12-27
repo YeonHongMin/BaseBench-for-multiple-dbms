@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -36,10 +42,14 @@ import java.time.Month;
 public abstract class OTMetricsConstants {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Table Names */
 =======
   /** 테이블 이름 */
 >>>>>>> master
+=======
+  /** Table Names */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String TABLENAME_SOURCES = "sources";
 
   public static final String TABLENAME_SESSIONS = "sessions";
@@ -47,6 +57,9 @@ public abstract class OTMetricsConstants {
   public static final String TABLENAME_OBSERVATIONS = "observations";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * Number of records per table. All of the tables in this benchmark will scale as you change the
    * benchmark scalefactor
@@ -58,6 +71,7 @@ public abstract class OTMetricsConstants {
   public static final int NUM_OBSERVATIONS = 10000;
 
   /** All objects in the database will be created starting after this date */
+<<<<<<< HEAD
 =======
   /** 테이블당 레코드 수. 이 벤치마크의 모든 테이블은 벤치마크 스케일 팩터를 변경하면 그에 따라 스케일링됩니다. */
   public static final int NUM_SOURCES = 100;
@@ -68,5 +82,7 @@ public abstract class OTMetricsConstants {
 
   /** 데이터베이스의 모든 객체는 이 날짜 이후부터 생성됩니다 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final LocalDateTime START_DATE = LocalDateTime.of(2022, Month.JANUARY, 1, 0, 0);
 }

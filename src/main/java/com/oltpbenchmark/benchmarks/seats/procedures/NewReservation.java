@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -173,10 +179,14 @@ public class NewReservation extends Procedure {
     long seats_left;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Flight Information
 =======
     // 항공편 정보
 >>>>>>> master
+=======
+    // Flight Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt = this.getPreparedStatement(conn, GetFlight, f_id)) {
       try (ResultSet results = stmt.executeQuery()) {
         found = results.next();
@@ -194,10 +204,14 @@ public class NewReservation extends Procedure {
       return;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Check if Seat is Available
 =======
     // 좌석이 사용 가능한지 확인합니다.
 >>>>>>> master
+=======
+    // Check if Seat is Available
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt = this.getPreparedStatement(conn, CheckSeat, f_id, seatnum)) {
       try (ResultSet results = stmt.executeQuery()) {
         found = results.next();
@@ -212,10 +226,14 @@ public class NewReservation extends Procedure {
       return;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Check if the Customer already has a seat on this flight
 =======
     // 고객이 이미 이 항공편에 좌석이 있는지 확인합니다.
 >>>>>>> master
+=======
+    // Check if the Customer already has a seat on this flight
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt = this.getPreparedStatement(conn, CheckCustomer, f_id, c_id)) {
       try (ResultSet results = stmt.executeQuery()) {
         found = results.next();
@@ -230,10 +248,14 @@ public class NewReservation extends Procedure {
       return;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get Customer Information
 =======
     // 고객 정보 가져오기
 >>>>>>> master
+=======
+    // Get Customer Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement preparedStatement = this.getPreparedStatement(conn, GetCustomer, c_id)) {
       try (ResultSet results = preparedStatement.executeQuery()) {
         found = results.next();
@@ -292,10 +314,14 @@ public class NewReservation extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // We don't care if we updated FrequentFlyer
 =======
     // FrequentFlyer를 업데이트했는지는 중요하지 않습니다.
 >>>>>>> master
+=======
+    // We don't care if we updated FrequentFlyer
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement preparedStatement =
         this.getPreparedStatement(
             conn, UpdateFrequentFlyer, attrs[4], attrs[5], attrs[6], attrs[7], c_id, airline_id)) {

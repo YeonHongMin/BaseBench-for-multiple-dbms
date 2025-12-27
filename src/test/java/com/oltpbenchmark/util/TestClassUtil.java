@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,22 @@
  * 제한 사항을 참조하십시오.
  *
 >>>>>>> master
+=======
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.util;
@@ -63,10 +80,14 @@ public class TestClassUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetConstructor */
 =======
   /** 생성자 테스트 */
 >>>>>>> master
+=======
+  /** testGetConstructor */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetConstructor() throws Exception {
     Class<?>[] targets = {
@@ -81,10 +102,14 @@ public class TestClassUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetSuperClasses */
 =======
   /** 슈퍼 클래스 테스트 */
 >>>>>>> master
+=======
+  /** testGetSuperClasses */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetSuperClasses() {
     Class<?>[] expected = {
@@ -101,10 +126,14 @@ public class TestClassUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetSuperClassesCatalogType */
 =======
   /** 카탈로그 타입 슈퍼 클래스 테스트 */
 >>>>>>> master
+=======
+  /** testGetSuperClassesCatalogType */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetSuperClassesCatalogType() {
     Class<?>[] expected = {
@@ -120,10 +149,14 @@ public class TestClassUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** GetInterfaces */
 =======
   /** 인터페이스 가져오기 */
 >>>>>>> master
+=======
+  /** GetInterfaces */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetInterfaces() {
     Class<?>[] expected = {

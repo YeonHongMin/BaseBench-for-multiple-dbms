@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
  * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
  * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
@@ -23,7 +26,10 @@
  * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다.
  * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -195,10 +201,14 @@ public class Delivery extends TPCCProcedure {
 
         if (!rs.next()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           // This district has no new orders.  This can happen but should be rare
 =======
           // 이 구역에 신규 주문이 없습니다. 발생할 수 있지만 드문 상황입니다.
 >>>>>>> master
+=======
+          // 이 구역에 신규 주문이 없습니다. 발생할 수 있지만 드문 상황입니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
           LOG.warn(String.format("District has no new orders [W_ID=%d, D_ID=%d]", w_id, d_id));
 
@@ -221,17 +231,23 @@ public class Delivery extends TPCCProcedure {
 
       if (result != 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // This code used to run in a loop in an attempt to make this work
         // with MySQL's default weird consistency level. We just always run
         // this as SERIALIZABLE instead. I don't *think* that fixing this one
         // error makes this work with MySQL's default consistency.
         // Careful auditing would be required.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // 이 코드는 MySQL의 기본 일관성 모델에서 작동시키려고 루프를 돌리던 것이었습니다.
         // 현재는 항상 SERIALIZABLE로 실행합니다. 이 오류를 바로잡는다고 해서
         // MySQL의 기본 일관성에서 정상 동작한다고 보장하기 어렵습니다.
         // 주의 깊은 분석이 필요합니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         String msg =
             String.format(
                 "NewOrder delete failed. Not running with SERIALIZABLE isolation? [w_id=%d, d_id=%d, no_o_id=%d]",

@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -47,10 +53,14 @@ public class TestProcedure {
   public void setUp() throws Exception {}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetProcedureName */
 =======
   /** 프로시저 이름 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetProcedureName */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetProcedureName() throws Exception {
     DeleteCallForwarding proc = new DeleteCallForwarding();
@@ -58,10 +68,14 @@ public class TestProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetStatements */
 =======
   /** 문장 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetStatements */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetStatements() throws Exception {
     Map<String, SQLStmt> stmts = Procedure.getStatements(new DeleteCallForwarding());
@@ -71,15 +85,20 @@ public class TestProcedure {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetStatementsConstructor */
 =======
   /** 생성자를 사용한 문장 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetStatementsConstructor */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetStatementsConstructor() throws Exception {
     Procedure proc = new DeleteCallForwarding();
     proc.initialize(DatabaseType.POSTGRES);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Make sure that procedure handle has the same
     // SQLStmts as what we get back from the static method
@@ -87,6 +106,10 @@ public class TestProcedure {
     // 프로시저 핸들이 정적 메서드에서 반환하는 것과
     // 동일한 SQLStmts를 가지고 있는지 확인합니다
 >>>>>>> master
+=======
+    // Make sure that procedure handle has the same
+    // SQLStmts as what we get back from the static method
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, SQLStmt> expected = Procedure.getStatements(proc);
     assertNotNull(expected);
     //        System.err.println("EXPECTED:" + expected);

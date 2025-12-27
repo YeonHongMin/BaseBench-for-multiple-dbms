@@ -8,6 +8,7 @@ import com.oltpbenchmark.util.MonitorInfo;
 import java.util.List;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * Monitor generator that picks the appropriate monitoring implemnetation based on the database
  * type.
@@ -15,6 +16,9 @@ import java.util.List;
 =======
 /** DB 유형에 따라 적절한 모니터 구현체를 선택하는 모니터 생성기입니다. */
 >>>>>>> master
+=======
+/** DB 유형에 따라 적절한 모니터 구현체를 선택하는 모니터 생성기입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class MonitorGen {
   public static Monitor getMonitor(
       MonitorInfo monitorInfo,

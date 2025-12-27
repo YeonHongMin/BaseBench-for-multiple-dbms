@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -84,11 +90,16 @@ public class Q9 extends GenericQuery {
   protected PreparedStatement getStatement(
       Connection conn, RandomGenerator rand, double scaleFactor) throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // COLOR is randomly selected within the list of values defined for the generation of P_NAME in
     // Clause 4.2.3
 =======
     // COLOR는 절 4.2.3에서 P_NAME 생성에 대해 정의된 값 목록 내에서 무작위로 선택됩니다.
 >>>>>>> master
+=======
+    // COLOR is randomly selected within the list of values defined for the generation of P_NAME in
+    // Clause 4.2.3
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String color = "%" + TPCHUtil.choice(TPCHConstants.P_NAME_GENERATOR, rand) + "%";
 
     LOG.debug("attempting to execute sql [{}] for color [{}]", query_stmt.getSQL(), color);

@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -63,10 +69,14 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetDatabaseDDLPath */
 =======
   /** 데이터베이스 DDL 경로 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetDatabaseDDLPath */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetDatabaseDDLPath() throws Exception {
     String ddlPath = this.benchmark.getDatabaseDDLPath(this.workConf.getDatabaseType());
@@ -77,39 +87,55 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testCreateDatabase */
 =======
   /** 데이터베이스 생성 테스트 */
 >>>>>>> master
+=======
+  /** testCreateDatabase */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCreateDatabase() throws Exception {
     this.benchmark.createDatabase();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure that we get back some tables
 =======
     // 일부 테이블이 반환되는지 확인합니다
 >>>>>>> master
+=======
+    // Make sure that we get back some tables
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.benchmark.refreshCatalog();
     AbstractCatalog catalog = this.benchmark.getCatalog();
     assertNotNull(catalog);
     assertFalse(catalog.getTables().isEmpty());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Just make sure that there are no empty tables
 =======
     // 빈 테이블이 없는지 확인합니다
 >>>>>>> master
+=======
+    // Just make sure that there are no empty tables
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (Table catalog_tbl : catalog.getTables()) {
       assert (catalog_tbl.getColumnCount() > 0) : "Missing columns for " + catalog_tbl;
     }
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetTransactionType */
 =======
   /** 트랜잭션 타입 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetTransactionType */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetTransactionType() {
     int id = 1;
@@ -123,10 +149,14 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetSQLDialectPath */
 =======
   /** SQL 방언 경로 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetSQLDialectPath */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetSQLDialectPath() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -141,20 +171,28 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testLoadSQLDialect */
 =======
   /** SQL 방언 로드 테스트 */
 >>>>>>> master
+=======
+  /** testLoadSQLDialect */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testLoadSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
       this.workConf.setDatabaseType(dbType);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Just make sure that we can load it
 =======
       // 로드할 수 있는지 확인합니다
 >>>>>>> master
+=======
+      // Just make sure that we can load it
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       StatementDialects dialects = new StatementDialects(this.workConf);
       if (dialects.load()) {
 
@@ -170,10 +208,14 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testDumpSQLDialect */
 =======
   /** SQL 방언 덤프 테스트 */
 >>>>>>> master
+=======
+  /** testDumpSQLDialect */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testDumpSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -201,10 +243,14 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSetSQLDialect */
 =======
   /** SQL 방언 설정 테스트 */
 >>>>>>> master
+=======
+  /** testSetSQLDialect */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSetSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -216,10 +262,14 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
         for (Procedure proc : this.benchmark.getProcedures().values()) {
           if (dialects.getProcedureNames().contains(proc.getProcedureName())) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // Need a new proc because the dialect gets loaded in BenchmarkModule::getProcedureName
 =======
             // BenchmarkModule::getProcedureName에서 방언이 로드되므로 새로운 proc이 필요합니다
 >>>>>>> master
+=======
+            // Need a new proc because the dialect gets loaded in BenchmarkModule::getProcedureName
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
             Procedure testProc =
                 ClassUtil.newInstance(proc.getClass().getName(), new Object[0], new Class<?>[0]);
             assertNotNull(testProc);

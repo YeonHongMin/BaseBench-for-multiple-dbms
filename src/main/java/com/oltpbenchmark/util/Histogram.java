@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -45,6 +51,7 @@ import org.slf4j.LoggerFactory;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * A very nice and simple generic Histogram
  *
  * @author svelagap
@@ -54,6 +61,11 @@ import org.slf4j.LoggerFactory;
  *
  * <p>작성자: svelagap 작성자: pavlo
 >>>>>>> master
+=======
+ * 매우 단순하면서도 범용적인 히스토그램 구현체입니다.
+ *
+ * <p>작성자: svelagap 작성자: pavlo
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   private static final Logger LOG = LoggerFactory.getLogger(Histogram.class);
@@ -76,6 +88,7 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   private transient boolean dirty = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** */
   protected transient Map<Object, String> debug_names;
 
@@ -85,17 +98,23 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   // Note: marked as transient to avoid serialization warnings due to missing
   // explicit Serializable interface on base types like X == Integer
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** 디버그 이름 매핑 */
   protected transient Map<Object, String> debug_names;
 
   /** 최솟값/최댓값은 자연 순서에 따라 지금까지 관측한 가장 작은/큰 값입니다. */
   // 참고: 직렬화 경고를 피하려고 transient로 표시합니다.
   // X == Integer처럼 기본 타입은 Serializable을 명시하지 않습니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   protected transient Comparable<X> min_value;
 
   protected transient Comparable<X> max_value;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /**
    * The Min/Max counts are the values that have the smallest/greatest number of occurences in the
@@ -104,12 +123,16 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 =======
   /** 최솟값/최댓값 카운트는 히스토그램에서 가장 적게/많이 발생한 항목의 수입니다. */
 >>>>>>> master
+=======
+  /** 최솟값/최댓값 카운트는 히스토그램에서 가장 적게/많이 발생한 항목의 수입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   protected int min_count = 0;
 
   protected ArrayList<X> min_count_values;
   protected int max_count = 0;
   protected ArrayList<X> max_count_values;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /** A switchable flag that determines whether non-zero entries are kept or removed */
   protected boolean keep_zero_entries = false;
@@ -122,6 +145,8 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   /**
    * Constructor
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** 0이 아닌 항목을 유지할지 제거할지를 결정하는 플래그입니다. */
   protected boolean keep_zero_entries = false;
 
@@ -132,7 +157,10 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
    * keepZeroEntries 설정으로 히스토그램을 생성합니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param keepZeroEntries
    */
@@ -146,20 +174,28 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Set whether this histogram is allowed to retain zero count entries If the flag switches from
    * true to false, then all zero count entries will be removed Default is false
 =======
    * 히스토그램이 0 카운트 항목을 유지할지 여부를 설정합니다. true에서 false로 전환되면 모든 0 카운트 항목을 제거합니다. 기본값은 false입니다.
 >>>>>>> master
+=======
+   * 히스토그램이 0 카운트 항목을 유지할지 여부를 설정합니다. true에서 false로 전환되면 모든 0 카운트 항목을 제거합니다. 기본값은 false입니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param flag
    */
   public void setKeepZeroEntries(boolean flag) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // When this option is disabled, we need to remove all of the zeroed entries
 =======
     // 이 옵션이 꺼지면 0으로 표시된 항목을 모두 제거해야 합니다.
 >>>>>>> master
+=======
+    // 이 옵션이 꺼지면 0으로 표시된 항목을 모두 제거해야 합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (!flag && this.keep_zero_entries) {
       synchronized (this) {
         Iterator<X> it = this.histogram.keySet().iterator();
@@ -186,12 +222,16 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * The main method that updates a value in the histogram with a given sample count This should be
    * called by one of the public interface methods that are synchronized This method is not
    * synchronized on purpose for performance
 =======
    * 주어진 샘플 수로 히스토그램에 값을 업데이트합니다. 동기화된 퍼블릭 인터페이스 메서드에서 호출되며 성능을 위해 이 메서드는 의도적으로 동기화되지 않습니다.
 >>>>>>> master
+=======
+   * 주어진 샘플 수로 히스토그램에 값을 업데이트합니다. 동기화된 퍼블릭 인터페이스 메서드에서 호출되며 성능을 위해 이 메서드는 의도적으로 동기화되지 않습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param value
    * @param count
@@ -203,20 +243,28 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
     this.num_samples += count;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // If we already have this value in our histogram, then add the new count
     // to its existing total
 =======
     // 이미 히스토그램에 값이 있으면 기존 합계에 새 카운트를 더합니다.
 >>>>>>> master
+=======
+    // 이미 히스토그램에 값이 있으면 기존 합계에 새 카운트를 더합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (this.histogram.containsKey(value)) {
       count += this.histogram.get(value);
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // If the new count is zero, then completely remove it if we're not allowed to have zero entries
 =======
     // 새 카운트가 0이고 0 항목을 유지하지 않으면 완전히 제거합니다.
 >>>>>>> master
+=======
+    // 새 카운트가 0이고 0 항목을 유지하지 않으면 완전히 제거합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (count == 0 && !this.keep_zero_entries) {
       this.histogram.remove(value);
     } else {
@@ -226,6 +274,7 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * Recalculate the min/max count value sets Since this is expensive, this should only be done
    * whenever that information is needed
@@ -233,11 +282,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 =======
   /** 최솟값/최댓값 관련 정보를 다시 계산합니다. 비용이 크므로 해당 정보가 필요할 때만 수행합니다. */
 >>>>>>> master
+=======
+  /** 최솟값/최댓값 관련 정보를 다시 계산합니다. 비용이 크므로 해당 정보가 필요할 때만 수행합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private synchronized void calculateInternalValues() {
     if (!this.dirty) {
       return;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // New Min/Max Counts
     // The reason we have to loop through and check every time is that our
@@ -248,6 +301,11 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
     // 매 반복마다 확인해야 하는 이유는 값이 현재 최솟값/최댓값일 수 있고,
     // 카운트 변경 여부에 따라 계속 유지되지 않을 수 있기 때문입니다.
 >>>>>>> master
+=======
+    // 새로운 최솟값/최댓값 카운트를 계산합니다.
+    // 매 반복마다 확인해야 하는 이유는 값이 현재 최솟값/최댓값일 수 있고,
+    // 카운트 변경 여부에 따라 계속 유지되지 않을 수 있기 때문입니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.max_count = 0;
     this.min_count = Integer.MAX_VALUE;
     this.min_value = null;
@@ -265,10 +323,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
       int cnt = e.getValue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Is this value the new min/max values?
 =======
       // 이 값이 새로운 최솟값/최댓값인지 확인합니다.
 >>>>>>> master
+=======
+      // 이 값이 새로운 최솟값/최댓값인지 확인합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (this.min_value == null || this.min_value.compareTo(value) > 0) {
         this.min_value = value;
       }
@@ -298,10 +360,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get the number of samples entered into the histogram using the put methods
 =======
    * put 메서드로 기록된 샘플 수를 반환합니다.
 >>>>>>> master
+=======
+   * put 메서드로 기록된 샘플 수를 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -311,10 +377,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get the number of unique values entered into the histogram
 =======
    * 히스토그램에 기록된 고유 값의 수를 반환합니다.
 >>>>>>> master
+=======
+   * 히스토그램에 기록된 고유 값의 수를 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -324,11 +394,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get the smallest value entered into the histogram This assumes that the values implement the
    * Comparable interface
 =======
    * 히스토그램에 기록된 가장 작은 값을 반환합니다. 값은 Comparable 인터페이스를 구현한다고 가정합니다.
 >>>>>>> master
+=======
+   * 히스토그램에 기록된 가장 작은 값을 반환합니다. 값은 Comparable 인터페이스를 구현한다고 가정합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -340,11 +414,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Get the largest value entered into the histogram This assumes that the values implement the
    * Comparable interface
 =======
    * 히스토그램에 기록된 가장 큰 값을 반환합니다. 값은 Comparable 인터페이스를 구현한다고 가정합니다.
 >>>>>>> master
+=======
+   * 히스토그램에 기록된 가장 큰 값을 반환합니다. 값은 Comparable 인터페이스를 구현한다고 가정합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -356,10 +434,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return the number of samples for the value with the smallest number of samples in the histogram
 =======
    * 히스토그램에서 가장 적은 샘플 수를 가진 값의 샘플 수를 반환합니다.
 >>>>>>> master
+=======
+   * 히스토그램에서 가장 적은 샘플 수를 가진 값의 샘플 수를 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -370,10 +452,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return the set values with the smallest number of samples
 =======
    * 샘플 수가 가장 작은 값들의 집합을 반환합니다.
 >>>>>>> master
+=======
+   * 샘플 수가 가장 작은 값들의 집합을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -384,10 +470,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return the number of samples for the value with the greatest number of samples in the histogram
 =======
    * 히스토그램에서 가장 많은 샘플 수를 가진 값의 샘플 수를 반환합니다.
 >>>>>>> master
+=======
+   * 히스토그램에서 가장 많은 샘플 수를 가진 값의 샘플 수를 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -398,10 +488,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return the set values with the greatest number of samples
 =======
    * 샘플 수가 가장 많은 값들의 집합을 반환합니다.
 >>>>>>> master
+=======
+   * 샘플 수가 가장 많은 값들의 집합을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -412,10 +506,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return all the values stored in the histogram
 =======
    * 히스토그램에 저장된 모든 값을 반환합니다.
 >>>>>>> master
+=======
+   * 히스토그램에 저장된 모든 값을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @return
    */
@@ -424,10 +522,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Reset the histogram's internal data */
 =======
   /** 히스토그램의 내부 데이터를 초기화합니다. */
 >>>>>>> master
+=======
+  /** 히스토그램의 내부 데이터를 초기화합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public synchronized void clear() {
     this.histogram.clear();
     this.num_samples = 0;
@@ -446,6 +548,7 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * Clear all the values stored in the histogram. The keys are only kept if KeepZeroEntries is
    * enabled, otherwise it does the same thing as clear()
@@ -453,15 +556,22 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 =======
   /** 히스토그램에 저장된 모든 값을 지웁니다. KeepZeroEntries가 활성화되면 키만 유지하고, 그렇지 않으면 clear()와 동일하게 동작합니다. */
 >>>>>>> master
+=======
+  /** 히스토그램에 저장된 모든 값을 지웁니다. KeepZeroEntries가 활성화되면 키만 유지하고, 그렇지 않으면 clear()와 동일하게 동작합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public synchronized void clearValues() {
     if (this.keep_zero_entries) {
       for (Entry<X, Integer> e : this.histogram.entrySet()) {
         this.histogram.put(e.getKey(), 0);
 <<<<<<< HEAD
+<<<<<<< HEAD
       } // FOR
 =======
       } // 반복 종료
 >>>>>>> master
+=======
+      } // 반복 종료
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       this.num_samples = 0;
       this.min_count = 0;
       if (this.min_count_values != null) this.min_count_values.clear();
@@ -477,10 +587,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    * 히스토그램이 비어 있는지 확인합니다.
    *
 >>>>>>> master
+=======
+   * 히스토그램이 비어 있는지 확인합니다.
+   *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @return
    */
   public boolean isEmpty() {
@@ -488,6 +603,7 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Increments the number of occurrences of this particular value i
    *
@@ -497,12 +613,18 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
    *
    * @param value 히스토그램에 추가할 값
 >>>>>>> master
+=======
+   * 특정 값의 발생 횟수를 i만큼 증가시킵니다.
+   *
+   * @param value 히스토그램에 추가할 값
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public synchronized void put(X value, int i) {
     this._put(value, i);
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Set the number of occurrences of this particular value i
    *
@@ -512,6 +634,11 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
    *
    * @param value 히스토그램에 추가할 값
 >>>>>>> master
+=======
+   * 특정 값의 발생 횟수를 설정합니다.
+   *
+   * @param value 히스토그램에 추가할 값
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public synchronized void set(X value, int i) {
     Integer orig = this.get(value);
@@ -523,6 +650,7 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Increments the number of occurrences of this particular value i
    *
    * @param value the value to be added to the histogram
@@ -531,26 +659,39 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
    *
    * @param value 히스토그램에 추가할 값
 >>>>>>> master
+=======
+   * 특정 값의 발생 횟수를 1만큼 증가시킵니다.
+   *
+   * @param value 히스토그램에 추가할 값
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public synchronized void put(X value) {
     this._put(value, 1);
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Increment all values in the histogram by one */
 =======
   /** 히스토그램의 모든 값을 1씩 증가시킵니다. */
 >>>>>>> master
+=======
+  /** 히스토그램의 모든 값을 1씩 증가시킵니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void putAll() {
     this.putAll(this.histogram.keySet(), 1);
   }
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Increment multiple values by one
 =======
    * 여러 값의 발생 횟수를 1씩 증가시킵니다.
 >>>>>>> master
+=======
+   * 여러 값의 발생 횟수를 1씩 증가시킵니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param values
    */
@@ -560,10 +701,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Increment multiple values by the given count
 =======
    * 여러 값의 발생 횟수를 주어진 count만큼 증가시킵니다.
 >>>>>>> master
+=======
+   * 여러 값의 발생 횟수를 주어진 count만큼 증가시킵니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param values
    * @param count
@@ -576,10 +721,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Add all the entries from the provided Histogram into this objects totals
 =======
    * 다른 히스토그램의 모든 항목을 현재 히스토그램에 합산합니다.
 >>>>>>> master
+=======
+   * 다른 히스토그램의 모든 항목을 현재 히스토그램에 합산합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param other
    */
@@ -593,10 +742,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Remove the entire count for the given value
 =======
    * 주어진 값의 전체 카운트를 제거합니다.
 >>>>>>> master
+=======
+   * 주어진 값의 전체 카운트를 제거합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param value
    */
@@ -609,11 +762,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns the current count for the given value If the value was never entered into the
    * histogram, then the count will be null
 =======
    * 지정된 값의 현재 카운트를 반환합니다. 값이 히스토그램에 존재하지 않으면 null을 반환합니다.
 >>>>>>> master
+=======
+   * 지정된 값의 현재 카운트를 반환합니다. 값이 히스토그램에 존재하지 않으면 null을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param value
    * @return
@@ -624,11 +781,15 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns the current count for the given value. If that value was nevered entered in the
    * histogram, then the value returned will be value_if_null
 =======
    * 지정된 값의 카운트를 반환하며, 값이 없으면 value_if_null을 반환합니다.
 >>>>>>> master
+=======
+   * 지정된 값의 카운트를 반환하며, 값이 없으면 value_if_null을 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param value
    * @param value_if_null
@@ -641,10 +802,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns true if this histogram contains the specified key.
 =======
    * 히스토그램에 지정된 키가 있는지 확인합니다.
 >>>>>>> master
+=======
+   * 히스토그램에 지정된 키가 있는지 확인합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param value
    * @return
@@ -672,26 +837,36 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   // ----------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // DEBUG METHODS
   // ----------------------------------------------------------------------------
 
   /** Histogram Pretty Print */
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // 디버그 메서드
   // ----------------------------------------------------------------------------
 
   /** 히스토그램을 보기 좋게 문자열로 반환합니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public String toString() {
     return (this.toString(MAX_CHARS, MAX_VALUE_LENGTH));
   }
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Histogram Pretty Print
 =======
    * 히스토그램을 보기 좋게 문자열로 반환합니다.
 >>>>>>> master
+=======
+   * 히스토그램을 보기 좋게 문자열로 반환합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param max_chars
    * @param max_length
@@ -706,20 +881,28 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
     this.calculateInternalValues();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Figure out the max size of the counts
 =======
     // 카운트 문자열의 최대 길이를 계산합니다.
 >>>>>>> master
+=======
+    // 카운트 문자열의 최대 길이를 계산합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int max_ctr_length = 4;
     for (Integer ctr : this.histogram.values()) {
       max_ctr_length = Math.max(max_ctr_length, ctr.toString().length());
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Don't let anything go longer than MAX_VALUE_LENGTH chars
 =======
     // MAX_VALUE_LENGTH를 넘기지 않도록 합니다.
 >>>>>>> master
+=======
+    // MAX_VALUE_LENGTH를 넘기지 않도록 합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String f = "%-" + max_length + "s [%" + max_ctr_length + "d] ";
     boolean first = true;
     boolean has_labels = this.hasDebugLabels();
@@ -755,10 +938,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
 
   // ----------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // SERIALIZATION METHODS
 =======
   // 직렬화 메서드
 >>>>>>> master
+=======
+  // 직렬화 메서드
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------------------
 
   @Override
@@ -824,10 +1011,14 @@ public class Histogram<X extends Comparable<X>> implements JSONSerializable {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // This code sucks ass...
 =======
     // 이 코드는 다소 난잡합니다...
 >>>>>>> master
+=======
+    // 이 코드는 다소 난잡합니다...
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (Members element : Histogram.Members.values()) {
       if (element == Members.KEEP_ZERO_ENTRIES || element == Members.VALUE_TYPE) {
         continue;

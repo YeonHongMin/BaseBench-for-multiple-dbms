@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -74,16 +80,22 @@ public abstract class AbstractTestWorker<T extends BenchmarkModule> extends Abst
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testGetProcedure */
   @Test
   public void testGetProcedure() {
     // Make sure that we can get a Procedure handle for each TransactionType
+<<<<<<< HEAD
 =======
   /** 프로시저 가져오기 테스트 */
   @Test
   public void testGetProcedure() {
     // 각 TransactionType에 대해 Procedure 핸들을 가져올 수 있는지 확인합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Worker<?> w = workers.get(0);
     assertNotNull(w);
     for (Class<? extends Procedure> procClass : this.procedures()) {
@@ -95,12 +107,17 @@ public abstract class AbstractTestWorker<T extends BenchmarkModule> extends Abst
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* testExecuteWork
    * Similar to Worker.run()
 =======
   /* 작업 실행 테스트
    * Worker.run()과 유사합니다
 >>>>>>> master
+=======
+  /* testExecuteWork
+   * Similar to Worker.run()
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   @Test
   public void testExecuteWork() throws Exception {
@@ -124,12 +141,17 @@ public abstract class AbstractTestWorker<T extends BenchmarkModule> extends Abst
 
       } catch (UserAbortException ex) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // These are expected, so they can be ignored
         // Anything else is a serious error
 =======
         // 이것들은 예상되는 것이므로 무시할 수 있습니다
         // 그 외의 것은 심각한 오류입니다
 >>>>>>> master
+=======
+        // These are expected, so they can be ignored
+        // Anything else is a serious error
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       } catch (Throwable ex) {
         throw new RuntimeException("Failed to execute " + txnType, ex);
       } finally {

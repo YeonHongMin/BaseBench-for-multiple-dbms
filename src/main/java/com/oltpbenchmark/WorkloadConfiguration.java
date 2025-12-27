@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -12,6 +13,8 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
  * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
  * 라이선스 사본은 다음에서 얻을 수 있습니다:
@@ -22,7 +25,10 @@
  * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
  * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
  * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -64,6 +70,7 @@ public class WorkloadConfiguration {
   private boolean advancedMonitoringEnabled = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * If true, establish a new connection for each transaction, otherwise use one persistent
    * connection per client session. This is useful to measure the connection overhead.
@@ -75,6 +82,8 @@ public class WorkloadConfiguration {
    * to recover like a typical application would in the case of a replicated cluster
    * primary-secondary failover.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // 연결 풀 설정
   private boolean connectionPoolEnabled = false;
   private boolean dynamicPoolSizingEnabled = true; // 터미널 수 기반 동적 풀 크기 조정
@@ -90,7 +99,10 @@ public class WorkloadConfiguration {
   /**
    * true이면 연결 종료 예외를 포착하고 재연결을 시도합니다. 이를 통해 벤치마크가 복제된 클러스터의 주-보조 장애 조치(failover) 상황에서 일반 애플리케이션처럼
    * 복구할 수 있습니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   private boolean reconnectOnConnectionFailure = false;
 
@@ -180,10 +192,14 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * @return @see newConnectionPerTxn member docs for behavior.
 =======
    * @return 동작에 대한 자세한 내용은 newConnectionPerTxn 멤버 문서를 참조하세요.
 >>>>>>> master
+=======
+   * @return 동작에 대한 자세한 내용은 newConnectionPerTxn 멤버 문서를 참조하세요.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public boolean getNewConnectionPerTxn() {
     return newConnectionPerTxn;
@@ -191,16 +207,22 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Used by the configuration loader at startup. Changing it any other time is probably
    * dangeroues. @see newConnectionPerTxn member docs for behavior.
    *
    * @param newConnectionPerTxn
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 시작 시 설정 로더에 의해 사용됩니다. 다른 시간에 변경하는 것은 위험할 수 있습니다. 동작에 대한 자세한 내용은 newConnectionPerTxn 멤버 문서를
    * 참조하세요.
    *
    * @param newConnectionPerTxn 트랜잭션당 새 연결 여부
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public void setNewConnectionPerTxn(boolean newConnectionPerTxn) {
     this.newConnectionPerTxn = newConnectionPerTxn;
@@ -208,10 +230,14 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * @return @see reconnectOnConnectionFailure member docs for behavior.
 =======
    * @return 동작에 대한 자세한 내용은 reconnectOnConnectionFailure 멤버 문서를 참조하세요.
 >>>>>>> master
+=======
+   * @return 동작에 대한 자세한 내용은 reconnectOnConnectionFailure 멤버 문서를 참조하세요.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public boolean getReconnectOnConnectionFailure() {
     return reconnectOnConnectionFailure;
@@ -219,26 +245,36 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Used by the configuration loader at startup. Changing it any other time is probably
    * dangeroues. @see reconnectOnConnectionFailure member docs for behavior.
    *
    * @param reconnectOnConnectionFailure
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 시작 시 설정 로더에 의해 사용됩니다. 다른 시간에 변경하는 것은 위험할 수 있습니다. 동작에 대한 자세한 내용은 reconnectOnConnectionFailure 멤버
    * 문서를 참조하세요.
    *
    * @param reconnectOnConnectionFailure 연결 실패 시 재연결 여부
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public void setReconnectOnConnectionFailure(boolean reconnectOnConnectionFailure) {
     this.reconnectOnConnectionFailure = reconnectOnConnectionFailure;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Initiate a new benchmark and workload state */
 =======
   /** 새로운 벤치마크 및 워크로드 상태를 시작합니다 */
 >>>>>>> master
+=======
+  /** 새로운 벤치마크 및 워크로드 상태를 시작합니다 */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void initializeState(BenchmarkState benchmarkState) {
     this.workloadState = new WorkloadState(benchmarkState, phases, terminals);
   }
@@ -273,6 +309,7 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * The number of loader threads that the framework is allowed to use.
    *
    * @return
@@ -281,6 +318,11 @@ public class WorkloadConfiguration {
    *
    * @return 로더 스레드 수
 >>>>>>> master
+=======
+   * 프레임워크가 사용할 수 있는 로더 스레드 수입니다.
+   *
+   * @return 로더 스레드 수
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public int getLoaderThreads() {
     return this.loaderThreads;
@@ -300,6 +342,7 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * The random seed for this benchmark
    *
    * @return
@@ -308,12 +351,18 @@ public class WorkloadConfiguration {
    *
    * @return 랜덤 시드
 >>>>>>> master
+=======
+   * 이 벤치마크의 랜덤 시드입니다
+   *
+   * @return 랜덤 시드
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public int getRandomSeed() {
     return this.randomSeed;
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Set the random seed for this benchmark
    *
@@ -323,12 +372,18 @@ public class WorkloadConfiguration {
    *
    * @param randomSeed 랜덤 시드
 >>>>>>> master
+=======
+   * 이 벤치마크의 랜덤 시드를 설정합니다
+   *
+   * @param randomSeed 랜덤 시드
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public void setRandomSeed(int randomSeed) {
     this.randomSeed = randomSeed;
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Return the scale factor of the database size
    *
@@ -338,6 +393,11 @@ public class WorkloadConfiguration {
    *
    * @return 스케일 팩터
 >>>>>>> master
+=======
+   * 데이터베이스 크기의 스케일 팩터를 반환합니다
+   *
+   * @return 스케일 팩터
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public double getScaleFactor() {
     return this.scaleFactor;
@@ -345,22 +405,29 @@ public class WorkloadConfiguration {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Set the scale factor for the database A value of 1 means the default size. A value greater than
    * 1 means the database is larger A value less than 1 means the database is smaller
    *
    * @param scaleFactor
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 데이터베이스의 스케일 팩터를 설정합니다. 값 1은 기본 크기를 의미합니다. 1보다 큰 값은 데이터베이스가 더 크다는 것을 의미하고, 1보다 작은 값은 데이터베이스가 더
    * 작다는 것을 의미합니다
    *
    * @param scaleFactor 스케일 팩터
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public void setScaleFactor(double scaleFactor) {
     this.scaleFactor = scaleFactor;
   }
 
   /**
+<<<<<<< HEAD
 <<<<<<< HEAD
    * Return the number of phases specified in the config file
    *
@@ -370,11 +437,17 @@ public class WorkloadConfiguration {
    *
    * @return 단계 수
 >>>>>>> master
+=======
+   * 설정 파일에 지정된 단계 수를 반환합니다
+   *
+   * @return 단계 수
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public int getNumberOfPhases() {
     return phases.size();
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /**
    * Return the directory in which we can find the data files (for example, CSV files) for loading
@@ -383,10 +456,14 @@ public class WorkloadConfiguration {
 =======
   /** 데이터베이스를 로드하기 위한 데이터 파일(예: CSV 파일)을 찾을 수 있는 디렉토리를 반환합니다. */
 >>>>>>> master
+=======
+  /** 데이터베이스를 로드하기 위한 데이터 파일(예: CSV 파일)을 찾을 수 있는 디렉토리를 반환합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public String getDataDir() {
     return this.dataDir;
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /**
    * Set the directory in which we can find the data files (for example, CSV files) for loading the
@@ -395,33 +472,48 @@ public class WorkloadConfiguration {
 =======
   /** 데이터베이스를 로드하기 위한 데이터 파일(예: CSV 파일)을 찾을 수 있는 디렉토리를 설정합니다. */
 >>>>>>> master
+=======
+  /** 데이터베이스를 로드하기 위한 데이터 파일(예: CSV 파일)을 찾을 수 있는 디렉토리를 설정합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void setDataDir(String dir) {
     this.dataDir = dir;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Return the path in which we can find the ddl script. */
 =======
   /** DDL 스크립트를 찾을 수 있는 경로를 반환합니다. */
 >>>>>>> master
+=======
+  /** DDL 스크립트를 찾을 수 있는 경로를 반환합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public String getDDLPath() {
     return this.ddlPath;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Set the path in which we can find the ddl script. */
 =======
   /** DDL 스크립트를 찾을 수 있는 경로를 설정합니다. */
 >>>>>>> master
+=======
+  /** DDL 스크립트를 찾을 수 있는 경로를 설정합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void setDDLPath(String ddlPath) throws FileNotFoundException {
     this.ddlPath = FileUtil.checkPath(ddlPath, "ddlpath");
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** A utility method that init the phaseIterator and dialectMap */
 =======
   /** phaseIterator와 dialectMap을 초기화하는 유틸리티 메서드입니다 */
 >>>>>>> master
+=======
+  /** phaseIterator와 dialectMap을 초기화하는 유틸리티 메서드입니다 */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public void init() {
     try {
       Class.forName(this.driverClass);
@@ -498,7 +590,10 @@ public class WorkloadConfiguration {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // 연결 풀 Getter 및 Setter
 
   /**
@@ -625,7 +720,10 @@ public class WorkloadConfiguration {
     }
   }
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Override
   public String toString() {
     return "WorkloadConfiguration{"
@@ -653,14 +751,20 @@ public class WorkloadConfiguration {
         + ", newConnectionPerTxn="
         + newConnectionPerTxn
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         + ", connectionPoolEnabled="
         + connectionPoolEnabled
         + ", poolMinSize="
         + poolMinSize
         + ", poolMaxSize="
         + poolMaxSize
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         + ", batchSize="
         + batchSize
         + ", ddlpath="

@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
@@ -15,7 +18,10 @@
  *
  */
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.distributions;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -26,6 +32,7 @@ public class UniformGenerator extends IntegerGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Create a uniformly distributed random number generator for items.
    *
    * @param items Number of items.
@@ -34,6 +41,11 @@ public class UniformGenerator extends IntegerGenerator {
    *
    * @param items 아이템 개수
 >>>>>>> master
+=======
+   * 아이템 수만큼 균등 분포로 무작위 정수를 생성하는 생성기를 만듭니다.
+   *
+   * @param items 아이템 개수
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public UniformGenerator(int items) {
     this(0, items - 1);
@@ -41,17 +53,23 @@ public class UniformGenerator extends IntegerGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Create a uniformly distributed random number generator for items between min and max
    * (inclusive).
    *
    * @param min Smallest integer to generate in the sequence.
    * @param max Largest integer to generate in the sequence.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 최소값과 최대값(포함) 사이에서 균등하게 무작위 정수를 반환합니다.
    *
    * @param min 생성할 수 있는 가장 작은 정수
    * @param max 생성할 수 있는 가장 큰 정수
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public UniformGenerator(int min, int max) {
     this.min = min;

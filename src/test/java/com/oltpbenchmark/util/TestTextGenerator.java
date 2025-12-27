@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  *  Copyright 2015 by OLTPBenchmark Project
  *
@@ -122,3 +123,6 @@ public class TestTextGenerator {
 =======
 
 >>>>>>> master
+=======
+
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d

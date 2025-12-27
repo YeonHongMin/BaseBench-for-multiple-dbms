@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -43,10 +49,13 @@ import java.util.regex.Pattern;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * 문자열 유틸리티 클래스입니다.
  *
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * @author pavlo
  * @author Djellel
  */
@@ -94,10 +103,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Return key/value maps into a nicely formatted table Delimiter ":", No UpperCase Keys, No Boxing
 =======
    * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 구분자 ":", 키 대문자 변환 없음, 박스 없음
 >>>>>>> master
+=======
+   * Return key/value maps into a nicely formatted table Delimiter ":", No UpperCase Keys, No Boxing
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param maps
    * @return
@@ -108,12 +121,16 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * Return key/value maps into a nicely formatted table The maps are displayed in order from first
    * to last, and there will be a spacer created between each map. The format for each record is:
    *
    * <p><KEY><DELIMITER><SPACING><VALUE>
    *
    * <p>If the delimiter is an equal sign, then the format is:
+<<<<<<< HEAD
 =======
    * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 맵은 첫 번째부터 마지막까지 순서대로 표시되며, 각 맵 사이에 구분선이 생성됩니다. 각 레코드의 형식은 다음과
    * 같습니다:
@@ -122,10 +139,13 @@ public abstract class StringUtil {
    *
    * <p>구분자가 등호인 경우 형식은 다음과 같습니다:
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * <p><KEY><SPACING><DELIMITER><VALUE>
    *
    * @param delimiter
+<<<<<<< HEAD
 <<<<<<< HEAD
    * @param upper Upper-case all keys
    * @param box Box results
@@ -133,6 +153,10 @@ public abstract class StringUtil {
    * @param upper 모든 키를 대문자로 변환
    * @param box 결과를 박스로 감싸기
 >>>>>>> master
+=======
+   * @param upper Upper-case all keys
+   * @param box Box results
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param border_top TODO
    * @param border_bottom TODO
    * @param recursive TODO
@@ -305,10 +329,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns the given string repeated the given # of times
 =======
    * 주어진 문자열을 주어진 횟수만큼 반복하여 반환합니다.
 >>>>>>> master
+=======
+   * Returns the given string repeated the given # of times
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param str
    * @param size
@@ -336,11 +364,16 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Make a box around some text. If str has multiple lines, then the box will be the length of the
    * longest string.
 =======
    * 텍스트 주위에 박스를 만듭니다. str이 여러 줄인 경우 박스는 가장 긴 문자열의 길이가 됩니다.
 >>>>>>> master
+=======
+   * Make a box around some text. If str has multiple lines, then the box will be the length of the
+   * longest string.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param str
    * @return
@@ -351,10 +384,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Create a box around some text
 =======
    * 텍스트 주위에 박스를 생성합니다.
 >>>>>>> master
+=======
+   * Create a box around some text
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param str
    * @param mark
@@ -390,10 +427,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Converts a string to title case (ala Python)
 =======
    * 문자열을 제목 케이스로 변환합니다 (Python 스타일).
 >>>>>>> master
+=======
+   * Converts a string to title case (ala Python)
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param string
    * @return
@@ -404,16 +445,22 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * Converts a string to title case (ala Python)
    *
    * @param string
    * @param keep_upper If true, then any non-first character that is uppercase stays uppercase
+<<<<<<< HEAD
 =======
    * 문자열을 제목 케이스로 변환합니다 (Python 스타일).
    *
    * @param string
    * @param keep_upper true인 경우 첫 번째 문자가 아닌 대문자는 그대로 유지됩니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @return
    */
   public static String title(String string, boolean keep_upper) {
@@ -440,10 +487,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Python join()
 =======
    * Python join() 메서드와 유사한 기능입니다.
 >>>>>>> master
+=======
+   * Python join()
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param <T>
    * @param delimiter
@@ -456,22 +507,32 @@ public abstract class StringUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /**
    * Wrap the given string with the control characters to make the text appear bold in the console
    */
 =======
   /** 콘솔에서 텍스트가 굵게 표시되도록 제어 문자로 주어진 문자열을 감쌉니다. */
 >>>>>>> master
+=======
+  /**
+   * Wrap the given string with the control characters to make the text appear bold in the console
+   */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static String bold(String str) {
     return (SET_BOLD_TEXT + str + SET_PLAIN_TEXT);
   }
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Python join()
 =======
    * Python join() 메서드와 유사한 기능입니다.
 >>>>>>> master
+=======
+   * Python join()
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param delimiter
    * @param items
@@ -483,10 +544,14 @@ public abstract class StringUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Python join() with optional prefix
 =======
    * 선택적 접두사가 있는 Python join() 메서드와 유사한 기능입니다.
 >>>>>>> master
+=======
+   * Python join() with optional prefix
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param prefix
    * @param delimiter

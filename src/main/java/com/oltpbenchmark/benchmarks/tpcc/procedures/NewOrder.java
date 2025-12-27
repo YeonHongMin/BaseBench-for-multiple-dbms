@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
  * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
  * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
@@ -23,7 +26,10 @@
  * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다.
  * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -176,10 +182,14 @@ public class NewOrder extends TPCCProcedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // we need to cause 1% of the new orders to be rolled back.
 =======
     // 신규 주문 중 1%는 롤백되도록 설정해야 합니다.
 >>>>>>> master
+=======
+    // 신규 주문 중 1%는 롤백되도록 설정해야 합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (TPCCUtil.randomNumber(1, 100, gen) == 1) {
       itemIDs[numItems - 1] = TPCCConfig.INVALID_ITEM_ID;
     }
@@ -230,10 +240,14 @@ public class NewOrder extends TPCCProcedure {
         int ol_quantity = orderQuantities[ol_number - 1];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // this may occasionally error and that's ok!
 =======
         // 드물게 오류가 발생할 수 있으며 이는 허용됩니다.
 >>>>>>> master
+=======
+        // 드물게 오류가 발생할 수 있으며 이는 허용됩니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         float i_price = getItemPrice(conn, ol_i_id);
 
         float ol_amount = ol_quantity * i_price;
@@ -332,10 +346,14 @@ public class NewOrder extends TPCCProcedure {
       try (ResultSet rs = stmtGetItem.executeQuery()) {
         if (!rs.next()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           // This is (hopefully) an expected error: this is an expected new order rollback
 =======
           // (예상대로) 새로운 주문 롤백으로 인한 오류일 수 있습니다.
 >>>>>>> master
+=======
+          // (예상대로) 새로운 주문 롤백으로 인한 오류일 수 있습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           throw new UserAbortException(
               "EXPECTED new order rollback: I_ID=" + ol_i_id + " not found!");
         }

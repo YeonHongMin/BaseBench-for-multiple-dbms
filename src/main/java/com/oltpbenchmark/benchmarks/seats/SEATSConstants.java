@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -36,10 +42,14 @@ public abstract class SEATSConstants {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // STORED PROCEDURE EXECUTION FREQUENCIES (0% - 100%)
 =======
   // 저장 프로시저 실행 빈도 (0% - 100%)
 >>>>>>> master
+=======
+  // STORED PROCEDURE EXECUTION FREQUENCIES (0% - 100%)
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------
 
   public static final int FREQUENCY_DELETE_RESERVATION = 10;
@@ -51,6 +61,9 @@ public abstract class SEATSConstants {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // FLIGHT CONSTANTS
   // ----------------------------------------------------------------
 
@@ -64,6 +77,7 @@ public abstract class SEATSConstants {
   public static final int[] DISTANCES = {5, 10, 25, 50, 100};
 
   /** The number of days in the past and future that we will generate flight information for */
+<<<<<<< HEAD
 =======
   // 항공편 상수
   // ----------------------------------------------------------------
@@ -76,16 +90,22 @@ public abstract class SEATSConstants {
 
   /** 항공편 정보를 생성할 과거 및 미래 일수 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final int FLIGHTS_DAYS_PAST = 1;
 
   public static final int FLIGHTS_DAYS_FUTURE = 50;
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Average # of flights per day NUM_FLIGHTS_PER_DAY = 15000 Source:
 =======
    * 일일 평균 항공편 수 NUM_FLIGHTS_PER_DAY = 15000 출처:
 >>>>>>> master
+=======
+   * Average # of flights per day NUM_FLIGHTS_PER_DAY = 15000 Source:
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
    */
   public static final int FLIGHTS_PER_DAY_MIN = 1125;
@@ -93,6 +113,9 @@ public abstract class SEATSConstants {
   public static final int FLIGHTS_PER_DAY_MAX = 1875;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * Number of seats available per flight If you change this then you must also change FindOpenSeats
    */
@@ -112,6 +135,7 @@ public abstract class SEATSConstants {
   public static final int CUSTOMERS_COUNT = 100000;
 
   /** Max Number of FREQUENT_FLYER records per CUSTOMER */
+<<<<<<< HEAD
 =======
   /** 항공편당 사용 가능한 좌석 수 이 값을 변경하면 FindOpenSeats도 변경해야 합니다. */
   public static final int FLIGHTS_NUM_SEATS = 150;
@@ -131,29 +155,41 @@ public abstract class SEATSConstants {
 
   /** CUSTOMER당 FREQUENT_FLYER 레코드의 최대 수 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final int CUSTOMER_NUM_FREQUENTFLYERS_MIN = 0;
 
   public static final int CUSTOMER_NUM_FREQUENTFLYERS_MAX = 10;
   public static final double CUSTOMER_NUM_FREQUENTFLYERS_SIGMA = 2.0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * The maximum number of days that we allow a customer to wait before needing a reservation on a
    * return to their original departure airport
    */
+<<<<<<< HEAD
 =======
   /** 고객이 원래 출발 공항으로 돌아오기 위해 예약이 필요하기 전에 대기할 수 있는 최대 일수 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final int CUSTOMER_RETURN_FLIGHT_DAYS_MIN = 1;
 
   public static final int CUSTOMER_RETURN_FLIGHT_DAYS_MAX = 14;
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // RESERVATION CONSTANTS
 =======
   // 예약 상수
 >>>>>>> master
+=======
+  // RESERVATION CONSTANTS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // ----------------------------------------------------------------
 
   public static final int RESERVATION_PRICE_MIN = 100;
@@ -163,6 +199,9 @@ public abstract class SEATSConstants {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // PROBABILITIES
   // ----------------------------------------------------------------
 
@@ -226,6 +265,7 @@ public abstract class SEATSConstants {
   // ----------------------------------------------------------------
 
   /** The number of FlightIds we want to keep cached locally at a client */
+<<<<<<< HEAD
 =======
   // 확률
   // ----------------------------------------------------------------
@@ -282,6 +322,8 @@ public abstract class SEATSConstants {
 
   /** 클라이언트에서 로컬로 캐시하려는 FlightIds 수 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final int CACHE_LIMIT_FLIGHT_IDS = 10000;
 
   public static final int CACHE_LIMIT_PENDING_INSERTS = 10000;
@@ -290,16 +332,22 @@ public abstract class SEATSConstants {
 
   // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // DATA SET INFORMATION
   // ----------------------------------------------------------------
 
   /** Table Names */
+<<<<<<< HEAD
 =======
   // 데이터 세트 정보
   // ----------------------------------------------------------------
 
   /** 테이블 이름 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String TABLENAME_COUNTRY = "country";
 
   public static final String TABLENAME_AIRLINE = "airline";
@@ -314,19 +362,27 @@ public abstract class SEATSConstants {
   public static final String TABLENAME_CONFIG_HISTOGRAMS = "config_histograms";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Histogram Data Set Names */
 =======
   /** 히스토그램 데이터 세트 이름 */
 >>>>>>> master
+=======
+  /** Histogram Data Set Names */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String HISTOGRAM_FLIGHTS_PER_AIRPORT = "flights_per_airport";
 
   public static final String HISTOGRAM_FLIGHTS_PER_DEPART_TIMES = "flights_per_time";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Tables that are loaded from data files */
 =======
   /** 데이터 파일에서 로드되는 테이블 */
 >>>>>>> master
+=======
+  /** Tables that are loaded from data files */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String[] TABLES_DATAFILES = {
     SEATSConstants.TABLENAME_COUNTRY,
     SEATSConstants.TABLENAME_AIRPORT,
@@ -334,10 +390,14 @@ public abstract class SEATSConstants {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Tables generated from random data IMPORTANT: FLIGHT must come before FREQUENT_FLYER */
 =======
   /** 무작위 데이터에서 생성된 테이블 중요: FLIGHT는 FREQUENT_FLYER보다 먼저 와야 합니다. */
 >>>>>>> master
+=======
+  /** Tables generated from random data IMPORTANT: FLIGHT must come before FREQUENT_FLYER */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String[] TABLES_SCALING = {
     SEATSConstants.TABLENAME_CUSTOMER,
     SEATSConstants.TABLENAME_AIRPORT_DISTANCE,
@@ -347,33 +407,47 @@ public abstract class SEATSConstants {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Configuration Tables */
 =======
   /** 구성 테이블 */
 >>>>>>> master
+=======
+  /** Configuration Tables */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String[] TABLES_CONFIG = {
     SEATSConstants.TABLENAME_CONFIG_PROFILE, SEATSConstants.TABLENAME_CONFIG_HISTOGRAMS,
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Histograms generated from data files */
 =======
   /** 데이터 파일에서 생성된 히스토그램 */
 >>>>>>> master
+=======
+  /** Histograms generated from data files */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final String[] HISTOGRAM_DATA_FILES = {
     SEATSConstants.HISTOGRAM_FLIGHTS_PER_AIRPORT, SEATSConstants.HISTOGRAM_FLIGHTS_PER_DEPART_TIMES,
   };
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * Tuple Code to Tuple Id Mapping For some tables, we want to store a unique code that can be used
    * to map to the id of a tuple. Any table that has a foreign key reference to this table will use
    * the unique code in the input data tables instead of the id. Thus, we need to keep a table of
    * how to map these codes to the ids when loading.
+<<<<<<< HEAD
 =======
    * 튜플 코드를 튜플 ID로 매핑 일부 테이블의 경우 튜플의 ID에 매핑하는 데 사용할 수 있는 고유 코드를 저장하려고 합니다. 이 테이블에 대한 외래 키 참조가 있는 모든
    * 테이블은 ID 대신 입력 데이터 테이블의 고유 코드를 사용합니다. 따라서 로드할 때 이러한 코드를 ID에 매핑하는 방법을 저장하는 테이블이 필요합니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   public static final String AIRPORT_ID = "ap_id";
 

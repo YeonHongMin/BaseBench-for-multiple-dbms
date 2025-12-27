@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2016 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2016 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.noop;
@@ -68,10 +74,14 @@ public class TestNoOpWorkerWithSessionSetupFile extends AbstractTestWorker<NoOpB
   @Test
   public void testSessionSetupFile() throws Exception {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Check that there is no session setup file assigned to the worker's config
 =======
     // 워커의 설정에 세션 설정 파일이 할당되었는지 확인합니다
 >>>>>>> master
+=======
+    // Check that there is no session setup file assigned to the worker's config
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     assertNotNull("Session setup file should not be null", this.workConf.getSessionSetupFile());
 
     List<Worker<? extends BenchmarkModule>> workers = this.benchmark.makeWorkers();
@@ -81,10 +91,14 @@ public class TestNoOpWorkerWithSessionSetupFile extends AbstractTestWorker<NoOpB
         worker.getWorkloadConfiguration().getSessionSetupFile());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure there are no rows in the table
 =======
     // 테이블에 행이 있는지 확인합니다
 >>>>>>> master
+=======
+    // Make sure there are no rows in the table
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.testExecuteWork();
 
     Table catalog_tbl = this.catalog.getTable("FAKE2");

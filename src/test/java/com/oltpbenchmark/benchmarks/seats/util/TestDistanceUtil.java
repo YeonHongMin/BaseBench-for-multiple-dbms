@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.seats.util;
@@ -37,16 +43,22 @@ import org.junit.Test;
 public class TestDistanceUtil {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testDistance */
   @Test
   public void testDistance() throws Exception {
     // { latitude, longitude }
+<<<<<<< HEAD
 =======
   /** 거리 테스트 */
   @Test
   public void testDistance() throws Exception {
     // { 위도, 경도 }
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double[][] locations = {
       {39.175278, -76.668333}, // Baltimore-Washington, USA (BWI)
       {-22.808889, -43.243611}, // Rio de Janeiro, Brazil (GIG)
@@ -54,10 +66,14 @@ public class TestDistanceUtil {
       {-33.946111, 151.177222}, // Syndey, Austrailia (SYD)
     };
 <<<<<<< HEAD
+<<<<<<< HEAD
     // expected distance in miles
 =======
     // 마일 단위 예상 거리
 >>>>>>> master
+=======
+    // expected distance in miles
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double[] expected = {
       4796, // BWI->GIG
       183, // BWI->JFK

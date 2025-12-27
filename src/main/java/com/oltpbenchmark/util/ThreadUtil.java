@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -40,6 +46,9 @@
  *  http://hstore.cs.brown.edu/
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Permission is hereby granted, free of charge, to any person obtaining
  *  a copy of this software and associated documentation files (the
  *  "Software"), to deal in the Software without restriction, including
@@ -58,6 +67,7 @@
  *  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  *  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  *  OTHER DEALINGS IN THE SOFTWARE.
+<<<<<<< HEAD
 =======
  *  본 소프트웨어 및 관련 문서 파일(이하 "소프트웨어")의 사본을 취득한 모든 사람에게
  *  무료로 사용, 복사, 수정, 병합, 출판, 배포, 서브라이선스 및/또는 판매할 수 있는 권한을 부여하며,
@@ -73,6 +83,8 @@
  *  기타의 경우에 있어 소프트웨어 또는 소프트웨어의 사용 또는 기타 거래로 인해
  *  발생하는 청구, 손해 또는 기타 책임에 대해 책임을 지지 않습니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.util;
 
@@ -92,6 +104,7 @@ public abstract class ThreadUtil {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * For a given list of threads, execute them all (up to max_concurrent at a time) and return once
    * they have completed. If max_concurrent is null, then all threads will be fired off at the same
    * time
@@ -99,6 +112,11 @@ public abstract class ThreadUtil {
    * 주어진 스레드 목록에 대해 모두 실행(한 번에 최대 max_concurrent까지)하고 완료되면 반환합니다. max_concurrent가 null인 경우 모든 스레드가
    * 동시에 시작됩니다.
 >>>>>>> master
+=======
+   * For a given list of threads, execute them all (up to max_concurrent at a time) and return once
+   * they have completed. If max_concurrent is null, then all threads will be fired off at the same
+   * time
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param loaderThreads
    * @param maxConcurrent

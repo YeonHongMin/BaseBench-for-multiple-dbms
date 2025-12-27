@@ -23,10 +23,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.immutables.value.Value;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /** Generic database monitor that consolidates functionality used across DBMS. */
 =======
 /** DBMS 전반에서 사용하는 기능을 통합한 일반적인 데이터베이스 모니터입니다. */
 >>>>>>> master
+=======
+/** DBMS 전반에서 사용하는 기능을 통합한 일반적인 데이터베이스 모니터입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public abstract class DatabaseMonitor extends Monitor {
   protected enum DatabaseState {
     READY,
@@ -40,10 +44,14 @@ public abstract class DatabaseMonitor extends Monitor {
   protected final String REP_QUERY_EVENT_CSV = "repeated_query_event";
   protected final String REP_SYSTEM_EVENT_CSV = "system_query_event";
 <<<<<<< HEAD
+<<<<<<< HEAD
   protected final int FILE_FLUSH_COUNT = 1000; // flush writes to the metrics files every 1000 ms
 =======
   protected final int FILE_FLUSH_COUNT = 1000; // 1000ms마다 메트릭 파일에 기록을 플러시합니다.
 >>>>>>> master
+=======
+  protected final int FILE_FLUSH_COUNT = 1000; // 1000ms마다 메트릭 파일에 기록을 플러시합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
   protected DatabaseState currentState = DatabaseState.INVALID;
   protected int ticks = 1;
@@ -56,11 +64,15 @@ public abstract class DatabaseMonitor extends Monitor {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Builds the connection to the DBMS using the same connection details as the benchmarking
    * environment.
 =======
    * 벤치마크 환경과 동일한 연결 정보로 DBMS에 접속합니다.
 >>>>>>> master
+=======
+   * 벤치마크 환경과 동일한 연결 정보로 DBMS에 접속합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param conf
    * @return
@@ -93,10 +105,14 @@ public abstract class DatabaseMonitor extends Monitor {
     FileUtil.makeDirIfNotExists(OUTPUT_DIR);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Initialize event lists.
 =======
     // 이벤트 기록용 리스트를 초기화합니다.
 >>>>>>> master
+=======
+    // 이벤트 기록용 리스트를 초기화합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.singleQueryEvents = new ArrayList<>();
     this.repeatedQueryEvents = new ArrayList<>();
     this.repeatedSystemEvents = new ArrayList<>();
@@ -226,16 +242,22 @@ public abstract class DatabaseMonitor extends Monitor {
   public interface SingleQueryEvent {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /** A string that identifies the query. */
     String getQueryId();
 
     /** Mapping of observed properties to their corresponding values. */
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     /** 쿼리를 식별하는 문자열입니다. */
     String getQueryId();
 
     /** 관측한 속성과 그 값의 매핑입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, String> getPropertyValues();
   }
 
@@ -243,6 +265,7 @@ public abstract class DatabaseMonitor extends Monitor {
   public interface RepeatedQueryEvent {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /** A string that identifies the query. */
     String getQueryId();
 
@@ -251,6 +274,8 @@ public abstract class DatabaseMonitor extends Monitor {
 
     /** Mapping of observed properties to their corresponding values. */
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     /** 쿼리를 식별하는 문자열입니다. */
     String getQueryId();
 
@@ -258,7 +283,10 @@ public abstract class DatabaseMonitor extends Monitor {
     Instant getInstant();
 
     /** 관측한 속성과 그 값의 매핑입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, String> getPropertyValues();
   }
 
@@ -266,21 +294,28 @@ public abstract class DatabaseMonitor extends Monitor {
   public interface RepeatedSystemEvent {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /** The timestamp at which this event was observed. */
     Instant getInstant();
 
     /** Mapping of observed properties to their corresponding values. */
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     /** 이 시스템 이벤트가 관측된 시점의 타임스탬프입니다. */
     Instant getInstant();
 
     /** 관측한 속성과 그 값의 매핑입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, String> getPropertyValues();
   }
 
   protected abstract String getCleanupStmt();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   /** Execute the extraction of desired query and performance metrics. */
   protected abstract void runExtraction();
@@ -293,6 +328,8 @@ public abstract class DatabaseMonitor extends Monitor {
    * every ~10mins by default). After execution has finished, consolidate logs and clean up cache
    * again.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** 원하는 쿼리 및 성능 지표의 추출을 실행합니다. */
   protected abstract void runExtraction();
 
@@ -302,7 +339,10 @@ public abstract class DatabaseMonitor extends Monitor {
   /**
    * 모니터를 실행합니다. 캐시를 정리하고 초기 추출을 수행한 뒤 주기(interval)만큼 대기합니다. 각 주기마다 메트릭을 추출하고, 필요 시 파일에 기록한 뒤 실행이
    * 끝나면 로그를 모으고 캐시를 다시 정리합니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   @Override
   public void run() {
@@ -310,28 +350,40 @@ public abstract class DatabaseMonitor extends Monitor {
 
     LOG.info("Starting Monitor Interval [{}ms]", interval);
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure we record one event during setup.
 =======
     // 초기 설정 동안 최소한 하나의 이벤트는 기록되도록 합니다.
 >>>>>>> master
+=======
+    // 초기 설정 동안 최소한 하나의 이벤트는 기록되도록 합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (this.conn != null) {
       cleanupCache();
       runExtraction();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Periodically extract sys table stats.
 =======
     // 주기적으로 시스템 테이블 통계를 수집합니다.
 >>>>>>> master
+=======
+    // 주기적으로 시스템 테이블 통계를 수집합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     while (!Thread.currentThread().isInterrupted()) {
       try {
         Thread.sleep(interval);
       } catch (InterruptedException ex) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Restore interrupt flag.
 =======
         // 인터럽트 플래그를 복원합니다.
 >>>>>>> master
+=======
+        // 인터럽트 플래그를 복원합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         Thread.currentThread().interrupt();
       }
       if (this.conn != null) {
@@ -351,10 +403,14 @@ public abstract class DatabaseMonitor extends Monitor {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Called at the end of the test to do any clean up that may be required. */
 =======
   /** 테스트 종료 시 필요한 정리 작업을 수행합니다. */
 >>>>>>> master
+=======
+  /** 테스트 종료 시 필요한 정리 작업을 수행합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Override
   public void tearDown() {
     if (this.conn != null) {

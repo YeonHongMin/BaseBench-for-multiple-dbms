@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
  * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
  * 라이선스 사본은 다음에서 얻을 수 있습니다:
@@ -24,7 +27,10 @@
  * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
  * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
  * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -66,10 +72,14 @@ public class DistributionStatistics {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Computes distribution statistics over values. WARNING: This will sort values. */
 =======
   /** 값에 대한 분포 통계를 계산합니다. 경고: 값들을 정렬합니다. */
 >>>>>>> master
+=======
+  /** 값에 대한 분포 통계를 계산합니다. 경고: 값들을 정렬합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static DistributionStatistics computeStatistics(int[] valuesAsMicroseconds) {
     if (valuesAsMicroseconds.length == 0) {
       long[] percentiles = new long[PERCENTILES.length];
@@ -96,12 +106,17 @@ public class DistributionStatistics {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // NOTE: NIST recommends interpolating. This just selects the closest
     // value, which is described as another common technique.
 =======
     // 참고: NIST는 보간을 권장합니다. 이것은 가장 가까운 값을 선택하는 것으로,
     // 다른 일반적인 기법으로 설명됩니다.
 >>>>>>> master
+=======
+    // 참고: NIST는 보간을 권장합니다. 이것은 가장 가까운 값을 선택하는 것으로,
+    // 다른 일반적인 기법으로 설명됩니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // http://www.itl.nist.gov/div898/handbook/prc/section2/prc252.htm
     long[] percentiles = new long[PERCENTILES.length];
     for (int i = 0; i < percentiles.length; ++i) {

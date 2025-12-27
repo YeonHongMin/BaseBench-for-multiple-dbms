@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark.util;
@@ -53,10 +59,13 @@ import org.junit.Test;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
  * UserId 생성기 테스트 클래스입니다.
  *
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * @author pavlo
  */
 public class TestUserIdGenerator {
@@ -84,20 +93,28 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testCheckClient */
 =======
   /** 클라이언트 확인 테스트 */
 >>>>>>> master
+=======
+  /** testCheckClient */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCheckClient() throws Exception {
     int num_clients = 10;
     UserIdGenerator generator;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Create a mapping from each Client Id -> UserIds
 =======
     // 각 클라이언트 ID -> UserIds의 매핑을 생성합니다
 >>>>>>> master
+=======
+    // Create a mapping from each Client Id -> UserIds
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<Integer, Collection<UserId>> clientIds = new HashMap<>();
     Map<Integer, UserIdGenerator> clientGenerators = new HashMap<>();
     for (int client = 0; client < num_clients; client++) {
@@ -110,12 +127,17 @@ public class TestUserIdGenerator {
     } // FOR
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Then loop back through all of the User Ids and make sure that each UserId
     // is mappable to the expected client
 =======
     // 그런 다음 모든 User ID를 다시 반복하여 각 UserId가
     // 예상된 클라이언트에 매핑 가능한지 확인합니다
 >>>>>>> master
+=======
+    // Then loop back through all of the User Ids and make sure that each UserId
+    // is mappable to the expected client
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     generator = new UserIdGenerator(users_per_item_count, num_clients);
     int ctr = 0;
     for (UserId user_id : CollectionUtil.iterable(generator)) {
@@ -134,10 +156,14 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSeekToPosition */
 =======
   /** 위치로 이동 테스트 */
 >>>>>>> master
+=======
+  /** testSeekToPosition */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSeekToPosition() throws Exception {
     UserIdGenerator generator = new UserIdGenerator(users_per_item_count, 1);
@@ -168,10 +194,14 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSeekToPositionSameUserId */
 =======
   /** 클라이언트 ID로 위치 이동 테스트 */
 >>>>>>> master
+=======
+  /** testSeekToPositionSameUserId */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSeekToPositionClientId() throws Exception {
     int num_clients = 10;
@@ -191,20 +221,27 @@ public class TestUserIdGenerator {
       generator = new UserIdGenerator(users_per_item_count, num_clients, client);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // Randomly jump around and make sure that we get the same UserId per position
       for (int i = 0; i < NUM_USERS; i++) {
         // This could be null because there were no more UserIds for this
         // client beyond the given position
+<<<<<<< HEAD
 =======
       // 무작위로 이동하여 위치당 동일한 UserId를 얻는지 확인합니다
       for (int i = 0; i < NUM_USERS; i++) {
         // 주어진 위치를 넘어서 이 클라이언트에 대한 UserId가 더 이상 없을 수 있으므로
         // null일 수 있습니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         int position = rand.nextInt(num_users);
         UserId user_id = generator.seekToPosition(position);
         if (user_id == null) continue;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         // We have to go back and get our position since we used a client id,
         // which means that the generator could skip ahead even more
@@ -212,6 +249,10 @@ public class TestUserIdGenerator {
         // 클라이언트 ID를 사용했으므로 생성기가 더 앞으로 건너뛸 수 있으므로
         // 다시 돌아가서 위치를 가져와야 합니다
 >>>>>>> master
+=======
+        // We have to go back and get our position since we used a client id,
+        // which means that the generator could skip ahead even more
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         position = generator.getCurrentPosition();
         UserId expected = expectedIds.get(position);
         assertNotNull(expected);
@@ -222,10 +263,14 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testAllUsers */
 =======
   /** 모든 사용자 테스트 */
 >>>>>>> master
+=======
+  /** testAllUsers */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testAllUsers() throws Exception {
     UserIdGenerator generator = new UserIdGenerator(users_per_item_count, NUM_CLIENTS);
@@ -241,10 +286,14 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testPerClient */
 =======
   /** 클라이언트별 테스트 */
 >>>>>>> master
+=======
+  /** testPerClient */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testPerClient() throws Exception {
     Histogram<Integer> clients_h = new Histogram<Integer>();
@@ -267,10 +316,14 @@ public class TestUserIdGenerator {
     assertEquals(NUM_USERS, all_seen.size());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Make sure that they all have the same number of UserIds
 =======
     // 모두 동일한 수의 UserId를 가지고 있는지 확인합니다
 >>>>>>> master
+=======
+    // Make sure that they all have the same number of UserIds
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Integer last_cnt = null;
     for (Integer client : clients_h.values()) {
       if (last_cnt != null) {
@@ -282,11 +335,15 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testSingleClient */
   @Test
   public void testSingleClient() throws Exception {
     // First create a UserIdGenerator for all clients and get
     // the set of all the UserIds that we expect
+<<<<<<< HEAD
 =======
   /** 단일 클라이언트 테스트 */
   @Test
@@ -294,6 +351,8 @@ public class TestUserIdGenerator {
     // 먼저 모든 클라이언트에 대한 UserIdGenerator를 생성하고
     // 예상되는 모든 UserId 집합을 가져옵니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     UserIdGenerator generator = new UserIdGenerator(users_per_item_count, 1);
     Set<UserId> expected = new HashSet<UserId>();
     for (UserId u_id : CollectionUtil.iterable(generator)) {
@@ -303,12 +362,17 @@ public class TestUserIdGenerator {
     } // FOR
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Now create a new generator that only has one client. That means that we should
     // get back all the same UserIds
 =======
     // 이제 클라이언트가 하나만 있는 새로운 생성기를 만듭니다. 즉,
     // 동일한 모든 UserId를 다시 받아야 합니다
 >>>>>>> master
+=======
+    // Now create a new generator that only has one client. That means that we should
+    // get back all the same UserIds
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Set<UserId> actual = new HashSet<UserId>();
     generator = new UserIdGenerator(users_per_item_count, 1, 0);
     for (UserId u_id : CollectionUtil.iterable(generator)) {
@@ -321,11 +385,15 @@ public class TestUserIdGenerator {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testSetCurrentSize */
   @Test
   public void testSetCurrentSize() throws Exception {
     // First create a UserIdGenerator for a random ClientId and populate
     // the set of all the UserIds that we expect for this client
+<<<<<<< HEAD
 =======
   /** 현재 크기 설정 테스트 */
   @Test
@@ -333,6 +401,8 @@ public class TestUserIdGenerator {
     // 먼저 무작위 ClientId에 대한 UserIdGenerator를 생성하고
     // 이 클라이언트에 대해 예상되는 모든 UserId 집합을 채웁니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Random rand = new Random();
     int client = rand.nextInt(NUM_CLIENTS);
     UserIdGenerator generator = new UserIdGenerator(users_per_item_count, NUM_CLIENTS, client);
@@ -344,12 +414,17 @@ public class TestUserIdGenerator {
     } // FOR
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Now make sure that we always get back the same UserIds regardless of where
     // we jump around with using setCurrentSize()
 =======
     // 이제 setCurrentSize()를 사용하여 어디로 이동하든 항상 동일한 UserId를
     // 다시 받는지 확인합니다
 >>>>>>> master
+=======
+    // Now make sure that we always get back the same UserIds regardless of where
+    // we jump around with using setCurrentSize()
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (int i = 0; i < 10; i++) {
       int size = rand.nextInt((int) (users_per_item_count.getMaxValue() + 1));
       generator.setCurrentItemCount(size);

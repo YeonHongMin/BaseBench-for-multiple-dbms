@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,15 +29,21 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *   TPC-H implementation
 =======
  *   TPC-H 구현
 >>>>>>> master
+=======
+ *   TPC-H implementation
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  *   Ben Reilly (bd.reilly@gmail.com)
  *   Ippokratis Pandis (ipandis@us.ibm.com)
@@ -70,10 +80,14 @@ public final class TPCHBenchmark extends BenchmarkModule {
 
     int numTerminals = workConf.getTerminals();
 <<<<<<< HEAD
+<<<<<<< HEAD
     LOG.info(String.format("Creating %d workers for TPC-H", numTerminals));
 =======
     LOG.info(String.format("TPC-H를 위한 %d개의 워커 생성", numTerminals));
 >>>>>>> master
+=======
+    LOG.info(String.format("Creating %d workers for TPC-H", numTerminals));
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (int i = 0; i < numTerminals; i++) {
       workers.add(new TPCHWorker(this, i));
     }

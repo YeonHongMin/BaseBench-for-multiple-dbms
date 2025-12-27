@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -46,10 +52,14 @@ public class NewComment extends Procedure {
 
   // -----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
   // STATEMENTS
 =======
   // 문장
 >>>>>>> master
+=======
+  // STATEMENTS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // -----------------------------------------------------------------
 
   public final SQLStmt getItemComments =
@@ -104,10 +114,14 @@ public class NewComment extends Procedure {
     final Timestamp currentTime = AuctionMarkUtil.getProcTimestamp(benchmarkTimes);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Set comment_id
 =======
     // comment_id 설정
 >>>>>>> master
+=======
+    // Set comment_id
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     long ic_id = 0;
     try (PreparedStatement stmt =
         this.getPreparedStatement(conn, getItemComments, item_id, seller_id)) {
@@ -155,10 +169,14 @@ public class NewComment extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Return new ic_id
 =======
     // 새로운 ic_id 반환
 >>>>>>> master
+=======
+    // Return new ic_id
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     return new Object[] {ic_id, item_id, seller_id};
   }
 }

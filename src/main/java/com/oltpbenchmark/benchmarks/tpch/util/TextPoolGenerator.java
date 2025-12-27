@@ -2,6 +2,9 @@
  * Copyright 2020 Trino
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -113,12 +119,17 @@ public class TextPoolGenerator {
           break;
         case 'T':
 <<<<<<< HEAD
+<<<<<<< HEAD
           // trim trailing space
           // terminators should abut previous word
 =======
           // 후행 공백 제거
           // 종결자는 이전 단어에 인접해야 합니다.
 >>>>>>> master
+=======
+          // trim trailing space
+          // terminators should abut previous word
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           builder.setLength(builder.length() - 1);
           String terminator = terminators.randomValue(random);
           builder.append(terminator);
@@ -136,10 +147,14 @@ public class TextPoolGenerator {
     int index = verbPhrases.getRandomIndex(random);
     for (char token : verbPhrases.getTokens(index)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // pick a random word
 =======
       // 무작위 단어 선택
 >>>>>>> master
+=======
+      // pick a random word
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       switch (token) {
         case 'D':
           builder.append(adverbs.randomValue(random));
@@ -155,16 +170,22 @@ public class TextPoolGenerator {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // string may end with a comma or such
       builder.append(nounPhrases.getBonusText(index));
 
       // add a space
+<<<<<<< HEAD
 =======
       // 문자열은 쉼표 등으로 끝날 수 있습니다.
       builder.append(nounPhrases.getBonusText(index));
 
       // 공백 추가
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       builder.append(" ");
     }
   }
@@ -173,10 +194,14 @@ public class TextPoolGenerator {
     int index = nounPhrases.getRandomIndex(random);
     for (char token : nounPhrases.getTokens(index)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // pick a random word
 =======
       // 무작위 단어 선택
 >>>>>>> master
+=======
+      // pick a random word
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       switch (token) {
         case 'A':
           builder.append(articles.randomValue(random));
@@ -195,16 +220,22 @@ public class TextPoolGenerator {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // string may end with a comma or such
       builder.append(nounPhrases.getBonusText(index));
 
       // add a space
+<<<<<<< HEAD
 =======
       // 문자열은 쉼표 등으로 끝날 수 있습니다.
       builder.append(nounPhrases.getBonusText(index));
 
       // 공백 추가
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       builder.append(" ");
     }
   }

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +18,8 @@
  */
 
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -32,7 +35,10 @@
  * 라이선스의 본문을 참조하십시오.
  *
  */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.api.collectors;
 
 import com.oltpbenchmark.util.JSONUtil;
@@ -59,10 +65,14 @@ public class PostgresCollector extends DBCollector {
       try (Statement s = conn.createStatement()) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Collect DBMS version
 =======
         // DBMS 踰꾩쟾???섏쭛?⑸땲??
 >>>>>>> master
+=======
+        // DBMS 踰꾩쟾???섏쭛?⑸땲??
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         try (ResultSet out = s.executeQuery(VERSION_SQL)) {
           if (out.next()) {
             this.version = out.getString(1);
@@ -70,10 +80,14 @@ public class PostgresCollector extends DBCollector {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Collect DBMS parameters
 =======
         // DBMS ?뚮씪誘명꽣瑜??섏쭛?⑸땲??
 >>>>>>> master
+=======
+        // DBMS ?뚮씪誘명꽣瑜??섏쭛?⑸땲??
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         try (ResultSet out = s.executeQuery(PARAMETERS_SQL)) {
           while (out.next()) {
             dbParameters.put(out.getString("name"), out.getString("setting"));
@@ -81,10 +95,14 @@ public class PostgresCollector extends DBCollector {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Collect DBMS internal metrics
 =======
         // DBMS ?대? 硫뷀듃由?쓣 ?섏쭛?⑸땲??
 >>>>>>> master
+=======
+        // DBMS ?대? 硫뷀듃由?쓣 ?섏쭛?⑸땲??
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         for (String viewName : PG_STAT_VIEWS) {
           try (ResultSet out = s.executeQuery("SELECT * FROM " + viewName)) {
             pgMetrics.put(viewName, getMetrics(out));

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -31,6 +47,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with VoltDB.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
 =======
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
@@ -62,12 +79,15 @@
  * GNU 일반 공중 사용 허가서의 사본은 VoltDB와 함께 제공되어야 합니다.
  * 그렇지 않은 경우, <http://www.gnu.org/licenses/>를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.util;
 
 import java.util.Objects;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /**
  * Class representing a pair of generic-ized types. Supports equality, hashing and all that other
@@ -76,6 +96,9 @@ import java.util.Objects;
 =======
 /** 제네릭 타입 두 개를 하나의 쌍으로 표현합니다. 동등성, 해시 코드를 지원하며, C++ STL의 pair를 기반으로 합니다. */
 >>>>>>> master
+=======
+/** 제네릭 타입 두 개를 하나의 쌍으로 표현합니다. 동등성, 해시 코드를 지원하며, C++ STL의 pair를 기반으로 합니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class Pair<T, U> implements Comparable<Pair<T, U>> {
 
   public final T first;
@@ -128,10 +151,14 @@ public class Pair<T, U> implements Comparable<Pair<T, U>> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Convenience class method for constructing pairs using Java's generic type inference. */
 =======
   /** Java의 제네릭 타입 추론을 이용해 Pair를 생성하는 편의 메서드입니다. */
 >>>>>>> master
+=======
+  /** Java의 제네릭 타입 추론을 이용해 Pair를 생성하는 편의 메서드입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static <T, U> Pair<T, U> of(T x, U y) {
     return new Pair<>(x, y);
   }

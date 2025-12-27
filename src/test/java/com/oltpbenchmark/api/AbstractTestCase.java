@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -65,13 +71,19 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
   // -----------------------------------------------------------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * This is the database type that we will use in our unit tests. This should always be one of the
    * embedded java databases
    */
+<<<<<<< HEAD
 =======
   /** 단위 테스트에서 사용할 데이터베이스 타입입니다. 항상 임베디드 Java 데이터베이스 중 하나여야 합니다. */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private static final DatabaseType DB_TYPE = DatabaseType.HSQLDB;
 
   // -----------------------------------------------------------------
@@ -174,15 +186,21 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
     assertNotNull(this.benchmark);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // HACK: calling this a second time is a cheap no-op for most benchmark
     // tests, but actually ensures that the procedures list is populated
     // for the TestTemplatedWorker test which doesn't know its procedures
     // until after the benchmark is initialized and the config is loaded.
+<<<<<<< HEAD
 =======
     // HACK: 대부분의 벤치마크 테스트에서는 두 번째로 호출하는 것이 저렴한 no-op이지만,
     // 실제로는 벤치마크가 초기화되고 설정이 로드된 후에야 프로시저를 알 수 있는
     // TestTemplatedWorker 테스트를 위해 프로시저 목록이 채워지도록 보장합니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     var proceedures = this.procedures();
     assertNotNull(proceedures);
     if (!(this instanceof TestDDLOverride)) {
@@ -226,10 +244,14 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
         return port;
       } catch (BindException e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // This port is already in use. Continue to next port.
 =======
         // 이 포트는 이미 사용 중입니다. 다음 포트로 계속 진행합니다.
 >>>>>>> master
+=======
+        // This port is already in use. Continue to next port.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         LOG.warn("Port {} is already in use. Trying next port.", port);
       }
     }

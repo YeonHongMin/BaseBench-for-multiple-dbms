@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package com.oltpbenchmark.util;
 
 =======
@@ -23,6 +24,10 @@ package com.oltpbenchmark.util;
 
 /** JDBC에서 지원하는 데이터 타입을 나타내는 열거형입니다. */
 >>>>>>> master
+=======
+package com.oltpbenchmark.util;
+
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public enum JDBCSupportedType {
   BIGINT,
   BIT,

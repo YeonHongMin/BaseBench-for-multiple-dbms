@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -38,10 +44,14 @@ import java.util.Random;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Fast Random Text Generator
 =======
  * 빠른 랜덤 텍스트 생성기입니다.
 >>>>>>> master
+=======
+ * Fast Random Text Generator
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -72,10 +82,14 @@ public abstract class TextGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Generate a random block of text as a char array
 =======
    * char 배열로 랜덤 텍스트 블록을 생성합니다.
 >>>>>>> master
+=======
+   * Generate a random block of text as a char array
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param rng
    * @param strLen
@@ -95,10 +109,14 @@ public abstract class TextGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Faster (pseudo) random number generator
 =======
    * 더 빠른 (의사) 난수 생성기입니다.
 >>>>>>> master
+=======
+   * Faster (pseudo) random number generator
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param rng
    * @param chars
@@ -127,10 +145,14 @@ public abstract class TextGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns a new string filled with random text
 =======
    * 랜덤 텍스트로 채워진 새 문자열을 반환합니다.
 >>>>>>> master
+=======
+   * Returns a new string filled with random text
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param rng
    * @param strLen
@@ -142,11 +164,16 @@ public abstract class TextGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Resize the given block of text by the delta and add random characters to the new space in the
    * array. Returns a new character array
 =======
    * 주어진 텍스트 블록을 delta만큼 크기를 조정하고 배열의 새 공간에 랜덤 문자를 추가합니다. 새로운 문자 배열을 반환합니다.
 >>>>>>> master
+=======
+   * Resize the given block of text by the delta and add random characters to the new space in the
+   * array. Returns a new character array
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param rng
    * @param orig
@@ -163,11 +190,16 @@ public abstract class TextGenerator {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Permute a random portion of the origin text Returns the same character array that was given as
    * input
 =======
    * 원본 텍스트의 랜덤한 부분을 순열화합니다. 입력으로 주어진 것과 동일한 문자 배열을 반환합니다.
 >>>>>>> master
+=======
+   * Permute a random portion of the origin text Returns the same character array that was given as
+   * input
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param rng
    * @param chars

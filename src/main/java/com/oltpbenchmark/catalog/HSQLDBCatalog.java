@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
@@ -15,7 +18,10 @@
  *
  */
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.catalog;
 
 import com.oltpbenchmark.api.BenchmarkModule;
@@ -41,6 +47,7 @@ public final class HSQLDBCatalog implements AbstractCatalog {
   private final BenchmarkModule benchmarkModule;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   private final Map<String, Table> tables = new HashMap<>(); // original table name -> table
   private final Map<String, String>
       originalTableNames; // HSQLDB uppercase table name -> original table name
@@ -49,13 +56,18 @@ public final class HSQLDBCatalog implements AbstractCatalog {
 
   /** Connection to the HSQLDB instance. */
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private final Map<String, Table> tables = new HashMap<>(); // 원본 테이블 이름 -> 테이블
   private final Map<String, String> originalTableNames; // HSQLDB가 대문자로 변환한 테이블 이름 -> 원본 테이블 명
 
   private static final Random rand = new Random();
 
   /** HSQLDB 인스턴스와의 연결입니다. */
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private final Connection conn;
 
   public HSQLDBCatalog(BenchmarkModule benchmarkModule) {
@@ -101,16 +113,22 @@ public final class HSQLDBCatalog implements AbstractCatalog {
 
   private void init() throws SQLException, IOException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Load the database DDL.
     this.benchmarkModule.createDatabase(DB_TYPE, this.conn);
 
     // TableName -> ColumnName -> <FKeyTable, FKeyColumn>
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // 데이터베이스 DDL을 로드합니다.
     this.benchmarkModule.createDatabase(DB_TYPE, this.conn);
 
     // TableName -> ColumnName -> <외래키 테이블, 외래키 컬럼>
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, Map<String, Pair<String, String>>> foreignKeys = new HashMap<>();
 
     DatabaseMetaData md = conn.getMetaData();
@@ -126,10 +144,14 @@ public final class HSQLDBCatalog implements AbstractCatalog {
       Table catalogTable = new Table(originalTableName, "");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // COLUMNS
 =======
       // 컬럼
 >>>>>>> master
+=======
+      // 컬럼
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       try (ResultSet colRS = md.getColumns(null, null, internalTableName, null)) {
         while (colRS.next()) {
           String colName = colRS.getString(4);
@@ -140,6 +162,7 @@ public final class HSQLDBCatalog implements AbstractCatalog {
           boolean colNullable = colRS.getString(18).equalsIgnoreCase("YES");
 
           Column catalogCol = new Column(colName, "", catalogTable, colType, colSize, colNullable);
+<<<<<<< HEAD
 <<<<<<< HEAD
           // TODO(WAN): The following block of code was relevant for programmatic CreateDialect
           // support.
@@ -153,6 +176,8 @@ public final class HSQLDBCatalog implements AbstractCatalog {
               String colDefaultValue = colRS.getString(13);
               // TODO(WAN): Inherited FIXME autoinc should use colRS.getString(22).toUpperCase().equals("YES")
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           // TODO(WAN): 아래 코드 블록은 프로그래밍 방식 CreateDialect 지원에 관련된 것이었습니다.
           //            예를 들어 HSQLDB 카탈로그를 이용해 다른 DBMS용 방언을 자동 생성하는 기능입니다.
           //            새 DBMS 지원을 자주 추가하지 않고 대부분 수작업으로 작성하므로,
@@ -161,16 +186,23 @@ public final class HSQLDBCatalog implements AbstractCatalog {
           {
               String colDefaultValue = colRS.getString(13);
               // TODO(WAN): 상속된 FIXME autoinc는 colRS.getString(22).toUpperCase().equals("YES")를 사용해야 합니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
               boolean colAutoInc = false;
               catalogCol.setDefaultValue(colDefaultValue);
               catalogCol.setAutoInc(colAutoInc);
               catalogCol.setNullable(colNullable);
 <<<<<<< HEAD
+<<<<<<< HEAD
               // TODO(WAN): Inherited FIXME setSigned
 =======
               // TODO(WAN): 상속된 FIXME setSigned
 >>>>>>> master
+=======
+              // TODO(WAN): 상속된 FIXME setSigned
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           }
           */
 
@@ -179,21 +211,28 @@ public final class HSQLDBCatalog implements AbstractCatalog {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // TODO(WAN): It looks like the primaryKeyColumns were only used in CreateDialect.
       /*
       {
           // PRIMARY KEYS
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // TODO(WAN): primaryKeyColumns는 CreateDialect에서만 사용된 것으로 보입니다.
       /*
       {
           // 기본 키
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           try (ResultSet pkeyRS = md.getPrimaryKeys(null, null, internalTableName)) {
               SortedMap<Integer, String> pkeyCols = new TreeMap<>();
               while (pkeyRS.next()) {
                   String colName = pkeyRS.getString(4);
                   int colIdx = pkeyRS.getShort(5);
+<<<<<<< HEAD
 <<<<<<< HEAD
                   // TODO(WAN): Is this hack still necessary?
                   //            Previously, the index hack is around SQLite not returning the KEY_SEQ.
@@ -201,6 +240,10 @@ public final class HSQLDBCatalog implements AbstractCatalog {
                   // TODO(WAN): 이 꼼수가 여전히 필요한가요?
                   //            이전에는 SQLite가 KEY_SEQ를 반환하지 않아 인덱스 꼼수를 사용했습니다.
 >>>>>>> master
+=======
+                  // TODO(WAN): 이 꼼수가 여전히 필요한가요?
+                  //            이전에는 SQLite가 KEY_SEQ를 반환하지 않아 인덱스 꼼수를 사용했습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
                   if (colIdx == 0) colIdx = pkeyCols.size();
                   pkeyCols.put(colIdx, colName);
               }
@@ -210,10 +253,14 @@ public final class HSQLDBCatalog implements AbstractCatalog {
       */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // INDEXES
 =======
       // 인덱스
 >>>>>>> master
+=======
+      // 인덱스
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       try (ResultSet idxRS = md.getIndexInfo(null, null, internalTableName, false, false)) {
         while (idxRS.next()) {
           int idxType = idxRS.getShort(7);
@@ -243,10 +290,14 @@ public final class HSQLDBCatalog implements AbstractCatalog {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // FOREIGN KEYS
 =======
       // 외래키
 >>>>>>> master
+=======
+      // 외래키
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       try (ResultSet fkRS = md.getImportedKeys(null, null, internalTableName)) {
         foreignKeys.put(originalTableName, new HashMap<>());
         while (fkRS.next()) {
@@ -258,10 +309,14 @@ public final class HSQLDBCatalog implements AbstractCatalog {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Register the table to the catalog.
 =======
       // 카탈로그에 테이블을 등록합니다.
 >>>>>>> master
+=======
+      // 카탈로그에 테이블을 등록합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       this.tables.put(originalTableName, catalogTable);
     }
 
@@ -288,6 +343,7 @@ public final class HSQLDBCatalog implements AbstractCatalog {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * HACK: HSQLDB will always uppercase table names. The original table names are extracted from the
    * DDL.
    *
@@ -296,13 +352,18 @@ public final class HSQLDBCatalog implements AbstractCatalog {
   Map<String, String> getOriginalTableNames() {
     // Get the contents of the HSQLDB DDL for the current benchmark.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * HACK: HSQLDB는 테이블 이름을 항상 대문자로 변경합니다. 원본 테이블 이름은 DDL에서 추출합니다.
    *
    * @return 원래 테이블 이름에서 HSQLDB 대문자 이름으로 대응되는 맵
    */
   Map<String, String> getOriginalTableNames() {
     // 현재 벤치마크의 HSQLDB DDL 내용을 가져옵니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String ddlContents;
     try {
       String ddlPath = this.benchmarkModule.getWorkloadConfiguration().getDDLPath();
@@ -319,10 +380,14 @@ public final class HSQLDBCatalog implements AbstractCatalog {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Extract and map the original table names to their uppercase versions.
 =======
     // 원본 테이블 이름과 대문자 버전을 추출해 매핑합니다.
 >>>>>>> master
+=======
+    // 원본 테이블 이름과 대문자 버전을 추출해 매핑합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, String> originalTableNames = new HashMap<>();
     Pattern p = Pattern.compile("CREATE[\\s]+TABLE[\\s]+(.*?)[\\s]+", Pattern.CASE_INSENSITIVE);
     Matcher m = p.matcher(ddlContents);

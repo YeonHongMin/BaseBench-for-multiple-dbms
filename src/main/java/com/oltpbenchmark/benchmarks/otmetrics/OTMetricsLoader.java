@@ -2,6 +2,9 @@
  * Copyright 2022 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -48,10 +54,14 @@ import java.util.concurrent.CountDownLatch;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * OtterTune Metrics Timeseries Benchmark
 =======
  * OtterTune 메트릭 시계열 벤치마크
 >>>>>>> master
+=======
+ * OtterTune Metrics Timeseries Benchmark
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -132,10 +142,14 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     int batch = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // SourceId/SessionId Pairs
 =======
     // SourceId/SessionId 쌍
 >>>>>>> master
+=======
+    // SourceId/SessionId Pairs
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     List<Pair<Integer, Integer>> observations = new ArrayList<>();
 
     try (PreparedStatement insertBatch = conn.prepareStatement(sql)) {
@@ -155,10 +169,14 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
 
         // CREATED_TIME
 <<<<<<< HEAD
+<<<<<<< HEAD
         // This should be the same time as the source's created_time
 =======
         // 이것은 source의 created_time과 동일한 시간이어야 합니다.
 >>>>>>> master
+=======
+        // This should be the same time as the source's created_time
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         insertBatch.setTimestamp(
             offset++, Timestamp.valueOf(OTMetricsUtil.getCreateDateTime(source_id)));
 
@@ -184,10 +202,14 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     this.addToTableCount(catalog_tbl.getName(), total);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Load Observations
 =======
     // 관찰 데이터 로드
 >>>>>>> master
+=======
+    // Load Observations
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int total_observations = 0;
     for (Pair<Integer, Integer> p : observations) {
       total_observations += loadObservations(conn, p.first, p.second);
@@ -205,12 +227,17 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     int batch = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // For each session_id / source_id, we will divide the # of observations that we
     // insert into timeticks. Then for each timetick, we will insert NUM_TYPES observations
 =======
     // 각 session_id / source_id에 대해 삽입하는 관찰 데이터 수를
     // timeticks로 나눕니다. 그런 다음 각 timetick에 대해 NUM_TYPES 관찰 데이터를 삽입합니다.
 >>>>>>> master
+=======
+    // For each session_id / source_id, we will divide the # of observations that we
+    // insert into timeticks. Then for each timetick, we will insert NUM_TYPES observations
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int timetick = 0;
 
     int type_category = (int) Math.floor(source_id / OTMetricsConstants.NUM_TYPES);

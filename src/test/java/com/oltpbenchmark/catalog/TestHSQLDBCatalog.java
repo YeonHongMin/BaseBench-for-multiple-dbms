@@ -2,6 +2,9 @@
  *  Copyright 2021 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
  *  라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
@@ -24,6 +28,8 @@
  *  명시적/묵시적 보증 없이 배포됩니다.
  *  라이선스에서 허용된 제한과 조건을 준수해 주세요.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.catalog;
@@ -56,17 +62,23 @@ public class TestHSQLDBCatalog {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testGetOriginalTableNames */
   @Test
   public void testGetOriginalTableNames() {
     // Make sure that the key and values in this map are not
     // equal unless we ignore their case
+<<<<<<< HEAD
 =======
   /** 원본 테이블 이름 가져오기 테스트 */
   @Test
   public void testGetOriginalTableNames() {
     // 이 맵의 키와 값이 대소문자를 구분하지 않는 경우에만 같아야 합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Map<String, String> origTableNames = this.catalog.getOriginalTableNames();
     assertNotNull(origTableNames);
     assertFalse(origTableNames.isEmpty());
@@ -78,16 +90,22 @@ public class TestHSQLDBCatalog {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testInit */
   @Test
   public void testInit() throws Exception {
     // Count the number of CREATE TABLEs in our test file
+<<<<<<< HEAD
 =======
   /** 초기화 테스트 */
   @Test
   public void testInit() throws Exception {
     // 테스트 파일에서 CREATE TABLE의 개수를 세어봅니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String ddlPath = this.benchmark.getDatabaseDDLPath(DatabaseType.HSQLDB);
     try (InputStream stream = this.getClass().getResourceAsStream(ddlPath)) {
       assertNotNull(stream);
@@ -104,16 +122,22 @@ public class TestHSQLDBCatalog {
       assertEquals(num_tables, 3);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // Make sure that CatalogUtil returns the same number of tables
       assertEquals(num_tables, this.catalog.getTables().size());
 
       // Make sure that Map names match the Table names
+<<<<<<< HEAD
 =======
       // CatalogUtil이 동일한 수의 테이블을 반환하는지 확인합니다
       assertEquals(num_tables, this.catalog.getTables().size());
 
       // 맵 이름이 테이블 이름과 일치하는지 확인합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       for (String table_name :
           this.catalog.getTables().stream().map(AbstractCatalogObject::getName).toList()) {
         Table catalog_tbl = this.catalog.getTable(table_name);
@@ -124,16 +148,22 @@ public class TestHSQLDBCatalog {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testForeignKeys */
   @Test
   public void testForeignKeys() {
     // The C table should have two foreign keys
+<<<<<<< HEAD
 =======
   /** 외래 키 테스트 */
   @Test
   public void testForeignKeys() {
     // C 테이블은 두 개의 외래 키를 가져야 합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Table catalog_tbl = this.catalog.getTable("C");
     int found = 0;
     assertNotNull(catalog_tbl);
@@ -149,10 +179,14 @@ public class TestHSQLDBCatalog {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testIndexes */
 =======
   /** 인덱스 테스트 */
 >>>>>>> master
+=======
+  /** testIndexes */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testIndexes() {
     for (Table catalog_tbl : this.catalog.getTables()) {
@@ -172,11 +206,15 @@ public class TestHSQLDBCatalog {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /** testIntegerColumns */
   @Test
   public void testIntegerColumns() {
     // Any column that has a name with 'IATTR' in it is an integer
     // So we need to check to make sure that our little checker works
+<<<<<<< HEAD
 =======
   /** 정수 컬럼 테스트 */
   @Test
@@ -184,6 +222,8 @@ public class TestHSQLDBCatalog {
     // 이름에 'IATTR'이 포함된 컬럼은 정수 타입입니다
     // 따라서 우리의 작은 검사기가 제대로 작동하는지 확인해야 합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (Table catalog_tbl : this.catalog.getTables()) {
       assertNotNull(catalog_tbl);
       for (Column catalog_col : catalog_tbl.getColumns()) {

@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -69,16 +75,22 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
     List<LoaderThread> threads = new ArrayList<>();
     final int numLoaders = this.benchmark.getWorkloadConfiguration().getLoaderThreads();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // first we load USERS
     final int itemsPerThread = Math.max(this.num_users / numLoaders, 1);
     final int numUserThreads = (int) Math.ceil((double) this.num_users / itemsPerThread);
     // then we load FOLLOWS and TWEETS
+<<<<<<< HEAD
 =======
     // 먼저 USERS를 로드합니다
     final int itemsPerThread = Math.max(this.num_users / numLoaders, 1);
     final int numUserThreads = (int) Math.ceil((double) this.num_users / itemsPerThread);
     // 그 다음 FOLLOWS와 TWEETS를 로드합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     final long tweetsPerThread = Math.max(this.num_tweets / numLoaders, 1);
     final int numTweetThreads = (int) Math.ceil((double) this.num_tweets / tweetsPerThread);
 
@@ -104,10 +116,14 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // FOLLOW_DATA depends on USERS
 =======
     // FOLLOW_DATA는 USERS에 의존합니다
 >>>>>>> master
+=======
+    // FOLLOW_DATA depends on USERS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (int i = 0; i < numUserThreads; i++) {
       final int lo = i * itemsPerThread + 1;
       final int hi = Math.min(this.num_users, (i + 1) * itemsPerThread);
@@ -132,10 +148,14 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // TWEETS depends on USERS
 =======
     // TWEETS는 USERS에 의존합니다
 >>>>>>> master
+=======
+    // TWEETS depends on USERS
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (int i = 0; i < numTweetThreads; i++) {
       final long lo = i * tweetsPerThread + 1;
       final long hi = Math.min(this.num_tweets, (i + 1) * tweetsPerThread);
@@ -165,10 +185,14 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
   /**
    * @throws SQLException
 <<<<<<< HEAD
+<<<<<<< HEAD
    * @author Djellel Load num_users users.
 =======
    * @author Djellel num_users명의 사용자를 로드합니다.
 >>>>>>> master
+=======
+   * @author Djellel Load num_users users.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   protected void loadUsers(Connection conn, int lo, int hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(TwitterConstants.TABLENAME_USER);
@@ -185,10 +209,14 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
 
       for (int i = lo; i <= hi; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Generate a random username for this user
 =======
         // 이 사용자에 대한 무작위 사용자 이름 생성
 >>>>>>> master
+=======
+        // Generate a random username for this user
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         int name_length = name_len_rng.nextValue();
         String name = TextGenerator.randomStr(this.rng(), name_length);
 
@@ -225,11 +253,16 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
   /**
    * @throws SQLException
 <<<<<<< HEAD
+<<<<<<< HEAD
    * @author Djellel What's going on here?: The number of tweets is fixed to num_tweets We simply
    *     select using the distribution who issued the tweet
 =======
    * @author Djellel 여기서 무엇이 일어나나요?: 트윗 수는 num_tweets로 고정되어 있으며, 분포를 사용하여 트윗을 작성한 사용자를 단순히 선택합니다
 >>>>>>> master
+=======
+   * @author Djellel What's going on here?: The number of tweets is fixed to num_tweets We simply
+   *     select using the distribution who issued the tweet
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   protected void loadTweets(Connection conn, long lo, long hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(TwitterConstants.TABLENAME_TWEETS);
@@ -277,16 +310,22 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
   /**
    * @throws SQLException
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @author Djellel What's going on here?: For each user (follower) we select how many users he is
    *     following (followees List) then select users to fill up that list. Selecting is based on
    *     the distribution. NOTE: We are using two different distribution to avoid correlation:
    *     ZipfianGenerator (describes the followed most) ScrambledZipfianGenerator (describes the
    *     heavy tweeters)
+<<<<<<< HEAD
 =======
    * @author Djellel 여기서 무엇이 일어나나요?: 각 사용자(팔로워)에 대해 팔로우하는 사용자 수(팔로위 목록)를 선택한 다음 해당 목록을 채우기 위해 사용자를
    *     선택합니다. 선택은 분포를 기반으로 합니다. 참고: 상관관계를 피하기 위해 두 가지 다른 분포를 사용합니다: ZipfianGenerator (가장 많이 팔로우되는
    *     사용자 설명) ScrambledZipfianGenerator (활발한 트위터 사용자 설명)
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   protected void loadFollowData(Connection conn, int lo, int hi) throws SQLException {
 
@@ -311,10 +350,14 @@ public final class TwitterLoader extends Loader<TwitterBenchmark> {
         int time = zipfFollows.nextInt();
         if (time == 0) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           time = 1; // At least this follower will follow 1 user
 =======
           time = 1; // 최소한 이 팔로워는 1명의 사용자를 팔로우합니다
 >>>>>>> master
+=======
+          time = 1; // At least this follower will follow 1 user
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         }
         for (int f = 0; f < time; ) {
           int followee = zipfFollowee.nextInt();

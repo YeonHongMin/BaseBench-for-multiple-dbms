@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <dialects>
     <dialect type="DB2">
@@ -20,6 +21,8 @@
 </dialects>
 
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 <?xml version="1.0"?>
 <dialects>
     <dialect type="DB2">
@@ -40,4 +43,7 @@
     </dialect>
 </dialects>
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d

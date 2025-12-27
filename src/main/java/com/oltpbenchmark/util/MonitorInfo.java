@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -12,6 +13,8 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -25,7 +28,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -42,20 +48,28 @@ public interface MonitorInfo {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Monitoring interval. */
 =======
   /** 모니터링 간격입니다. */
 >>>>>>> master
+=======
+  /** 모니터링 간격입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Value.Default
   public default int getMonitoringInterval() {
     return 0;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** Monitoring type. */
 =======
   /** 모니터링 유형입니다. */
 >>>>>>> master
+=======
+  /** 모니터링 유형입니다. */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Value.Default
   public default MonitoringType getMonitoringType() {
     return MonitoringType.THROUGHPUT;

@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -40,10 +46,14 @@ import org.slf4j.LoggerFactory;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * The actual NoOp implementation
 =======
  * 실제 NoOp 구현
 >>>>>>> master
+=======
+ * The actual NoOp implementation
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  * @author eric-haibin-lin
@@ -52,17 +62,25 @@ public class NoOp extends Procedure {
   private static final Logger LOG = LoggerFactory.getLogger(NoOp.class);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // The query only contains a semi-colon
   // That is enough for the DBMS to have to parse it and do something
 =======
   // 쿼리는 세미콜론만 포함합니다
   // 이것만으로도 DBMS가 파싱하고 무언가를 수행해야 합니다
 >>>>>>> master
+=======
+  // The query only contains a semi-colon
+  // That is enough for the DBMS to have to parse it and do something
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public final SQLStmt noopStmt = new SQLStmt(";");
 
   public void run(Connection conn) {
     try (PreparedStatement stmt = this.getPreparedStatement(conn, noopStmt)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // IMPORTANT:
       // Some DBMSs will throw an exception here when you execute
       // a query that does not return a result. So we are just
@@ -70,31 +88,42 @@ public class NoOp extends Procedure {
       // a new DBMS to this benchmark, then you should disable this
       // exception here and check whether it is actually working
       // correctly.
+<<<<<<< HEAD
 =======
       // 중요:
       // 결과를 반환하지 않는 쿼리를 실행할 때 일부 DBMS는 여기서 예외를 발생시킵니다.
       // 따라서 예외를 잡아서 무시합니다. 새로운 DBMS를 이 벤치마크에 포팅하는 경우,
       // 여기서 이 예외를 비활성화하고 실제로 올바르게 작동하는지 확인해야 합니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       if (stmt.execute()) {
         ResultSet r = stmt.getResultSet();
         while (r.next()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           // Do nothing
 =======
           // 아무것도 하지 않음
 >>>>>>> master
+=======
+          // Do nothing
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         }
         r.close();
       }
 
     } catch (Exception ex) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // This error should be something like "No results were returned by the query."
 =======
       // 이 오류는 "쿼리에서 결과가 반환되지 않았습니다."와 같은 메시지일 수 있습니다.
 >>>>>>> master
+=======
+      // This error should be something like "No results were returned by the query."
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (LOG.isDebugEnabled()) {
         LOG.debug("Exception for NoOp query. This may be expected!", ex);
       }

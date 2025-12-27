@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*
  *  저작권 2015 OLTPBenchmark 프로젝트
@@ -17,6 +18,8 @@
  */
 
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.api;
 
 import static org.junit.Assert.assertEquals;
@@ -60,9 +63,12 @@ public class TestDDLOverride extends AbstractTestCase<MockBenchmark> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   /** DDL 오버라이드를 사용한 생성 테스트 */
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCreateWithDdlOverride() throws Exception {
     this.benchmark.createDatabase();

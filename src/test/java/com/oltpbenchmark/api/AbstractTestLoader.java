@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -61,10 +67,14 @@ public abstract class AbstractTestLoader<T extends BenchmarkModule> extends Abst
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testLoad */
 =======
   /** 로드 테스트 */
 >>>>>>> master
+=======
+  /** testLoad */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testLoad() throws Exception {
 
@@ -74,10 +84,14 @@ public abstract class AbstractTestLoader<T extends BenchmarkModule> extends Abst
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testLoad with after load script */
 =======
   /** 로드 후 스크립트를 사용한 로드 테스트 */
 >>>>>>> master
+=======
+  /** testLoad with after load script */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testLoadWithAfterLoad() throws Exception {
     this.benchmark.setAfterLoadScriptPath("/after-load.sql");
@@ -85,10 +99,14 @@ public abstract class AbstractTestLoader<T extends BenchmarkModule> extends Abst
     this.benchmark.loadDatabase();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // A table called extra is added with after-load, with one entry zero
 =======
     // after-load로 'extra'라는 테이블이 추가되며, 하나의 항목이 0입니다
 >>>>>>> master
+=======
+    // A table called extra is added with after-load, with one entry zero
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM extra");
         ResultSet rs = stmt.executeQuery()) {
       while (rs.next()) {
@@ -103,10 +121,14 @@ public abstract class AbstractTestLoader<T extends BenchmarkModule> extends Abst
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testLoad with external after load script */
 =======
   /** 외부 로드 후 스크립트를 사용한 로드 테스트 */
 >>>>>>> master
+=======
+  /** testLoad with external after load script */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testLoadWithExternalAfterLoad() throws Exception {
     String afterLoadScriptPath =
@@ -119,10 +141,14 @@ public abstract class AbstractTestLoader<T extends BenchmarkModule> extends Abst
     this.benchmark.loadDatabase();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // A table called extra is added with after-load, with one entry zero
 =======
     // after-load로 'extra_external'이라는 테이블이 추가되며, 하나의 항목이 1입니다
 >>>>>>> master
+=======
+    // A table called extra is added with after-load, with one entry zero
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM extra_external");
         ResultSet rs = stmt.executeQuery()) {
       while (rs.next()) {

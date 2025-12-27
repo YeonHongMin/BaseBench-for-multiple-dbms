@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
  * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
  * 라이선스 사본은 다음에서 얻을 수 있습니다:
@@ -24,7 +27,10 @@
  * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
  * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
  * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -71,10 +77,14 @@ public final class Results {
       this.latencySamples = null;
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // defensive copy
 =======
       // 방어적 복사
 >>>>>>> master
+=======
+      // 방어적 복사
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       this.latencySamples = List.copyOf(latencySamples);
     }
   }

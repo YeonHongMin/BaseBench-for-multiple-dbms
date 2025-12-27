@@ -2,6 +2,9 @@
  * Copyright 2020 Trino
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -103,12 +109,17 @@ public class TextPool {
           break;
         case 'T':
 <<<<<<< HEAD
+<<<<<<< HEAD
           // trim trailing space
           // terminators should abut previous word
 =======
           // 후행 공백 제거
           // 종결자는 이전 단어에 인접해야 합니다.
 >>>>>>> master
+=======
+          // trim trailing space
+          // terminators should abut previous word
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
           builder.erase(1);
           String terminator = distributions.getTerminators().randomValue(random);
           builder.append(terminator);
@@ -143,11 +154,15 @@ public class TextPool {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // pick a random word
       String word = source.randomValue(random);
       builder.append(word);
 
       // add a space
+<<<<<<< HEAD
 =======
       // 무작위 단어 선택
       String word = source.randomValue(random);
@@ -155,6 +170,8 @@ public class TextPool {
 
       // 공백 추가
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       builder.append(" ");
     }
   }
@@ -188,11 +205,15 @@ public class TextPool {
           throw new IllegalArgumentException("Unknown token '" + syntax.charAt(i) + "'");
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // pick a random word
       String word = source.randomValue(random);
       builder.append(word);
 
       // add a space
+<<<<<<< HEAD
 =======
       // 무작위 단어 선택
       String word = source.randomValue(random);
@@ -200,6 +221,8 @@ public class TextPool {
 
       // 공백 추가
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       builder.append(" ");
     }
   }
@@ -219,10 +242,14 @@ public class TextPool {
     @SuppressWarnings("deprecation")
     public void append(String string) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // This is safe because the data is ASCII
 =======
       // 데이터가 ASCII이므로 안전합니다.
 >>>>>>> master
+=======
+      // This is safe because the data is ASCII
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       string.getBytes(0, string.length(), bytes, length);
       length += string.length();
     }

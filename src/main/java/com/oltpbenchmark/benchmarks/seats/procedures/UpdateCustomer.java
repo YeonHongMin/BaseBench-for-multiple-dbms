@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -85,10 +91,14 @@ public class UpdateCustomer extends Procedure {
       Connection conn, String c_id, String c_id_str, Long update_ff, long attr0, long attr1)
       throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Use C_ID_STR to get C_ID
 =======
     // C_ID_STR을 사용하여 C_ID를 가져옵니다.
 >>>>>>> master
+=======
+    // Use C_ID_STR to get C_ID
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (c_id == null) {
 
       try (PreparedStatement preparedStatement =
@@ -117,12 +127,17 @@ public class UpdateCustomer extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get their airport information
     // TODO: Do something interesting with this data
 =======
     // 공항 정보 가져오기
     // TODO: 이 데이터로 흥미로운 작업 수행
 >>>>>>> master
+=======
+    // Get their airport information
+    // TODO: Do something interesting with this data
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement preparedStatement =
         this.getPreparedStatement(conn, GetBaseAirport, base_airport)) {
       try (ResultSet airport_results = preparedStatement.executeQuery()) {

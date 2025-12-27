@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -12,6 +13,8 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
  * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
  * 라이선스 사본은 다음에서 얻을 수 있습니다:
@@ -22,7 +25,10 @@
  * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
  * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
  * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -45,11 +51,15 @@ import org.slf4j.LoggerFactory;
 public class ThreadBench implements Thread.UncaughtExceptionHandler {
   private static final Logger LOG = LoggerFactory.getLogger(ThreadBench.class);
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Determines how long (in ms) to wait until monitoring thread rejoins the
   // main thread.
 =======
   // 모니터링 스레드가 메인 스레드에 다시 합류할 때까지 대기할 시간(밀리초)을 결정합니다.
 >>>>>>> master
+=======
+  // 모니터링 스레드가 메인 스레드에 다시 합류할 때까지 대기할 시간(밀리초)을 결정합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   private static final int MONITOR_REJOIN_TIME = 60000;
 
   private final BenchmarkState testState;
@@ -106,6 +116,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     for (int i = 0; i < workerThreads.size(); ++i) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // FIXME not sure this is the best solution... ensure we don't hang
       // forever, however we might ignore problems
       workerThreads.get(i).join(60000); // wait for 60second for threads
@@ -114,6 +125,8 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       /*
        * // CARLO: Maybe we might want to do this to kill threads that are hanging... if
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // FIXME 이것이 최선의 해결책인지 확실하지 않습니다... 영원히 멈추지 않도록 보장하지만
       // 문제를 무시할 수 있습니다
       workerThreads.get(i).join(60000); // 스레드가 종료될 때까지 60초 대기
@@ -121,7 +134,10 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
 
       /*
        * // CARLO: 멈춰있는 스레드를 종료하기 위해 이것을 하고 싶을 수도 있습니다... if
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
        * (workerThreads.get(i).isAlive()) { workerThreads.get(i).kill(); try {
        * workerThreads.get(i).join(); } catch (InterruptedException e) { } }
        */
@@ -151,10 +167,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     Phase phase = null;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // used to determine the longest sleep interval
 =======
     // 가장 긴 수면 간격을 결정하는 데 사용됩니다
 >>>>>>> master
+=======
+    // 가장 긴 수면 간격을 결정하는 데 사용됩니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double lowestRate = Double.MAX_VALUE;
 
     for (WorkloadState workState : workStates) {
@@ -167,6 +187,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Change testState to cold query if execution is serial, since we don't
     // have a warm-up phase for serial execution but execute a cold and a
     // measured query in sequence.
@@ -174,6 +195,10 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     // 실행이 순차적이면 testState를 콜드 쿼리로 변경합니다. 순차 실행에는
     // 워밍업 단계가 없지만 콜드 쿼리와 측정 쿼리를 순차적으로 실행하기 때문입니다.
 >>>>>>> master
+=======
+    // 실행이 순차적이면 testState를 콜드 쿼리로 변경합니다. 순차 실행에는
+    // 워밍업 단계가 없지만 콜드 쿼리와 측정 쿼리를 순차적으로 실행하기 때문입니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (phase != null && phase.isLatencyRun()) {
       synchronized (testState) {
         testState.startColdQuery();
@@ -198,10 +223,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     boolean lastEntry = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Initialize the Monitor
 =======
     // 모니터 초기화
 >>>>>>> master
+=======
+    // 모니터 초기화
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (this.monitorInfo.getMonitoringInterval() > 0) {
       this.monitor =
           MonitorGen.getMonitor(
@@ -209,6 +238,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       this.monitor.start();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Allow workers to start work.
     testState.blockForStart();
@@ -218,13 +248,18 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       // posting new work... and resetting the queue in case we have new
       // portion of the workload...
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // 워커가 작업을 시작할 수 있도록 허용합니다.
     testState.blockForStart();
 
     // 메인 루프
     while (true) {
       // 새로운 작업 게시... 새로운 워크로드 부분이 있는 경우 큐 재설정...
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       for (WorkloadState workState : workStates) {
         if (workState.getCurrentPhase() != null) {
@@ -237,20 +272,28 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       resetQueues = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Wait until the interval expires, which may be "don't wait"
 =======
       // 간격이 만료될 때까지 대기합니다. "대기하지 않음"일 수 있습니다
 >>>>>>> master
+=======
+      // 간격이 만료될 때까지 대기합니다. "대기하지 않음"일 수 있습니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       long now = System.nanoTime();
       if (phase != null) {
         warmup = warmupStart + phase.getWarmupTime() * 1000000000L;
       }
       long diff = nextInterval - now;
 <<<<<<< HEAD
+<<<<<<< HEAD
       while (diff > 0) { // this can wake early: sleep multiple times to avoid that
 =======
       while (diff > 0) { // 조기 깨어날 수 있으므로 여러 번 잠들어 이를 피합니다
 >>>>>>> master
+=======
+      while (diff > 0) { // 조기 깨어날 수 있으므로 여러 번 잠들어 이를 피합니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         long ms = diff / 1000000;
         diff = diff % 1000000;
         try {
@@ -266,11 +309,15 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       if (phase != null) {
         if (phase.isLatencyRun())
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Latency runs (serial run through each query) have their own
         // state to mark completion
 =======
         // 지연 시간 실행(각 쿼리를 순차적으로 실행)은 완료를 표시하는 자체 상태를 가집니다
 >>>>>>> master
+=======
+        // 지연 시간 실행(각 쿼리를 순차적으로 실행)은 완료를 표시하는 자체 상태를 가집니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         {
           phaseComplete = testState.getState() == State.LATENCY_COMPLETE;
         } else {
@@ -278,6 +325,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
         }
       }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       // Go to next phase if this one is complete or enter if error was thrown
       boolean errorThrown = testState.getState() == State.ERROR;
@@ -290,6 +338,8 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
 
         // Fetch a new Phase
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // 이 단계가 완료되면 다음 단계로 이동하거나 오류가 발생한 경우 진입합니다
       boolean errorThrown = testState.getState() == State.ERROR;
       errorsThrown = errorsThrown || errorThrown;
@@ -299,7 +349,10 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
         resetQueues = true;
 
         // 새 단계 가져오기
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         synchronized (testState) {
           if (phase.isLatencyRun()) {
             testState.ackLatencyComplete();
@@ -312,10 +365,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
               interruptWorkers();
               if (phase == null && !lastEntry) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // Last phase
 =======
                 // 마지막 단계
 >>>>>>> master
+=======
+                // 마지막 단계
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
                 lastEntry = true;
                 testState.startCoolDown();
                 measureEnd = now;
@@ -323,10 +380,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
                     "{} :: Waiting for all terminals to finish ..", StringUtil.bold("TERMINATE"));
               } else if (phase != null) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 // Reset serial execution parameters.
 =======
                 // 순차 실행 매개변수 재설정
 >>>>>>> master
+=======
+                // 순차 실행 매개변수 재설정
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
                 if (phase.isLatencyRun()) {
                   phase.resetSerial();
                   testState.startColdQuery();
@@ -340,12 +401,16 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
           }
           if (phase != null) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // update frequency in which we check according to
             // wakeup
             // speed
 =======
             // 깨어남 속도에 따라 확인 빈도 업데이트
 >>>>>>> master
+=======
+            // 깨어남 속도에 따라 확인 빈도 업데이트
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
             // intervalNs = (long) (1000000000. / (double)
             // lowestRate + 0.5);
             delta += phase.getTime() * 1000000000L;
@@ -354,12 +419,17 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Compute the next interval
       // and how many messages to deliver
 =======
       // 다음 간격 계산
       // 및 전달할 메시지 수
 >>>>>>> master
+=======
+      // 다음 간격 계산
+      // 및 전달할 메시지 수
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (phase != null) {
         intervalNs = 0;
         nextToAdd = 0;
@@ -371,10 +441,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Update the test state appropriately
 =======
       // 테스트 상태를 적절히 업데이트합니다
 >>>>>>> master
+=======
+      // 테스트 상태를 적절히 업데이트합니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       State state = testState.getState();
       if (state == State.WARMUP && now >= warmup) {
         synchronized (testState) {
@@ -390,6 +464,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
         // measureEnd = measureStart + measureSeconds * 1000000000L;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // For serial executions, we want to do every query exactly
         // once, so we need to restart in case some of the queries
         // began during the warmup phase.
@@ -401,6 +476,8 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
         // requests have definitely finished.
         // Time to quit.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // 순차 실행의 경우, 모든 쿼리를 정확히 한 번씩 실행하려고 합니다.
         // 따라서 일부 쿼리가 워밍업 단계 중에 시작된 경우 재시작해야 합니다.
         // 순차 실행을 하지 않는 경우, 이 함수는 효과가 없으므로
@@ -410,11 +487,15 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
         // 모든 스레드가 완료를 인지했습니다. 즉, 모든 측정된
         // 요청이 확실히 완료되었습니다.
         // 종료할 시간입니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         break;
       }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // Stop the monitoring thread separately from cleanup all the workers so we can ignore errors
     // from these threads (including possible SQLExceptions), but not the others.
@@ -422,6 +503,10 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     // 모든 워커를 정리하는 것과 별도로 모니터링 스레드를 중지하여
     // 이러한 스레드(가능한 SQLExceptions 포함)의 오류는 무시할 수 있지만 다른 것은 무시할 수 없습니다.
 >>>>>>> master
+=======
+    // 모든 워커를 정리하는 것과 별도로 모니터링 스레드를 중지하여
+    // 이러한 스레드(가능한 SQLExceptions 포함)의 오류는 무시할 수 있지만 다른 것은 무시할 수 없습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try {
       if (this.monitor != null) {
         this.monitor.interrupt();
@@ -436,11 +521,15 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       int requests = finalizeWorkers(this.workerThreads);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Combine all the latencies together in the most disgusting way
       // possible: sorting!
 =======
       // 가능한 가장 비효율적인 방법으로 모든 지연 시간을 결합합니다: 정렬!
 >>>>>>> master
+=======
+      // 가능한 가장 비효율적인 방법으로 모든 지연 시간을 결합합니다: 정렬!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       for (Worker<?> w : workers) {
         for (LatencyRecord.Sample sample : w.getLatencyRecords()) {
           samples.add(sample);
@@ -449,10 +538,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       Collections.sort(samples);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Compute stats on all the latencies
 =======
       // 모든 지연 시간에 대한 통계 계산
 >>>>>>> master
+=======
+      // 모든 지연 시간에 대한 통계 계산
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int[] latencies = new int[samples.size()];
       for (int i = 0; i < samples.size(); ++i) {
         latencies[i] = samples.get(i).getLatencyMicrosecond();
@@ -462,12 +555,17 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
       Results results =
           new Results(
 <<<<<<< HEAD
+<<<<<<< HEAD
               // If any errors were thrown during the execution, proprogate that fact to the
               // final Results state so we can exit non-zero *after* we output the results.
 =======
               // 실행 중 오류가 발생한 경우, 결과를 출력한 *후*에
               // 0이 아닌 값으로 종료할 수 있도록 최종 Results 상태에 해당 사실을 전파합니다.
 >>>>>>> master
+=======
+              // 실행 중 오류가 발생한 경우, 결과를 출력한 *후*에
+              // 0이 아닌 값으로 종료할 수 있도록 최종 Results 상태에 해당 사실을 전파합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
               errorsThrown ? State.ERROR : testState.getState(),
               startTs,
               measureEnd - start,
@@ -476,10 +574,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
               samples);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Compute transaction histogram
 =======
       // 트랜잭션 히스토그램 계산
 >>>>>>> master
+=======
+      // 트랜잭션 히스토그램 계산
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       Set<TransactionType> txnTypes = new HashSet<>();
       for (WorkloadConfiguration workConf : workConfs) {
         txnTypes.addAll(workConf.getTransTypes());
@@ -510,10 +612,14 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
 
   private long getInterval(double lowestRate, Phase.Arrival arrival) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // TODO Auto-generated method stub
 =======
     // TODO 자동 생성된 메서드 스텁
 >>>>>>> master
+=======
+    // TODO 자동 생성된 메서드 스텁
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (arrival == Phase.Arrival.POISSON) {
       return (long) ((-Math.log(1 - Math.random()) / lowestRate) * 1000000000.);
     } else {
@@ -524,6 +630,7 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
   @Override
   public void uncaughtException(Thread t, Throwable e) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Here we handle the case in which one of our worker threads died
     LOG.error(e.getMessage(), e);
     // We do not continue with the experiment. Instead, bypass rest of
@@ -531,13 +638,18 @@ public class ThreadBench implements Thread.UncaughtExceptionHandler {
     // The rest of the workflow to finish the experiment remains the same,
     // and partial metrics will be reported (i.e., until failure happened).
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // 워커 스레드 중 하나가 종료된 경우를 처리합니다
     LOG.error(e.getMessage(), e);
     // 실험을 계속하지 않습니다. 대신 테스트에 남아있는 나머지
     // 단계를 우회하고 오류 상태를 신호합니다.
     // 실험을 완료하기 위한 나머지 워크플로우는 동일하게 유지되며,
     // 부분 메트릭이 보고됩니다(즉, 실패가 발생할 때까지).
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     synchronized (testState) {
       for (WorkloadConfiguration workConf : this.workConfs) {
         synchronized (workConf.getWorkloadState()) {

@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,22 @@
  * 제한 사항을 참조하십시오.
  *
 >>>>>>> master
+=======
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.util;
@@ -71,10 +88,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testMinMaxCount */
 =======
   /** 최소 최대 개수 테스트 */
 >>>>>>> master
+=======
+  /** testMinMaxCount */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testMinMaxCount() throws Exception {
     Histogram<Integer> h = new Histogram<Integer>();
@@ -99,10 +120,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testMinCountValues */
 =======
   /** 최소 개수 값 테스트 */
 >>>>>>> master
+=======
+  /** testMinCountValues */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testMinCountValues() throws Exception {
     Histogram<Long> h = new Histogram<Long>();
@@ -131,10 +156,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testMaxCountValues */
 =======
   /** 최대 개수 값 테스트 */
 >>>>>>> master
+=======
+  /** testMaxCountValues */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testMaxCountValues() throws Exception {
     int expected = -1981;
@@ -164,10 +193,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testClearValues */
 =======
   /** 값 초기화 테스트 */
 >>>>>>> master
+=======
+  /** testClearValues */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testClearValues() throws Exception {
     Set<Object> keys = new HashSet<Object>(this.h.values());
@@ -196,10 +229,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testZeroEntries */
 =======
   /** 제로 엔트리 테스트 */
 >>>>>>> master
+=======
+  /** testZeroEntries */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testZeroEntries() {
     Set<Integer> attempted = new HashSet<Integer>();
@@ -240,10 +277,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testPutValues */
 =======
   /** 값 넣기 테스트 */
 >>>>>>> master
+=======
+  /** testPutValues */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testPutValues() {
     Histogram<Integer> hist = new Histogram<Integer>();
@@ -266,10 +307,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testToJSONString */
 =======
   /** JSON 문자열 변환 테스트 */
 >>>>>>> master
+=======
+  /** testToJSONString */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testToJSONString() throws Exception {
     String json = h.toJSONString();
@@ -281,10 +326,14 @@ public class TestHistogram {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testFromJSON */
 =======
   /** JSON에서 변환 테스트 */
 >>>>>>> master
+=======
+  /** testFromJSON */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testFromJSON() throws Exception {
     String json = h.toJSONString();

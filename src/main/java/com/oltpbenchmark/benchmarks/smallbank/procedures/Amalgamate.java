@@ -5,6 +5,9 @@
  *  Yale University
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Permission is hereby granted, free of charge, to any person obtaining
  *  a copy of this software and associated documentation files (the
  *  "Software"), to deal in the Software without restriction, including
@@ -23,6 +26,7 @@
  *  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  *  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  *  OTHER DEALINGS IN THE SOFTWARE.
+<<<<<<< HEAD
 =======
  *  이 소프트웨어 및 관련 문서 파일(이하 "소프트웨어")의 복사본을 얻는 모든 사람에게
  *  무료로 소프트웨어를 다루는 권한이 부여됩니다. 여기에는 제한 없이 사용, 복사, 수정,
@@ -38,6 +42,8 @@
  *  손해 또는 기타 책임에 대해서도 저작자는 책임을 지지 않습니다. 소프트웨어 또는
  *  소프트웨어의 사용 또는 기타 거래와 관련하여 발생하는 경우에도 마찬가지입니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.smallbank.procedures;
 
@@ -51,16 +57,21 @@ import java.sql.SQLException;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Amalgamate Procedure Original version by Mohammad Alomari and Michael Cahill
 =======
  * 통합 프로시저 원본 버전: Mohammad Alomari 및 Michael Cahill
 >>>>>>> master
+=======
+ * Amalgamate Procedure Original version by Mohammad Alomari and Michael Cahill
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
 public class Amalgamate extends Procedure {
 
   // 2013-05-05
+<<<<<<< HEAD
 <<<<<<< HEAD
   // In the original version of the benchmark, this is suppose to be a look up
   // on the customer's name. We don't have fast implementation of replicated
@@ -69,6 +80,11 @@ public class Amalgamate extends Procedure {
   // 벤치마크의 원본 버전에서는 이것이 고객 이름에 대한 조회여야 합니다.
   // 복제된 보조 인덱스의 빠른 구현이 없으므로 지금은 해당 부분을 무시합니다.
 >>>>>>> master
+=======
+  // In the original version of the benchmark, this is suppose to be a look up
+  // on the customer's name. We don't have fast implementation of replicated
+  // secondary indexes, so we'll just ignore that part for now.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public final SQLStmt GetAccount =
       new SQLStmt("SELECT * FROM " + SmallBankConstants.TABLENAME_ACCOUNTS + " WHERE custid = ?");
 
@@ -101,10 +117,14 @@ public class Amalgamate extends Procedure {
 
   public void run(Connection conn, long custId0, long custId1) throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get Account Information
 =======
     // 계정 정보 가져오기
 >>>>>>> master
+=======
+    // Get Account Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement stmt0 = this.getPreparedStatement(conn, GetAccount, custId0)) {
       try (ResultSet r0 = stmt0.executeQuery()) {
         if (!r0.next()) {
@@ -124,10 +144,14 @@ public class Amalgamate extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Get Balance Information
 =======
     // 잔액 정보 가져오기
 >>>>>>> master
+=======
+    // Get Balance Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double savingsBalance;
     try (PreparedStatement balStmt0 = this.getPreparedStatement(conn, GetSavingsBalance, custId0)) {
       try (ResultSet balRes0 = balStmt0.executeQuery()) {
@@ -160,10 +184,14 @@ public class Amalgamate extends Procedure {
     // assert(total >= 0);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Update Balance Information
 =======
     // 잔액 정보 업데이트
 >>>>>>> master
+=======
+    // Update Balance Information
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try (PreparedStatement updateStmt0 =
         this.getPreparedStatement(conn, ZeroCheckingBalance, custId0)) {
       updateStmt0.executeUpdate();

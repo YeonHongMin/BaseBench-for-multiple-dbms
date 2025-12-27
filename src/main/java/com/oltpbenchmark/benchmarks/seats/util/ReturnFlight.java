@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -56,10 +62,14 @@ public class ReturnFlight implements Comparable<ReturnFlight> {
   protected static Timestamp calculateReturnDate(Timestamp flight_date, int return_days) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Round this to the start of the day
 =======
     // 이것을 하루의 시작으로 반올림합니다.
 >>>>>>> master
+=======
+    // Round this to the start of the day
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(
         flight_date.getTime() + (return_days * SEATSConstants.MILLISECONDS_PER_DAY));
@@ -121,10 +131,14 @@ public class ReturnFlight implements Comparable<ReturnFlight> {
       return (0);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Otherwise order by time
 =======
     // 그렇지 않으면 시간순으로 정렬합니다.
 >>>>>>> master
+=======
+    // Otherwise order by time
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     return (this.return_date.compareTo(o.return_date));
   }
 

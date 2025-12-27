@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /*
  *  저작권 2015 OLTPBenchmark 프로젝트
@@ -18,6 +19,8 @@
  */
 
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.benchmarks.tpch;
 
 import com.oltpbenchmark.WorkloadConfiguration;
@@ -37,10 +40,14 @@ public class TestTPCHWorker extends AbstractTestWorker<TPCHBenchmark> {
   @Override
   protected void customWorkloadConfiguration(WorkloadConfiguration workConf) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     // let's set the SF even lower than .01 for actual worker tests
 =======
     // 실제 워커 테스트를 위해 SF를 .01보다 더 낮게 설정합니다
 >>>>>>> master
+=======
+    // let's set the SF even lower than .01 for actual worker tests
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.workConf.setScaleFactor(SCALE_FACTOR);
   }
 

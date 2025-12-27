@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +16,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+<<<<<<< HEAD
 =======
  *  저작권 2015 OLTPBenchmark 프로젝트
  *
@@ -28,6 +32,8 @@
  *  라이선스에서 허용하는 권한과 제한 사항은
  *  라이선스의 본문을 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.api;
@@ -40,10 +46,14 @@ import org.junit.Test;
 public class TestSQLStmt {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSubstitution */
 =======
   /** 치환 테스트 */
 >>>>>>> master
+=======
+  /** testSubstitution */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSubstitution() throws Exception {
     int ctr = 25;
@@ -55,10 +65,14 @@ public class TestSQLStmt {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testSetSQL */
 =======
   /** SQL 설정 테스트 */
 >>>>>>> master
+=======
+  /** testSetSQL */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testSetSQL() throws Exception {
     int expected = 99;
@@ -70,10 +84,14 @@ public class TestSQLStmt {
     assertFalse(sql.contains("\\?\\?"));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Count the number of times '?' appears
 =======
     // '?'가 나타나는 횟수를 계산합니다
 >>>>>>> master
+=======
+    // Count the number of times '?' appears
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int actual = 0;
     for (int i = 0; i < sql.length(); i++) {
       if (sql.charAt(i) == '?') actual++;

@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -37,10 +43,14 @@ import org.slf4j.LoggerFactory;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Wrapper Class for SQL Statements
 =======
  * SQL 문을 위한 래퍼 클래스
 >>>>>>> master
+=======
+ * Wrapper Class for SQL Statements
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -53,6 +63,9 @@ public final class SQLStmt {
   private String sql;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   /**
    * For each unique '??' that we encounter in the SQL for this Statement, we will substitute it
    * with the number of '?' specified in this array.
@@ -61,6 +74,7 @@ public final class SQLStmt {
 
   /**
    * Constructor
+<<<<<<< HEAD
 =======
   /** 이 Statement의 SQL에서 발견되는 각 고유한 '??'를 이 배열에 지정된 수의 '?'로 대체합니다. */
   private final int[] substitutions;
@@ -68,6 +82,8 @@ public final class SQLStmt {
   /**
    * 생성자
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param sql
    * @param substitutions
@@ -79,11 +95,16 @@ public final class SQLStmt {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Magic SQL setter! Each occurrence of the pattern "??" will be replaced by a string of repeated
    * ?'s
 =======
    * 마법의 SQL 설정자! 패턴 "??"의 각 발생은 반복된 ?의 문자열로 대체됩니다.
 >>>>>>> master
+=======
+   * Magic SQL setter! Each occurrence of the pattern "??" will be replaced by a string of repeated
+   * ?'s
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    *
    * @param sql
    */

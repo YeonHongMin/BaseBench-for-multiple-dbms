@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark.util;
@@ -44,10 +50,14 @@ public class TestUserId {
   private static final Random rand = new Random(1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testUserId */
 =======
   /** UserId 테스트 */
 >>>>>>> master
+=======
+  /** testUserId */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testUserId() {
     for (int i = 0; i < 100; i++) {
@@ -62,10 +72,14 @@ public class TestUserId {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* testEquals */
 =======
   /* equals 테스트 */
 >>>>>>> master
+=======
+  /* testEquals */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   //    @Test
   //    public void testEquals() {
   //        UserId user_id = new UserId(rand.nextLong());
@@ -79,10 +93,14 @@ public class TestUserId {
   //    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testCompareTo */
 =======
   /** compareTo 테스트 */
 >>>>>>> master
+=======
+  /** testCompareTo */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCompareTo() throws Throwable {
     Histogram<UserId> h = new Histogram<UserId>();
@@ -139,10 +157,14 @@ public class TestUserId {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Randomly delete a bunch and make sure that they're not in our histogram anymore
 =======
     // 무작위로 일부를 삭제하고 히스토그램에 더 이상 없는지 확인합니다
 >>>>>>> master
+=======
+    // Randomly delete a bunch and make sure that they're not in our histogram anymore
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     Set<UserId> deleted = new HashSet<UserId>();
     for (int i = 0; i < num_ids; i++) {
       if (rand.nextBoolean()) {
@@ -160,10 +182,14 @@ public class TestUserId {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testUserIdEncode */
 =======
   /** UserId 인코딩 테스트 */
 >>>>>>> master
+=======
+  /** testUserIdEncode */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testUserIdEncode() {
     for (int i = 0; i < 100; i++) {
@@ -180,10 +206,14 @@ public class TestUserId {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testUserIdDecode */
 =======
   /** UserId 디코딩 테스트 */
 >>>>>>> master
+=======
+  /** testUserIdDecode */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testUserIdDecode() {
     for (int i = 0; i < 100; i++) {

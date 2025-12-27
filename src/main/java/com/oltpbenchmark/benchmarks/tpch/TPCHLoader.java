@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,15 +29,21 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *   TPC-H implementation
 =======
  *   TPC-H 구현
 >>>>>>> master
+=======
+ *   TPC-H implementation
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  *   Ben Reilly (bd.reilly@gmail.com)
  *   Ippokratis Pandis (ipandis@us.ibm.com)
@@ -113,10 +123,14 @@ public final class TPCHLoader extends Loader<TPCHBenchmark> {
   private static final CastTypes[] ordersTypes = {
     CastTypes.LONG, // o_orderkey
 <<<<<<< HEAD
+<<<<<<< HEAD
     CastTypes.LONG, // o_LONG, custkey
 =======
     CastTypes.LONG, // o_custkey
 >>>>>>> master
+=======
+    CastTypes.LONG, // o_LONG, custkey
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     CastTypes.STRING, // o_orderstatus
     CastTypes.DOUBLE, // o_totalprice
     CastTypes.DATE, // o_orderdate

@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -86,6 +92,9 @@ public class Q19 extends GenericQuery {
   protected PreparedStatement getStatement(
       Connection conn, RandomGenerator rand, double scaleFactor) throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // QUANTITY1 is randomly selected within [1..10]
     int quantity1 = rand.number(1, 10);
 
@@ -98,6 +107,7 @@ public class Q19 extends GenericQuery {
     // BRAND1, BRAND2, BRAND3 = 'Brand#MN' where each MN is a two character string representing two
     // numbers
     // randomly and independently selected within [1 .. 5]
+<<<<<<< HEAD
 =======
     // QUANTITY1은 [1..10] 범위 내에서 무작위로 선택됩니다.
     int quantity1 = rand.number(1, 10);
@@ -111,6 +121,8 @@ public class Q19 extends GenericQuery {
     // BRAND1, BRAND2, BRAND3 = 'Brand#MN' 여기서 각 MN은 [1 .. 5] 범위 내에서 무작위로
     // 독립적으로 선택된 두 숫자를 나타내는 두 문자 문자열입니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String brand1 = TPCHUtil.randomBrand(rand);
     String brand2 = TPCHUtil.randomBrand(rand);
     String brand3 = TPCHUtil.randomBrand(rand);

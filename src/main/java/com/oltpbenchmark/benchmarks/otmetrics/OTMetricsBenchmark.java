@@ -2,6 +2,9 @@
  * Copyright 2022 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 package com.oltpbenchmark.benchmarks.otmetrics;
@@ -41,10 +47,14 @@ import org.slf4j.LoggerFactory;
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * OtterTune Metrics Timeseries Benchmark
 =======
  * OtterTune 메트릭 시계열 벤치마크
 >>>>>>> master
+=======
+ * OtterTune Metrics Timeseries Benchmark
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  * @author pavlo
  */
@@ -60,10 +70,14 @@ public final class OTMetricsBenchmark extends BenchmarkModule {
     super(workConf);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Compute the number of records per table.
 =======
     // 테이블당 레코드 수를 계산합니다.
 >>>>>>> master
+=======
+    // Compute the number of records per table.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     this.num_sources = (int) Math.round(OTMetricsConstants.NUM_SOURCES * workConf.getScaleFactor());
     this.num_sessions =
         (int) Math.round(OTMetricsConstants.NUM_SESSIONS * workConf.getScaleFactor());

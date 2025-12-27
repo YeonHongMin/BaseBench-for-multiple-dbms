@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -83,6 +89,9 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
 
     do {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // Check whether this should be an anonymous update
       if (this.rng().nextInt(100) < WikipediaConstants.ANONYMOUS_PAGE_UPDATE_PROB) {
         userId = WikipediaConstants.ANONYMOUS_USER_ID;
@@ -99,6 +108,7 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     if (procClass.equals(AddWatchList.class)) {
       // This while loop gets stuck in an infinite loop for small scale factors.
       // So we're just going to let it throw whatever it wants in the set from now on
+<<<<<<< HEAD
 =======
       // 익명 업데이트여야 하는지 확인합니다
       if (this.rng().nextInt(100) < WikipediaConstants.ANONYMOUS_PAGE_UPDATE_PROB) {
@@ -117,6 +127,8 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
       // 이 while 루프는 작은 스케일 팩터에서 무한 루프에 빠집니다.
       // 이제부터는 집합에 무엇을 넣든 그냥 던지도록 하겠습니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // while (addedWatchlistPages.contains(page_id)) {
       //    page_id = z_pages.nextInt();
       // }
@@ -127,25 +139,36 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     int nameSpace = WikipediaUtil.generatePageNamespace(this.rng(), page_id);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // AddWatchList
 =======
     // 관심 목록 추가
 >>>>>>> master
+=======
+    // AddWatchList
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     try {
       if (procClass.equals(AddWatchList.class)) {
 
         this.addToWatchlist(conn, userId, nameSpace, pageTitle);
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
       // RemoveWatchList
 =======
       // 관심 목록 제거
 >>>>>>> master
+=======
+      // RemoveWatchList
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       else if (procClass.equals(RemoveWatchList.class)) {
 
         this.removeFromWatchlist(conn, userId, nameSpace, pageTitle);
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // UpdatePage
       else if (procClass.equals(UpdatePage.class)) {
         this.updatePage(conn, this.generateUserIP(), userId, nameSpace, pageTitle);
@@ -155,6 +178,7 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
         this.getPageAnonymous(conn, true, this.generateUserIP(), nameSpace, pageTitle);
       }
       // GetPageAuthenticated
+<<<<<<< HEAD
 =======
       // 페이지 업데이트
       else if (procClass.equals(UpdatePage.class)) {
@@ -166,6 +190,8 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
       }
       // 인증된 페이지 가져오기
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       else if (procClass.equals(GetPageAuthenticated.class)) {
 
         this.getPageAuthenticated(conn, true, this.generateUserIP(), userId, nameSpace, pageTitle);
@@ -237,12 +263,17 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     int revMinorEdit = b.minorEdit.nextValue();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Permute the original text of the article
     // Important: We have to make sure that we fill in the entire array
 =======
     // 기사의 원본 텍스트를 순열합니다
     // 중요: 전체 배열을 채우도록 해야 합니다
 >>>>>>> master
+=======
+    // Permute the original text of the article
+    // Important: We have to make sure that we fill in the entire array
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     char[] newText = b.generateRevisionText(a.oldText.toCharArray());
 
     if (LOG.isTraceEnabled()) {

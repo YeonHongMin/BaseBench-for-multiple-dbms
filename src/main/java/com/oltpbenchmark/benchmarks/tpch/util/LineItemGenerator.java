@@ -2,6 +2,9 @@
  * Copyright 2020 Trino
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -178,10 +184,14 @@ public class LineItemGenerator implements Iterable<List<Object>> {
       commentRandom.advanceRows(startIndex);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // generate information for initial order
 =======
       // 초기 주문에 대한 정보 생성
 >>>>>>> master
+=======
+      // generate information for initial order
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       orderDate = orderDateRandom.nextValue();
       lineCount = lineCountRandom.nextValue() - 1;
     }
@@ -197,10 +207,14 @@ public class LineItemGenerator implements Iterable<List<Object>> {
       lineNumber++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // advance next row only when all lines for the order have been produced
 =======
       // 주문의 모든 라인이 생성된 경우에만 다음 행으로 진행
 >>>>>>> master
+=======
+      // advance next row only when all lines for the order have been produced
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (lineNumber > lineCount) {
         orderDateRandom.rowFinished();
 
@@ -226,10 +240,14 @@ public class LineItemGenerator implements Iterable<List<Object>> {
         index++;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // generate information for next order
 =======
         // 다음 주문에 대한 정보 생성
 >>>>>>> master
+=======
+        // generate information for next order
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         lineCount = lineCountRandom.nextValue() - 1;
         orderDate = orderDateRandom.nextValue();
         lineNumber = 0;

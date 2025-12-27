@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,6 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -25,6 +29,8 @@
  * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
  * 라이센스를 참조하십시오.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -57,6 +63,9 @@ public class Q6 extends GenericQuery {
   protected PreparedStatement getStatement(
       Connection conn, RandomGenerator rand, double scaleFactor) throws SQLException {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // DATE is the first of January of a randomly selected year within [1993 .. 1997]
     int year = rand.number(1993, 1997);
     String date = String.format("%d-01-01", year);
@@ -65,6 +74,7 @@ public class Q6 extends GenericQuery {
     String discount = String.format("0.0%d", rand.number(2, 9));
 
     // QUANTITY is randomly selected within [24 .. 25]
+<<<<<<< HEAD
 =======
     // DATE는 [1993 .. 1997] 범위 내에서 무작위로 선택된 연도의 1월 1일입니다.
     int year = rand.number(1993, 1997);
@@ -75,6 +85,8 @@ public class Q6 extends GenericQuery {
 
     // QUANTITY는 [24 .. 25] 범위 내에서 무작위로 선택됩니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int quantity = rand.number(24, 25);
 
     PreparedStatement stmt = this.getPreparedStatement(conn, query_stmt);

@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
@@ -15,13 +18,17 @@
  *
  */
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 package com.oltpbenchmark.catalog;
 
 import java.sql.SQLException;
 import java.util.Collection;
 
 /**
+<<<<<<< HEAD
 <<<<<<< HEAD
  * An abstraction over a database's catalog.
  *
@@ -33,6 +40,11 @@ import java.util.Collection;
  *
  * <p>실제 테이블을 직접 조회하는 "실제" 카탈로그와, DBMS가 특정 SQL을 지원하지 못할 때 메모리 기반 HSQLDB로 대체되는 카탈로그 두 종류를 지원합니다.
 >>>>>>> master
+=======
+ * 데이터베이스 카탈로그를 추상화합니다.
+ *
+ * <p>실제 테이블을 직접 조회하는 "실제" 카탈로그와, DBMS가 특정 SQL을 지원하지 못할 때 메모리 기반 HSQLDB로 대체되는 카탈로그 두 종류를 지원합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 public interface AbstractCatalog {
   Collection<Table> getTables();

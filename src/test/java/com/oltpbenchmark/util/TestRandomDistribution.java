@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,22 @@
  * 제한 사항을 참조하십시오.
  *
 >>>>>>> master
+=======
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.util;
@@ -50,10 +67,14 @@ public class TestRandomDistribution {
   private final int num_rounds = 10;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testCalculateMean */
 =======
   /** 평균 계산 테스트 */
 >>>>>>> master
+=======
+  /** testCalculateMean */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testCalculateMean() throws Exception {
     final int expected = ((max - min) / 2) + min;
@@ -67,10 +88,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testHistory */
 =======
   /** 히스토리 테스트 */
 >>>>>>> master
+=======
+  /** testHistory */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testHistory() throws Exception {
     double sigma = 1.0000001d;
@@ -91,10 +116,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGaussianInt */
 =======
   /** 가우시안 정수 테스트 */
 >>>>>>> master
+=======
+  /** testGaussianInt */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGaussian() throws Exception {
     int expected = ((max - min) / 2) + min;
@@ -117,10 +146,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGaussianLong */
 =======
   /** 가우시안 롱 테스트 */
 >>>>>>> master
+=======
+  /** testGaussianLong */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGaussianLong() throws Exception {
     int expected = ((max - min) / 2) + min;
@@ -143,10 +176,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testZipfian */
 =======
   /** 집피안 테스트 */
 >>>>>>> master
+=======
+  /** testZipfian */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testZipfian() throws Exception {
     double sigma = 1.0000001d;
@@ -175,10 +212,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testFlatHistogramInt */
 =======
   /** 평탄 히스토그램 정수 테스트 */
 >>>>>>> master
+=======
+  /** testFlatHistogramInt */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testFlatHistogramInt() throws Exception {
     Histogram<Integer> hist = new Histogram<Integer>();
@@ -197,10 +238,14 @@ public class TestRandomDistribution {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testFlatHistogramLong */
 =======
   /** 평탄 히스토그램 롱 테스트 */
 >>>>>>> master
+=======
+  /** testFlatHistogramLong */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testFlatHistogramLong() throws Exception {
     Histogram<Long> hist = new Histogram<Long>();

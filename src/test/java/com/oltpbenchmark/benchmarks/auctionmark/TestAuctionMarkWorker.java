@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Copyright 2015 by OLTPBenchmark Project
  *
  * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
@@ -25,7 +28,10 @@
  * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
  * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
  *
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark;
@@ -65,10 +71,14 @@ public class TestAuctionMarkWorker extends AbstractTestWorker<AuctionMarkBenchma
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testUniqueSellers */
 =======
   /** 고유 판매자 테스트 */
 >>>>>>> master
+=======
+  /** testUniqueSellers */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testUniqueSellers() throws Exception {
 
@@ -80,19 +90,27 @@ public class TestAuctionMarkWorker extends AbstractTestWorker<AuctionMarkBenchma
       assertNotNull(w);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Get the uninitialized profile
 =======
       // 초기화되지 않은 프로필을 가져옵니다
 >>>>>>> master
+=======
+      // Get the uninitialized profile
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       AuctionMarkProfile profile = worker.getProfile();
       assertNotNull(profile);
       assertTrue(profile.users_per_itemCount.isEmpty());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Then try to initialize it
 =======
       // 그런 다음 초기화를 시도합니다
 >>>>>>> master
+=======
+      // Then try to initialize it
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       profile.loadProfile(worker);
       assertFalse(profile.users_per_itemCount.isEmpty());
       int num_users = profile.users_per_itemCount.getSampleCount();

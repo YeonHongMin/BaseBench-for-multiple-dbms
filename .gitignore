@@ -52,6 +52,9 @@ build/
 .vscode/
 *.log
 
+### Claude ###
+.claude/
+
 # vim swap files
 .*.swp
 

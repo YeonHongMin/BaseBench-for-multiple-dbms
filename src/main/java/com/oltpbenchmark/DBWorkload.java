@@ -2,6 +2,7 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
  * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
  * 라이선스 사본은 다음에서 얻을 수 있습니다:
@@ -24,7 +27,10 @@
  * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
  * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
  * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -66,6 +72,7 @@ public class DBWorkload {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * @param args
    * @throws Exception
    */
@@ -73,13 +80,18 @@ public class DBWorkload {
 
     // create the command line parser
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param args 명령줄 인자
    * @throws Exception 예외 발생 시
    */
   public static void main(String[] args) throws Exception {
 
     // 명령줄 파서 생성
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     CommandLineParser parser = new DefaultParser();
 
     XMLConfiguration pluginConfig = buildConfiguration("config/plugin.xml");
@@ -102,10 +114,14 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Monitoring setup.
 =======
     // 모니터링 설정
 >>>>>>> master
+=======
+    // 모니터링 설정
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     ImmutableMonitorInfo.Builder builder = ImmutableMonitorInfo.builder();
     if (argsLine.hasOption("im")) {
       builder.monitoringInterval(Integer.parseInt(argsLine.getOptionValue("im")));
@@ -129,10 +145,14 @@ public class DBWorkload {
 
     // -------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
     // GET PLUGIN LIST
 =======
     // 플러그인 목록 가져오기
 >>>>>>> master
+=======
+    // 플러그인 목록 가져오기
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     // -------------------------------------------------------------------
 
     String targetBenchmarks = argsLine.getOptionValue("b");
@@ -141,10 +161,14 @@ public class DBWorkload {
     List<BenchmarkModule> benchList = new ArrayList<>();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Use this list for filtering of the output
 =======
     // 출력 필터링을 위해 이 목록 사용
 >>>>>>> master
+=======
+    // 출력 필터링을 위해 이 목록 사용
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     List<TransactionType> activeTXTypes = new ArrayList<>();
 
     String configFile = argsLine.getOptionValue("c");
@@ -152,20 +176,28 @@ public class DBWorkload {
     XMLConfiguration xmlConfig = buildConfiguration(configFile);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Load the configuration for each benchmark
 =======
     // 각 벤치마크에 대한 설정 로드
 >>>>>>> master
+=======
+    // 각 벤치마크에 대한 설정 로드
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     int lastTxnId = 0;
     for (String plugin : targetList) {
       String pluginTest = "[@bench='" + plugin + "']";
 
       // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
       // BEGIN LOADING WORKLOAD CONFIGURATION
 =======
       // 워크로드 설정 로드 시작
 >>>>>>> master
+=======
+      // 워크로드 설정 로드 시작
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // ----------------------------------------------------------------
 
       WorkloadConfiguration wrkld = new WorkloadConfiguration();
@@ -173,10 +205,14 @@ public class DBWorkload {
       wrkld.setXmlConfig(xmlConfig);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Pull in database configuration
 =======
       // 데이터베이스 설정 가져오기
 >>>>>>> master
+=======
+      // 데이터베이스 설정 가져오기
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       wrkld.setDatabaseType(DatabaseType.get(xmlConfig.getString("type")));
       wrkld.setDriverClass(xmlConfig.getString("driver"));
       wrkld.setUrl(xmlConfig.getString("url"));
@@ -191,7 +227,10 @@ public class DBWorkload {
           xmlConfig.getBoolean("reconnectOnConnectionFailure", false));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // 연결 풀 설정
       wrkld.setConnectionPoolEnabled(xmlConfig.getBoolean("connectionPool/enabled", false));
       if (wrkld.isConnectionPoolEnabled()) {
@@ -215,13 +254,19 @@ public class DBWorkload {
         wrkld.setPoolMaxLifetime(xmlConfig.getLong("connectionPool/maxLifetime", 1800000));
       }
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int terminals = xmlConfig.getInt("terminals[not(@bench)]", 0);
       terminals = xmlConfig.getInt("terminals" + pluginTest, terminals);
       wrkld.setTerminals(terminals);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // 동적 풀 크기 조정: 터미널 수가 설정된 후 최적 풀 크기 계산
       if (wrkld.isConnectionPoolEnabled() && wrkld.isDynamicPoolSizingEnabled()) {
         wrkld.calculateOptimalPoolSize();
@@ -237,7 +282,10 @@ public class DBWorkload {
             wrkld.getPoolMaxSize());
       }
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (xmlConfig.containsKey("loaderThreads")) {
         int loaderThreads = xmlConfig.getInt("loaderThreads");
         wrkld.setLoaderThreads(loaderThreads);
@@ -256,16 +304,22 @@ public class DBWorkload {
         wrkld.setSelectivity(selectivity);
       } catch (NoSuchElementException nse) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Nothing to do here !
       }
 
       // Set monitoring enabled, if all requirements are met.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // 여기서는 할 일이 없습니다!
       }
 
       // 모든 요구사항이 충족되면 모니터링 활성화
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       if (monitorInfo.getMonitoringInterval() > 0
           && monitorInfo.getMonitoringType() == MonitorInfo.MonitoringType.ADVANCED
           && DatabaseType.get(xmlConfig.getString("type")).shouldCreateMonitoringPrefix()) {
@@ -275,10 +329,14 @@ public class DBWorkload {
 
       // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
       // CREATE BENCHMARK MODULE
 =======
       // 벤치마크 모듈 생성
 >>>>>>> master
+=======
+      // 벤치마크 모듈 생성
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // ----------------------------------------------------------------
 
       String classname = pluginConfig.getString("/plugin[@name='" + plugin + "']");
@@ -306,14 +364,20 @@ public class DBWorkload {
       initDebug.put("New Connection Per Txn", wrkld.getNewConnectionPerTxn());
       initDebug.put("Reconnect on Connection Failure", wrkld.getReconnectOnConnectionFailure());
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       initDebug.put("Connection Pool Enabled", wrkld.isConnectionPoolEnabled());
       if (wrkld.isConnectionPoolEnabled()) {
         initDebug.put("Pool Min Size", wrkld.getPoolMinSize());
         initDebug.put("Pool Max Size", wrkld.getPoolMaxSize());
         initDebug.put("Dynamic Pool Sizing", wrkld.isDynamicPoolSizingEnabled());
       }
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 
       if (selectivity != -1) {
         initDebug.put("Selectivity", selectivity);
@@ -324,19 +388,27 @@ public class DBWorkload {
 
       // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
       // LOAD TRANSACTION DESCRIPTIONS
 =======
       // 트랜잭션 설명 로드
 >>>>>>> master
+=======
+      // 트랜잭션 설명 로드
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // ----------------------------------------------------------------
       int numTxnTypes =
           xmlConfig.configurationsAt("transactiontypes" + pluginTest + "/transactiontype").size();
       if (numTxnTypes == 0 && targetList.length == 1) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // if it is a single workload run, <transactiontypes /> w/o attribute is used
 =======
         // 단일 워크로드 실행인 경우, 속성이 없는 <transactiontypes />가 사용됩니다
 >>>>>>> master
+=======
+        // 단일 워크로드 실행인 경우, 속성이 없는 <transactiontypes />가 사용됩니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         pluginTest = "[not(@bench)]";
         numTxnTypes =
             xmlConfig.configurationsAt("transactiontypes" + pluginTest + "/transactiontype").size();
@@ -350,10 +422,14 @@ public class DBWorkload {
         String txnName = xmlConfig.getString(key + "/name");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Get ID if specified; else increment from last one.
 =======
         // ID가 지정되면 가져오고, 그렇지 않으면 마지막 것부터 증가시킵니다.
 >>>>>>> master
+=======
+        // ID가 지정되면 가져오고, 그렇지 않으면 마지막 것부터 증가시킵니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         int txnId = i;
         if (xmlConfig.containsKey(key + "/id")) {
           txnId = xmlConfig.getInt(key + "/id");
@@ -370,10 +446,14 @@ public class DBWorkload {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // After load
 =======
         // 로드 후
 >>>>>>> master
+=======
+        // 로드 후
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         if (xmlConfig.containsKey("afterload")) {
           bench.setAfterLoadScriptPath(xmlConfig.getString("afterload"));
         }
@@ -384,35 +464,49 @@ public class DBWorkload {
                 txnName, txnId + txnIdOffset, preExecutionWait, postExecutionWait);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Keep a reference for filtering
         activeTXTypes.add(tmpType);
 
         // Add a ref for the active TTypes in this benchmark
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // 필터링을 위해 참조 유지
         activeTXTypes.add(tmpType);
 
         // 이 벤치마크의 활성 트랜잭션 타입에 참조 추가
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         ttypes.add(tmpType);
         lastTxnId = i;
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Wrap the list of transactions and save them
 =======
       // 트랜잭션 목록을 래핑하여 저장
 >>>>>>> master
+=======
+      // 트랜잭션 목록을 래핑하여 저장
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       TransactionTypes tt = new TransactionTypes(ttypes);
       wrkld.setTransTypes(tt);
       LOG.debug("Using the following transaction types: {}", tt);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       // Read in the groupings of transactions (if any) defined for this
       // benchmark
 =======
       // 이 벤치마크에 대해 정의된 트랜잭션 그룹화(있는 경우) 읽기
 >>>>>>> master
+=======
+      // 이 벤치마크에 대해 정의된 트랜잭션 그룹화(있는 경우) 읽기
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int numGroupings =
           xmlConfig
               .configurationsAt("transactiontypes" + pluginTest + "/groupings/grouping")
@@ -422,10 +516,14 @@ public class DBWorkload {
         String key = "transactiontypes" + pluginTest + "/groupings/grouping[" + i + "]";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Get the name for the grouping and make sure it's valid.
 =======
         // 그룹화의 이름을 가져오고 유효한지 확인합니다.
 >>>>>>> master
+=======
+        // 그룹화의 이름을 가져오고 유효한지 확인합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         String groupingName = xmlConfig.getString(key + "/name").toLowerCase();
         if (!groupingName.matches("^[a-z]\\w*$")) {
           LOG.error(
@@ -441,11 +539,15 @@ public class DBWorkload {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Get the weights for this grouping and make sure that there
         // is an appropriate number of them.
 =======
         // 이 그룹화에 대한 가중치를 가져오고 적절한 수인지 확인합니다.
 >>>>>>> master
+=======
+        // 이 그룹화에 대한 가중치를 가져오고 적절한 수인지 확인합니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         List<String> groupingWeights =
             Arrays.asList(xmlConfig.getString(key + "/weights").split("\\s*,\\s*"));
         if (groupingWeights.size() != numTxnTypes) {
@@ -465,10 +567,14 @@ public class DBWorkload {
 
       // ----------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
       // WORKLOAD CONFIGURATION
 =======
       // 워크로드 설정
 >>>>>>> master
+=======
+      // 워크로드 설정
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // ----------------------------------------------------------------
 
       int size = xmlConfig.configurationsAt("/works/work").size();
@@ -478,11 +584,15 @@ public class DBWorkload {
         List<String> weight_strings;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // use a workaround if there are multiple workloads or single
         // attributed workload
 =======
         // 여러 워크로드가 있거나 단일 속성 워크로드인 경우 해결 방법 사용
 >>>>>>> master
+=======
+        // 여러 워크로드가 있거나 단일 속성 워크로드인 경우 해결 방법 사용
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         if (targetList.length > 1 || work.containsKey("weights[@bench]")) {
           weight_strings = Arrays.asList(work.getString("weights" + pluginTest).split("\\s*,\\s*"));
         } else {
@@ -495,10 +605,14 @@ public class DBWorkload {
         boolean timed;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // can be "disabled", "unlimited" or a number
 =======
         // "disabled", "unlimited" 또는 숫자일 수 있습니다
 >>>>>>> master
+=======
+        // "disabled", "unlimited" 또는 숫자일 수 있습니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         String rate_string;
         rate_string = work.getString("rate[not(@bench)]", "");
         rate_string = work.getString("rate" + pluginTest, rate_string);
@@ -531,21 +645,29 @@ public class DBWorkload {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // We now have the option to run all queries exactly once in
         // a serial (rather than random) order.
 =======
         // 이제 모든 쿼리를 무작위가 아닌 순차 순서로 정확히 한 번 실행하는 옵션이 있습니다.
 >>>>>>> master
+=======
+        // 이제 모든 쿼리를 무작위가 아닌 순차 순서로 정확히 한 번 실행하는 옵션이 있습니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         boolean serial = Boolean.parseBoolean(work.getString("serial", Boolean.FALSE.toString()));
 
         int activeTerminals;
         activeTerminals = work.getInt("active_terminals[not(@bench)]", terminals);
         activeTerminals = work.getInt("active_terminals" + pluginTest, activeTerminals);
 <<<<<<< HEAD
+<<<<<<< HEAD
         // If using serial, we should have only one terminal
 =======
         // 순차 실행을 사용하는 경우 터미널은 하나만 있어야 합니다
 >>>>>>> master
+=======
+        // 순차 실행을 사용하는 경우 터미널은 하나만 있어야 합니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         if (serial && activeTerminals != 1) {
           LOG.warn("Serial ordering is enabled, so # of active terminals is clamped to 1.");
           activeTerminals = 1;
@@ -616,10 +738,14 @@ public class DBWorkload {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // CHECKING INPUT PHASES
 =======
       // 입력 단계 확인
 >>>>>>> master
+=======
+      // 입력 단계 확인
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       int j = 0;
       for (Phase p : wrkld.getPhases()) {
         j++;
@@ -637,18 +763,24 @@ public class DBWorkload {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Generate the dialect map
       wrkld.init();
     }
 
     // Export StatementDialects
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       // 방언 맵 생성
       wrkld.init();
     }
 
     // StatementDialects 내보내기
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (isBooleanOptionSet(argsLine, "dialects-export")) {
       BenchmarkModule bench = benchList.get(0);
       if (bench.getStatementDialects() != null) {
@@ -666,10 +798,14 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Create the Benchmark's Database
 =======
     // 벤치마크 데이터베이스 생성
 >>>>>>> master
+=======
+    // 벤치마크 데이터베이스 생성
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (isBooleanOptionSet(argsLine, "create")) {
       try {
         for (BenchmarkModule benchmark : benchList) {
@@ -687,19 +823,27 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Refresh the catalog.
 =======
     // 카탈로그 새로고침
 >>>>>>> master
+=======
+    // 카탈로그 새로고침
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     for (BenchmarkModule benchmark : benchList) {
       benchmark.refreshCatalog();
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Clear the Benchmark's Database
 =======
     // 벤치마크 데이터베이스 클리어
 >>>>>>> master
+=======
+    // 벤치마크 데이터베이스 클리어
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (isBooleanOptionSet(argsLine, "clear")) {
       try {
         for (BenchmarkModule benchmark : benchList) {
@@ -718,10 +862,14 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Execute Loader
 =======
     // 로더 실행
 >>>>>>> master
+=======
+    // 로더 실행
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (isBooleanOptionSet(argsLine, "load")) {
       try {
         for (BenchmarkModule benchmark : benchList) {
@@ -741,6 +889,7 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Anonymize Datasets
     // Currently, the system only parses the config but does not run any anonymization!
     // Will be added in the future
@@ -749,6 +898,11 @@ public class DBWorkload {
     // 현재 시스템은 설정만 파싱하고 익명화는 실행하지 않습니다!
     // 향후 추가될 예정입니다
 >>>>>>> master
+=======
+    // 데이터셋 익명화
+    // 현재 시스템은 설정만 파싱하고 익명화는 실행하지 않습니다!
+    // 향후 추가될 예정입니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (isBooleanOptionSet(argsLine, "anonymize")) {
       try {
         if (xmlConfig.configurationsAt("/anonymization/table").size() > 0) {
@@ -761,6 +915,7 @@ public class DBWorkload {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Execute Workload
     if (isBooleanOptionSet(argsLine, "execute")) {
       // Bombs away!
@@ -769,6 +924,11 @@ public class DBWorkload {
     if (isBooleanOptionSet(argsLine, "execute")) {
       // 시작!
 >>>>>>> master
+=======
+    // 워크로드 실행
+    if (isBooleanOptionSet(argsLine, "execute")) {
+      // 시작!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       try {
         Results r = runWorkload(benchList, monitorInfo);
         writeOutputs(r, activeTXTypes, argsLine, xmlConfig);
@@ -789,13 +949,19 @@ public class DBWorkload {
         LOG.error("Unexpected error when executing benchmarks.", ex);
         System.exit(1);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       } finally {
         // 연결 풀 정리
         for (BenchmarkModule benchmark : benchList) {
           benchmark.closeConnectionPool();
         }
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       }
 
     } else {
@@ -902,6 +1068,7 @@ public class DBWorkload {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Write out the results for a benchmark run to a bunch of files
    *
    * @param r
@@ -910,6 +1077,8 @@ public class DBWorkload {
    * @param xmlConfig
    * @throws Exception
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 벤치마크 실행 결과를 여러 파일에 출력합니다
    *
    * @param r 결과 객체
@@ -917,7 +1086,10 @@ public class DBWorkload {
    * @param argsLine 명령줄 인자
    * @param xmlConfig XML 설정
    * @throws Exception 예외 발생 시
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   private static void writeOutputs(
       Results r,
@@ -927,10 +1099,14 @@ public class DBWorkload {
       throws Exception {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // If an output directory is used, store the information
 =======
     // 출력 디렉토리가 사용되면 정보를 저장합니다
 >>>>>>> master
+=======
+    // 출력 디렉토리가 사용되면 정보를 저장합니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     String outputDirectory = "results";
 
     if (argsLine.hasOption("d")) {
@@ -1037,18 +1213,24 @@ public class DBWorkload {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Returns true if the given key is in the CommandLine object and is set to true.
    *
    * @param argsLine
    * @param key
    * @return
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 주어진 키가 CommandLine 객체에 있고 true로 설정되어 있으면 true를 반환합니다.
    *
    * @param argsLine 명령줄 인자
    * @param key 옵션 키
    * @return true로 설정되어 있으면 true
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   private static boolean isBooleanOptionSet(CommandLine argsLine, String key) {
     if (argsLine.hasOption(key)) {
@@ -1062,6 +1244,7 @@ public class DBWorkload {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Handles the anonymization of specified tables with differential privacy and automatically
    * creates an anonymized copy of the table. Adapts templated query file if sensitive values are
    * present
@@ -1069,11 +1252,16 @@ public class DBWorkload {
    * @param xmlConfig
    * @param configFile
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 차등 프라이버시를 사용하여 지정된 테이블의 익명화를 처리하고 자동으로 테이블의 익명화된 복사본을 생성합니다. 민감한 값이 있으면 템플릿 쿼리 파일을 조정합니다
    *
    * @param xmlConfig XML 설정
    * @param configFile 설정 파일 경로
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    */
   private static void applyAnonymization(XMLConfiguration xmlConfig, String configFile) {
 
@@ -1090,10 +1278,14 @@ public class DBWorkload {
             osCommand, "scripts/anonymization/src/anonymizer.py", configFile, templatesPath);
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Redirect Output stream of the script to get live feedback
 =======
       // 실시간 피드백을 위해 스크립트의 출력 스트림을 리다이렉트합니다
 >>>>>>> master
+=======
+      // 실시간 피드백을 위해 스크립트의 출력 스트림을 리다이렉트합니다
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
       processBuilder.inheritIO();
       Process process = processBuilder.start();
       int exitCode = process.waitFor();

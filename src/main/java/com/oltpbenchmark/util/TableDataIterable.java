@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -42,12 +48,16 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /**
  * @author pavlo
  */
 =======
 /** 작성자: pavlo */
 >>>>>>> master
+=======
+/** 작성자: pavlo */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
   private final String filePath;
   private final CSVReader reader;
@@ -62,16 +72,22 @@ public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
 
   /**
 <<<<<<< HEAD
+<<<<<<< HEAD
    * Constructor
    *
    * @param filePath
    * @param has_header whether we expect the data file to include a header in the first row
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * 생성자
    *
    * @param filePath
    * @param has_header 데이터 파일의 첫 줄에 헤더가 포함되어 있다고 예상하는지 여부
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
    * @param auto_generate_first_column TODO
    * @throws Exception
    */
@@ -95,10 +111,14 @@ public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
     this.reader = new CSVReader(new InputStreamReader(in));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Throw away the first row if there is a header
 =======
     // 헤더가 있으면 첫 행을 건너뜁니다.
 >>>>>>> master
+=======
+    // 헤더가 있으면 첫 행을 건너뜁니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     if (has_header) {
       this.reader.readNext();
       this.line_ctr++;
@@ -154,6 +174,7 @@ public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
       int row_idx = 0;
       for (int col_idx = 0; col_idx < types.length; col_idx++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Auto-generate first column
         if (col_idx == 0 && auto_generate_first_column) {
           tuple[col_idx] = (long) line_ctr;
@@ -166,6 +187,8 @@ public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
         }
         // Default: Cast the string into the proper type
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // 첫 번째 열을 자동 생성합니다.
         if (col_idx == 0 && auto_generate_first_column) {
           tuple[col_idx] = (long) line_ctr;
@@ -177,7 +200,10 @@ public class TableDataIterable implements Iterable<Object[]>, AutoCloseable {
           tuple[col_idx] = row[row_idx++];
         }
         // 기본: 문자열을 적절한 타입으로 변환합니다.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         else {
           if (row[row_idx].isEmpty() && nullable[col_idx]) {
             tuple[col_idx] = null;

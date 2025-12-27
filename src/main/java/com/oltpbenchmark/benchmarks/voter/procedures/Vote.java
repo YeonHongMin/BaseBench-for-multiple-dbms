@@ -2,6 +2,9 @@
  * Copyright 2020 by OLTPBenchmark Project
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,6 +46,7 @@
 // Accepts a vote, enforcing business logic: make sure the vote is for a valid
 // contestant and that the voter (phone number of the caller) is not above the
 // number of allowed votes.
+<<<<<<< HEAD
 =======
  * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
  * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
@@ -80,6 +84,8 @@
 // 투표를 수락하고 비즈니스 로직을 적용합니다: 투표가 유효한 후보자에 대한 것인지,
 // 그리고 투표자(발신자의 전화번호)가 허용된 투표 수를 초과하지 않았는지 확인합니다.
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 //
 
 package com.oltpbenchmark.benchmarks.voter.procedures;
@@ -96,19 +102,27 @@ import java.sql.SQLException;
 public class Vote extends Procedure {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // potential return codes
 =======
   // 가능한 반환 코드
 >>>>>>> master
+=======
+  // potential return codes
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public static final long VOTE_SUCCESSFUL = 0;
   public static final long ERR_INVALID_CONTESTANT = 1;
   public static final long ERR_VOTER_OVER_VOTE_LIMIT = 2;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // Checks if the vote is for a valid contestant
 =======
   // 투표가 유효한 후보자에 대한 것인지 확인합니다
 >>>>>>> master
+=======
+  // Checks if the vote is for a valid contestant
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public final SQLStmt checkContestantStmt =
       new SQLStmt(
           "SELECT contestant_number FROM "
@@ -116,6 +130,9 @@ public class Vote extends Procedure {
               + " WHERE contestant_number = ?");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   // Checks if the voter has exceeded their allowed number of votes
   public final SQLStmt checkVoterStmt =
       new SQLStmt("SELECT COUNT(*) FROM " + TABLENAME_VOTES + " WHERE phone_number = ?");
@@ -125,6 +142,7 @@ public class Vote extends Procedure {
       new SQLStmt("SELECT state FROM " + TABLENAME_LOCATIONS + " WHERE area_code = ?");
 
   // Records a vote
+<<<<<<< HEAD
 =======
   // 투표자가 허용된 투표 수를 초과했는지 확인합니다
   public final SQLStmt checkVoterStmt =
@@ -136,6 +154,8 @@ public class Vote extends Procedure {
 
   // 투표를 기록합니다
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   public final SQLStmt insertVoteStmt =
       new SQLStmt(
           "INSERT INTO "
@@ -176,11 +196,15 @@ public class Vote extends Procedure {
       ps.setShort(1, (short) (phoneNumber / 10000000L));
       try (ResultSet rs = ps.executeQuery()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         // Some sample client libraries use the legacy random phone generation that mostly
         // created invalid phone numbers. Until refactoring, re-assign all such votes to
         // the "XX" fake state (those votes will not appear on the Live Statistics dashboard,
         // but are tracked as legitimate instead of invalid, as old clients would mostly get
         // it wrong and see all their transactions rejected).
+<<<<<<< HEAD
 =======
         // 일부 샘플 클라이언트 라이브러리는 대부분 유효하지 않은 전화번호를 생성하는
         // 레거시 무작위 전화 생성 방식을 사용합니다. 리팩토링까지는 이러한 모든 투표를
@@ -188,6 +212,8 @@ public class Vote extends Procedure {
         // 유효하지 않은 것으로 처리되는 대신 합법적인 것으로 추적됩니다. 이는 오래된 클라이언트가
         // 대부분 잘못 처리하여 모든 트랜잭션이 거부되는 것을 방지하기 위함입니다).
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         state = rs.next() ? rs.getString(1) : "XX";
       }
     }
@@ -201,10 +227,14 @@ public class Vote extends Procedure {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Set the return value to 0: successful vote
 =======
     // 반환 값을 0으로 설정: 성공적인 투표
 >>>>>>> master
+=======
+    // Set the return value to 0: successful vote
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     return VOTE_SUCCESSFUL;
   }
 }

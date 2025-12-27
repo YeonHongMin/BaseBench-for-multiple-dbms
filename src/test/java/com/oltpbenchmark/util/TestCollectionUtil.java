@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +30,22 @@
  * 제한 사항을 참조하십시오.
  *
 >>>>>>> master
+=======
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  */
 
 package com.oltpbenchmark.util;
@@ -49,10 +66,14 @@ public class TestCollectionUtil {
   private final Random rand = new Random();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testIterableEnumeration */
 =======
   /** 반복 가능한 열거 테스트 */
 >>>>>>> master
+=======
+  /** testIterableEnumeration */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testIterableEnumeration() {
     final int size = 10;
@@ -77,10 +98,14 @@ public class TestCollectionUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testAddAll */
 =======
   /** 모두 추가 테스트 */
 >>>>>>> master
+=======
+  /** testAddAll */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testAddAll() {
     int cnt = rand.nextInt(50) + 1;
@@ -102,10 +127,14 @@ public class TestCollectionUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetGreatest */
 =======
   /** 최대값 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetGreatest */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetGreatest() {
     Map<String, Integer> map = new HashMap<String, Integer>();
@@ -118,10 +147,14 @@ public class TestCollectionUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testGetFirst */
 =======
   /** 첫 번째 항목 가져오기 테스트 */
 >>>>>>> master
+=======
+  /** testGetFirst */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @Test
   public void testGetFirst() {
     List<String> list = new ArrayList<String>();
@@ -133,10 +166,14 @@ public class TestCollectionUtil {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /** testPop */
 =======
   /** 팝 테스트 */
 >>>>>>> master
+=======
+  /** testPop */
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
   @SuppressWarnings("unchecked")
   @Test
   public void testPop() {

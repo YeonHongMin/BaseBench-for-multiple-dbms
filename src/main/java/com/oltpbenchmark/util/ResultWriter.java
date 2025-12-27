@@ -1,5 +1,6 @@
 /*
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 =======
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  * 저작권 2020 OLTPBenchmark 프로젝트
  *
  * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
@@ -27,7 +30,10 @@
  * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
  * 라이선스에서 허용하는 권한과 제한 사항은
  * 라이선스의 본문을 참조하십시오.
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
  *
  */
 
@@ -207,12 +213,17 @@ public class ResultWriter {
   public void writeRaw(List<TransactionType> activeTXTypes, PrintStream out) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // This is needed because nanTime does not guarantee offset... we
     // ground it (and round it) to ms from 1970-01-01 like currentTime
 =======
     // nanoTime은 기준 오프셋을 보장하지 않기 때문에 보정이 필요합니다.
     // 현재시간(currentTime)을 기준으로 1970-01-01부터 밀리초 단위로 맞춥니다.
 >>>>>>> master
+=======
+    // nanoTime은 기준 오프셋을 보장하지 않기 때문에 보정이 필요합니다.
+    // 현재시간(currentTime)을 기준으로 1970-01-01부터 밀리초 단위로 맞춥니다.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
     double x = ((double) System.nanoTime() / (double) 1000000000);
     double y = ((double) System.currentTimeMillis() / (double) 1000);
     double offset = x - y;
@@ -232,12 +243,17 @@ public class ResultWriter {
       String[] row = {
         Integer.toString(s.getTransactionType()),
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Important!
         // The TxnType offsets start at 1!
 =======
         // 중요!
         // TxnType 오프셋은 1부터 시작합니다!
 >>>>>>> master
+=======
+        // 중요!
+        // TxnType 오프셋은 1부터 시작합니다!
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
         activeTXTypes.get(s.getTransactionType() - 1).getName(),
         String.format("%10.6f", startUs - offset),
         Integer.toString(s.getLatencyMicrosecond()),

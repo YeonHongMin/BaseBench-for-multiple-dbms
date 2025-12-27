@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
 # Monitoring in BenchBase
 
 Monitoring in BenchBase can be enabled using the
@@ -23,6 +26,7 @@ The code for the drivers can be found in package [`src.main.java.com.oltpbenchma
 For advanced monitoring to function with SQLServer, the user needs to have access to the system tables, for Postgres, `pg_stat_statements` needs to be enabled.
 Queries will fail gracefully, i.e., without interrupting the benchmark execution but instead logging an error.
 Note that in either database system, frequent (additional) queries against the DBMS may distort the benchmarking results.
+<<<<<<< HEAD
 That is, a high additional query load via frequent pulling of data from the DBMS will incur system load and can potentially block the execution of the actual benchmark queries.
 =======
 # BenchBase의 모니터링
@@ -51,3 +55,6 @@ SQLServer에서 고급 모니터링이 작동하려면 사용자가 시스템 �
 두 데이터베이스 시스템 모두에서 DBMS에 대한 빈번한 (추가) 쿼리가 벤치마킹 결과를 왜곡할 수 있습니다.
 즉, DBMS에서 데이터를 자주 가져오는 높은 추가 쿼리 부하는 시스템 부하를 발생시키고 실제 벤치마크 쿼리 실행을 차단할 수 있습니다.
 >>>>>>> master
+=======
+That is, a high additional query load via frequent pulling of data from the DBMS will incur system load and can potentially block the execution of the actual benchmark queries.
+>>>>>>> dbb7887be8f21268712f8dedb24a63633f721d2d
