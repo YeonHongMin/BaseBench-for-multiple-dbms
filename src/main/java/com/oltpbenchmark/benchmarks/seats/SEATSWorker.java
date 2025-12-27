@@ -185,8 +185,8 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   private final List<Reservation> tmp_reservations = new ArrayList<>();
 
   /**
-   * 고객이 빈 좌석을 찾으면 새 예약에서 해당 좌석을 예약하려고 시도합니다.
-   * 일부 고객은 좌석을 변경하고 싶어 합니다. 이 데이터 구조는 좌석 변경을 위해 대기 중인 고객을 나타냅니다.
+   * 고객이 빈 좌석을 찾으면 새 예약에서 해당 좌석을 예약하려고 시도합니다. 일부 고객은 좌석을 변경하고 싶어 합니다. 이 데이터 구조는 좌석 변경을 위해 대기 중인 고객을
+   * 나타냅니다.
    */
   protected static class Reservation {
     public final long id;

@@ -54,8 +54,8 @@ public abstract class ThreadUtil {
   }
 
   /**
-   * 주어진 스레드 목록에 대해 모두 실행(한 번에 최대 max_concurrent까지)하고 완료되면 반환합니다.
-   * max_concurrent가 null인 경우 모든 스레드가 동시에 시작됩니다.
+   * 주어진 스레드 목록에 대해 모두 실행(한 번에 최대 max_concurrent까지)하고 완료되면 반환합니다. max_concurrent가 null인 경우 모든 스레드가
+   * 동시에 시작됩니다.
    *
    * @param loaderThreads
    * @param maxConcurrent

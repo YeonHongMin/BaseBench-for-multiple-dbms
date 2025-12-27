@@ -45,8 +45,8 @@ public class SEATSProfile {
   protected double scale_factor;
 
   /**
-   * 각 공항 ID에 대해 이 공항을 로컬 공항으로 사용하는 고객의 마지막 ID를 저장합니다.
-   * 고객 ID는 DBMS에서 다음과 같이 저장됩니다: <16비트 AirportId><48비트 CustomerId>
+   * 각 공항 ID에 대해 이 공항을 로컬 공항으로 사용하는 고객의 마지막 ID를 저장합니다. 고객 ID는 DBMS에서 다음과 같이 저장됩니다: <16비트
+   * AirportId><48비트 CustomerId>
    */
   protected final Histogram<Long> airport_max_customer_id = new Histogram<>();
 
@@ -59,9 +59,7 @@ public class SEATSProfile {
   /** 항공편 데이터 세트에 포함되는 과거 일수입니다. */
   protected long flight_past_days;
 
-  /**
-   * 항공편 데이터 세트에 포함되는 미래 일수(flight_upcoming_date부터)
-   */
+  /** 항공편 데이터 세트에 포함되는 미래 일수(flight_upcoming_date부터) */
   protected long flight_future_days;
 
   /** seats_remaining 목록에서 곧 출발하는 항공편이 시작되는 오프셋 */
@@ -76,9 +74,7 @@ public class SEATSProfile {
   /** TODO */
   protected final Map<String, Histogram<String>> histograms = new HashMap<>();
 
-  /**
-   * 각 AirportCode는 해당 공항에서 다른 모든 공항으로 출발하는 항공편 수의 히스토그램을 가집니다.
-   */
+  /** 각 AirportCode는 해당 공항에서 다른 모든 공항으로 출발하는 항공편 수의 히스토그램을 가집니다. */
   protected final Map<String, Histogram<String>> airport_histograms = new HashMap<>();
 
   protected final Map<String, Map<String, Long>> code_id_xref = new HashMap<>();
@@ -89,10 +85,7 @@ public class SEATSProfile {
 
   protected final SEATSBenchmark benchmark;
 
-  /**
-   * SEATSClient가 작업할 수 있도록 FlightIds의 작은 캐시를 유지하려고 합니다.
-   * 전체 세트를 여기에 저장하는 것은 명백히 원하지 않습니다.
-   */
+  /** SEATSClient가 작업할 수 있도록 FlightIds의 작은 캐시를 유지하려고 합니다. 전체 세트를 여기에 저장하는 것은 명백히 원하지 않습니다. */
   protected final transient LinkedList<FlightId> cached_flight_ids = new LinkedList<>();
 
   /** Key -> Id 매핑 */
@@ -107,9 +100,7 @@ public class SEATSProfile {
   /** 특수화된 난수 생성기 */
   protected final transient RandomGenerator rng;
 
-  /**
-   * 출발 공항 코드 -> 도착 공항 코드 항공편 분포를 기반으로 한 난수 생성기
-   */
+  /** 출발 공항 코드 -> 도착 공항 코드 항공편 분포를 기반으로 한 난수 생성기 */
   private final Map<String, FlatHistogram<String>> airport_distributions = new HashMap<>();
 
   // ----------------------------------------------------------------

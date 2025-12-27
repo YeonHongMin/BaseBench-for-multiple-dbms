@@ -135,14 +135,12 @@ public abstract class SQLUtil {
   }
 
   /**
-   * Oracle DB 지원: Oracle DDL(예: auctionmark CONFIG_PROFILE 테이블)에서 도입된 TIMESTAMP 필드는
-   * OJDBC 전용 {@code oracle.sql.TIMESTAMP} 객체를 생성합니다.
-   * {@link #getTimestamp(Object)}는 {@code oracle.sql.TIMESTAMP}를
+   * Oracle DB 지원: Oracle DDL(예: auctionmark CONFIG_PROFILE 테이블)에서 도입된 TIMESTAMP 필드는 OJDBC 전용 {@code
+   * oracle.sql.TIMESTAMP} 객체를 생성합니다. {@link #getTimestamp(Object)}는 {@code oracle.sql.TIMESTAMP}를
    * {@code java.sql.TIMESTAMP}로 변환할 수 있어야 합니다.
    *
-   * <p>주요 문제는 {@code oracle.sql.TIMESTAMP}가 JDBC에서 사용할 수 없으므로,
-   * 일반적으로 타입을 가져오고 해결하려고 하면 다른 데이터베이스 프로파일이 깨질 수 있다는 것입니다.
-   * 이는 OJDBC 전용 클래스와 메서드를 리플렉션으로 로드하여 해결할 수 있습니다.
+   * <p>주요 문제는 {@code oracle.sql.TIMESTAMP}가 JDBC에서 사용할 수 없으므로, 일반적으로 타입을 가져오고 해결하려고 하면 다른 데이터베이스
+   * 프로파일이 깨질 수 있다는 것입니다. 이는 OJDBC 전용 클래스와 메서드를 리플렉션으로 로드하여 해결할 수 있습니다.
    */
   private static final Class<?> ORACLE_TIMESTAMP;
 

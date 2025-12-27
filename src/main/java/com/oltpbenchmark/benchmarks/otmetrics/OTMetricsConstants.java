@@ -28,10 +28,7 @@ public abstract class OTMetricsConstants {
   public static final String TABLENAME_TYPES = "types";
   public static final String TABLENAME_OBSERVATIONS = "observations";
 
-  /**
-   * 테이블당 레코드 수. 이 벤치마크의 모든 테이블은 벤치마크 스케일 팩터를 변경하면
-   * 그에 따라 스케일링됩니다.
-   */
+  /** 테이블당 레코드 수. 이 벤치마크의 모든 테이블은 벤치마크 스케일 팩터를 변경하면 그에 따라 스케일링됩니다. */
   public static final int NUM_SOURCES = 100;
 
   public static final int NUM_SESSIONS = 1000;

@@ -84,8 +84,8 @@ public abstract class StringUtil {
   }
 
   /**
-   * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 맵은 첫 번째부터 마지막까지 순서대로 표시되며,
-   * 각 맵 사이에 구분선이 생성됩니다. 각 레코드의 형식은 다음과 같습니다:
+   * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 맵은 첫 번째부터 마지막까지 순서대로 표시되며, 각 맵 사이에 구분선이 생성됩니다. 각 레코드의 형식은 다음과
+   * 같습니다:
    *
    * <p><KEY><DELIMITER><SPACING><VALUE>
    *
@@ -390,9 +390,7 @@ public abstract class StringUtil {
     return (join(delimiter, Arrays.asList(items)));
   }
 
-  /**
-   * 콘솔에서 텍스트가 굵게 표시되도록 제어 문자로 주어진 문자열을 감쌉니다.
-   */
+  /** 콘솔에서 텍스트가 굵게 표시되도록 제어 문자로 주어진 문자열을 감쌉니다. */
   public static String bold(String str) {
     return (SET_BOLD_TEXT + str + SET_PLAIN_TEXT);
   }

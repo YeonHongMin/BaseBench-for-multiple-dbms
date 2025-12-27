@@ -24,10 +24,7 @@ import java.util.List;
 
 public class GetSessionRange extends Procedure {
 
-  /**
-   * 모든 JDBC 드라이버가 배열을 사용하여 가변 길이 매개변수를 채우는 것을 지원하지 않기 때문에
-   * 이 방법을 사용합니다.
-   */
+  /** 모든 JDBC 드라이버가 배열을 사용하여 가변 길이 매개변수를 채우는 것을 지원하지 않기 때문에 이 방법을 사용합니다. */
   private final String baseSQL =
       "SELECT * FROM observations"
           + " WHERE source_id = ?"

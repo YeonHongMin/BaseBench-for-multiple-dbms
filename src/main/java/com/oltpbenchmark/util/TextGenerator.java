@@ -109,8 +109,7 @@ public abstract class TextGenerator {
   }
 
   /**
-   * 주어진 텍스트 블록을 delta만큼 크기를 조정하고 배열의 새 공간에 랜덤 문자를 추가합니다.
-   * 새로운 문자 배열을 반환합니다.
+   * 주어진 텍스트 블록을 delta만큼 크기를 조정하고 배열의 새 공간에 랜덤 문자를 추가합니다. 새로운 문자 배열을 반환합니다.
    *
    * @param rng
    * @param orig

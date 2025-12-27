@@ -49,8 +49,7 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
       new ListOrderedMap<>();
 
   /**
-   * AirportCode -> Set<AirportCode, Distance> HISTOGRAM_FLIGHTS_PER_AIRPORT에 있는 공항에 대한
-   * 레코드만 저장합니다.
+   * AirportCode -> Set<AirportCode, Distance> HISTOGRAM_FLIGHTS_PER_AIRPORT에 있는 공항에 대한 레코드만 저장합니다.
    */
   private final Map<String, Map<String, Short>> airport_distances = new HashMap<>();
 

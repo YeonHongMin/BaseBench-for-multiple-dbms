@@ -35,10 +35,7 @@ public abstract class SEATSConstants {
   // 항공편 상수
   // ----------------------------------------------------------------
 
-  /**
-   * 인근 공항을 조회할 수 있는 다양한 거리입니다. 이것은 고객이 항공편을 찾을 때
-   * 드롭다운을 선택하는 것과 유사합니다.
-   */
+  /** 인근 공항을 조회할 수 있는 다양한 거리입니다. 이것은 고객이 항공편을 찾을 때 드롭다운을 선택하는 것과 유사합니다. */
   // public static final int DISTANCES[] = { 5 }; // , 10, 25, 50, 100 };
 
   // Zhenwu가 변경했습니다. 원본 코드는 위에 있습니다.
@@ -57,9 +54,7 @@ public abstract class SEATSConstants {
 
   public static final int FLIGHTS_PER_DAY_MAX = 1875;
 
-  /**
-   * 항공편당 사용 가능한 좌석 수 이 값을 변경하면 FindOpenSeats도 변경해야 합니다.
-   */
+  /** 항공편당 사용 가능한 좌석 수 이 값을 변경하면 FindOpenSeats도 변경해야 합니다. */
   public static final int FLIGHTS_NUM_SEATS = 150;
 
   /** 주어진 항공편의 퍼스트 클래스 좌석 수 이 예약은 더 비쌉니다. */
@@ -81,9 +76,7 @@ public abstract class SEATSConstants {
   public static final int CUSTOMER_NUM_FREQUENTFLYERS_MAX = 10;
   public static final double CUSTOMER_NUM_FREQUENTFLYERS_SIGMA = 2.0;
 
-  /**
-   * 고객이 원래 출발 공항으로 돌아오기 위해 예약이 필요하기 전에 대기할 수 있는 최대 일수
-   */
+  /** 고객이 원래 출발 공항으로 돌아오기 위해 예약이 필요하기 전에 대기할 수 있는 최대 일수 */
   public static final int CUSTOMER_RETURN_FLIGHT_DAYS_MIN = 1;
 
   public static final int CUSTOMER_RETURN_FLIGHT_DAYS_MAX = 14;
@@ -104,19 +97,13 @@ public abstract class SEATSConstants {
   /** 고객이 왕복 항공편이 아닌 항공편을 예약할 확률 (0% - 100%) */
   public static final int PROB_SINGLE_FLIGHT_RESERVATION = 10;
 
-  /**
-   * 고객이 Customer Id의 문자열 버전을 사용하여 DeleteReservation을 호출할 확률 (0% - 100%)
-   */
+  /** 고객이 Customer Id의 문자열 버전을 사용하여 DeleteReservation을 호출할 확률 (0% - 100%) */
   public static final int PROB_DELETE_WITH_CUSTOMER_ID_STR = 20;
 
-  /**
-   * 고객이 Customer Id의 문자열 버전을 사용하여 UpdateCustomer를 호출할 확률 (0% - 100%)
-   */
+  /** 고객이 Customer Id의 문자열 버전을 사용하여 UpdateCustomer를 호출할 확률 (0% - 100%) */
   public static final int PROB_UPDATE_WITH_CUSTOMER_ID_STR = 20;
 
-  /**
-   * 고객이 FrequentFlyer Id의 문자열 버전을 사용하여 DeleteReservation을 호출할 확률 (0% - 100%)
-   */
+  /** 고객이 FrequentFlyer Id의 문자열 버전을 사용하여 DeleteReservation을 호출할 확률 (0% - 100%) */
   public static final int PROB_DELETE_WITH_FREQUENTFLYER_ID_STR = 20;
 
   /** 좌석이 처음에 점유될 확률 (0% - 100%) */
@@ -214,9 +201,8 @@ public abstract class SEATSConstants {
   };
 
   /**
-   * 튜플 코드를 튜플 ID로 매핑 일부 테이블의 경우 튜플의 ID에 매핑하는 데 사용할 수 있는 고유 코드를
-   * 저장하려고 합니다. 이 테이블에 대한 외래 키 참조가 있는 모든 테이블은 ID 대신 입력 데이터 테이블의
-   * 고유 코드를 사용합니다. 따라서 로드할 때 이러한 코드를 ID에 매핑하는 방법을 저장하는 테이블이 필요합니다.
+   * 튜플 코드를 튜플 ID로 매핑 일부 테이블의 경우 튜플의 ID에 매핑하는 데 사용할 수 있는 고유 코드를 저장하려고 합니다. 이 테이블에 대한 외래 키 참조가 있는 모든
+   * 테이블은 ID 대신 입력 데이터 테이블의 고유 코드를 사용합니다. 따라서 로드할 때 이러한 코드를 ID에 매핑하는 방법을 저장하는 테이블이 필요합니다.
    */
   public static final String AIRPORT_ID = "ap_id";
 

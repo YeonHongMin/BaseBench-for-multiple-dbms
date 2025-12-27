@@ -30,13 +30,11 @@ import jakarta.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 /**
- * 이 객체는 com.oltpbenchmark.api.dialects 패키지에서 생성된 각 Java 콘텐츠 인터페이스 및
- * Java 요소 인터페이스에 대한 팩토리 메서드를 포함합니다.
+ * 이 객체는 com.oltpbenchmark.api.dialects 패키지에서 생성된 각 Java 콘텐츠 인터페이스 및 Java 요소 인터페이스에 대한 팩토리 메서드를
+ * 포함합니다.
  *
- * <p>ObjectFactory를 사용하면 XML 콘텐츠에 대한 Java 표현의 새 인스턴스를 프로그래밍 방식으로
- * 생성할 수 있습니다. XML 콘텐츠의 Java 표현은 스키마 타입 정의, 요소 선언 및 모델 그룹의
- * 바인딩을 나타내는 스키마 파생 인터페이스 및 클래스로 구성될 수 있습니다. 각각에 대한 팩토리
- * 메서드는 이 클래스에서 제공됩니다.
+ * <p>ObjectFactory를 사용하면 XML 콘텐츠에 대한 Java 표현의 새 인스턴스를 프로그래밍 방식으로 생성할 수 있습니다. XML 콘텐츠의 Java 표현은 스키마
+ * 타입 정의, 요소 선언 및 모델 그룹의 바인딩을 나타내는 스키마 파생 인터페이스 및 클래스로 구성될 수 있습니다. 각각에 대한 팩토리 메서드는 이 클래스에서 제공됩니다.
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -44,8 +42,8 @@ public class ObjectFactory {
   private static final QName _Dialects_QNAME = new QName("", "dialects");
 
   /**
-   * 패키지 com.oltpbenchmark.api.dialects에 대한 스키마 파생 클래스의 새 인스턴스를 생성하는 데
-   * 사용할 수 있는 새 ObjectFactory를 생성합니다.
+   * 패키지 com.oltpbenchmark.api.dialects에 대한 스키마 파생 클래스의 새 인스턴스를 생성하는 데 사용할 수 있는 새 ObjectFactory를
+   * 생성합니다.
    */
   public ObjectFactory() {}
 

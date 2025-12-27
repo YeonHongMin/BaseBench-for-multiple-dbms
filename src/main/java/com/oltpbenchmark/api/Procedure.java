@@ -49,8 +49,7 @@ public abstract class Procedure {
   }
 
   /**
-   * 모든 SQLStmt 핸들을 초기화합니다. 생성자와 별도로 호출해야 하며, 그렇지 않으면
-   * 모든 SQLStmt에 액세스할 수 없습니다.
+   * 모든 SQLStmt 핸들을 초기화합니다. 생성자와 별도로 호출해야 하며, 그렇지 않으면 모든 SQLStmt에 액세스할 수 없습니다.
    *
    * @param <T>
    * @return
@@ -75,9 +74,8 @@ public abstract class Procedure {
   }
 
   /**
-   * 주어진 SQLStmt 핸들에 대한 PreparedStatement를 반환합니다. 기본 Procedure API는
-   * 이 SQLStmt에 대해 대상 DBMS에 적합한 SQL이 사용되도록 보장합니다. 전달한 모든 매개변수에 대해
-   * 자동으로 setObject를 호출합니다.
+   * 주어진 SQLStmt 핸들에 대한 PreparedStatement를 반환합니다. 기본 Procedure API는 이 SQLStmt에 대해 대상 DBMS에 적합한 SQL이
+   * 사용되도록 보장합니다. 전달한 모든 매개변수에 대해 자동으로 setObject를 호출합니다.
    *
    * @param conn
    * @param stmt
@@ -95,8 +93,8 @@ public abstract class Procedure {
   }
 
   /**
-   * 주어진 SQLStmt 핸들에 대한 PreparedStatement를 반환합니다. 기본 Procedure API는
-   * 이 SQLStmt에 대해 대상 DBMS에 적합한 SQL이 사용되도록 보장합니다.
+   * 주어진 SQLStmt 핸들에 대한 PreparedStatement를 반환합니다. 기본 Procedure API는 이 SQLStmt에 대해 대상 DBMS에 적합한 SQL이
+   * 사용되도록 보장합니다.
    *
    * @param conn
    * @param stmt

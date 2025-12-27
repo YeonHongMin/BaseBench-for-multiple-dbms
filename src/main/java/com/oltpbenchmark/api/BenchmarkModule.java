@@ -72,10 +72,7 @@ public abstract class BenchmarkModule {
     this.classLoader = Thread.currentThread().getContextClassLoader();
   }
 
-  /**
-   * classLoader 변수를 인스턴스화합니다. 벤치마크가 사용자 정의 구현을 사용하는 경우
-   * 재정의해야 합니다.
-   */
+  /** classLoader 변수를 인스턴스화합니다. 벤치마크가 사용자 정의 구현을 사용하는 경우 재정의해야 합니다. */
   protected void setClassLoader() {
     this.classLoader = Thread.currentThread().getContextClassLoader();
   }
@@ -84,9 +81,7 @@ public abstract class BenchmarkModule {
   // 데이터베이스 연결
   // --------------------------------------------------------------------------
 
-  /**
-   * 구성에서 활성화된 경우 연결 풀을 초기화합니다. 연결을 만들기 전에 호출해야 합니다.
-   */
+  /** 구성에서 활성화된 경우 연결 풀을 초기화합니다. 연결을 만들기 전에 호출해야 합니다. */
   public final void initializeConnectionPool() {
     if (workConf.isConnectionPoolEnabled() && connectionPoolManager == null) {
       connectionPoolManager = new ConnectionPoolManager(workConf);
@@ -127,9 +122,7 @@ public abstract class BenchmarkModule {
     return connectionPoolManager;
   }
 
-  /**
-   * 연결 풀을 닫고 모든 리소스를 해제합니다. 벤치마크가 완료되면 호출해야 합니다.
-   */
+  /** 연결 풀을 닫고 모든 리소스를 해제합니다. 벤치마크가 완료되면 호출해야 합니다. */
   public final void closeConnectionPool() {
     if (connectionPoolManager != null) {
       LOG.info("Closing connection pool for benchmark: {}", getBenchmarkName());

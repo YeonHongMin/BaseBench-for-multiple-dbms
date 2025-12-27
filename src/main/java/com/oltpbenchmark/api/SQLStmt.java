@@ -34,9 +34,7 @@ public final class SQLStmt {
   private String orig_sql;
   private String sql;
 
-  /**
-   * 이 Statement의 SQL에서 발견되는 각 고유한 '??'를 이 배열에 지정된 수의 '?'로 대체합니다.
-   */
+  /** 이 Statement의 SQL에서 발견되는 각 고유한 '??'를 이 배열에 지정된 수의 '?'로 대체합니다. */
   private final int[] substitutions;
 
   /**

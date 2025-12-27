@@ -22,8 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * LoaderThread는 벤치마크 데이터베이스의 일부를 로드하는 역할을 합니다.
- * 각 LoaderThread는 자체 데이터베이스 Connection 핸들을 가지고 있습니다.
+ * LoaderThread는 벤치마크 데이터베이스의 일부를 로드하는 역할을 합니다. 각 LoaderThread는 자체 데이터베이스 Connection 핸들을 가지고 있습니다.
  */
 public abstract class LoaderThread implements Runnable {
 

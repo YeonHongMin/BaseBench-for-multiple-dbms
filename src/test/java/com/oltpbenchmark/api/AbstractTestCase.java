@@ -48,9 +48,7 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
 
   // -----------------------------------------------------------------
 
-  /**
-   * 단위 테스트에서 사용할 데이터베이스 타입입니다. 항상 임베디드 Java 데이터베이스 중 하나여야 합니다.
-   */
+  /** 단위 테스트에서 사용할 데이터베이스 타입입니다. 항상 임베디드 Java 데이터베이스 중 하나여야 합니다. */
   private static final DatabaseType DB_TYPE = DatabaseType.HSQLDB;
 
   // -----------------------------------------------------------------
