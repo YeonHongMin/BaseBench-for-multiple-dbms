@@ -1,6 +1,8 @@
 # BenchBase
 
-## BaseBench의 한국어 번역 버젼입니다.
+BaseBench의 한국어 번역 버전입니다.
+
+**버전: 0.1**
 
 [![BenchBase (Java with Maven)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml)
 
@@ -15,6 +17,7 @@ BenchBase(이전 [OLTPBench](https://github.com/oltpbenchmark/oltpbench/))는 JD
 - [알려진 문제](#알려진-문제)
 - [크레딧](#크레딧)
 - [이 저장소 인용하기](#이-저장소-인용하기)
+- [변경 사항 (v0.1)](#변경-사항-v01)
 
 ---
 
@@ -83,8 +86,29 @@ BenchBase 프레임워크에는 다음과 같은 벤치마크가 포함되어 �
 
 ## 사용 가이드
 
+### 시스템 요구사항
+
+- **Java**: JDK 19 이상
+- **Maven**: 3.8 이상 (Maven Wrapper 포함)
+
+### 지원 DBMS
+
+| DBMS | 프로파일명 | JDBC 드라이버 | 비고 |
+|------|----------|--------------|------|
+| PostgreSQL | `postgres` | postgresql-42.7.2 | |
+| MySQL | `mysql` | mysql-connector-j-8.4.0 | |
+| MariaDB | `mariadb` | mariadb-java-client | |
+| Oracle | `oracle` | ojdbc11-23.2.0.0 | v0.1에서 DDL 수정 |
+| SQL Server | `sqlserver` | mssql-jdbc-12.8.1 | |
+| DB2 | `db2` | db2jcc4 | |
+| Tibero | `tibero` | tibero7-jdbc | v0.1에서 추가 |
+| SQLite | `sqlite` | sqlite-jdbc | |
+| CockroachDB | `cockroachdb` | postgresql | |
+| Phoenix | `phoenix` | phoenix-client | |
+| Spanner | `spanner` | google-cloud-spanner-jdbc | |
+
 ### 빌드 방법
-프로파일 이름(`-P`)으로 지정된 데이터베이스에 대한 배포판을 빌드하려면 다음 명령을 실행하세요. 현재 지원되는 프로파일은 다음과 같습니다: `postgres`, `mysql`, `mariadb`, `sqlite`, `cockroachdb`, `phoenix`, `spanner`.
+프로파일 이름(`-P`)으로 지정된 데이터베이스에 대한 배포판을 빌드하려면 다음 명령을 실행하세요.
 
 ```bash
 ./mvnw clean package -P <profile name>
@@ -240,7 +264,7 @@ BenchBase는 원본 OLTPBench의 공식 현대화 버전입니다.
 
 현대화의 상당 부분은 [Tim Veil @ Cockroach Labs](https://github.com/timveil-cockroach)가 기여했으며, 다음을 포함하되 이에 국한되지 않습니다:
 
-* Java ~~17~~ 21로 빌드되었으며 이를 위해 설계되었습니다.
+* Java ~~17~~ ~~21~~ 19 이상으로 빌드되었으며 이를 위해 설계되었습니다.
 * Ant에서 Maven으로 마이그레이션.
   * Maven 구조에 맞게 프로젝트 재구성.
   * 정적 `lib` 디렉토리 및 종속성 제거.
@@ -286,3 +310,179 @@ BenchBase는 원본 OLTPBench의 공식 현대화 버전입니다.
   url = {http://www.vldb.org/pvldb/vol7/p277-difallah.pdf},
 }
 ```
+
+---
+
+## 변경 사항 (v0.1)
+
+### HikariCP 커넥션 풀 최적화
+
+원본 BenchBase에 다음과 같은 HikariCP 커넥션 풀 최적화가 추가되었습니다.
+
+#### 1. 동적 풀 크기 조정 (터미널 수 기반)
+
+터미널 수를 기반으로 커넥션 풀 크기가 자동으로 계산됩니다.
+
+- **최소 풀 크기**: `max(터미널 수 / 2, 5)`
+- **최대 풀 크기**: `max(터미널 수 × 1.5, 터미널 수 + 10)`
+
+예시: 터미널 20개 설정 시 → 풀 크기 10-30으로 자동 설정
+
+#### 2. DBMS별 최적화 설정
+
+각 데이터베이스 유형에 맞는 최적화 설정이 자동으로 적용됩니다.
+
+| DBMS | 최적화 설정 |
+|------|-----------|
+| **MySQL/MariaDB** | `useServerPrepStmts`, `rewriteBatchedStatements`, `useLocalSessionState`, `cacheResultSetMetadata` 등 |
+| **PostgreSQL** | `prepareThreshold`, `preparedStatementCacheQueries`, `preparedStatementCacheSizeMiB` |
+| **Oracle** | `implicitStatementCacheSize`, `defaultRowPrefetch` |
+| **SQL Server** | `sendStringParametersAsUnicode`, `selectMethod` |
+| **DB2** | `fullyMaterializeLobData`, `progressiveStreaming` |
+| **SQLite** | `journal_mode=WAL`, `synchronous=NORMAL` |
+| **H2/HSQLDB** | `LOG=0`, `LOCK_MODE=0` |
+
+#### 3. 커넥션 풀 설정 방법
+
+XML 설정 파일에서 다음과 같이 커넥션 풀을 구성할 수 있습니다:
+
+```xml
+<connectionPool>
+    <!-- 커넥션 풀 활성화 -->
+    <enabled>true</enabled>
+
+    <!-- 동적 크기 조정 (기본값: true) -->
+    <!-- 명시적으로 minSize/maxSize를 지정하면 자동으로 false가 됩니다 -->
+    <dynamicSizing>true</dynamicSizing>
+
+    <!-- 명시적 풀 크기 설정 (선택사항) -->
+    <!-- <minSize>10</minSize> -->
+    <!-- <maxSize>50</maxSize> -->
+
+    <!-- 타임아웃 설정 (밀리초) -->
+    <connectionTimeout>30000</connectionTimeout>  <!-- 30초 -->
+    <idleTimeout>600000</idleTimeout>             <!-- 10분 -->
+    <maxLifetime>1800000</maxLifetime>            <!-- 30분 -->
+</connectionPool>
+```
+
+#### 4. 수정된 파일
+
+- `WorkloadConfiguration.java`: 동적 풀 크기 조정 필드 및 메서드 추가
+- `ConnectionPoolManager.java`: DBMS별 최적화 설정 적용 메서드 추가
+- `DBWorkload.java`: XML 설정 파싱 및 동적 풀 크기 계산 로직 추가
+
+### Tibero 데이터베이스 지원 추가
+
+Tibero DBMS에 대한 지원이 추가되었습니다. Tibero는 Oracle 호환 DBMS로, Oracle과 유사한 SQL 구문을 사용합니다.
+
+#### Tibero 빌드 방법
+
+```bash
+# Tibero 프로필로 빌드
+./mvnw clean package -P tibero
+
+# 또는 환경 변수 설정 후 빌드
+export BENCHBASE_PROFILE=tibero
+./mvnw clean package
+```
+
+#### Tibero 설정 예시
+
+```xml
+<?xml version="1.0"?>
+<parameters>
+    <type>TIBERO</type>
+    <driver>com.tmax.tibero.jdbc.TbDriver</driver>
+    <url>jdbc:tibero:thin:@localhost:8629:tibero</url>
+    <username>benchbase</username>
+    <password>password</password>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
+
+    <!-- 커넥션 풀 설정 -->
+    <connectionPool>
+        <enabled>true</enabled>
+        <dynamicSizing>true</dynamicSizing>
+    </connectionPool>
+
+    <scalefactor>1</scalefactor>
+    <terminals>4</terminals>
+    <!-- ... -->
+</parameters>
+```
+
+#### Tibero 관련 추가 파일
+
+- `DatabaseType.java`: TIBERO 타입 추가
+- `pom.xml`: Tibero JDBC 프로필 추가 (`lib/tibero7-jdbc.jar` 사용)
+- `ddl-tibero.sql`: TPC-C용 Tibero DDL 스크립트
+- `dialect-tibero.xml`: Tibero SQL 방언 설정
+- `sample_tpcc_config.xml`: Tibero용 TPC-C 샘플 설정
+
+### Oracle DDL 스크립트 개선
+
+Oracle 데이터베이스에서 TPC-C 벤치마크 실행 시 발생하던 테이블 DROP 관련 오류가 수정되었습니다.
+
+#### 문제점
+
+기존 DDL 스크립트에서 `DROP TABLE ... CASCADE CONSTRAINTS` 구문 사용 시:
+- 테이블이 존재하지 않으면 ORA-00942 에러 발생
+- 테이블이 잠겨 있으면 ORA-00054 에러 발생
+- 이로 인해 후속 CREATE TABLE 문이 실행되지 않는 문제 발생
+
+#### 해결 방법
+
+PL/SQL 예외 처리 블록을 사용하여 테이블이 없을 때 발생하는 ORA-00942 에러를 무시하도록 수정:
+
+```sql
+-- 기존 방식 (오류 발생 가능)
+DROP TABLE ORDER_LINE CASCADE CONSTRAINTS;
+
+-- 수정된 방식 (오류 무시)
+BEGIN
+  EXECUTE IMMEDIATE 'DROP TABLE ORDER_LINE CASCADE CONSTRAINTS PURGE';
+  EXCEPTION WHEN OTHERS THEN
+    IF SQLCODE != -942 THEN RAISE; END IF;
+END;
+```
+
+#### 수정된 파일
+
+- `src/main/resources/benchmarks/tpcc/ddl-oracle.sql`
+
+### 빠른 실행 스크립트
+
+각 DBMS별로 빠르게 벤치마크를 실행할 수 있는 스크립트가 제공됩니다.
+
+#### 빌드 스크립트 (테이블 생성 및 데이터 로드)
+
+| DBMS | 스크립트 |
+|------|---------|
+| PostgreSQL | `./start_build_pg.sh` |
+| MySQL | `./start_build_mysql.sh` |
+| Oracle | `./start_build_oracle.sh` |
+| SQL Server | `./start_build_mssql.sh` |
+| DB2 | `./start_build_db2.sh` |
+| Tibero | `./start_build_tibero.sh` |
+
+#### 실행 스크립트 (워크로드 실행)
+
+| DBMS | 스크립트 |
+|------|---------|
+| PostgreSQL | `./start_exec_pg.sh` |
+| MySQL | `./start_exec_mysql.sh` |
+| Oracle | `./start_exec_oracle.sh` |
+| SQL Server | `./start_exec_mssql.sh` |
+| DB2 | `./start_exec_db2.sh` |
+| Tibero | `./start_exec_tibero.sh` |
+
+#### 테이블 삭제 스크립트
+
+| DBMS | 스크립트 |
+|------|---------|
+| PostgreSQL | `./drop_build_pg.sh` |
+| MySQL | `./drop_build_mysql.sh` |
+| Oracle | `./drop_build_oracle.sh` |
+| SQL Server | `./drop_build_mssql.sh` |
+| DB2 | `./drop_build_db2.sh` |
+| Tibero | `./drop_build_tibero.sh` |
