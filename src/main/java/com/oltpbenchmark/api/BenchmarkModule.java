@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -10,6 +11,18 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -19,6 +32,10 @@ import com.oltpbenchmark.WorkloadConfiguration;
 import com.oltpbenchmark.catalog.AbstractCatalog;
 import com.oltpbenchmark.types.DatabaseType;
 import com.oltpbenchmark.util.ClassUtil;
+<<<<<<< HEAD
+=======
+import com.oltpbenchmark.util.ConnectionPoolManager;
+>>>>>>> master
 import com.oltpbenchmark.util.FileUtil;
 import com.oltpbenchmark.util.SQLUtil;
 import com.oltpbenchmark.util.ScriptRunner;
@@ -34,6 +51,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
 /** Base class for all benchmark implementations */
 public abstract class BenchmarkModule {
   private static final Logger LOG = LoggerFactory.getLogger(BenchmarkModule.class);
@@ -51,12 +69,39 @@ public abstract class BenchmarkModule {
   private final Set<Class<? extends Procedure>> supplementalProcedures = new HashSet<>();
 
   /** A single Random object that should be re-used by all a benchmark's components */
+=======
+/** 모든 벤치마크 구현을 위한 기본 클래스 */
+public abstract class BenchmarkModule {
+  private static final Logger LOG = LoggerFactory.getLogger(BenchmarkModule.class);
+
+  /** 이 벤치마크 호출에 대한 워크로드 구성 */
+  protected final WorkloadConfiguration workConf;
+
+  /** 이 벤치마크에 대한 클래스 로더 변수 */
+  protected ClassLoader classLoader;
+
+  /** Procedure의 Statement SQL 변형들 */
+  protected final StatementDialects dialects;
+
+  /** 보조 프로시저 */
+  private final Set<Class<? extends Procedure>> supplementalProcedures = new HashSet<>();
+
+  /** 벤치마크의 모든 구성 요소에서 재사용해야 하는 단일 Random 객체 */
+>>>>>>> master
   private static final ThreadLocal<Random> rng = new ThreadLocal<>();
 
   private AbstractCatalog catalog = null;
 
+<<<<<<< HEAD
   /**
    * Constructor!
+=======
+  /** 연결 풀 관리자 (선택 사항, 연결 풀링이 활성화된 경우 사용) */
+  private ConnectionPoolManager connectionPoolManager = null;
+
+  /**
+   * 생성자!
+>>>>>>> master
    *
    * @param workConf
    */
@@ -67,20 +112,54 @@ public abstract class BenchmarkModule {
     this.classLoader = Thread.currentThread().getContextClassLoader();
   }
 
+<<<<<<< HEAD
   /**
    * Instantiates the classLoader variable, needs to be overwritten if benchmark uses a custom
    * implementation.
    */
+=======
+  /** classLoader 변수를 인스턴스화합니다. 벤치마크가 사용자 정의 구현을 사용하는 경우 재정의해야 합니다. */
+>>>>>>> master
   protected void setClassLoader() {
     this.classLoader = Thread.currentThread().getContextClassLoader();
   }
 
   // --------------------------------------------------------------------------
+<<<<<<< HEAD
   // DATABASE CONNECTION
   // --------------------------------------------------------------------------
 
   public final Connection makeConnection() throws SQLException {
 
+=======
+  // 데이터베이스 연결
+  // --------------------------------------------------------------------------
+
+  /** 구성에서 활성화된 경우 연결 풀을 초기화합니다. 연결을 만들기 전에 호출해야 합니다. */
+  public final void initializeConnectionPool() {
+    if (workConf.isConnectionPoolEnabled() && connectionPoolManager == null) {
+      connectionPoolManager = new ConnectionPoolManager(workConf);
+      LOG.info("Connection pool initialized for benchmark: {}", getBenchmarkName());
+    }
+  }
+
+  /**
+   * 데이터베이스 연결을 가져옵니다. 활성화된 경우 연결 풀을 사용하고, 그렇지 않으면 직접 연결을 생성합니다.
+   *
+   * @return 데이터베이스 연결
+   * @throws SQLException 연결을 설정할 수 없는 경우
+   */
+  public final Connection makeConnection() throws SQLException {
+    // 활성화된 경우 연결 풀 사용
+    if (workConf.isConnectionPoolEnabled()) {
+      if (connectionPoolManager == null) {
+        initializeConnectionPool();
+      }
+      return connectionPoolManager.getConnection();
+    }
+
+    // 직접 연결로 폴백 (원래 동작)
+>>>>>>> master
     if (StringUtils.isEmpty(workConf.getUsername())) {
       return DriverManager.getConnection(workConf.getUrl());
     } else {
@@ -89,6 +168,28 @@ public abstract class BenchmarkModule {
     }
   }
 
+<<<<<<< HEAD
+=======
+  /**
+   * 연결 풀링이 활성화된 경우 연결 풀 관리자를 가져옵니다.
+   *
+   * @return ConnectionPoolManager 또는 풀링이 비활성화된 경우 null
+   */
+  public final ConnectionPoolManager getConnectionPoolManager() {
+    return connectionPoolManager;
+  }
+
+  /** 연결 풀을 닫고 모든 리소스를 해제합니다. 벤치마크가 완료되면 호출해야 합니다. */
+  public final void closeConnectionPool() {
+    if (connectionPoolManager != null) {
+      LOG.info("Closing connection pool for benchmark: {}", getBenchmarkName());
+      LOG.info("Final pool stats: {}", connectionPoolManager.getPoolStats());
+      connectionPoolManager.close();
+      connectionPoolManager = null;
+    }
+  }
+
+>>>>>>> master
   private String afterLoadScriptPath = null;
 
   public final void setAfterLoadScriptPath(String scriptPath) throws FileNotFoundException {
@@ -239,7 +340,12 @@ public abstract class BenchmarkModule {
   public final void createDatabase(DatabaseType dbType, Connection conn)
       throws SQLException, IOException {
 
+<<<<<<< HEAD
     ScriptRunner runner = new ScriptRunner(conn, true, true);
+=======
+    // stopOnError=false to continue on DROP TABLE errors (table may not exist)
+    ScriptRunner runner = new ScriptRunner(conn, true, false);
+>>>>>>> master
 
     if (workConf.getDDLPath() != null) {
       String ddlPath = workConf.getDDLPath();

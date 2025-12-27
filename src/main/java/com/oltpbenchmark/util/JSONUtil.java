@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -33,9 +49,13 @@ import org.json.JSONStringer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
 /**
  * @author pavlo
  */
+=======
+/** 작성자: pavlo */
+>>>>>>> master
 public abstract class JSONUtil {
   private static final Logger LOG = LoggerFactory.getLogger(JSONUtil.class.getName());
 
@@ -43,6 +63,11 @@ public abstract class JSONUtil {
   private static final Map<Class<?>, Field[]> SERIALIZABLE_FIELDS = new HashMap<>();
 
   /**
+<<<<<<< HEAD
+=======
+   * 주어진 클래스에서 직렬화 가능한 필드 배열을 반환합니다.
+   *
+>>>>>>> master
    * @param clazz
    * @return
    */
@@ -72,7 +97,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * JSON Pretty Print
+=======
+   * JSON 문자열을 보기 좋은(Pretty) 포맷으로 변환합니다.
+>>>>>>> master
    *
    * @param json
    * @return
@@ -83,8 +112,13 @@ public abstract class JSONUtil {
       return (JSONUtil.format(
           new JSONObject(json) {
             /**
+<<<<<<< HEAD
              * changes the value of JSONObject.map to a LinkedHashMap in order to maintain order of
              * keys. See Also: https://stackoverflow.com/a/62476486
+=======
+             * JSONObject.map의 값을 LinkedHashMap으로 바꿔 키 순서를 유지합니다. 참고:
+             * https://stackoverflow.com/a/62476486
+>>>>>>> master
              */
             @Override
             public JSONObject put(String key, Object value) throws JSONException {
@@ -117,6 +151,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
+=======
+   * 객체를 JSON 문자열로 직렬화합니다.
+   *
+>>>>>>> master
    * @param object
    * @return
    */
@@ -149,7 +188,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Write the contents of a JSONSerializable object out to a file on the local disk
+=======
+   * JSONSerializable 객체의 내용을 로컬 파일로 씁니다.
+>>>>>>> master
    *
    * @param <T>
    * @param object
@@ -174,7 +217,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Load in a JSONSerialable stored in a file
+=======
+   * 파일에 저장된 JSONSerializable 객체를 로드합니다.
+>>>>>>> master
    *
    * @param object
    * @param input_path
@@ -210,8 +257,12 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * For a given list of Fields, write out the contents of the corresponding field to the JSONObject
    * The each of the JSONObject's elements will be the upper case version of the Field's name
+=======
+   * 지정된 필드 목록의 값을 JSONObject에 기록합니다. JSONObject의 각 요소 이름은 필드 이름의 대문자 버전입니다.
+>>>>>>> master
    *
    * @param <T>
    * @param stringer
@@ -234,6 +285,7 @@ public abstract class JSONUtil {
         Class<?> f_class = f.getType();
         Object f_value = f.get(object);
 
+<<<<<<< HEAD
         // Null
         if (f_value == null) {
           writeFieldValue(stringer, f_class, f_value);
@@ -241,6 +293,15 @@ public abstract class JSONUtil {
         } else if (f_value instanceof Map) {
           writeFieldValue(stringer, f_class, f_value);
           // Everything else
+=======
+        // 값이 null인 경우
+        if (f_value == null) {
+          writeFieldValue(stringer, f_class, f_value);
+          // Map
+        } else if (f_value instanceof Map) {
+          writeFieldValue(stringer, f_class, f_value);
+          // 그 외 모든 경우
+>>>>>>> master
         } else {
           writeFieldValue(stringer, f_class, f_value);
         }
@@ -251,6 +312,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
+=======
+   * 필드 값을 JSON에 기록합니다.
+   *
+>>>>>>> master
    * @param stringer
    * @param field_class
    * @param field_value
@@ -258,14 +324,22 @@ public abstract class JSONUtil {
    */
   public static void writeFieldValue(
       JSONStringer stringer, Class<?> field_class, Object field_value) throws JSONException {
+<<<<<<< HEAD
     // Null
+=======
+    // 값이 null인 경우
+>>>>>>> master
     if (field_value == null) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("writeNullFieldValue({}, {})", field_class, field_value);
       }
       stringer.value(null);
 
+<<<<<<< HEAD
       // Collections
+=======
+      // 컬렉션
+>>>>>>> master
     } else if (ClassUtil.getInterfaces(field_class).contains(Collection.class)) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("writeCollectionFieldValue({}, {})", field_class, field_value);
@@ -280,23 +354,38 @@ public abstract class JSONUtil {
       }
       stringer.endArray();
 
+<<<<<<< HEAD
       // Maps
+=======
+      // Map
+>>>>>>> master
     } else if (field_value instanceof Map) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("writeMapFieldValue({}, {})", field_class, field_value);
       }
       stringer.object();
       for (Entry<?, ?> e : ((Map<?, ?>) field_value).entrySet()) {
+<<<<<<< HEAD
         // We can handle null keys
         String key_value = null;
         if (e.getKey() != null) {
           // deserialize it on the other side
+=======
+        // null 키도 처리할 수 있습니다.
+        String key_value = null;
+        if (e.getKey() != null) {
+          // 반대편에서도 역직렬화합니다.
+>>>>>>> master
           Class<?> key_class = e.getKey().getClass();
           key_value = makePrimitiveValue(key_class, e.getKey()).toString();
         }
         stringer.key(key_value);
 
+<<<<<<< HEAD
         // We can also handle null values. Where is your god now???
+=======
+        // null 값도 처리합니다. 문제없습니다.
+>>>>>>> master
         if (e.getValue() == null) {
           stringer.value(null);
         } else {
@@ -305,7 +394,11 @@ public abstract class JSONUtil {
       }
       stringer.endObject();
 
+<<<<<<< HEAD
       // Primitive
+=======
+      // 원시 타입
+>>>>>>> master
     } else {
       if (LOG.isDebugEnabled()) {
         LOG.debug("writePrimitiveFieldValue({}, {})", field_class, field_value);
@@ -315,7 +408,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Read data from the given JSONObject and populate the given Map
+=======
+   * 주어진 JSONObject에서 데이터를 읽어 Map에 채웁니다.
+>>>>>>> master
    *
    * @param json_object
    * @param map
@@ -334,6 +431,7 @@ public abstract class JSONUtil {
       final Stack<Class> next_inner_classes = new Stack<>();
       next_inner_classes.addAll(inner_classes);
 
+<<<<<<< HEAD
       // KEY
       Object key = JSONUtil.getPrimitiveValue(json_key, key_class);
 
@@ -341,6 +439,15 @@ public abstract class JSONUtil {
       Object object = null;
       if (json_object.isNull(json_key)) {
         // Nothing...
+=======
+      // 키
+      Object key = JSONUtil.getPrimitiveValue(json_key, key_class);
+
+      // 값
+      Object object = null;
+      if (json_object.isNull(json_key)) {
+        // 특별한 작업 없음
+>>>>>>> master
       } else if (val_interfaces.contains(List.class)) {
         object = new ArrayList();
         readCollectionField(
@@ -362,7 +469,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Read data from the given JSONArray and populate the given Collection
+=======
+   * 주어진 JSONArray에서 데이터를 읽어 Collection을 채웁니다.
+>>>>>>> master
    *
    * @param json_array
    * @param collection
@@ -373,9 +484,14 @@ public abstract class JSONUtil {
   protected static void readCollectionField(
       final JSONArray json_array, final Collection collection, final Stack<Class> inner_classes)
       throws Exception {
+<<<<<<< HEAD
     // We need to figure out what the inner type of the collection is
     // If it's a Collection or a Map, then we need to instantiate it before
     // we can call readFieldValue() again for it.
+=======
+    // 컬렉션의 내부 타입을 알아내야 합니다.
+    // 내부 타입이 컬렉션 또는 Map이면 readFieldValue()를 다시 호출하기 전에 인스턴스를 생성해야 합니다.
+>>>>>>> master
     Class inner_class = inner_classes.pop();
     Collection<Class<?>> inner_interfaces = ClassUtil.getInterfaces(inner_class);
 
@@ -385,6 +501,7 @@ public abstract class JSONUtil {
 
       Object value = null;
 
+<<<<<<< HEAD
       // Null
       if (json_array.isNull(i)) {
         value = null;
@@ -401,6 +518,24 @@ public abstract class JSONUtil {
         value = new HashMap();
         readMapField(json_array.getJSONObject(i), (Map) value, next_inner_classes);
         // Values
+=======
+      // 값이 null인 경우
+      if (json_array.isNull(i)) {
+        value = null;
+        // List
+      } else if (inner_interfaces.contains(List.class)) {
+        value = new ArrayList();
+        readCollectionField(json_array.getJSONArray(i), (Collection) value, next_inner_classes);
+        // Set
+      } else if (inner_interfaces.contains(Set.class)) {
+        value = new HashSet();
+        readCollectionField(json_array.getJSONArray(i), (Collection) value, next_inner_classes);
+        // Map
+      } else if (inner_interfaces.contains(Map.class)) {
+        value = new HashMap();
+        readMapField(json_array.getJSONObject(i), (Map) value, next_inner_classes);
+        // 일반 값
+>>>>>>> master
       } else {
         String json_string = json_array.getString(i);
         value = JSONUtil.getPrimitiveValue(json_string, inner_class);
@@ -410,6 +545,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
+=======
+   * JSONObject에서 지정된 필드 값을 읽어 객체에 설정합니다.
+   *
+>>>>>>> master
    * @param json_object
    * @param json_key
    * @param field_handle
@@ -425,14 +565,22 @@ public abstract class JSONUtil {
     Object field_object = field_handle.get(object);
     // String field_name = field_handle.getName();
 
+<<<<<<< HEAD
     // Null
+=======
+    // 값이 null인 경우
+>>>>>>> master
     if (json_object.isNull(json_key)) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Field {} is null", json_key);
       }
       field_handle.set(object, null);
 
+<<<<<<< HEAD
       // Collections
+=======
+      // 컬렉션
+>>>>>>> master
     } else if (ClassUtil.getInterfaces(field_class).contains(Collection.class)) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Field {} is a collection", json_key);
@@ -448,7 +596,11 @@ public abstract class JSONUtil {
       }
       readCollectionField(json_inner, (Collection) field_object, inner_classes);
 
+<<<<<<< HEAD
       // Maps
+=======
+      // Map
+>>>>>>> master
     } else if (field_object instanceof Map) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("Field {} is a map", json_key);
@@ -464,7 +616,11 @@ public abstract class JSONUtil {
       }
       readMapField(json_inner, (Map) field_object, inner_classes);
 
+<<<<<<< HEAD
       // Everything else...
+=======
+      // 그 외 모든 경우...
+>>>>>>> master
     } else {
       Class explicit_field_class = JSONUtil.getClassForField(json_object, json_key);
       if (explicit_field_class != null) {
@@ -485,8 +641,12 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * For the given list of Fields, load in the values from the JSON object into the current object
    * If ignore_missing is false, then JSONUtil will not throw an error if a field is missing
+=======
+   * 지정된 필드 리스트에 대해 JSONObject에서 값을 읽어 현재 객체에 설정합니다. ignore_missing이 false이면 필드가 없을 때 오류를 던지지 않습니다.
+>>>>>>> master
    *
    * @param <E>
    * @param <T>
@@ -538,8 +698,12 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the class of a field if it was stored in the JSONObject along with the value If there is
    * no class information, then this will return null
+=======
+   * JSONObject에 필드와 함께 저장된 클래스 정보를 반환합니다. 클래스 정보가 없으면 null을 반환합니다.
+>>>>>>> master
    *
    * @param json_object
    * @param json_key
@@ -549,7 +713,11 @@ public abstract class JSONUtil {
   private static Class<?> getClassForField(JSONObject json_object, String json_key)
       throws JSONException {
     Class<?> field_class = null;
+<<<<<<< HEAD
     // Check whether we also stored the class
+=======
+    // 클래스 정보도 저장했는지 확인합니다.
+>>>>>>> master
     if (json_object.has(json_key + JSON_CLASS_SUFFIX)) {
       try {
         field_class = ClassUtil.getClass(json_object.getString(json_key + JSON_CLASS_SUFFIX));
@@ -562,7 +730,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the proper serialization string for the given value
+=======
+   * 주어진 값을 직렬화 가능한 형태로 반환합니다.
+>>>>>>> master
    *
    * @param field_class
    * @param field_value
@@ -575,10 +747,17 @@ public abstract class JSONUtil {
       value = ((Class<?>) field_value).getName();
       // JSONSerializable
     } else if (ClassUtil.getInterfaces(field_class).contains(JSONSerializable.class)) {
+<<<<<<< HEAD
       // Just return the value back. The JSON library will take care of it
       //            System.err.println(field_class + ": " + field_value);
       value = field_value;
       // Everything else
+=======
+      // 그대로 반환합니다. JSON 라이브러리가 처리합니다.
+      //            System.err.println(field_class + ": " + field_value);
+      value = field_value;
+      // 그 외 모든 경우
+>>>>>>> master
     } else {
       value = field_value; // .toString();
     }
@@ -586,7 +765,11 @@ public abstract class JSONUtil {
   }
 
   /**
+<<<<<<< HEAD
    * For the given JSON string, figure out what kind of object it is and return it
+=======
+   * 주어진 JSON 문자열에서 타입을 파악하여 적절한 객체를 반환합니다.
+>>>>>>> master
    *
    * @param json_value
    * @param field_class
@@ -600,7 +783,11 @@ public abstract class JSONUtil {
       if (value == null) {
         throw new JSONException("Failed to get class from '" + json_value + "'");
       }
+<<<<<<< HEAD
       // Enum
+=======
+      // Enum 타입
+>>>>>>> master
     } else if (field_class.isEnum()) {
       for (Object o : field_class.getEnumConstants()) {
         Enum<?> e = (Enum<?>) o;
@@ -619,7 +806,11 @@ public abstract class JSONUtil {
       ((JSONSerializable) value).fromJSON(new JSONObject(json_value));
       // Boolean
     } else if (field_class.equals(Boolean.class) || field_class.equals(boolean.class)) {
+<<<<<<< HEAD
       // We have to use field_class.equals() because the value may be null
+=======
+      // 값이 null일 수 있어서 field_class.equals()를 사용합니다.
+>>>>>>> master
       value = Boolean.parseBoolean(json_value);
       // Short
     } else if (field_class.equals(Short.class) || field_class.equals(short.class)) {

@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+>>>>>>> master
  *
  */
 
@@ -28,7 +40,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
+<<<<<<< HEAD
 /** TPC-C Benchmark Loader */
+=======
+/** TPC-C 벤치마크 데이터를 적재하는 로더입니다. */
+>>>>>>> master
 public final class TPCCLoader extends Loader<TPCCBenchmark> {
 
   private static final int FIRST_UNPROCESSED_O_ID = 2101;
@@ -45,8 +61,13 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
     List<LoaderThread> threads = new ArrayList<>();
     final CountDownLatch itemLatch = new CountDownLatch(1);
 
+<<<<<<< HEAD
     // ITEM
     // This will be invoked first and executed in a single thread.
+=======
+    // ITEM 테이블
+    // 먼저 이 부분이 호출되며 단일 스레드로 실행됩니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
@@ -60,10 +81,16 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
           }
         });
 
+<<<<<<< HEAD
     // WAREHOUSES
     // We use a separate thread per warehouse. Each thread will load
     // all of the tables that depend on that warehouse. They all have
     // to wait until the ITEM table is loaded first though.
+=======
+    // 창고별 로딩
+    // 창고별로 하나의 스레드를 사용하며, 해당 창고에 종속된 모든 테이블을 적재합니다.
+    // 모든 스레드는 ITEM 테이블이 먼저 로드되기를 기다려야 합니다.
+>>>>>>> master
     for (int w = 1; w <= numWarehouses; w++) {
       final int w_id = w;
       LoaderThread t =
@@ -74,51 +101,83 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load WAREHOUSE {}", w_id);
               }
+<<<<<<< HEAD
               // WAREHOUSE
+=======
+              // 창고 정보
+>>>>>>> master
               loadWarehouse(conn, w_id);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load STOCK {}", w_id);
               }
+<<<<<<< HEAD
               // STOCK
+=======
+              // 재고 정보
+>>>>>>> master
               loadStock(conn, w_id, TPCCConfig.configItemCount);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load DISTRICT {}", w_id);
               }
+<<<<<<< HEAD
               // DISTRICT
+=======
+              // 구역 정보
+>>>>>>> master
               loadDistricts(conn, w_id, TPCCConfig.configDistPerWhse);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load CUSTOMER {}", w_id);
               }
+<<<<<<< HEAD
               // CUSTOMER
+=======
+              // 고객 정보
+>>>>>>> master
               loadCustomers(conn, w_id, TPCCConfig.configDistPerWhse, TPCCConfig.configCustPerDist);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load CUSTOMER HISTORY {}", w_id);
               }
+<<<<<<< HEAD
               // CUSTOMER HISTORY
+=======
+              // 고객 이력
+>>>>>>> master
               loadCustomerHistory(
                   conn, w_id, TPCCConfig.configDistPerWhse, TPCCConfig.configCustPerDist);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load ORDERS {}", w_id);
               }
+<<<<<<< HEAD
               // ORDERS
+=======
+              // 주문 정보
+>>>>>>> master
               loadOpenOrders(
                   conn, w_id, TPCCConfig.configDistPerWhse, TPCCConfig.configCustPerDist);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load NEW ORDERS {}", w_id);
               }
+<<<<<<< HEAD
               // NEW ORDERS
+=======
+              // 신규 주문 정보
+>>>>>>> master
               loadNewOrders(conn, w_id, TPCCConfig.configDistPerWhse, TPCCConfig.configCustPerDist);
 
               if (LOG.isDebugEnabled()) {
                 LOG.debug("Starting to load ORDER LINES {}", w_id);
               }
+<<<<<<< HEAD
               // ORDER LINES
+=======
+              // 주문 항목
+>>>>>>> master
               loadOrderLines(
                   conn, w_id, TPCCConfig.configDistPerWhse, TPCCConfig.configCustPerDist);
             }
@@ -126,7 +185,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
             @Override
             public void beforeLoad() {
 
+<<<<<<< HEAD
               // Make sure that we load the ITEM table first
+=======
+              // ITEM 테이블을 먼저 로드했는지 확인합니다.
+>>>>>>> master
 
               try {
                 itemLatch.await();
@@ -159,6 +222,7 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         item.i_name = TPCCUtil.randomStr(TPCCUtil.randomNumber(14, 24, benchmark.rng()));
         item.i_price = TPCCUtil.randomNumber(100, 10000, benchmark.rng()) / 100.0;
 
+<<<<<<< HEAD
         // i_data
         int randPct = TPCCUtil.randomNumber(1, 100, benchmark.rng());
         int len = TPCCUtil.randomNumber(26, 50, benchmark.rng());
@@ -168,6 +232,16 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         } else {
           // 10% of time i_data has "ORIGINAL" crammed somewhere in
           // middle
+=======
+        // i_data 필드 생성
+        int randPct = TPCCUtil.randomNumber(1, 100, benchmark.rng());
+        int len = TPCCUtil.randomNumber(26, 50, benchmark.rng());
+        if (randPct > 10) {
+          // 전체의 90%는 길이 [26 .. 50]의 무작위 문자열입니다.
+          item.i_data = TPCCUtil.randomStr(len);
+        } else {
+          // 나머지 10%는 문자열 중간에 "ORIGINAL"이 삽입됩니다.
+>>>>>>> master
           int startORIGINAL = TPCCUtil.randomNumber(2, (len - 8), benchmark.rng());
           item.i_data =
               TPCCUtil.randomStr(startORIGINAL - 1)
@@ -212,7 +286,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
       warehouse.w_id = w_id;
       warehouse.w_ytd = 300000;
 
+<<<<<<< HEAD
       // random within [0.0000 .. 0.2000]
+=======
+      // [0.0000 .. 0.2000] 범위에서 무작위 값입니다.
+>>>>>>> master
       warehouse.w_tax = (TPCCUtil.randomNumber(0, 2000, benchmark.rng())) / 10000.0;
       warehouse.w_name = TPCCUtil.randomStr(TPCCUtil.randomNumber(6, 10, benchmark.rng()));
       warehouse.w_street_1 = TPCCUtil.randomStr(TPCCUtil.randomNumber(10, 20, benchmark.rng()));
@@ -254,6 +332,7 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         stock.s_order_cnt = 0;
         stock.s_remote_cnt = 0;
 
+<<<<<<< HEAD
         // s_data
         int randPct = TPCCUtil.randomNumber(1, 100, benchmark.rng());
         int len = TPCCUtil.randomNumber(26, 50, benchmark.rng());
@@ -264,6 +343,16 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         } else {
           // 10% of time i_data has "ORIGINAL" crammed somewhere
           // in middle
+=======
+        // s_data 텍스트 생성
+        int randPct = TPCCUtil.randomNumber(1, 100, benchmark.rng());
+        int len = TPCCUtil.randomNumber(26, 50, benchmark.rng());
+        if (randPct > 10) {
+          // 전체의 90%는 길이 [26 .. 50]의 무작위 문자열입니다.
+          stock.s_data = TPCCUtil.randomStr(len);
+        } else {
+          // 나머지 10%는 문자열 중간에 "ORIGINAL"이 삽입됩니다.
+>>>>>>> master
           int startORIGINAL = TPCCUtil.randomNumber(2, (len - 8), benchmark.rng());
           stock.s_data =
               TPCCUtil.randomStr(startORIGINAL - 1)
@@ -318,7 +407,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         district.d_w_id = w_id;
         district.d_ytd = 30000;
 
+<<<<<<< HEAD
         // random within [0.0000 .. 0.2000]
+=======
+        // [0.0000 .. 0.2000] 범위에서 무작위값을 생성합니다.
+>>>>>>> master
         district.d_tax = (float) ((TPCCUtil.randomNumber(0, 2000, benchmark.rng())) / 10000.0);
 
         district.d_next_o_id = TPCCConfig.configCustPerDist + 1;
@@ -366,6 +459,7 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
           customer.c_d_id = d;
           customer.c_w_id = w_id;
 
+<<<<<<< HEAD
           // discount is random between [0.0000 ... 0.5000]
           customer.c_discount = (float) (TPCCUtil.randomNumber(1, 5000, benchmark.rng()) / 10000.0);
 
@@ -373,6 +467,15 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
             customer.c_credit = "BC"; // 10% Bad Credit
           } else {
             customer.c_credit = "GC"; // 90% Good Credit
+=======
+          // 할인율은 [0.0000 ... 0.5000] 사이의 랜덤 값입니다.
+          customer.c_discount = (float) (TPCCUtil.randomNumber(1, 5000, benchmark.rng()) / 10000.0);
+
+          if (TPCCUtil.randomNumber(1, 100, benchmark.rng()) <= 10) {
+            customer.c_credit = "BC"; // 전체의 10%는 불량 신용
+          } else {
+            customer.c_credit = "GC"; // 나머지 90%는 양호한 신용
+>>>>>>> master
           }
           if (c <= 1000) {
             customer.c_last = TPCCUtil.getLastName(c - 1);
@@ -391,7 +494,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
           customer.c_street_2 = TPCCUtil.randomStr(TPCCUtil.randomNumber(10, 20, benchmark.rng()));
           customer.c_city = TPCCUtil.randomStr(TPCCUtil.randomNumber(10, 20, benchmark.rng()));
           customer.c_state = TPCCUtil.randomStr(3).toUpperCase();
+<<<<<<< HEAD
           // TPC-C 4.3.2.7: 4 random digits + "11111"
+=======
+          // TPC-C 4.3.2.7: 4자리 무작위 숫자 + "11111"
+>>>>>>> master
           customer.c_zip = TPCCUtil.randomNStr(4) + "11111";
           customer.c_phone = TPCCUtil.randomNStr(16);
           customer.c_since = sysdate;
@@ -498,13 +605,21 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
         getInsertStatement(conn, TPCCConstants.TABLENAME_OPENORDER)) {
 
       for (int d = 1; d <= districtsPerWarehouse; d++) {
+<<<<<<< HEAD
         // TPC-C 4.3.3.1: o_c_id must be a permutation of [1, 3000]
+=======
+        // TPC-C 4.3.3.1: o_c_id는 [1, 3000] 범위의 순열이어야 합니다.
+>>>>>>> master
         int[] c_ids = new int[customersPerDistrict];
         for (int i = 0; i < customersPerDistrict; ++i) {
           c_ids[i] = i + 1;
         }
+<<<<<<< HEAD
         // Collections.shuffle exists, but there is no
         // Arrays.shuffle
+=======
+        // Collections.shuffle는 존재하지만 Arrays.shuffle은 없습니다.
+>>>>>>> master
         for (int i = 0; i < c_ids.length - 1; ++i) {
           int remaining = c_ids.length - i - 1;
           int swapIndex = benchmark.rng().nextInt(remaining) + i + 1;
@@ -521,7 +636,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
           oorder.o_w_id = w_id;
           oorder.o_d_id = d;
           oorder.o_c_id = c_ids[c - 1];
+<<<<<<< HEAD
           // o_carrier_id is set *only* for orders with ids < 2101
+=======
+          // o_carrier_id는 식별자가 2101 미만인 주문에만 설정합니다.
+>>>>>>> master
           // [4.3.3.1]
           if (oorder.o_id < FIRST_UNPROCESSED_O_ID) {
             oorder.o_carrier_id = TPCCUtil.randomNumber(1, 10, benchmark.rng());
@@ -587,9 +706,14 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
 
         for (int c = 1; c <= customersPerDistrict; c++) {
 
+<<<<<<< HEAD
           // 900 rows in the NEW-ORDER table corresponding to the last
           // 900 rows in the ORDER table for that district (i.e.,
           // with NO_O_ID between 2,101 and 3,000)
+=======
+          // NEW-ORDER 테이블에는 해당 구역의 ORDER 테이블 마지막 900개 행과
+          // 대응하는 레코드만 존재합니다 (즉 NO_O_ID가 2,101 ~ 3,000 범위).
+>>>>>>> master
           if (c >= FIRST_UNPROCESSED_O_ID) {
             NewOrder new_order = new NewOrder();
             new_order.no_w_id = w_id;
@@ -639,7 +763,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
             order_line.ol_w_id = w_id;
             order_line.ol_d_id = d;
             order_line.ol_o_id = c;
+<<<<<<< HEAD
             order_line.ol_number = l; // ol_number
+=======
+            order_line.ol_number = l; // ol_number 번호
+>>>>>>> master
             order_line.ol_i_id =
                 TPCCUtil.randomNumber(1, TPCCConfig.configItemCount, benchmark.rng());
             if (order_line.ol_o_id < FIRST_UNPROCESSED_O_ID) {
@@ -647,7 +775,11 @@ public final class TPCCLoader extends Loader<TPCCBenchmark> {
               order_line.ol_amount = 0;
             } else {
               order_line.ol_delivery_d = null;
+<<<<<<< HEAD
               // random within [0.01 .. 9,999.99]
+=======
+              // [0.01 .. 9,999.99] 범위에서 무작위 금액을 생성합니다.
+>>>>>>> master
               order_line.ol_amount =
                   (float) (TPCCUtil.randomNumber(1, 999999, benchmark.rng()) / 100.0);
             }

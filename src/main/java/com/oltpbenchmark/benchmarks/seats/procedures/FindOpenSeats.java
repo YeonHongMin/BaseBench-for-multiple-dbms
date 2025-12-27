@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -70,7 +83,11 @@ public class FindOpenSeats extends Procedure {
 
   public Object[][] run(Connection conn, String f_id) throws SQLException {
 
+<<<<<<< HEAD
     // 150 seats
+=======
+    // 150개 좌석
+>>>>>>> master
     final long[] seatmap =
         new long[] {
           -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -87,8 +104,12 @@ public class FindOpenSeats extends Procedure {
     long seats_left = 0;
     double seat_price = 0.0;
 
+<<<<<<< HEAD
     // First calculate the seat price using the flight's base price
     // and the number of seats that remaining
+=======
+    // 먼저 항공편의 기본 가격과 남은 좌석 수를 사용하여 좌석 가격을 계산합니다.
+>>>>>>> master
     try (PreparedStatement f_stmt = this.getPreparedStatement(conn, GetFlight)) {
       f_stmt.setString(1, f_id);
       try (ResultSet f_results = f_stmt.executeQuery()) {
@@ -107,12 +128,21 @@ public class FindOpenSeats extends Procedure {
       }
     }
 
+<<<<<<< HEAD
     // TODO: Figure out why this doesn't match the SQL
     //   Possible explanation: Floating point numbers are approximations;
     //                         there is no exact representation of (for example) 0.01.
     //                         Some databases (like PostgreSQL) will use exact types,
     //                         such as numeric, for intermediate values.  (This is
     //                         more-or-less equivalent to java.math.BigDecimal.)
+=======
+    // TODO: 이것이 SQL과 일치하지 않는 이유를 파악하세요.
+    //   가능한 설명: 부동 소수점 숫자는 근사값입니다.
+    //                         (예: 0.01)의 정확한 표현이 없습니다.
+    //                         일부 데이터베이스(예: PostgreSQL)는 중간 값에 대해
+    //                         numeric과 같은 정확한 타입을 사용합니다. (이것은
+    //                         java.math.BigDecimal과 거의 동일합니다.)
+>>>>>>> master
     double _seat_price = base_price + (base_price * (1.0 - (seats_left / (double) seats_total)));
 
     LOG.debug(
@@ -120,7 +150,11 @@ public class FindOpenSeats extends Procedure {
             "Flight %s - SQL[%.2f] <-> JAVA[%.2f] [basePrice=%f, total=%d, left=%d]",
             f_id, seat_price, _seat_price, base_price, seats_total, seats_left));
 
+<<<<<<< HEAD
     // Then build the seat map of the remaining seats
+=======
+    // 그런 다음 남은 좌석의 좌석 맵을 구성합니다.
+>>>>>>> master
     try (PreparedStatement s_stmt = this.getPreparedStatement(conn, GetSeats)) {
       s_stmt.setString(1, f_id);
       try (ResultSet s_results = s_stmt.executeQuery()) {
@@ -139,7 +173,11 @@ public class FindOpenSeats extends Procedure {
     Object[][] returnResults = new Object[SEATSConstants.FLIGHTS_NUM_SEATS][];
     for (int i = 0; i < seatmap.length; ++i) {
       if (seatmap[i] == -1) {
+<<<<<<< HEAD
         // Charge more for the first seats
+=======
+        // 첫 번째 좌석에 대해 더 많이 청구합니다.
+>>>>>>> master
         double price = seat_price * (i < SEATSConstants.FLIGHTS_FIRST_CLASS_OFFSET ? 2.0 : 1.0);
         Object[] row = new Object[] {f_id, i, price};
         returnResults[ctr++] = row;

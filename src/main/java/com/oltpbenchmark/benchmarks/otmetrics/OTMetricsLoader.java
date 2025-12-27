@@ -1,6 +1,7 @@
 /*
  * Copyright 2022 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -34,7 +47,11 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
+<<<<<<< HEAD
  * OtterTune Metrics Timeseries Benchmark
+=======
+ * OtterTune 메트릭 시계열 벤치마크
+>>>>>>> master
  *
  * @author pavlo
  */
@@ -114,7 +131,11 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     int total = 0;
     int batch = 0;
 
+<<<<<<< HEAD
     // SourceId/SessionId Pairs
+=======
+    // SourceId/SessionId 쌍
+>>>>>>> master
     List<Pair<Integer, Integer>> observations = new ArrayList<>();
 
     try (PreparedStatement insertBatch = conn.prepareStatement(sql)) {
@@ -133,7 +154,11 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
         insertBatch.setString(offset++, agent);
 
         // CREATED_TIME
+<<<<<<< HEAD
         // This should be the same time as the source's created_time
+=======
+        // 이것은 source의 created_time과 동일한 시간이어야 합니다.
+>>>>>>> master
         insertBatch.setTimestamp(
             offset++, Timestamp.valueOf(OTMetricsUtil.getCreateDateTime(source_id)));
 
@@ -158,7 +183,11 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     }
     this.addToTableCount(catalog_tbl.getName(), total);
 
+<<<<<<< HEAD
     // Load Observations
+=======
+    // 관찰 데이터 로드
+>>>>>>> master
     int total_observations = 0;
     for (Pair<Integer, Integer> p : observations) {
       total_observations += loadObservations(conn, p.first, p.second);
@@ -175,8 +204,13 @@ public final class OTMetricsLoader extends Loader<OTMetricsBenchmark> {
     int total = 0;
     int batch = 0;
 
+<<<<<<< HEAD
     // For each session_id / source_id, we will divide the # of observations that we
     // insert into timeticks. Then for each timetick, we will insert NUM_TYPES observations
+=======
+    // 각 session_id / source_id에 대해 삽입하는 관찰 데이터 수를
+    // timeticks로 나눕니다. 그런 다음 각 timetick에 대해 NUM_TYPES 관찰 데이터를 삽입합니다.
+>>>>>>> master
     int timetick = 0;
 
     int type_category = (int) Math.floor(source_id / OTMetricsConstants.NUM_TYPES);

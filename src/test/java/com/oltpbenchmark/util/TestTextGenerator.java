@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  *  Copyright 2015 by OLTPBenchmark Project
  *
@@ -118,3 +119,6 @@ public class TestTextGenerator {
     assertTrue(valid);
   }
 }
+=======
+
+>>>>>>> master

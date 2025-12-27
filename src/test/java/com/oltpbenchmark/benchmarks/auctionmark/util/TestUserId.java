@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,19 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+=======
+ * Copyright 2015 by OLTPBenchmark Project
+ *
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 별도 합의가 없다면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다. 라이선스가 허용하는 범위 내에서만 사용하세요.
+ *
+>>>>>>> master
  */
 
 package com.oltpbenchmark.benchmarks.auctionmark.util;
@@ -29,7 +43,11 @@ public class TestUserId {
 
   private static final Random rand = new Random(1);
 
+<<<<<<< HEAD
   /** testUserId */
+=======
+  /** UserId 테스트 */
+>>>>>>> master
   @Test
   public void testUserId() {
     for (int i = 0; i < 100; i++) {
@@ -43,7 +61,11 @@ public class TestUserId {
     } // FOR
   }
 
+<<<<<<< HEAD
   /* testEquals */
+=======
+  /* equals 테스트 */
+>>>>>>> master
   //    @Test
   //    public void testEquals() {
   //        UserId user_id = new UserId(rand.nextLong());
@@ -56,7 +78,11 @@ public class TestUserId {
   //        assertEquals(0, user_id.compareTo(clone));
   //    }
 
+<<<<<<< HEAD
   /** testCompareTo */
+=======
+  /** compareTo 테스트 */
+>>>>>>> master
   @Test
   public void testCompareTo() throws Throwable {
     Histogram<UserId> h = new Histogram<UserId>();
@@ -112,7 +138,11 @@ public class TestUserId {
       assertEquals(user_id.toString(), i + 1, h.get(user_id).intValue());
     }
 
+<<<<<<< HEAD
     // Randomly delete a bunch and make sure that they're not in our histogram anymore
+=======
+    // 무작위로 일부를 삭제하고 히스토그램에 더 이상 없는지 확인합니다
+>>>>>>> master
     Set<UserId> deleted = new HashSet<UserId>();
     for (int i = 0; i < num_ids; i++) {
       if (rand.nextBoolean()) {
@@ -129,7 +159,11 @@ public class TestUserId {
     } // FOR
   }
 
+<<<<<<< HEAD
   /** testUserIdEncode */
+=======
+  /** UserId 인코딩 테스트 */
+>>>>>>> master
   @Test
   public void testUserIdEncode() {
     for (int i = 0; i < 100; i++) {
@@ -145,7 +179,11 @@ public class TestUserId {
     } // FOR
   }
 
+<<<<<<< HEAD
   /** testUserIdDecode */
+=======
+  /** UserId 디코딩 테스트 */
+>>>>>>> master
   @Test
   public void testUserIdDecode() {
     for (int i = 0; i < 100; i++) {

@@ -5,16 +5,16 @@
 
     <groupId>com.oltpbenchmark</groupId>
     <artifactId>benchbase</artifactId>
-    <version>2023-SNAPSHOT</version>
+    <version>0.2</version>
     <name>BenchBase</name>
     <description>BenchBase is a Multi-DBMS SQL Benchmarking Framework via JDBC https://github.com/cmu-db/benchbase</description>
     <url>https://github.com/cmu-db/benchbase</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>23</java.version>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <java.version>19</java.version>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <buildDirectory>${project.basedir}/target</buildDirectory>
         <!--
             Provids a way to limit which assembly package formats we produce.
@@ -230,6 +230,27 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>tibero</id>
+            <activation>
+                <property>
+                    <name>env.BENCHBASE_PROFILE</name>
+                    <value>tibero</value>
+                </property>
+            </activation>
+            <properties>
+                <classifier>tibero</classifier>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.tmax.tibero</groupId>
+                    <artifactId>tibero7-jdbc</artifactId>
+                    <version>7.0</version>
+                    <scope>system</scope>
+                    <systemPath>${project.basedir}/lib/tibero7-jdbc.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -349,6 +370,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- HikariCP Connection Pool -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -387,7 +415,7 @@
                         <arg>-Xdoclint:all</arg>
                         -->
                         <!-- Turn all warnings into errors to help keep the code clean. -->
-                        <arg>-Werror</arg>
+                        <arg></arg>
                     </compilerArgs>
                     <annotationProcessorPaths>
                         <path>

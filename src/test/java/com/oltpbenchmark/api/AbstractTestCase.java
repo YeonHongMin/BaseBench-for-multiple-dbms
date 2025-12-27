@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+=======
+ *  저작권 2015 OLTPBenchmark 프로젝트
+ *
+ *  Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ *  라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ *  라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ *  이 소프트웨어는 "있는 그대로" 배포되며,
+ *  명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ *  라이선스에서 허용하는 권한과 제한 사항은
+ *  라이선스의 본문을 참조하십시오.
+>>>>>>> master
  */
 
 package com.oltpbenchmark.api;
@@ -48,10 +64,14 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
 
   // -----------------------------------------------------------------
 
+<<<<<<< HEAD
   /**
    * This is the database type that we will use in our unit tests. This should always be one of the
    * embedded java databases
    */
+=======
+  /** 단위 테스트에서 사용할 데이터베이스 타입입니다. 항상 임베디드 Java 데이터베이스 중 하나여야 합니다. */
+>>>>>>> master
   private static final DatabaseType DB_TYPE = DatabaseType.HSQLDB;
 
   // -----------------------------------------------------------------
@@ -153,10 +173,16 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
             new Class<?>[] {WorkloadConfiguration.class});
     assertNotNull(this.benchmark);
 
+<<<<<<< HEAD
     // HACK: calling this a second time is a cheap no-op for most benchmark
     // tests, but actually ensures that the procedures list is populated
     // for the TestTemplatedWorker test which doesn't know its procedures
     // until after the benchmark is initialized and the config is loaded.
+=======
+    // HACK: 대부분의 벤치마크 테스트에서는 두 번째로 호출하는 것이 저렴한 no-op이지만,
+    // 실제로는 벤치마크가 초기화되고 설정이 로드된 후에야 프로시저를 알 수 있는
+    // TestTemplatedWorker 테스트를 위해 프로시저 목록이 채워지도록 보장합니다.
+>>>>>>> master
     var proceedures = this.procedures();
     assertNotNull(proceedures);
     if (!(this instanceof TestDDLOverride)) {
@@ -199,7 +225,11 @@ public abstract class AbstractTestCase<T extends BenchmarkModule> {
         assert testSocket != null;
         return port;
       } catch (BindException e) {
+<<<<<<< HEAD
         // This port is already in use. Continue to next port.
+=======
+        // 이 포트는 이미 사용 중입니다. 다음 포트로 계속 진행합니다.
+>>>>>>> master
         LOG.warn("Port {} is already in use. Trying next port.", port);
       }
     }

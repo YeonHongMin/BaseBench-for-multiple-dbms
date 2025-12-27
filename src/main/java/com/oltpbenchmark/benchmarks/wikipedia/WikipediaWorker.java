@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -69,6 +82,7 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     int userId;
 
     do {
+<<<<<<< HEAD
       // Check whether this should be an anonymous update
       if (this.rng().nextInt(100) < WikipediaConstants.ANONYMOUS_PAGE_UPDATE_PROB) {
         userId = WikipediaConstants.ANONYMOUS_USER_ID;
@@ -85,6 +99,24 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     if (procClass.equals(AddWatchList.class)) {
       // This while loop gets stuck in an infinite loop for small scale factors.
       // So we're just going to let it throw whatever it wants in the set from now on
+=======
+      // 익명 업데이트여야 하는지 확인합니다
+      if (this.rng().nextInt(100) < WikipediaConstants.ANONYMOUS_PAGE_UPDATE_PROB) {
+        userId = WikipediaConstants.ANONYMOUS_USER_ID;
+      }
+      // 그렇지 않으면 이 페이지를 업데이트하는 사용자가 누구인지 파악합니다
+      else {
+        userId = z_users.nextInt();
+      }
+      // 사용자가 필요하지만 익명을 생성한 경우 반복합니다
+    } while (needUser && userId == WikipediaConstants.ANONYMOUS_USER_ID);
+
+    // 업데이트할 페이지를 파악합니다
+    int page_id = z_pages.nextInt();
+    if (procClass.equals(AddWatchList.class)) {
+      // 이 while 루프는 작은 스케일 팩터에서 무한 루프에 빠집니다.
+      // 이제부터는 집합에 무엇을 넣든 그냥 던지도록 하겠습니다
+>>>>>>> master
       // while (addedWatchlistPages.contains(page_id)) {
       //    page_id = z_pages.nextInt();
       // }
@@ -94,17 +126,26 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     String pageTitle = WikipediaUtil.generatePageTitle(this.rng(), page_id);
     int nameSpace = WikipediaUtil.generatePageNamespace(this.rng(), page_id);
 
+<<<<<<< HEAD
     // AddWatchList
+=======
+    // 관심 목록 추가
+>>>>>>> master
     try {
       if (procClass.equals(AddWatchList.class)) {
 
         this.addToWatchlist(conn, userId, nameSpace, pageTitle);
       }
+<<<<<<< HEAD
       // RemoveWatchList
+=======
+      // 관심 목록 제거
+>>>>>>> master
       else if (procClass.equals(RemoveWatchList.class)) {
 
         this.removeFromWatchlist(conn, userId, nameSpace, pageTitle);
       }
+<<<<<<< HEAD
       // UpdatePage
       else if (procClass.equals(UpdatePage.class)) {
         this.updatePage(conn, this.generateUserIP(), userId, nameSpace, pageTitle);
@@ -114,6 +155,17 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
         this.getPageAnonymous(conn, true, this.generateUserIP(), nameSpace, pageTitle);
       }
       // GetPageAuthenticated
+=======
+      // 페이지 업데이트
+      else if (procClass.equals(UpdatePage.class)) {
+        this.updatePage(conn, this.generateUserIP(), userId, nameSpace, pageTitle);
+      }
+      // 익명 페이지 가져오기
+      else if (procClass.equals(GetPageAnonymous.class)) {
+        this.getPageAnonymous(conn, true, this.generateUserIP(), nameSpace, pageTitle);
+      }
+      // 인증된 페이지 가져오기
+>>>>>>> master
       else if (procClass.equals(GetPageAuthenticated.class)) {
 
         this.getPageAuthenticated(conn, true, this.generateUserIP(), userId, nameSpace, pageTitle);
@@ -184,8 +236,13 @@ public final class WikipediaWorker extends Worker<WikipediaBenchmark> {
     String revComment = TextGenerator.randomStr(this.rng(), revCommentLen + 1);
     int revMinorEdit = b.minorEdit.nextValue();
 
+<<<<<<< HEAD
     // Permute the original text of the article
     // Important: We have to make sure that we fill in the entire array
+=======
+    // 기사의 원본 텍스트를 순열합니다
+    // 중요: 전체 배열을 채우도록 해야 합니다
+>>>>>>> master
     char[] newText = b.generateRevisionText(a.oldText.toCharArray());
 
     if (LOG.isTraceEnabled()) {

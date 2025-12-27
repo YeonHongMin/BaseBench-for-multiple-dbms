@@ -1,5 +1,6 @@
 {
     "recommendations": [
+<<<<<<< HEAD
         "EditorConfig.EditorConfig",
         "github.vscode-pull-request-github",
         "huntertran.auto-markdown-toc",
@@ -7,3 +8,8 @@
         "vscjava.vscode-java-pack"
     ]
 }
+=======
+        "anthropic.claude-code"
+    ]
+}
+>>>>>>> master

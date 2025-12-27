@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -40,16 +53,25 @@ import org.apache.commons.collections4.set.ListOrderedSet;
 
 public final class SEATSLoader extends Loader<SEATSBenchmark> {
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // INTERNAL DATA MEMBERS
+=======
+  // 내부 데이터 멤버
+>>>>>>> master
   // -----------------------------------------------------------------
 
   protected final SEATSProfile profile;
 
+<<<<<<< HEAD
   /** Mapping from Airports to their geolocation coordinates AirportCode -> <Latitude, Longitude> */
+=======
+  /** 공항에서 지리적 좌표로의 매핑 AirportCode -> <위도, 경도> */
+>>>>>>> master
   private final ListOrderedMap<String, Pair<Double, Double>> airport_locations =
       new ListOrderedMap<>();
 
   /**
+<<<<<<< HEAD
    * AirportCode -> Set<AirportCode, Distance> Only store the records for those airports in
    * HISTOGRAM_FLIGHTS_PER_AIRPORT
    */
@@ -68,13 +90,36 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
 
   // -----------------------------------------------------------------
   // INITIALIZATION
+=======
+   * AirportCode -> Set<AirportCode, Distance> HISTOGRAM_FLIGHTS_PER_AIRPORT에 있는 공항에 대한 레코드만 저장합니다.
+   */
+  private final Map<String, Map<String, Short>> airport_distances = new HashMap<>();
+
+  /** 특정 항공편에 대한 FlightIds 목록과 남은 좌석 수를 저장합니다. */
+  private final ListOrderedMap<FlightId, Short> seats_remaining = new ListOrderedMap<>();
+
+  /** 로드가 완료된 테이블 수를 세는 카운터 */
+  private final AtomicInteger finished = new AtomicInteger(0);
+
+  /** 항공사 코드별 데이터베이스의 항공편 수 히스토그램 */
+  private final Histogram<String> flights_per_airline = new Histogram<>(true);
+
+  private final RandomGenerator rng; // 수정 필요
+
+  // -----------------------------------------------------------------
+  // 초기화
+>>>>>>> master
   // -----------------------------------------------------------------
 
   public SEATSLoader(SEATSBenchmark benchmark) {
     super(benchmark);
 
     this.rng = benchmark.getRandomGenerator();
+<<<<<<< HEAD
     // TODO: Sync with the base class rng
+=======
+    // TODO: 기본 클래스 rng와 동기화
+>>>>>>> master
     this.profile = new SEATSProfile(benchmark, this.rng);
 
     if (LOG.isDebugEnabled()) {
@@ -83,13 +128,18 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
   }
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // LOADING METHODS
+=======
+  // 로딩 메서드
+>>>>>>> master
   // -----------------------------------------------------------------
 
   @Override
   public List<LoaderThread> createLoaderThreads() {
     List<LoaderThread> threads = new ArrayList<>();
 
+<<<<<<< HEAD
     // High level locking overview, where step N+1 depends on step N
     // and latches are countDown()'d from top to bottom:
     //
@@ -121,6 +171,38 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
     // account for a CUSTOMER
     //
     // 6. Then we save the profile
+=======
+    // 상위 수준 잠금 개요, 단계 N+1은 단계 N에 의존하며
+    // 래치는 위에서 아래로 countDown()됩니다:
+    //
+    // 1. [histLatch] 히스토그램은 자체적으로 로드됩니다.
+    //
+    // 고정 테이블 [fixedLatch]
+    // 2.
+    // [countryLatch] Country는 자체적으로 로드됩니다.
+    // AIRPORT는 COUNTRY에 의존합니다.
+    // AIRLINE은 COUNTRY에 의존합니다.
+    //
+    // 3. [scalePrepLatch]
+    // 스케일링 테이블 로드를 시작하기 전에
+    // 고정 테이블 데이터를 히스토그램에 로드해야 합니다.
+    //
+    // 스케일링 테이블
+    // 4.
+    // [custLatch] CUSTOMER는 AIRPORT에 의존합니다.
+    // [distanceLatch] AIRPORT_DISTANCE는 AIRPORT에 의존합니다.
+    // [flightLatch] FLIGHT는 AIRLINE, AIRPORT, AIRPORT_DISTANCE에 의존합니다.
+    //
+    // 5. [loadLatch]
+    // RESERVATIONS는 FLIGHT, CUSTOMER에 의존합니다.
+    // FREQUENT_FLYER는 FLIGHT, CUSTOMER, AIRLINE에 의존합니다.
+    //
+    // 중요 참고: FLIGHT는 FREQUENT_FLYER보다 먼저 와야 하므로
+    // CUSTOMER에 대한 새 FREQUENT_FLYER 계정을 생성하기 위해
+    // 항공사를 선택할 때 flights_per_airline 히스토그램을 사용할 수 있습니다.
+    //
+    // 6. 그런 다음 프로필을 저장합니다.
+>>>>>>> master
 
     final CountDownLatch histLatch = new CountDownLatch(1);
 
@@ -213,13 +295,22 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
 
     final CountDownLatch scalingPrepLatch = new CountDownLatch(1);
 
+<<<<<<< HEAD
     // 3. [scalingPrepLatch] guards all of the fixed tables and should
     // be used from this point onwards instead of individual fixed locks
+=======
+    // 3. [scalingPrepLatch] 모든 고정 테이블을 보호하며
+    // 이 시점부터 개별 고정 잠금 대신 사용해야 합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
           public void load(Connection conn) {
+<<<<<<< HEAD
             // Setup the # of flights per airline
+=======
+            // 항공사별 항공편 수 설정
+>>>>>>> master
             flights_per_airline.putAll(SEATSLoader.this.profile.getAirlineCodes(), 0);
           }
 
@@ -242,7 +333,11 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
     final CountDownLatch distanceLatch = new CountDownLatch(1);
     final CountDownLatch flightLatch = new CountDownLatch(1);
 
+<<<<<<< HEAD
     // 4. [custLatch] CUSTOMER depends on AIRPORT
+=======
+    // 4. [custLatch] CUSTOMER는 AIRPORT에 의존합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
@@ -266,7 +361,11 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
           }
         });
 
+<<<<<<< HEAD
     // 4. AIRPORT_DISTANCE depends on AIRPORT
+=======
+    // 4. AIRPORT_DISTANCE는 AIRPORT에 의존합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
@@ -290,7 +389,11 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
           }
         });
 
+<<<<<<< HEAD
     // 4. [flightLatch] FLIGHT depends on AIRPORT_DISTANCE, AIRLINE, AIRPORT
+=======
+    // 4. [flightLatch] FLIGHT는 AIRPORT_DISTANCE, AIRLINE, AIRPORT에 의존합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
@@ -316,7 +419,11 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
 
     final CountDownLatch loadLatch = new CountDownLatch(2);
 
+<<<<<<< HEAD
     // 5. RESERVATIONS depends on FLIGHT, CUSTOMER
+=======
+    // 5. RESERVATIONS는 FLIGHT, CUSTOMER에 의존합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override
@@ -341,7 +448,11 @@ public final class SEATSLoader extends Loader<SEATSBenchmark> {
           }
         });
 
+<<<<<<< HEAD
     // 5. FREQUENT_FLYER depends on FLIGHT, CUSTOMER, AIRLINE
+=======
+    // 5. FREQUENT_FLYER는 FLIGHT, CUSTOMER, AIRLINE에 의존합니다.
+>>>>>>> master
     threads.add(
         new LoaderThread(this.benchmark) {
           @Override

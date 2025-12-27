@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
+ * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 얻을 수 있습니다:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의하지 않는 한,
+ * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
+ * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+>>>>>>> master
  *
  */
 
@@ -25,8 +38,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+<<<<<<< HEAD
  * This class is used to share a state among the workers of a single workload. Worker use it to ask
  * for work and as interface to the global BenchmarkState
+=======
+ * 이 클래스는 단일 워크로드의 워커들 간에 상태를 공유하는 데 사용됩니다. 워커는 이를 사용하여 작업을 요청하고 전역 BenchmarkState에 대한 인터페이스로 사용합니다.
+>>>>>>> master
  *
  * @author alendit
  */
@@ -41,7 +58,11 @@ public class WorkloadState {
 
   private int workersWaiting = 0;
 
+<<<<<<< HEAD
   @SuppressWarnings("unused") // never read
+=======
+  @SuppressWarnings("unused") // 읽히지 않음
+>>>>>>> master
   private int workersWorking = 0;
 
   private int workerNeedSleep;
@@ -56,7 +77,11 @@ public class WorkloadState {
     phaseIterator = works.iterator();
   }
 
+<<<<<<< HEAD
   /** Add a request to do work. */
+=======
+  /** 작업 요청을 추가합니다. */
+>>>>>>> master
   public void addToQueue(int amount, boolean resetQueues) {
     int workAdded = 0;
 
@@ -65,7 +90,11 @@ public class WorkloadState {
         workQueue.clear();
       }
 
+<<<<<<< HEAD
       // Only use the work queue if the phase is enabled and rate limited.
+=======
+      // 단계가 활성화되고 속도 제한이 있는 경우에만 작업 큐를 사용합니다.
+>>>>>>> master
       if (currentPhase == null
           || currentPhase.isDisabled()
           || !currentPhase.isRateLimited()
@@ -73,14 +102,23 @@ public class WorkloadState {
         return;
       }
 
+<<<<<<< HEAD
       // Add the specified number of procedures to the end of the queue.
       // If we can't keep up with current rate, truncate transactions
+=======
+      // 지정된 수의 프로시저를 큐 끝에 추가합니다.
+      // 현재 속도를 따라갈 수 없으면 트랜잭션을 잘라냅니다
+>>>>>>> master
       for (int i = 0; i < amount && workQueue.size() <= RATE_QUEUE_LIMIT; ++i) {
         workQueue.add(new SubmittedProcedure(currentPhase.chooseTransaction()));
         workAdded++;
       }
 
+<<<<<<< HEAD
       // Wake up sleeping workers to deal with the new work.
+=======
+      // 새로운 작업을 처리하기 위해 잠자는 워커를 깨웁니다.
+>>>>>>> master
       int numToWake = Math.min(workAdded, workersWaiting);
       while (numToWake-- > 0) {
         this.notify();
@@ -99,7 +137,11 @@ public class WorkloadState {
     }
   }
 
+<<<<<<< HEAD
   /** Called by ThreadPoolThreads when waiting for work. */
+=======
+  /** 작업을 기다릴 때 ThreadPoolThreads에 의해 호출됩니다. */
+>>>>>>> master
   public SubmittedProcedure fetchWork() {
     synchronized (this) {
       if (currentPhase != null && currentPhase.isSerial()) {
@@ -123,7 +165,11 @@ public class WorkloadState {
       }
     }
 
+<<<<<<< HEAD
     // Unlimited-rate phases don't use the work queue.
+=======
+    // 무제한 속도 단계는 작업 큐를 사용하지 않습니다.
+>>>>>>> master
     if (currentPhase != null && !currentPhase.isRateLimited()) {
       synchronized (this) {
         ++workersWorking;
@@ -133,7 +179,11 @@ public class WorkloadState {
     }
 
     synchronized (this) {
+<<<<<<< HEAD
       // Sleep until work is available.
+=======
+      // 작업이 사용 가능할 때까지 대기합니다.
+>>>>>>> master
       if (workQueue.peek() == null) {
         workersWaiting += 1;
         while (workQueue.peek() == null) {
@@ -177,7 +227,11 @@ public class WorkloadState {
   }
 
   /*
+<<<<<<< HEAD
    * Called by workers to ask if they should stay awake in this phase
+=======
+   * 워커가 이 단계에서 깨어 있어야 하는지 물어보기 위해 호출됩니다
+>>>>>>> master
    */
   public void stayAwake() {
     synchronized (this) {
@@ -196,6 +250,7 @@ public class WorkloadState {
     synchronized (this) {
       this.currentPhase = this.getNextPhase();
 
+<<<<<<< HEAD
       // Clear the work from the previous phase.
       workQueue.clear();
 
@@ -203,16 +258,32 @@ public class WorkloadState {
       // do.
       if (this.currentPhase == null)
       // Benchmark is over---wake everyone up so they can terminate
+=======
+      // 이전 단계의 작업을 지웁니다.
+      workQueue.clear();
+
+      // 얼마나 많은 워커가 잠들어야 하는지 결정한 다음 그렇게 합니다.
+      if (this.currentPhase == null)
+      // 벤치마크 종료---모든 사람을 깨워 종료할 수 있도록 합니다
+>>>>>>> master
       {
         workerNeedSleep = 0;
       } else {
         this.currentPhase.resetSerial();
         if (this.currentPhase.isDisabled())
+<<<<<<< HEAD
         // Phase disabled---everyone should sleep
         {
           workerNeedSleep = this.num_terminals;
         } else
         // Phase running---activate the appropriate # of terminals
+=======
+        // 단계 비활성화---모든 사람이 잠들어야 합니다
+        {
+          workerNeedSleep = this.num_terminals;
+        } else
+        // 단계 실행 중---적절한 수의 터미널을 활성화합니다
+>>>>>>> master
         {
           workerNeedSleep = this.num_terminals - this.currentPhase.getActiveTerminals();
         }
@@ -222,15 +293,25 @@ public class WorkloadState {
     }
   }
 
+<<<<<<< HEAD
   /** Delegates pre-start blocking to the global state handler */
+=======
+  /** 시작 전 차단을 전역 상태 핸들러에 위임합니다 */
+>>>>>>> master
   public void blockForStart() {
     benchmarkState.blockForStart();
   }
 
   /**
+<<<<<<< HEAD
    * Delegates a global state query to the benchmark state handler
    *
    * @return global state
+=======
+   * 전역 상태 쿼리를 벤치마크 상태 핸들러에 위임합니다
+   *
+   * @return 전역 상태
+>>>>>>> master
    */
   public State getGlobalState() {
     return benchmarkState.getState();

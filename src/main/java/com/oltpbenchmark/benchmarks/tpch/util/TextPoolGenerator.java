@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 Trino
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  */
 package com.oltpbenchmark.benchmarks.tpch.util;
 
@@ -99,8 +112,13 @@ public class TextPoolGenerator {
           generateNounPhrase(builder, random);
           break;
         case 'T':
+<<<<<<< HEAD
           // trim trailing space
           // terminators should abut previous word
+=======
+          // 후행 공백 제거
+          // 종결자는 이전 단어에 인접해야 합니다.
+>>>>>>> master
           builder.setLength(builder.length() - 1);
           String terminator = terminators.randomValue(random);
           builder.append(terminator);
@@ -117,7 +135,11 @@ public class TextPoolGenerator {
   private void generateVerbPhrase(StringBuilder builder, RowRandomInt random) {
     int index = verbPhrases.getRandomIndex(random);
     for (char token : verbPhrases.getTokens(index)) {
+<<<<<<< HEAD
       // pick a random word
+=======
+      // 무작위 단어 선택
+>>>>>>> master
       switch (token) {
         case 'D':
           builder.append(adverbs.randomValue(random));
@@ -132,10 +154,17 @@ public class TextPoolGenerator {
           throw new IllegalStateException("Unknown token '" + token + "'");
       }
 
+<<<<<<< HEAD
       // string may end with a comma or such
       builder.append(nounPhrases.getBonusText(index));
 
       // add a space
+=======
+      // 문자열은 쉼표 등으로 끝날 수 있습니다.
+      builder.append(nounPhrases.getBonusText(index));
+
+      // 공백 추가
+>>>>>>> master
       builder.append(" ");
     }
   }
@@ -143,7 +172,11 @@ public class TextPoolGenerator {
   private void generateNounPhrase(StringBuilder builder, RowRandomInt random) {
     int index = nounPhrases.getRandomIndex(random);
     for (char token : nounPhrases.getTokens(index)) {
+<<<<<<< HEAD
       // pick a random word
+=======
+      // 무작위 단어 선택
+>>>>>>> master
       switch (token) {
         case 'A':
           builder.append(articles.randomValue(random));
@@ -161,10 +194,17 @@ public class TextPoolGenerator {
           throw new IllegalStateException("Unknown token '" + token + "'");
       }
 
+<<<<<<< HEAD
       // string may end with a comma or such
       builder.append(nounPhrases.getBonusText(index));
 
       // add a space
+=======
+      // 문자열은 쉼표 등으로 끝날 수 있습니다.
+      builder.append(nounPhrases.getBonusText(index));
+
+      // 공백 추가
+>>>>>>> master
       builder.append(" ");
     }
   }

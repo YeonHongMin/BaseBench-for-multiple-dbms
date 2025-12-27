@@ -25,14 +25,22 @@ public final class GenerateUtils {
   private GenerateUtils() {}
 
   //
+<<<<<<< HEAD
   // Partitioning Utils
+=======
+  // 파티셔닝 유틸리티
+>>>>>>> master
   //
 
   public static long calculateRowCount(int scaleBase, double scaleFactor, int part, int partCount) {
     long totalRowCount = (long) (scaleBase * scaleFactor);
     long rowCount = totalRowCount / partCount;
     if (part == partCount) {
+<<<<<<< HEAD
       // for the last part, add the remainder rows
+=======
+      // 마지막 부분의 경우 나머지 행을 추가합니다.
+>>>>>>> master
       rowCount += totalRowCount % partCount;
     }
     return rowCount;
@@ -47,10 +55,17 @@ public final class GenerateUtils {
   }
 
   //
+<<<<<<< HEAD
   // Date Utils
   //
 
   /** The value of 1970-01-01 in the date generator system */
+=======
+  // 날짜 유틸리티
+  //
+
+  /** 날짜 생성기 시스템에서 1970-01-01의 값 */
+>>>>>>> master
   public static final int GENERATED_DATE_EPOCH_OFFSET = 83966;
 
   public static final int MIN_GENERATE_DATE = 92001;
@@ -126,11 +141,19 @@ public final class GenerateUtils {
   }
 
   //
+<<<<<<< HEAD
   // Format utils
   //
 
   public static String formatMoney(long value) {
     // todo there must be a better way to do this
+=======
+  // 형식 유틸리티
+  //
+
+  public static String formatMoney(long value) {
+    // todo 이것을 수행하는 더 나은 방법이 있어야 합니다.
+>>>>>>> master
     return new BigDecimal(value).divide(new BigDecimal(100)).setScale(2).toString();
   }
 }

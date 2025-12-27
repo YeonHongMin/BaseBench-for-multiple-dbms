@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +13,33 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
 /*
+<<<<<<< HEAD
  * Slightly modified version of the com.ibatis.common.jdbc.ScriptRunner class
  * from the iBATIS Apache project. Only removed dependency on Resource class
  * and a constructor
+=======
+ * iBATIS Apache 프로젝트의 com.ibatis.common.jdbc.ScriptRunner 클래스를 약간 수정한 버전입니다.
+ * Resource 클래스와 일부 생성자 의존성을 제거했습니다.
+>>>>>>> master
  */
 package com.oltpbenchmark.util;
 
@@ -27,7 +48,11 @@ import java.sql.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
 /** Tool to run database scripts http://pastebin.com/f10584951 */
+=======
+/** 데이터베이스 스크립트를 실행하는 도구입니다. http://pastebin.com/f10584951 */
+>>>>>>> master
 public class ScriptRunner {
   private static final Logger LOG = LoggerFactory.getLogger(ScriptRunner.class);
 
@@ -37,7 +62,11 @@ public class ScriptRunner {
   private final boolean stopOnError;
   private final boolean autoCommit;
 
+<<<<<<< HEAD
   /** Default constructor */
+=======
+  /** 기본 생성자 */
+>>>>>>> master
   public ScriptRunner(Connection connection, boolean autoCommit, boolean stopOnError) {
     this.connection = connection;
     this.autoCommit = autoCommit;
@@ -79,12 +108,21 @@ public class ScriptRunner {
   }
 
   /**
+<<<<<<< HEAD
    * Runs an SQL script (read in using the Reader parameter) using the connection passed in
    *
    * @param conn - the connection to use for the script
    * @param reader - the source of the script
    * @throws SQLException if any SQL errors occur
    * @throws IOException if there is an error reading from the Reader
+=======
+   * 전달된 커넥션을 사용해 Reader에서 읽은 SQL 스크립트를 실행합니다.
+   *
+   * @param conn - 스크립트 실행에 사용할 커넥션
+   * @param reader - 스크립트 소스
+   * @throws SQLException SQL 오류 발생 시
+   * @throws IOException Reader에서 읽는 중 오류가 발생한 경우
+>>>>>>> master
    */
   private void runScript(Connection conn, Reader reader) throws IOException, SQLException {
     StringBuffer command = null;
@@ -98,12 +136,20 @@ public class ScriptRunner {
           command = new StringBuffer();
         }
         String trimmedLine = line.trim();
+<<<<<<< HEAD
         line = line.replaceAll("\\-\\-.*$", ""); // remove comments in line;
+=======
+        line = line.replaceAll("\\-\\-.*$", ""); // 행 내 주석 제거
+>>>>>>> master
 
         if (trimmedLine.startsWith("--") || trimmedLine.startsWith("//")) {
           LOG.debug(trimmedLine);
         } else if (trimmedLine.length() < 1) {
+<<<<<<< HEAD
           // Do nothing
+=======
+          // 아무 작업도 하지 않습니다
+>>>>>>> master
         } else if (trimmedLine.endsWith(getDelimiter())) {
           command.append(line, 0, line.lastIndexOf(getDelimiter()));
           command.append(" ");
@@ -126,7 +172,11 @@ public class ScriptRunner {
               conn.commit();
             }
 
+<<<<<<< HEAD
             // HACK
+=======
+            // 임시 처리
+>>>>>>> master
             if (hasResults && !sql.toUpperCase().startsWith("CREATE")) {
               try (ResultSet rs = statement.getResultSet()) {
                 if (hasResults && rs != null) {

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<parameters>
+
+    <!-- Connection details -->
+    <type>MYSQL</type>
+    <driver>com.mysql.cj.jdbc.Driver</driver>
+    <url>jdbc:mysql://mysvr-svc:3306/prod?useSSL=false&amp;allowPublicKeyRetrieval=true</url>
+    <username>app</username>
+    <password>app</password>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
+    <batchsize>128</batchsize>
+
+    <!-- Scale factor is the number of warehouses in TPC-C -->
+    <scalefactor>10</scalefactor>
+
+    <!-- The workload -->
+    <terminals>4</terminals>
+    <works>
+        <work>
+            <time>300</time>
+            <rate>1000</rate>
+            <weights>45,43,4,4,4</weights>
+        </work>
+    </works>
+
+    <!-- TPC-C specific -->
+    <transactiontypes>
+        <transactiontype>
+            <name>NewOrder</name>
+        </transactiontype>
+        <transactiontype>
+            <name>Payment</name>
+        </transactiontype>
+        <transactiontype>
+            <name>OrderStatus</name>
+        </transactiontype>
+        <transactiontype>
+            <name>Delivery</name>
+        </transactiontype>
+        <transactiontype>
+            <name>StockLevel</name>
+        </transactiontype>
+    </transactiontypes>
+</parameters>

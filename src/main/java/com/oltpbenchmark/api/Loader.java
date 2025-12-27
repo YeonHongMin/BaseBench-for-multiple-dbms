@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -51,6 +64,7 @@ public abstract class Loader<T extends BenchmarkModule> {
   }
 
   /**
+<<<<<<< HEAD
    * Each Loader will generate a list of Runnable objects that will perform the loading operation
    * for the benchmark. The number of threads that will be launched at the same time depends on the
    * number of cores that are available. But they are guaranteed to execute in the order specified
@@ -63,6 +77,17 @@ public abstract class Loader<T extends BenchmarkModule> {
    * return null.
    *
    * @return The list of LoaderThreads the framework will launch.
+=======
+   * 각 Loader는 벤치마크에 대한 로딩 작업을 수행할 Runnable 객체 목록을 생성합니다. 동시에 시작되는 스레드 수는 사용 가능한 코어 수에 따라 달라집니다. 하지만
+   * 목록에 지정된 순서대로 실행되는 것이 보장됩니다. 스레드 간에 종속성이 있는 경우(예: 한 테이블이 다른 테이블보다 먼저 로드되어야 하는 경우) 자체 보호 장치를 사용해야
+   * 합니다.
+   *
+   * <p>각 LoaderThread는 호출될 때 DBMS에 대한 Connection 핸들을 받습니다.
+   *
+   * <p>벤치마크가 아직 다중 스레드 로딩을 지원하지 않는 경우, 이 메서드는 null을 반환해야 합니다.
+   *
+   * @return 프레임워크가 시작할 LoaderThread 목록
+>>>>>>> master
    */
   public abstract List<LoaderThread> createLoaderThreads() throws SQLException;
 
@@ -79,7 +104,11 @@ public abstract class Loader<T extends BenchmarkModule> {
   }
 
   /**
+<<<<<<< HEAD
    * Get the pre-seeded Random generator for this Loader invocation
+=======
+   * 이 Loader 호출에 대한 사전 시드된 Random 생성기를 가져옵니다
+>>>>>>> master
    *
    * @return
    */

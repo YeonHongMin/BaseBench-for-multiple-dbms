@@ -4,6 +4,7 @@
  *  Massachusetts Institute of Technology
  *  Yale University
  *
+<<<<<<< HEAD
  *  Permission is hereby granted, free of charge, to any person obtaining
  *  a copy of this software and associated documentation files (the
  *  "Software"), to deal in the Software without restriction, including
@@ -22,6 +23,21 @@
  *  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  *  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  *  OTHER DEALINGS IN THE SOFTWARE.
+=======
+ *  이 소프트웨어 및 관련 문서 파일(이하 "소프트웨어")의 복사본을 얻는 모든 사람에게
+ *  무료로 소프트웨어를 다루는 권한이 부여됩니다. 여기에는 제한 없이 사용, 복사, 수정,
+ *  병합, 게시, 배포, 재라이센스 및/또는 소프트웨어의 복사본을 판매할 권리가 포함되며,
+ *  소프트웨어를 제공받은 사람이 다음 조건에 따라 이를 수행할 수 있습니다:
+ *
+ *  위의 저작권 고지와 이 권한 고지는 소프트웨어의 모든 복사본 또는 중요한 부분에
+ *  포함되어야 합니다.
+ *
+ *  소프트웨어는 "있는 그대로" 제공되며, 명시적이거나 묵시적인 어떠한 종류의 보증도
+ *  없습니다. 상품성, 특정 목적에의 적합성 및 비침해에 대한 보증을 포함하되 이에
+ *  국한되지 않습니다. 계약, 불법 행위 또는 기타 행위로 인해 발생하는 어떠한 청구,
+ *  손해 또는 기타 책임에 대해서도 저작자는 책임을 지지 않습니다. 소프트웨어 또는
+ *  소프트웨어의 사용 또는 기타 거래와 관련하여 발생하는 경우에도 마찬가지입니다.
+>>>>>>> master
  */
 package com.oltpbenchmark.benchmarks.smallbank.procedures;
 
@@ -34,7 +50,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+<<<<<<< HEAD
  * SendPayment Procedure
+=======
+ * 송금 프로시저
+>>>>>>> master
  *
  * @author pavlo
  */
@@ -55,7 +75,11 @@ public class SendPayment extends Procedure {
 
   public void run(Connection conn, long sendAcct, long destAcct, double amount)
       throws SQLException {
+<<<<<<< HEAD
     // Get Account Information
+=======
+    // 계정 정보 가져오기
+>>>>>>> master
     try (PreparedStatement stmt0 = this.getPreparedStatement(conn, GetAccount, sendAcct)) {
       try (ResultSet r0 = stmt0.executeQuery()) {
         if (!r0.next()) {
@@ -74,7 +98,11 @@ public class SendPayment extends Procedure {
       }
     }
 
+<<<<<<< HEAD
     // Get the sender's account balance
+=======
+    // 송신자의 계정 잔액 가져오기
+>>>>>>> master
     double balance;
 
     try (PreparedStatement balStmt0 =
@@ -90,7 +118,11 @@ public class SendPayment extends Procedure {
       }
     }
 
+<<<<<<< HEAD
     // Make sure that they have enough money
+=======
+    // 충분한 돈이 있는지 확인합니다.
+>>>>>>> master
     if (balance < amount) {
       String msg =
           String.format(
@@ -99,12 +131,20 @@ public class SendPayment extends Procedure {
       throw new UserAbortException(msg);
     }
 
+<<<<<<< HEAD
     // Debt
+=======
+    // 차변
+>>>>>>> master
     try (PreparedStatement updateStmt =
         this.getPreparedStatement(conn, UpdateCheckingBalance, amount * -1d, sendAcct)) {
       updateStmt.executeUpdate();
     }
+<<<<<<< HEAD
     // Credit
+=======
+    // 대변
+>>>>>>> master
     try (PreparedStatement updateStmt =
         this.getPreparedStatement(conn, UpdateCheckingBalance, amount, destAcct)) {
       updateStmt.executeUpdate();

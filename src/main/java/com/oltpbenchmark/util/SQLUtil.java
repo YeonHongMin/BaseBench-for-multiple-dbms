@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -44,7 +60,11 @@ public abstract class SQLUtil {
       };
 
   /**
+<<<<<<< HEAD
    * Return a long from the given object Handles the different cases from the various DBMSs
+=======
+   * 주어진 객체에서 long 값을 반환합니다. 다양한 DBMS의 서로 다른 경우를 처리합니다.
+>>>>>>> master
    *
    * @param obj
    * @return
@@ -86,7 +106,11 @@ public abstract class SQLUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return a double from the given object Handles the different cases from the various DBMSs
+=======
+   * 주어진 객체에서 double 값을 반환합니다. 다양한 DBMS의 서로 다른 경우를 처리합니다.
+>>>>>>> master
    *
    * @param obj
    * @return
@@ -135,6 +159,7 @@ public abstract class SQLUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Support for Oracle DB introduced TIMESTAMP fields in Oracle DDL (for example, auctionmark
    * CONFIG_PROFILE table), which results in OJDBC-specific {@code oracle.sql.TIMESTAMP} object.
    * {@link #getTimestamp(Object)} needs to be able to convert {@code oracle.sql.TIMESTAMP} into
@@ -143,6 +168,14 @@ public abstract class SQLUtil {
    * <p>The main issue is that {@code oracle.sql.TIMESTAMP} is not available in JDBC, so trying to
    * import and resolve the type normally will break other database profiles. This can be solved by
    * loading OJDBC-specific class + method reflectively.
+=======
+   * Oracle DB 지원: Oracle DDL(예: auctionmark CONFIG_PROFILE 테이블)에서 도입된 TIMESTAMP 필드는 OJDBC 전용 {@code
+   * oracle.sql.TIMESTAMP} 객체를 생성합니다. {@link #getTimestamp(Object)}는 {@code oracle.sql.TIMESTAMP}를
+   * {@code java.sql.TIMESTAMP}로 변환할 수 있어야 합니다.
+   *
+   * <p>주요 문제는 {@code oracle.sql.TIMESTAMP}가 JDBC에서 사용할 수 없으므로, 일반적으로 타입을 가져오고 해결하려고 하면 다른 데이터베이스
+   * 프로파일이 깨질 수 있다는 것입니다. 이는 OJDBC 전용 클래스와 메서드를 리플렉션으로 로드하여 해결할 수 있습니다.
+>>>>>>> master
    */
   private static final Class<?> ORACLE_TIMESTAMP;
 
@@ -166,7 +199,11 @@ public abstract class SQLUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return a double from the given object Handles the different cases from the various DBMSs
+=======
+   * 주어진 객체에서 Timestamp를 반환합니다. 다양한 DBMS의 서로 다른 경우를 처리합니다.
+>>>>>>> master
    *
    * @param obj
    * @return
@@ -194,7 +231,11 @@ public abstract class SQLUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the internal sequence name for the given Column
+=======
+   * 주어진 Column에 대한 내부 시퀀스 이름을 반환합니다.
+>>>>>>> master
    *
    * @param conn
    * @param dbType
@@ -247,8 +288,12 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Mark the given table which has an identity column to be able to be inserted into with explicit
    * values.
+=======
+   * IDENTITY 열이 있는 주어진 테이블을 명시적 값으로 삽입할 수 있도록 표시합니다.
+>>>>>>> master
    *
    * @param conn
    * @param dbType
@@ -303,8 +348,12 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * For the given string representation of a value, convert it to the proper object based on its
    * sqlType
+=======
+   * 주어진 값의 문자열 표현을 sqlType에 따라 적절한 객체로 변환합니다.
+>>>>>>> master
    *
    * @param sqlType
    * @param value
@@ -382,7 +431,11 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Returns true if the given sqlType identifier is a String data type
+=======
+   * 주어진 sqlType 식별자가 String 데이터 타입인 경우 true를 반환합니다.
+>>>>>>> master
    *
    * @param sqlType
    * @return
@@ -403,7 +456,11 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Returns true if the given sqlType identifier is an Integer data type
+=======
+   * 주어진 sqlType 식별자가 Integer 데이터 타입인 경우 true를 반환합니다.
+>>>>>>> master
    *
    * @param sqlType
    * @return
@@ -424,24 +481,40 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Return the COUNT(*) SQL to calculate the number of records
    *
    * @param dbType
    * @param catalog_tbl
    * @return SQL for select count execution
+=======
+   * 레코드 수를 계산하기 위한 COUNT(*) SQL을 반환합니다.
+   *
+   * @param dbType
+   * @param catalog_tbl
+   * @return select count 실행을 위한 SQL
+>>>>>>> master
    */
   public static String getCountSQL(DatabaseType dbType, Table catalog_tbl) {
     return SQLUtil.getCountSQL(dbType, catalog_tbl, "*");
   }
 
   /**
+<<<<<<< HEAD
    * Return the COUNT() SQL to calculate the number of records. Will use the col parameter as the
    * column that is counted
+=======
+   * 레코드 수를 계산하기 위한 COUNT() SQL을 반환합니다. col 매개변수를 카운트할 열로 사용합니다.
+>>>>>>> master
    *
    * @param dbType
    * @param catalog_tbl
    * @param col
+<<<<<<< HEAD
    * @return SQL for select count execution
+=======
+   * @return select count 실행을 위한 SQL
+>>>>>>> master
    */
   public static String getCountSQL(DatabaseType dbType, Table catalog_tbl, String col) {
     String tableName =
@@ -450,7 +523,11 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Automatically generate the 'INSERT' SQL string for this table with a batch size of 1
+=======
+   * 이 테이블에 대한 'INSERT' SQL 문자열을 배치 크기 1로 자동 생성합니다.
+>>>>>>> master
    *
    * @param catalog_tbl
    * @param db_type
@@ -463,11 +540,19 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Automatically generate the 'INSERT' SQL string for this table
    *
    * @param catalog_tbl
    * @param db_type
    * @param batchSize the number of sets of parameters that should be included in the insert
+=======
+   * 이 테이블에 대한 'INSERT' SQL 문자열을 자동 생성합니다.
+   *
+   * @param catalog_tbl
+   * @param db_type
+   * @param batchSize insert에 포함되어야 하는 매개변수 세트의 수
+>>>>>>> master
    * @param exclude_columns
    * @return
    */
@@ -541,7 +626,11 @@ WHERE t.name='%s' AND c.name='%s'
     return String.format("SELECT %s FROM %s", col, tableName);
   }
 
+<<<<<<< HEAD
   /** Extract the catalog from the database. */
+=======
+  /** 데이터베이스에서 카탈로그를 추출합니다. */
+>>>>>>> master
   public static AbstractCatalog getCatalog(
       BenchmarkModule benchmarkModule, DatabaseType databaseType, Connection connection)
       throws SQLException {
@@ -555,9 +644,15 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Create an in-memory instance of HSQLDB to extract all of the catalog information.
    *
    * <p>This supports databases that may not support all of the SQL standard just yet.
+=======
+   * 모든 카탈로그 정보를 추출하기 위해 HSQLDB의 인메모리 인스턴스를 생성합니다.
+   *
+   * <p>아직 모든 SQL 표준을 지원하지 않을 수 있는 데이터베이스를 지원합니다.
+>>>>>>> master
    *
    * @return
    */
@@ -565,7 +660,11 @@ WHERE t.name='%s' AND c.name='%s'
     return new HSQLDBCatalog(benchmarkModule);
   }
 
+<<<<<<< HEAD
   /** Extract catalog information from the database directly. */
+=======
+  /** 데이터베이스에서 직접 카탈로그 정보를 추출합니다. */
+>>>>>>> master
   private static AbstractCatalog getCatalogDirect(DatabaseType databaseType, Connection connection)
       throws SQLException {
     DatabaseMetaData md = connection.getMetaData();
@@ -699,7 +798,11 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Checks to see if a SqlException is about a connection error.
+=======
+   * SqlException이 연결 오류에 관한 것인지 확인합니다.
+>>>>>>> master
    *
    * @param ex SqlException
    * @return boolean
@@ -723,11 +826,18 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Checks to see if a connection looks OK.
    *
    * @param conn
    * @param checkValid Whether or not to issue a isValid() check on the connection. Note: this can
    *     be expensive since it may actually issue a noop query.
+=======
+   * 연결이 정상인지 확인합니다.
+   *
+   * @param conn
+   * @param checkValid 연결에 대해 isValid() 검사를 수행할지 여부. 참고: 실제로 noop 쿼리를 실행할 수 있으므로 비용이 클 수 있습니다.
+>>>>>>> master
    * @return boolean
    * @throws SQLException
    */
@@ -741,7 +851,11 @@ WHERE t.name='%s' AND c.name='%s'
   }
 
   /**
+<<<<<<< HEAD
    * Checks to see if a connection looks OK without issuing an isValid() check.
+=======
+   * isValid() 검사를 수행하지 않고 연결이 정상인지 확인합니다.
+>>>>>>> master
    *
    * @param conn
    * @return boolean

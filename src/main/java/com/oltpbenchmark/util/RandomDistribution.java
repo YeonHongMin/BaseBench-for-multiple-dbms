@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -20,6 +36,7 @@ package com.oltpbenchmark.util;
 import java.util.*;
 
 /**
+<<<<<<< HEAD
  * A class that generates random numbers that follow some distribution.
  *
  * <p>Copied from <a href="https://issues.apache.org/jira/browse/HADOOP-3315">hadoop-3315 tfile</a>.
@@ -27,6 +44,15 @@ import java.util.*;
  */
 public class RandomDistribution {
   /** Interface for discrete (integer) random distributions. */
+=======
+ * 특정 분포를 따르는 난수를 생성하는 클래스입니다.
+ *
+ * <p><a href="https://issues.apache.org/jira/browse/HADOOP-3315">hadoop-3315 tfile</a>에서 복사하여 가져온
+ * 코드이며, tfile이 커밋되면 이를 대체할 수 있습니다.
+ */
+public class RandomDistribution {
+  /** 정수 기반 이산 분포를 위한 인터페이스입니다. */
+>>>>>>> master
   public abstract static class DiscreteRNG extends Random {
     private static final long serialVersionUID = 1L;
     protected final long min;
@@ -49,14 +75,22 @@ public class RandomDistribution {
 
     protected abstract long nextLongImpl();
 
+<<<<<<< HEAD
     /** Enable keeping track of the values that the RNG generates */
+=======
+    /** RNG에서 생성된 값을 기록하도록 설정합니다. */
+>>>>>>> master
     public void enableHistory() {
 
       this.history = new Histogram<>();
     }
 
     /**
+<<<<<<< HEAD
      * Return the histogram of the values that have been generated
+=======
+     * 지금까지 생성된 값의 히스토그램을 반환합니다.
+>>>>>>> master
      *
      * @return
      */
@@ -85,14 +119,24 @@ public class RandomDistribution {
       long total = 0l;
       for (int i = 0; i < num_samples; i++) {
         total += this.nextLong();
+<<<<<<< HEAD
       } // FOR
+=======
+      } // 반복 종료
+>>>>>>> master
       return (total / (double) num_samples);
     }
 
     /**
+<<<<<<< HEAD
      * Get the next random number as an int
      *
      * @return the next random number.
+=======
+     * 다음 난수를 int로 반환합니다.
+     *
+     * @return 다음 난수
+>>>>>>> master
      */
     @Override
     public final int nextInt() {
@@ -104,9 +148,15 @@ public class RandomDistribution {
     }
 
     /**
+<<<<<<< HEAD
      * Get the next random number as a long
      *
      * @return the next random number.
+=======
+     * 다음 난수를 long으로 반환합니다.
+     *
+     * @return 다음 난수
+>>>>>>> master
      */
     @Override
     public final long nextLong() {
@@ -124,7 +174,11 @@ public class RandomDistribution {
     }
 
     public static long nextLong(Random rng, long n) {
+<<<<<<< HEAD
       // error checking and 2^x checking removed for simplicity.
+=======
+      // 단순화를 위해 에러 검사와 2^x 검사를 생략했습니다.
+>>>>>>> master
       long bits, val;
       do {
         bits = (rng.nextLong() << 1) >>> 1;
@@ -134,16 +188,28 @@ public class RandomDistribution {
     }
   }
 
+<<<<<<< HEAD
   /** P(i)=1/(max-min) */
+=======
+  /** P(i)=1/(max-min) (균등 분포) */
+>>>>>>> master
   public static class Flat extends DiscreteRNG {
     private static final long serialVersionUID = 1L;
 
     /**
+<<<<<<< HEAD
      * Generate random integers from min (inclusive) to max (exclusive) following even distribution.
      *
      * @param random The basic random number generator.
      * @param min Minimum integer
      * @param max maximum integer (exclusive).
+=======
+     * 최소값(min) 이상, 최대값(max) 미만の 범위에서 균등 분포로 난수를 생성합니다.
+     *
+     * @param random 기본 난수 생성기
+     * @param min 최소 정수
+     * @param max 최대 정수 (배타적)
+>>>>>>> master
      */
     public Flat(Random random, long min, long max) {
       super(random, min, max);
@@ -154,7 +220,11 @@ public class RandomDistribution {
      */
     @Override
     protected long nextLongImpl() {
+<<<<<<< HEAD
       // error checking and 2^x checking removed for simplicity.
+=======
+      // 단순화를 위해 에러 검사와 2^x 검사를 생략했습니다.
+>>>>>>> master
       long bits, val;
       do {
         bits = (random.nextLong() << 1) >>> 1;
@@ -166,14 +236,22 @@ public class RandomDistribution {
     }
   }
 
+<<<<<<< HEAD
   /** P(i)=1/(max-min) */
+=======
+  /** P(i)=1/(max-min) (히스토그램 기반 균등 분포) */
+>>>>>>> master
   public static class FlatHistogram<T extends Comparable<T>> extends DiscreteRNG {
     private static final long serialVersionUID = 1L;
     private final Flat inner;
     private final TreeMap<Long, T> value_rle = new TreeMap<>();
     private Histogram<T> history;
 
+<<<<<<< HEAD
     /** Generate a run-length of the values of the histogram */
+=======
+    /** 히스토그램 값의 런 길이를 생성합니다. */
+>>>>>>> master
     public FlatHistogram(Random random, Histogram<T> histogram) {
       super(random, 0, histogram.getSampleCount());
       this.inner = new Flat(random, 0, histogram.getSampleCount());
@@ -223,9 +301,15 @@ public class RandomDistribution {
     }
   }
 
+<<<<<<< HEAD
   /** Simple generic class overload to avoid some cast warnings below. */
   public static class IntegerFlatHistogram extends FlatHistogram<Integer> {
     // Required serialization field.
+=======
+  /** 캐스트 경고를 피하기 위한 간단한 제네릭 확장입니다. */
+  public static class IntegerFlatHistogram extends FlatHistogram<Integer> {
+    // 직렬화를 위한 필수 필드입니다.
+>>>>>>> master
     private static final long serialVersionUID = 1L;
 
     public IntegerFlatHistogram(Random random, Histogram<Integer> histogram) {
@@ -233,7 +317,11 @@ public class RandomDistribution {
     }
   }
 
+<<<<<<< HEAD
   /** Gaussian Distribution */
+=======
+  /** 가우시안 분포 */
+>>>>>>> master
   public static class Gaussian extends DiscreteRNG {
     private static final long serialVersionUID = 1L;
 
@@ -253,7 +341,11 @@ public class RandomDistribution {
   }
 
   /**
+<<<<<<< HEAD
    * Zipf distribution. The ratio of the probabilities of integer i and j is defined as follows:
+=======
+   * Zipf 분포입니다. 정수 i와 j의 확률 비율은 다음과 같이 정의됩니다:
+>>>>>>> master
    *
    * <p>P(i)/P(j)=((j-min+1)/(i-min+1))^sigma.
    */
@@ -264,18 +356,28 @@ public class RandomDistribution {
     private final ArrayList<Double> v;
 
     /**
+<<<<<<< HEAD
      * Constructor
      *
      * @param r The random number generator.
      * @param min minimum integer (inclusvie)
      * @param max maximum integer (exclusive)
      * @param sigma parameter sigma. (sigma > 1.0)
+=======
+     * 생성자
+     *
+     * @param r 난수 생성기
+     * @param min 최소 정수 (포함)
+     * @param max 최대 정수 (배타적)
+     * @param sigma sigma 파라미터 (sigma > 1.0)
+>>>>>>> master
      */
     public Zipf(Random r, long min, long max, double sigma) {
       this(r, min, max, sigma, DEFAULT_EPSILON);
     }
 
     /**
+<<<<<<< HEAD
      * Constructor.
      *
      * @param r The random number generator.
@@ -283,6 +385,15 @@ public class RandomDistribution {
      * @param max maximum integer (exclusive)
      * @param sigma parameter sigma. (sigma > 1.0)
      * @param epsilon Allowable error percentage (0 < epsilon < 1.0).
+=======
+     * 생성자
+     *
+     * @param r 난수 생성기
+     * @param min 최소 정수 (포함)
+     * @param max 최대 정수 (배타적)
+     * @param sigma sigma 파라미터 (sigma > 1.0)
+     * @param epsilon 허용 오차 비율 (0 < epsilon < 1.0)
+>>>>>>> master
      */
     public Zipf(Random r, long min, long max, double sigma, double epsilon) {
       super(r, min, max);

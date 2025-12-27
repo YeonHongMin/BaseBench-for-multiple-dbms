@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -33,7 +46,11 @@ public class GetPageAnonymous extends Procedure {
   private static final Logger LOG = LoggerFactory.getLogger(GetPageAnonymous.class);
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // STATEMENTS
+=======
+  // 문장들
+>>>>>>> master
   // -----------------------------------------------------------------
 
   public SQLStmt selectPage =
@@ -44,7 +61,11 @@ public class GetPageAnonymous extends Procedure {
   public SQLStmt selectPageRestriction =
       new SQLStmt(
           "SELECT * FROM " + WikipediaConstants.TABLENAME_PAGE_RESTRICTIONS + " WHERE pr_page = ?");
+<<<<<<< HEAD
   // XXX this is hard for translation
+=======
+  // XXX 번역하기 어려움
+>>>>>>> master
   public SQLStmt selectIpBlocks =
       new SQLStmt(
           "SELECT * FROM " + WikipediaConstants.TABLENAME_IPBLOCKS + " WHERE ipb_address = ?");
@@ -66,7 +87,11 @@ public class GetPageAnonymous extends Procedure {
               + " WHERE old_id = ? LIMIT 1");
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // RUN
+=======
+  // 실행
+>>>>>>> master
   // -----------------------------------------------------------------
 
   public Article run(
@@ -96,8 +121,12 @@ public class GetPageAnonymous extends Procedure {
         }
       }
     }
+<<<<<<< HEAD
     // check using blocking of a user by either the IP address or the
     // user_name
+=======
+    // IP 주소 또는 사용자 이름으로 사용자 차단을 확인합니다
+>>>>>>> master
 
     try (PreparedStatement st = this.getPreparedStatement(conn, selectIpBlocks)) {
       st.setString(1, userIp);
@@ -128,8 +157,12 @@ public class GetPageAnonymous extends Procedure {
       }
     }
 
+<<<<<<< HEAD
     // NOTE: the following is our variation of wikipedia... the original did
     // not contain old_page column!
+=======
+    // 참고: 다음은 위키피디아의 변형입니다... 원본에는 old_page 열이 포함되지 않았습니다!
+>>>>>>> master
     // sql =
     // "SELECT old_text,old_flags FROM `text` WHERE old_id = '"+textId+"' AND old_page =
     // '"+pageId+"' LIMIT 1";

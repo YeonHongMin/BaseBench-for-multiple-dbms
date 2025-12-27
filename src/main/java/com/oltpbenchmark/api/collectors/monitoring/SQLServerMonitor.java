@@ -20,9 +20,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+<<<<<<< HEAD
  * Implementation of a monitor specific to SQLServer. Uses SQLServer's system tables to extract
  * relevant query and system information. Note: Requires "VIEW SERVER PERFORMANCE STATE"
  * permissions.
+=======
+ * SQLServer에 특화된 모니터 구현체입니다. 시스템 테이블에서 쿼리/시스템 정보를 추출합니다. 참고: "VIEW SERVER PERFORMANCE STATE" 권한이
+ * 필요합니다.
+>>>>>>> master
  */
 public class SQLServerMonitor extends DatabaseMonitor {
 
@@ -65,7 +70,11 @@ public class SQLServerMonitor extends DatabaseMonitor {
       WorkloadConfiguration conf) {
     super(monitorInfo, testState, workers, conf);
 
+<<<<<<< HEAD
     // Extract the database instance from url.
+=======
+    // URL에서 데이터베이스 인스턴스 이름을 추출합니다.
+>>>>>>> master
     Matcher m = DATABASE_URL_PATTERN.matcher(conf.getUrl());
     if (m.find()) {
       DM_OS_PERFORMANCE_STATS = DM_OS_PERFORMANCE_STATS.formatted(m.group("instanceName"));
@@ -128,10 +137,14 @@ public class SQLServerMonitor extends DatabaseMonitor {
         };
   }
 
+<<<<<<< HEAD
   /**
    * Extract query events (single and repeated) using the extraction query and properties defined
    * above.
    */
+=======
+  /** 앞서 정의한 쿼리와 속성을 이용해 단일 및 반복 쿼리 이벤트를 추출합니다. */
+>>>>>>> master
   private void extractQueryMetrics(Instant instant) {
     ImmutableSingleQueryEvent.Builder singleQueryEventBuilder = ImmutableSingleQueryEvent.builder();
     ImmutableRepeatedQueryEvent.Builder repeatedQueryEventBuilder =
@@ -140,23 +153,38 @@ public class SQLServerMonitor extends DatabaseMonitor {
     try (PreparedStatement stmt = conn.prepareStatement(DM_EXEC_QUERY_STATS)) {
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
+<<<<<<< HEAD
         // Only store those queries that have monitoring enabled via a
         // comment in the SQL Server dialect XML.
+=======
+        // SQL Server 방언 XML에서 주석으로 모니터링이 활성화된 쿼리만 저장합니다.
+>>>>>>> master
         String query_text = rs.getString("query_text");
         if (!query_text.contains(MonitoringUtil.getMonitoringPrefix())) {
           continue;
         }
 
+<<<<<<< HEAD
         // Get identifier from commment in query text.
+=======
+        // 쿼리 텍스트 내 주석에서 식별자를 가져옵니다.
+>>>>>>> master
         Matcher m = MonitoringUtil.getMonitoringPattern().matcher(query_text);
         if (m.find()) {
           String identifier = m.group("queryId");
           query_text = m.replaceAll("");
+<<<<<<< HEAD
           // Get plan_handle for plan identification.
           String plan_handle = rs.getString("plan_handle");
 
           // Handle one-off query information, may occur when a plan gets
           // executed for the first time.
+=======
+          // 플랜을 식별하기 위해 plan_handle을 가져옵니다.
+          String plan_handle = rs.getString("plan_handle");
+
+          // 플랜이 처음 실행될 때 발생할 수 있는 단일 쿼리 정보를 처리합니다.
+>>>>>>> master
           Map<String, String> propertyValues;
           if (!cached_plans.contains(plan_handle)) {
             cached_plans.add(plan_handle);
@@ -164,7 +192,11 @@ public class SQLServerMonitor extends DatabaseMonitor {
             singleQueryEventBuilder.queryId(identifier);
             propertyValues = new HashMap<String, String>();
             propertyValues.put("query_text", query_text);
+<<<<<<< HEAD
             // Add single events.
+=======
+            // 단일 이벤트 정보를 추가합니다.
+>>>>>>> master
             for (String property : this.singleQueryProperties) {
               String value = rs.getString(property);
               if (value != null) {
@@ -175,7 +207,11 @@ public class SQLServerMonitor extends DatabaseMonitor {
             this.singleQueryEvents.add(singleQueryEventBuilder.build());
           }
 
+<<<<<<< HEAD
           // Handle repeated query events.
+=======
+          // 반복 쿼리 이벤트를 처리합니다.
+>>>>>>> master
           repeatedQueryEventBuilder.queryId(identifier).instant(instant);
           propertyValues = new HashMap<String, String>();
           for (String property : this.repeatedQueryProperties) {
@@ -194,21 +230,33 @@ public class SQLServerMonitor extends DatabaseMonitor {
     }
   }
 
+<<<<<<< HEAD
   /**
    * Extract system events using the extraction query and properties defined above, will fail
    * gracefully to not interrupt benchmarking.
    */
+=======
+  /** 앞서 정의한 쿼리와 속성을 이용해 시스템 이벤트를 추출합니다. 벤치마크 실행을 방해하지 않도록 예외는 우아하게 처리합니다. */
+>>>>>>> master
   private void extractPerformanceMetrics(Instant instant) {
     ImmutableRepeatedSystemEvent.Builder repeatedSystemEventBuilder =
         ImmutableRepeatedSystemEvent.builder();
     repeatedSystemEventBuilder.instant(instant);
 
+<<<<<<< HEAD
     // Extract OS performance events.
+=======
+    // OS 성능 관련 이벤트를 추출합니다.
+>>>>>>> master
     Map<String, String> propertyValues = new HashMap<String, String>();
     try (PreparedStatement stmt = conn.prepareStatement(DM_OS_PERFORMANCE_STATS)) {
       ResultSet rs = stmt.executeQuery();
       while (rs.next()) {
+<<<<<<< HEAD
         // Add property values.
+=======
+        // 속성 값을 추가합니다.
+>>>>>>> master
         String counter_name = rs.getString("counter_name").trim();
         if (this.repeatedSystemProperties.contains(counter_name)) {
           propertyValues.put(counter_name, rs.getString("cntr_value"));

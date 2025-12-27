@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -21,7 +37,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
+<<<<<<< HEAD
  * Fast Random Text Generator
+=======
+ * 빠른 랜덤 텍스트 생성기입니다.
+>>>>>>> master
  *
  * @author pavlo
  */
@@ -51,7 +71,11 @@ public abstract class TextGenerator {
   };
 
   /**
+<<<<<<< HEAD
    * Generate a random block of text as a char array
+=======
+   * char 배열로 랜덤 텍스트 블록을 생성합니다.
+>>>>>>> master
    *
    * @param rng
    * @param strLen
@@ -70,7 +94,11 @@ public abstract class TextGenerator {
   }
 
   /**
+<<<<<<< HEAD
    * Faster (pseudo) random number generator
+=======
+   * 더 빠른 (의사) 난수 생성기입니다.
+>>>>>>> master
    *
    * @param rng
    * @param chars
@@ -98,7 +126,11 @@ public abstract class TextGenerator {
   }
 
   /**
+<<<<<<< HEAD
    * Returns a new string filled with random text
+=======
+   * 랜덤 텍스트로 채워진 새 문자열을 반환합니다.
+>>>>>>> master
    *
    * @param rng
    * @param strLen
@@ -109,8 +141,12 @@ public abstract class TextGenerator {
   }
 
   /**
+<<<<<<< HEAD
    * Resize the given block of text by the delta and add random characters to the new space in the
    * array. Returns a new character array
+=======
+   * 주어진 텍스트 블록을 delta만큼 크기를 조정하고 배열의 새 공간에 랜덤 문자를 추가합니다. 새로운 문자 배열을 반환합니다.
+>>>>>>> master
    *
    * @param rng
    * @param orig
@@ -126,8 +162,12 @@ public abstract class TextGenerator {
   }
 
   /**
+<<<<<<< HEAD
    * Permute a random portion of the origin text Returns the same character array that was given as
    * input
+=======
+   * 원본 텍스트의 랜덤한 부분을 순열화합니다. 입력으로 주어진 것과 동일한 문자 배열을 반환합니다.
+>>>>>>> master
    *
    * @param rng
    * @param chars

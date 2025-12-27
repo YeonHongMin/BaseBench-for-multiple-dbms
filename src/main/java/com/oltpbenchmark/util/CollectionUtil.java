@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -20,6 +36,7 @@ package com.oltpbenchmark.util;
 import java.util.*;
 import org.apache.commons.collections4.set.ListOrderedSet;
 
+<<<<<<< HEAD
 /**
  * @author pavlo
  */
@@ -27,6 +44,13 @@ public abstract class CollectionUtil {
 
   /**
    * Put all the values of an Iterator into a List
+=======
+/** 작성자: pavlo */
+public abstract class CollectionUtil {
+
+  /**
+   * Iterator에 있는 모든 값을 List로 옮깁니다.
+>>>>>>> master
    *
    * @param <T>
    * @param it
@@ -39,7 +63,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Add all the items in the array to a Collection
+=======
+   * 배열의 모든 항목을 Collection에 추가합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param data
@@ -52,7 +80,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Add all of the items from the Iterator into the given collection
+=======
+   * Iterator에서 가져온 모든 항목을 대상 컬렉션에 추가합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param data
@@ -66,6 +98,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
+=======
+   * 주어진 맵에서 가장 큰 값에 대응하는 키를 반환합니다.
+   *
+>>>>>>> master
    * @param <T>
    * @param <U>
    * @param map
@@ -81,12 +118,20 @@ public abstract class CollectionUtil {
         max_value = value;
         max_key = key;
       }
+<<<<<<< HEAD
     } // FOR
+=======
+    } // 반복 종료
+>>>>>>> master
     return (max_key);
   }
 
   /**
+<<<<<<< HEAD
    * Return the first item in a Iterable
+=======
+   * Iterable에서 첫 번째 항목을 반환합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param items
@@ -97,7 +142,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the ith element of a set. Super lame
+=======
+   * Set에서 i번째 요소를 반환합니다. 다소 불편한 방식입니다.
+>>>>>>> master
    *
    * @param <T>
    * @param items
@@ -120,7 +169,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the last item in an Iterable
+=======
+   * Iterable에서 마지막 항목을 반환합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param items
@@ -140,7 +193,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return the last item in an array
+=======
+   * 배열에서 마지막 항목을 반환합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param items
@@ -155,7 +212,11 @@ public abstract class CollectionUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Wrap an Iterable around an Iterator
+=======
+   * Iterator를 감싼 Iterable을 생성합니다.
+>>>>>>> master
    *
    * @param <T>
    * @param it

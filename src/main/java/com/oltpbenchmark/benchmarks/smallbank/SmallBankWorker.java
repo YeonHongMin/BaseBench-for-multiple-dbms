@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -32,7 +45,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+<<<<<<< HEAD
  * SmallBank Benchmark Work Driver Fuck yo couch.
+=======
+ * SmallBank 벤치마크 작업 드라이버
+>>>>>>> master
  *
  * @author pavlo
  */
@@ -55,9 +72,14 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
   public SmallBankWorker(SmallBankBenchmark benchmarkModule, int id) {
     super(benchmarkModule, id);
 
+<<<<<<< HEAD
     // This is a minor speed-up to avoid having to invoke the hashmap look-up
     // everytime we want to execute a txn. This is important to do on
     // a client machine with not a lot of cores
+=======
+    // 이것은 트랜잭션을 실행할 때마다 해시맵 조회를 호출하는 것을 피하기 위한
+    // 작은 속도 향상입니다. 코어가 많지 않은 클라이언트 머신에서 이렇게 하는 것이 중요합니다.
+>>>>>>> master
     this.procAmalgamate = this.getProcedure(Amalgamate.class);
     this.procBalance = this.getProcedure(Balance.class);
     this.procDepositChecking = this.getProcedure(DepositChecking.class);
@@ -77,17 +99,29 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
     for (int i = 0; i < this.custIdsBuffer.length; i++) {
       this.custIdsBuffer[i] = this.rng.nextLong();
 
+<<<<<<< HEAD
       // They can never be the same!
+=======
+      // 절대 같을 수 없습니다!
+>>>>>>> master
       if (i > 0 && this.custIdsBuffer[i - 1] == this.custIdsBuffer[i]) {
         i--;
         continue;
       }
 
+<<<<<<< HEAD
       // If we only need one acctId, break out here.
       if (i == 0 && !needsTwoAccts) {
         break;
       }
       // If we need two acctIds, then we need to go generate the second one
+=======
+      // 하나의 acctId만 필요한 경우 여기서 중단합니다.
+      if (i == 0 && !needsTwoAccts) {
+        break;
+      }
+      // 두 개의 acctId가 필요한 경우 두 번째 것을 생성해야 합니다.
+>>>>>>> master
       if (i == 0) {
         continue;
       }
@@ -102,25 +136,41 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
       throws UserAbortException, SQLException {
     Class<? extends Procedure> procClass = txnType.getProcedureClass();
 
+<<<<<<< HEAD
     // Amalgamate
+=======
+    // 통합
+>>>>>>> master
     if (procClass.equals(Amalgamate.class)) {
       this.generateCustIds(true);
       this.procAmalgamate.run(conn, this.custIdsBuffer[0], this.custIdsBuffer[1]);
 
+<<<<<<< HEAD
       // Balance
+=======
+      // 잔액
+>>>>>>> master
     } else if (procClass.equals(Balance.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
       this.procBalance.run(conn, custName);
 
+<<<<<<< HEAD
       // DepositChecking
+=======
+      // 당좌 예금
+>>>>>>> master
     } else if (procClass.equals(DepositChecking.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
       this.procDepositChecking.run(
           conn, custName, SmallBankConstants.PARAM_DEPOSIT_CHECKING_AMOUNT);
 
+<<<<<<< HEAD
       // SendPayment
+=======
+      // 송금
+>>>>>>> master
     } else if (procClass.equals(SendPayment.class)) {
       this.generateCustIds(true);
       this.procSendPayment.run(
@@ -129,14 +179,22 @@ public final class SmallBankWorker extends Worker<SmallBankBenchmark> {
           this.custIdsBuffer[1],
           SmallBankConstants.PARAM_SEND_PAYMENT_AMOUNT);
 
+<<<<<<< HEAD
       // TransactSavings
+=======
+      // 저축 거래
+>>>>>>> master
     } else if (procClass.equals(TransactSavings.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);
       this.procTransactSavings.run(
           conn, custName, SmallBankConstants.PARAM_TRANSACT_SAVINGS_AMOUNT);
 
+<<<<<<< HEAD
       // WriteCheck
+=======
+      // 수표 작성
+>>>>>>> master
     } else if (procClass.equals(WriteCheck.class)) {
       this.generateCustIds(false);
       String custName = String.format(this.custNameFormat, this.custIdsBuffer[0]);

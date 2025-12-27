@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  *  Copyright 2015 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+=======
+ *  저작권 2015 OLTPBenchmark 프로젝트
+ *
+ *  Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ *  라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ *  라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ *  이 소프트웨어는 "있는 그대로" 배포되며,
+ *  명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ *  라이선스에서 허용하는 권한과 제한 사항은
+ *  라이선스의 본문을 참조하십시오.
+>>>>>>> master
  */
 
 package com.oltpbenchmark.api;
@@ -46,7 +62,11 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     return null;
   }
 
+<<<<<<< HEAD
   /** testGetDatabaseDDLPath */
+=======
+  /** 데이터베이스 DDL 경로 가져오기 테스트 */
+>>>>>>> master
   @Test
   public void testGetDatabaseDDLPath() throws Exception {
     String ddlPath = this.benchmark.getDatabaseDDLPath(this.workConf.getDatabaseType());
@@ -56,24 +76,40 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     }
   }
 
+<<<<<<< HEAD
   /** testCreateDatabase */
+=======
+  /** 데이터베이스 생성 테스트 */
+>>>>>>> master
   @Test
   public void testCreateDatabase() throws Exception {
     this.benchmark.createDatabase();
 
+<<<<<<< HEAD
     // Make sure that we get back some tables
+=======
+    // 일부 테이블이 반환되는지 확인합니다
+>>>>>>> master
     this.benchmark.refreshCatalog();
     AbstractCatalog catalog = this.benchmark.getCatalog();
     assertNotNull(catalog);
     assertFalse(catalog.getTables().isEmpty());
 
+<<<<<<< HEAD
     // Just make sure that there are no empty tables
+=======
+    // 빈 테이블이 없는지 확인합니다
+>>>>>>> master
     for (Table catalog_tbl : catalog.getTables()) {
       assert (catalog_tbl.getColumnCount() > 0) : "Missing columns for " + catalog_tbl;
     }
   }
 
+<<<<<<< HEAD
   /** testGetTransactionType */
+=======
+  /** 트랜잭션 타입 가져오기 테스트 */
+>>>>>>> master
   @Test
   public void testGetTransactionType() {
     int id = 1;
@@ -86,7 +122,11 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     }
   }
 
+<<<<<<< HEAD
   /** testGetSQLDialectPath */
+=======
+  /** SQL 방언 경로 가져오기 테스트 */
+>>>>>>> master
   @Test
   public void testGetSQLDialectPath() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -100,13 +140,21 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     }
   }
 
+<<<<<<< HEAD
   /** testLoadSQLDialect */
+=======
+  /** SQL 방언 로드 테스트 */
+>>>>>>> master
   @Test
   public void testLoadSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
       this.workConf.setDatabaseType(dbType);
 
+<<<<<<< HEAD
       // Just make sure that we can load it
+=======
+      // 로드할 수 있는지 확인합니다
+>>>>>>> master
       StatementDialects dialects = new StatementDialects(this.workConf);
       if (dialects.load()) {
 
@@ -121,7 +169,11 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     }
   }
 
+<<<<<<< HEAD
   /** testDumpSQLDialect */
+=======
+  /** SQL 방언 덤프 테스트 */
+>>>>>>> master
   @Test
   public void testDumpSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -148,7 +200,11 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
     }
   }
 
+<<<<<<< HEAD
   /** testSetSQLDialect */
+=======
+  /** SQL 방언 설정 테스트 */
+>>>>>>> master
   @Test
   public void testSetSQLDialect() throws Exception {
     for (DatabaseType dbType : DatabaseType.values()) {
@@ -159,7 +215,11 @@ public abstract class AbstractTestBenchmarkModule<T extends BenchmarkModule>
 
         for (Procedure proc : this.benchmark.getProcedures().values()) {
           if (dialects.getProcedureNames().contains(proc.getProcedureName())) {
+<<<<<<< HEAD
             // Need a new proc because the dialect gets loaded in BenchmarkModule::getProcedureName
+=======
+            // BenchmarkModule::getProcedureName에서 방언이 로드되므로 새로운 proc이 필요합니다
+>>>>>>> master
             Procedure testProc =
                 ClassUtil.newInstance(proc.getClass().getName(), new Object[0], new Class<?>[0]);
             assertNotNull(testProc);

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -49,6 +65,10 @@ import java.util.concurrent.CountDownLatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+<<<<<<< HEAD
+=======
+/** 스레드에서 발생한 예외를 처리하고 CountDownLatch를 카운트다운하는 예외 핸들러입니다. */
+>>>>>>> master
 public class LatchedExceptionHandler implements Thread.UncaughtExceptionHandler {
   private final Logger LOG = LoggerFactory.getLogger(getClass());
 
@@ -62,7 +82,11 @@ public class LatchedExceptionHandler implements Thread.UncaughtExceptionHandler 
   public void uncaughtException(Thread t, Throwable e) {
     LOG.error(
         String.format(
+<<<<<<< HEAD
             "Uncaught Exception in thread with message: [%s]; will count down latch with count %d",
+=======
+            "스레드에서 처리되지 않은 예외 발생, 메시지: [%s]; 래치 카운트 %d로 카운트다운합니다",
+>>>>>>> master
             e.getMessage(), this.latch.getCount()),
         e);
     while (this.latch.getCount() > 0) {

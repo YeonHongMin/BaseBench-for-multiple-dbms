@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+>>>>>>> master
  *
  */
 
@@ -28,6 +40,7 @@ import java.util.Random;
 public class TPCCUtil {
 
   /**
+<<<<<<< HEAD
    * Creates a Customer object from the current row in the given ResultSet. The caller is
    * responsible for closing the ResultSet.
    *
@@ -38,6 +51,17 @@ public class TPCCUtil {
   public static Customer newCustomerFromResults(ResultSet rs) throws SQLException {
     Customer c = new Customer();
     // TODO: Use column indices: probably faster?
+=======
+   * 주어진 ResultSet의 현재 행에서 Customer 객체를 생성합니다. ResultSet 종료는 호출자가 책임집니다.
+   *
+   * @param rs 접근 중인 ResultSet을 원하는 행으로 위치시킵니다.
+   * @return 생성된 Customer 객체
+   * @throws SQLException 행에서 데이터를 가져오는 중 문제가 발생하면 던집니다.
+   */
+  public static Customer newCustomerFromResults(ResultSet rs) throws SQLException {
+    Customer c = new Customer();
+    // TODO: 컬럼 인덱스를 사용하면 더 빠르게 처리할 수 있습니다.
+>>>>>>> master
     c.c_first = rs.getString("c_first");
     c.c_middle = rs.getString("c_middle");
     c.c_street_1 = rs.getString("c_street_1");
@@ -83,6 +107,7 @@ public class TPCCUtil {
     return dS.length() > 6 ? dS.substring(0, 6) : dS;
   }
 
+<<<<<<< HEAD
   // TODO: TPCC-C 2.1.6: For non-uniform random number generation, the
   // constants for item id,
   // customer id and customer name are supposed to be selected ONCE and reused
@@ -95,6 +120,17 @@ public class TPCCUtil {
   // be within [65, 119]
   private static final int C_LAST_LOAD_C = 157; // in range [0, 255]
   private static final int C_LAST_RUN_C = 223; // in range [0, 255]
+=======
+  // TODO: TPCC-C 2.1.6: 비균일 랜덤 숫자 생성 시 아이템 ID,
+  // 고객 ID 및 고객 이름 상수는 한 번만 선택하여 재사용해야 합니다.
+
+  // 현재는 이 매개변수 셋을 고정값으로 둡니다. 매번 생성하는 것이 바람직합니다.
+  private static final int OL_I_ID_C = 7911; // 범위 [0, 8191]
+  private static final int C_ID_C = 259; // 범위 [0, 1023]
+  // 참고: TPC-C 2.1.6.1에서는 abs(C_LAST_LOAD_C - C_LAST_RUN_C)가 [65, 119] 범위 안에 있어야 한다고 명시합니다.
+  private static final int C_LAST_LOAD_C = 157; // 범위 [0, 255]
+  private static final int C_LAST_RUN_C = 223; // 범위 [0, 255]
+>>>>>>> master
 
   public static int getItemID(Random r) {
     return nonUniformRandom(8191, OL_I_ID_C, 1, configItemCount, r);

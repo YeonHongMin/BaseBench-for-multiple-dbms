@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 이 파일은 Apache License, Version 2.0("라이선스") 아래에서 배포됩니다.
+ * 라이선스 약관을 준수해야 하며, 전문은 아래 URL에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 별도 법적 요구나 합의가 없다면, 이 소프트웨어는 "있는 그대로" 제공되며
+ * 어떠한 명시적/묵시적 보증 없이 사용할 수 있습니다.
+>>>>>>> master
  *
  */
 
@@ -432,8 +442,12 @@ public final class TPCDSLoader extends Loader<TPCDSBenchmark> {
   private String getFileFormat() {
     String format = workConf.getXmlConfig().getString("fileFormat");
     /*
+<<<<<<< HEAD
        Previouse configuration migh not have a fileFormat and assume
         that the files are csv.
+=======
+       이전 구성은 fileFormat을 명시하지 않아 csv를 기본으로 가정할 수 있습니다.
+>>>>>>> master
     */
     if (format == null) {
       return "csv";
@@ -448,9 +462,14 @@ public final class TPCDSLoader extends Loader<TPCDSBenchmark> {
   private Pattern getFormatPattern(String format) {
 
     if ("csv".equals(format)) {
+<<<<<<< HEAD
       // The following pattern parses the lines by commas, except for
       // ones surrounded by double-quotes. Further, strings that are
       // double-quoted have the quotes dropped (we don't need them).
+=======
+      // 다음 정규식은 쉼표 기준으로 필드를 나누며, 큰따옴표로 감싼 필드는 구분하지 않습니다.
+      // 따옴표로 둘러싸인 문자열은 따옴표를 제거한 상태로 반환합니다.
+>>>>>>> master
       return Pattern.compile("\\s*(\"[^\"]*\"|[^,]*)\\s*,?");
     } else {
       return Pattern.compile("[^\\|]*\\|");
@@ -510,7 +529,11 @@ public final class TPCDSLoader extends Loader<TPCDSBenchmark> {
                 ps.setString(i + 1, field);
                 break;
               case DATE:
+<<<<<<< HEAD
                 // Four possible formats for date
+=======
+                // 날짜는 다음 네 가지 형식 중 하나로 제공됩니다.
+>>>>>>> master
                 // yyyy-mm-dd
                 Pattern isoFmt = Pattern.compile("^\\s*(\\d{4})-(\\d{2})-(\\d{2})\\s*$");
                 Matcher isoMatcher = isoFmt.matcher(field);
@@ -562,7 +585,11 @@ public final class TPCDSLoader extends Loader<TPCDSBenchmark> {
           }
 
         } catch (IllegalStateException e) {
+<<<<<<< HEAD
           // This happens if there wasn't a match against the regex.
+=======
+          // 정규식과 매칭되지 않으면 이 분기가 실행됩니다.
+>>>>>>> master
           LOG.error("Invalid file: {}", file.getPath());
         }
       }

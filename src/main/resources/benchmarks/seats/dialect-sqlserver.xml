@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <dialects>
     <dialect type="SQLSERVER">
@@ -8,3 +9,15 @@
         </procedure>
 	</dialect>
 </dialects>
+=======
+<?xml version="1.0"?>
+<dialects>
+    <dialect type="SQLSERVER">
+        <procedure name="LoadConfig">
+            <statement name="getFlights">
+                 SELECT TOP 10000 f_id FROM FLIGHT ORDER BY F_DEPART_TIME DESC
+            </statement>
+        </procedure>
+	</dialect>
+</dialects>
+>>>>>>> master

@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * Copyright 2020 by OLTPBenchmark Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 저작권 2020 OLTPBenchmark 프로젝트
+ *
+ * Apache License, Version 2.0(이하 "라이선스")에 따라 사용이 허가됩니다.
+ * 라이선스를 준수하지 않고는 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 합의하지 않는 한,
+ * 이 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 보증도 제공하지 않습니다.
+ * 라이선스에서 허용하는 권한과 제한 사항은
+ * 라이선스의 본문을 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -26,6 +42,11 @@ import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 /**
+<<<<<<< HEAD
+=======
+ * 문자열 유틸리티 클래스입니다.
+ *
+>>>>>>> master
  * @author pavlo
  * @author Djellel
  */
@@ -72,7 +93,11 @@ public abstract class StringUtil {
   private static String CACHE_REPEAT_RESULT = null;
 
   /**
+<<<<<<< HEAD
    * Return key/value maps into a nicely formatted table Delimiter ":", No UpperCase Keys, No Boxing
+=======
+   * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 구분자 ":", 키 대문자 변환 없음, 박스 없음
+>>>>>>> master
    *
    * @param maps
    * @return
@@ -82,18 +107,32 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Return key/value maps into a nicely formatted table The maps are displayed in order from first
    * to last, and there will be a spacer created between each map. The format for each record is:
    *
    * <p><KEY><DELIMITER><SPACING><VALUE>
    *
    * <p>If the delimiter is an equal sign, then the format is:
+=======
+   * 키/값 맵을 보기 좋게 포맷된 테이블로 반환합니다. 맵은 첫 번째부터 마지막까지 순서대로 표시되며, 각 맵 사이에 구분선이 생성됩니다. 각 레코드의 형식은 다음과
+   * 같습니다:
+   *
+   * <p><KEY><DELIMITER><SPACING><VALUE>
+   *
+   * <p>구분자가 등호인 경우 형식은 다음과 같습니다:
+>>>>>>> master
    *
    * <p><KEY><SPACING><DELIMITER><VALUE>
    *
    * @param delimiter
+<<<<<<< HEAD
    * @param upper Upper-case all keys
    * @param box Box results
+=======
+   * @param upper 모든 키를 대문자로 변환
+   * @param box 결과를 박스로 감싸기
+>>>>>>> master
    * @param border_top TODO
    * @param border_bottom TODO
    * @param recursive TODO
@@ -265,7 +304,11 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Returns the given string repeated the given # of times
+=======
+   * 주어진 문자열을 주어진 횟수만큼 반복하여 반환합니다.
+>>>>>>> master
    *
    * @param str
    * @param size
@@ -292,8 +335,12 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Make a box around some text. If str has multiple lines, then the box will be the length of the
    * longest string.
+=======
+   * 텍스트 주위에 박스를 만듭니다. str이 여러 줄인 경우 박스는 가장 긴 문자열의 길이가 됩니다.
+>>>>>>> master
    *
    * @param str
    * @return
@@ -303,7 +350,11 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Create a box around some text
+=======
+   * 텍스트 주위에 박스를 생성합니다.
+>>>>>>> master
    *
    * @param str
    * @param mark
@@ -338,7 +389,11 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Converts a string to title case (ala Python)
+=======
+   * 문자열을 제목 케이스로 변환합니다 (Python 스타일).
+>>>>>>> master
    *
    * @param string
    * @return
@@ -348,10 +403,17 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Converts a string to title case (ala Python)
    *
    * @param string
    * @param keep_upper If true, then any non-first character that is uppercase stays uppercase
+=======
+   * 문자열을 제목 케이스로 변환합니다 (Python 스타일).
+   *
+   * @param string
+   * @param keep_upper true인 경우 첫 번째 문자가 아닌 대문자는 그대로 유지됩니다
+>>>>>>> master
    * @return
    */
   public static String title(String string, boolean keep_upper) {
@@ -377,7 +439,11 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Python join()
+=======
+   * Python join() 메서드와 유사한 기능입니다.
+>>>>>>> master
    *
    * @param <T>
    * @param delimiter
@@ -389,15 +455,23 @@ public abstract class StringUtil {
     return (join(delimiter, Arrays.asList(items)));
   }
 
+<<<<<<< HEAD
   /**
    * Wrap the given string with the control characters to make the text appear bold in the console
    */
+=======
+  /** 콘솔에서 텍스트가 굵게 표시되도록 제어 문자로 주어진 문자열을 감쌉니다. */
+>>>>>>> master
   public static String bold(String str) {
     return (SET_BOLD_TEXT + str + SET_PLAIN_TEXT);
   }
 
   /**
+<<<<<<< HEAD
    * Python join()
+=======
+   * Python join() 메서드와 유사한 기능입니다.
+>>>>>>> master
    *
    * @param delimiter
    * @param items
@@ -408,7 +482,11 @@ public abstract class StringUtil {
   }
 
   /**
+<<<<<<< HEAD
    * Python join() with optional prefix
+=======
+   * 선택적 접두사가 있는 Python join() 메서드와 유사한 기능입니다.
+>>>>>>> master
    *
    * @param prefix
    * @param delimiter

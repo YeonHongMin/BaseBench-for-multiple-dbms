@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -60,7 +73,11 @@ import org.slf4j.LoggerFactory;
 public final class SEATSWorker extends Worker<SEATSBenchmark> {
   private static final Logger LOG = LoggerFactory.getLogger(SEATSWorker.class);
 
+<<<<<<< HEAD
   /** Airline Benchmark Transactions */
+=======
+  /** 항공사 벤치마크 트랜잭션 */
+>>>>>>> master
   private enum Transaction {
     DeleteReservation(DeleteReservation.class),
     FindFlights(FindFlights.class),
@@ -75,7 +92,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
       this.displayName = StringUtil.title(this.name().replace("_", " "));
     }
 
+<<<<<<< HEAD
     @SuppressWarnings("unused") // never read
+=======
+    @SuppressWarnings("unused") // 읽히지 않음
+>>>>>>> master
     public final Class<? extends Procedure> proc_class;
 
     public final String displayName;
@@ -105,7 +126,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   }
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // RESERVED SEAT BITMAPS
+=======
+  // 예약된 좌석 비트맵
+>>>>>>> master
   // -----------------------------------------------------------------
 
   public enum CacheType {
@@ -155,7 +180,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   }
 
   /**
+<<<<<<< HEAD
    * Returns true if the given BitSet for a Flight has all of its seats reserved
+=======
+   * 주어진 항공편의 BitSet이 모든 좌석이 예약되어 있으면 true를 반환합니다.
+>>>>>>> master
    *
    * @param seats
    * @return
@@ -166,7 +195,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   }
 
   /**
+<<<<<<< HEAD
    * Returns true if the given Customer already has a reservation booked on the target Flight
+=======
+   * 주어진 고객이 이미 대상 항공편에 예약이 있으면 true를 반환합니다.
+>>>>>>> master
    *
    * @param customer_id
    * @param flight_id
@@ -178,7 +211,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   }
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // ADDITIONAL DATA MEMBERS
+=======
+  // 추가 데이터 멤버
+>>>>>>> master
   // -----------------------------------------------------------------
 
   private final SEATSProfile profile;
@@ -186,9 +223,14 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   private final List<Reservation> tmp_reservations = new ArrayList<>();
 
   /**
+<<<<<<< HEAD
    * When a customer looks for an open seat, they will then attempt to book that seat in a new
    * reservation. Some of them will want to change their seats. This data structure represents a
    * customer that is queued to change their seat.
+=======
+   * 고객이 빈 좌석을 찾으면 새 예약에서 해당 좌석을 예약하려고 시도합니다. 일부 고객은 좌석을 변경하고 싶어 합니다. 이 데이터 구조는 좌석 변경을 위해 대기 중인 고객을
+   * 나타냅니다.
+>>>>>>> master
    */
   protected static class Reservation {
     public final long id;
@@ -225,7 +267,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
       }
 
       Reservation r = (Reservation) obj;
+<<<<<<< HEAD
       // Ignore id!
+=======
+      // ID는 무시합니다!
+>>>>>>> master
       return (this.seatnum == r.seatnum
           && this.flight_id.equals(r.flight_id)
           && this.customer_id.equals(r.customer_id));
@@ -240,7 +286,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
   }
 
   // -----------------------------------------------------------------
+<<<<<<< HEAD
   // REQUIRED METHODS
+=======
+  // 필수 메서드
+>>>>>>> master
   // -----------------------------------------------------------------
 
   public SEATSWorker(SEATSBenchmark benchmark, int id) {
@@ -260,7 +310,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
       LOG.trace("Airport Max Customer Id:\n{}", this.profile.airport_max_customer_id);
     }
 
+<<<<<<< HEAD
     // Make sure we have the information we need in the BenchmarkProfile
+=======
+    // BenchmarkProfile에 필요한 정보가 있는지 확인합니다.
+>>>>>>> master
     String error_msg = null;
     if (this.profile.getFlightIdCount() == 0) {
       error_msg = "The benchmark profile does not have any flight ids.";
@@ -273,7 +327,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
       throw new RuntimeException(error_msg);
     }
 
+<<<<<<< HEAD
     // Fire off a FindOpenSeats so that we can prime ourselves
+=======
+    // FindOpenSeats를 실행하여 초기화합니다.
+>>>>>>> master
     FindOpenSeats proc = this.getProcedure(FindOpenSeats.class);
     try (Connection conn = getBenchmark().makeConnection()) {
       this.executeFindOpenSeats(conn, proc);
@@ -291,7 +349,11 @@ public final class SEATSWorker extends Worker<SEATSBenchmark> {
       throws UserAbortException, SQLException {
     Transaction txn = Transaction.get(txnType.getName());
 
+<<<<<<< HEAD
     // Get the Procedure handle
+=======
+    // Procedure 핸들을 가져옵니다.
+>>>>>>> master
     Procedure proc = this.getProcedure(txnType);
     if (LOG.isDebugEnabled()) {
       LOG.debug("Attempting to execute {}", proc);

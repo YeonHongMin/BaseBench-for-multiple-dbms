@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -39,6 +52,7 @@ public class SEATSProfile {
   private static final Logger LOG = LoggerFactory.getLogger(SEATSProfile.class);
 
   // ----------------------------------------------------------------
+<<<<<<< HEAD
   // PERSISTENT DATA MEMBERS
   // ----------------------------------------------------------------
 
@@ -74,25 +88,67 @@ public class SEATSProfile {
   protected Long reservation_upcoming_offset = null;
 
   /** The number of reservations initially created. */
+=======
+  // 영구 데이터 멤버
+  // ----------------------------------------------------------------
+
+  /** 데이터 스케일 팩터 */
+  protected double scale_factor;
+
+  /**
+   * 각 공항 ID에 대해 이 공항을 로컬 공항으로 사용하는 고객의 마지막 ID를 저장합니다. 고객 ID는 DBMS에서 다음과 같이 저장됩니다: <16비트
+   * AirportId><48비트 CustomerId>
+   */
+  protected final Histogram<Long> airport_max_customer_id = new Histogram<>();
+
+  /** 항공편 전체 데이터 세트가 시작되는 날짜 */
+  protected final Timestamp flight_start_date = new Timestamp(0);
+
+  /** 항공편이 곧 출발하는 것으로 간주되고 예약 자격이 있는 날짜 */
+  protected Timestamp flight_upcoming_date;
+
+  /** 항공편 데이터 세트에 포함되는 과거 일수입니다. */
+  protected long flight_past_days;
+
+  /** 항공편 데이터 세트에 포함되는 미래 일수(flight_upcoming_date부터) */
+  protected long flight_future_days;
+
+  /** seats_remaining 목록에서 곧 출발하는 항공편이 시작되는 오프셋 */
+  protected Long flight_upcoming_offset = null;
+
+  /** 곧 출발하는 항공편에 대한 예약이 시작되는 오프셋 */
+  protected Long reservation_upcoming_offset = null;
+
+  /** 처음에 생성된 예약 수입니다. */
+>>>>>>> master
   protected long num_reservations = 0L;
 
   /** TODO */
   protected final Map<String, Histogram<String>> histograms = new HashMap<>();
 
+<<<<<<< HEAD
   /**
    * Each AirportCode will have a histogram of the number of flights that depart from that airport
    * to all the other airports
    */
+=======
+  /** 각 AirportCode는 해당 공항에서 다른 모든 공항으로 출발하는 항공편 수의 히스토그램을 가집니다. */
+>>>>>>> master
   protected final Map<String, Histogram<String>> airport_histograms = new HashMap<>();
 
   protected final Map<String, Map<String, Long>> code_id_xref = new HashMap<>();
 
   // ----------------------------------------------------------------
+<<<<<<< HEAD
   // TRANSIENT DATA MEMBERS
+=======
+  // 임시 데이터 멤버
+>>>>>>> master
   // ----------------------------------------------------------------
 
   protected final SEATSBenchmark benchmark;
 
+<<<<<<< HEAD
   /**
    * We want to maintain a small cache of FlightIds so that the SEATSClient has something to work
    * with. We obviously don't want to store the entire set here
@@ -119,6 +175,28 @@ public class SEATSProfile {
 
   // ----------------------------------------------------------------
   // CONSTRUCTOR
+=======
+  /** SEATSClient가 작업할 수 있도록 FlightIds의 작은 캐시를 유지하려고 합니다. 전체 세트를 여기에 저장하는 것은 명백히 원하지 않습니다. */
+  protected final transient LinkedList<FlightId> cached_flight_ids = new LinkedList<>();
+
+  /** Key -> Id 매핑 */
+  protected final transient Map<String, String> code_columns = new HashMap<>();
+
+  /** 외래 키 매핑 컬럼 이름 -> Xref 매퍼 */
+  protected final transient Map<String, String> fkey_value_xref = new HashMap<>();
+
+  /** 데이터 디렉토리 */
+  protected final transient String airline_data_dir;
+
+  /** 특수화된 난수 생성기 */
+  protected final transient RandomGenerator rng;
+
+  /** 출발 공항 코드 -> 도착 공항 코드 항공편 분포를 기반으로 한 난수 생성기 */
+  private final Map<String, FlatHistogram<String>> airport_distributions = new HashMap<>();
+
+  // ----------------------------------------------------------------
+  // 생성자
+>>>>>>> master
   // ----------------------------------------------------------------
 
   public SEATSProfile(SEATSBenchmark benchmark, RandomGenerator rng) {
@@ -126,7 +204,11 @@ public class SEATSProfile {
     this.rng = rng;
     this.airline_data_dir = benchmark.getDataDir();
 
+<<<<<<< HEAD
     // Tuple Code to Tuple Id Mapping
+=======
+    // 튜플 코드를 튜플 ID로 매핑
+>>>>>>> master
     for (String[] xref : SEATSConstants.CODE_TO_ID_COLUMNS) {
 
       String tableName = xref[0];
@@ -145,6 +227,7 @@ public class SEATSProfile {
       }
     }
 
+<<<<<<< HEAD
     // In this data structure, the key will be the name of the dependent
     // column and the value will be the name of the foreign key parent
     // column. We then use this in conjunction with the Key->Id mapping
@@ -154,6 +237,15 @@ public class SEATSProfile {
     // 'USA' in the AP_CO_ID column. We can use mapping to get the id number
     // for 'USA'. Long winded and kind of screwy, but hey what else are
     // you going to do?
+=======
+    // 이 데이터 구조에서 키는 종속 컬럼의 이름이 되고 값은 외래 키 부모
+    // 컬럼의 이름이 됩니다. 그런 다음 Key->Id 매핑과 함께 사용하여
+    // 코드를 외래 키 컬럼 ID로 변환합니다. 예를 들어, 자식 테이블 AIRPORT에
+    // COUNTRY.CO_ID에 대한 외래 키 참조가 있는 컬럼이 있으면 AIRPORT의
+    // 데이터 파일은 AP_CO_ID 컬럼에 'USA' 값을 가집니다. 매핑을 사용하여
+    // 'USA'의 ID 번호를 얻을 수 있습니다. 장황하고 다소 이상하지만,
+    // 다른 방법이 있을까요?
+>>>>>>> master
     for (Table catalog_tbl : benchmark.getCatalog().getTables()) {
       for (Column catalog_col : catalog_tbl.getColumns()) {
         Column catalog_fkey_col = catalog_col.getForeignKey();
@@ -173,7 +265,11 @@ public class SEATSProfile {
   }
 
   // ----------------------------------------------------------------
+<<<<<<< HEAD
   // SAVE / LOAD PROFILE
+=======
+  // 프로필 저장 / 로드
+>>>>>>> master
   // ----------------------------------------------------------------
 
   /** Save the profile information into the database */

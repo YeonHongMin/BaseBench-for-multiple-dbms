@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이선스")에 따라 라이선스됩니다.
+ * 라이선스를 준수하지 않는 한 이 파일을 사용할 수 없습니다.
+ * 라이선스 사본은 다음에서 얻을 수 있습니다:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의하지 않는 한,
+ * 라이선스에 따라 배포된 소프트웨어는 "있는 그대로" 배포되며,
+ * 명시적이거나 묵시적인 어떠한 종류의 보증이나 조건도 없습니다.
+ * 권한 및 제한에 대한 자세한 내용은 라이선스를 참조하세요.
+>>>>>>> master
  *
  */
 
@@ -20,6 +33,7 @@ package com.oltpbenchmark;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+<<<<<<< HEAD
 /** Efficiently stores a record of (start time, latency) pairs. */
 public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
   /** Allocate space for 500k samples at a time */
@@ -29,6 +43,16 @@ public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
    * Contains (start time, latency, transactionType, workerid, phaseid) pentiplets in microsecond
    * form. The start times are "compressed" by encoding them as increments, starting from startNs. A
    * 32-bit integer provides sufficient resolution for an interval of 2146 seconds, or 35 minutes.
+=======
+/** (시작 시간, 지연 시간) 쌍의 레코드를 효율적으로 저장합니다. */
+public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
+  /** 한 번에 50만 개의 샘플을 위한 공간 할당 */
+  static final int ALLOC_SIZE = 500000;
+
+  /**
+   * 마이크로초 형식의 (시작 시간, 지연 시간, 트랜잭션 타입, 워커 ID, 단계 ID) 5중 구조를 포함합니다. 시작 시간은 startNs부터 시작하여 증분으로 인코딩하여
+   * "압축"됩니다. 32비트 정수는 2146초 또는 35분 간격에 대해 충분한 해상도를 제공합니다.
+>>>>>>> master
    */
   private final ArrayList<Sample[]> values = new ArrayList<>();
 
@@ -67,17 +91,30 @@ public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
     nextIndex = 0;
   }
 
+<<<<<<< HEAD
   /** Returns the number of recorded samples. */
   public int size() {
     // Samples stored in full chunks
     int samples = (values.size() - 1) * ALLOC_SIZE;
 
     // Samples stored in the last not full chunk
+=======
+  /** 기록된 샘플 수를 반환합니다. */
+  public int size() {
+    // 전체 청크에 저장된 샘플
+    int samples = (values.size() - 1) * ALLOC_SIZE;
+
+    // 마지막 불완전한 청크에 저장된 샘플
+>>>>>>> master
     samples += nextIndex;
     return samples;
   }
 
+<<<<<<< HEAD
   /** Stores the start time and latency for a single sample. Immutable. */
+=======
+  /** 단일 샘플의 시작 시간과 지연 시간을 저장합니다. 불변입니다. */
+>>>>>>> master
   public static final class Sample implements Comparable<Sample> {
     private final int transactionType;
     private long startNanosecond;
@@ -122,7 +159,11 @@ public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
     public int compareTo(Sample other) {
       long diff = this.startNanosecond - other.startNanosecond;
 
+<<<<<<< HEAD
       // explicit comparison to avoid long to int overflow
+=======
+      // long에서 int로의 오버플로우를 피하기 위한 명시적 비교
+>>>>>>> master
       if (diff > 0) {
         return 1;
       } else if (diff < 0) {
@@ -152,7 +193,11 @@ public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
       Sample[] chunk = values.get(chunkIndex);
       Sample s = chunk[subIndex];
 
+<<<<<<< HEAD
       // Iterate in chunk, and wrap to next one
+=======
+      // 청크 내에서 반복하고 다음 청크로 넘어갑니다
+>>>>>>> master
       ++subIndex;
 
       if (subIndex == ALLOC_SIZE) {
@@ -160,8 +205,13 @@ public class LatencyRecord implements Iterable<LatencyRecord.Sample> {
         subIndex = 0;
       }
 
+<<<<<<< HEAD
       // Previously, s.startNs was just an offset from the previous
       // value.  Now we make it an absolute.
+=======
+      // 이전에는 s.startNs가 이전 값으로부터의 오프셋이었습니다.
+      // 이제 절대값으로 만듭니다.
+>>>>>>> master
       s.startNanosecond += lastIteratorNanosecond;
       lastIteratorNanosecond = s.startNanosecond;
 

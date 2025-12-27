@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  *  Copyright 2021 by OLTPBenchmark Project
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,22 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+=======
+ * Copyright 2020 by OLTPBenchmark Project
+ *
+ * Apache License, Version 2.0 (the "License")에 따라 라이선스가 부여됩니다.
+ * 이 파일을 사용하려면 라이선스와 일치해야 합니다.
+ * 다음에서 라이선스 사본을 얻을 수 있습니다:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련 법률에서 요구하거나 서면으로 동의하지 않는 한,
+ * 라이선스에 따라 배포되는 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적이거나 암묵적인 어떠한 종류의 보증이나 조건도 없습니다.
+ * 라이선스에서 허용되는 특정 언어에 대한 권한과
+ * 제한 사항을 참조하십시오.
+ *
+>>>>>>> master
  */
 
 package com.oltpbenchmark.util;

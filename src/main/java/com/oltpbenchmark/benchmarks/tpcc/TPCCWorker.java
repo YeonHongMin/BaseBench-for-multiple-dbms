@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,17 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * 이 파일은 Apache License, Version 2.0("라이선스")에 따라 배포됩니다.
+ * 라이선스 조건을 준수하지 않으면 이 파일을 사용할 수 없습니다.
+ * 라이선스 전문은 다음 주소에서 확인할 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 관련법이나 서면 합의가 없으면 이 소프트웨어는 "있는 그대로" 제공되며,
+ * 명시적/묵시적 보증 없이 배포됩니다.
+ * 라이선스에서 허용된 제한과 조건을 준수해 주세요.
+>>>>>>> master
  *
  */
 
@@ -34,7 +46,11 @@ public final class TPCCWorker extends Worker<TPCCBenchmark> {
 
   private final int terminalWarehouseID;
 
+<<<<<<< HEAD
   /** Forms a range [lower, upper] (inclusive). */
+=======
+  /** [lower, upper] 범위를 포합해서 나타냅니다. */
+>>>>>>> master
   private final int terminalDistrictLowerID;
 
   private final int terminalDistrictUpperID;
@@ -73,8 +89,13 @@ public final class TPCCWorker extends Worker<TPCCBenchmark> {
           terminalDistrictUpperID,
           this);
     } catch (ClassCastException ex) {
+<<<<<<< HEAD
       // fail gracefully
       LOG.error("We have been invoked with an INVALID transactionType?!", ex);
+=======
+      // 예외가 발생해도 안전하게 처리합니다.
+      LOG.error("잘못된 transactionType으로 실행되었습니다?!", ex);
+>>>>>>> master
       throw new RuntimeException("Bad transaction type = " + nextTransaction);
     }
     return (TransactionStatus.SUCCESS);
@@ -82,13 +103,21 @@ public final class TPCCWorker extends Worker<TPCCBenchmark> {
 
   @Override
   protected long getPreExecutionWaitInMillis(TransactionType type) {
+<<<<<<< HEAD
     // TPC-C 5.2.5.2: For keying times for each type of transaction.
+=======
+    // TPC-C 5.2.5.2: 각 트랜잭션 타입에 대한 키 입력 시간을 반영합니다.
+>>>>>>> master
     return type.getPreExecutionWait();
   }
 
   @Override
   protected long getPostExecutionWaitInMillis(TransactionType type) {
+<<<<<<< HEAD
     // TPC-C 5.2.5.4: For think times for each type of transaction.
+=======
+    // TPC-C 5.2.5.4: 각 트랜잭션 타입에 대한 사고 시간을 반영합니다.
+>>>>>>> master
     long mean = type.getPostExecutionWait();
 
     float c = this.getBenchmark().rng().nextFloat();

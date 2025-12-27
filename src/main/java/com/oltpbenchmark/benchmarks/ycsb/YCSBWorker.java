@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -32,7 +45,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+<<<<<<< HEAD
  * YCSBWorker Implementation I forget who really wrote this but I fixed it up in 2016...
+=======
+ * YCSBWorker 구현체 누가 실제로 이걸 썼는지 기억이 안 나지만 2016년에 고쳤습니다...
+>>>>>>> master
  *
  * @author pavlo
  */
@@ -62,15 +79,24 @@ class YCSBWorker extends Worker<YCSBBenchmark> {
     this.randScan = new UniformGenerator(1, YCSBConstants.MAX_SCAN);
 
     synchronized (YCSBWorker.class) {
+<<<<<<< HEAD
       // We must know where to start inserting
+=======
+      // 삽입을 시작할 위치를 알아야 합니다
+>>>>>>> master
       if (insertRecord == null) {
         insertRecord = new CounterGenerator(init_record_count);
       }
     }
 
+<<<<<<< HEAD
     // This is a minor speed-up to avoid having to invoke the hashmap look-up
     // everytime we want to execute a txn. This is important to do on
     // a client machine with not a lot of cores
+=======
+    // 이것은 트랜잭션을 실행할 때마다 해시맵 조회를 호출하는 것을 피하기 위한
+    // 사소한 속도 향상입니다. 코어가 많지 않은 클라이언트 머신에서는 중요합니다
+>>>>>>> master
     this.procUpdateRecord = this.getProcedure(UpdateRecord.class);
     this.procScanRecord = this.getProcedure(ScanRecord.class);
     this.procReadRecord = this.getProcedure(ReadRecord.class);

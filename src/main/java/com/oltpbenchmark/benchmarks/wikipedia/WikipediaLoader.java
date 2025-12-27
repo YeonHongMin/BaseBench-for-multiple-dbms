@@ -1,6 +1,7 @@
 /*
  * Copyright 2020 by OLTPBenchmark Project
  *
+<<<<<<< HEAD
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +13,18 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+=======
+ * Apache License, Version 2.0 (이하 "라이센스")에 따라 라이센스가 부여됩니다.
+ * 이 파일은 라이센스에 따라 사용할 수 있으며, 라이센스에 따라 사용하지 않는 한
+ * 사용할 수 없습니다. 라이센스 사본은 다음에서 얻을 수 있습니다.
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 적용 가능한 법률에 의해 요구되거나 서면으로 합의되지 않는 한, 라이센스에 따라
+ * 배포되는 소프트웨어는 "있는 그대로" 배포되며, 명시적이거나 묵시적인 어떠한 종류의
+ * 보증이나 조건도 없습니다. 라이센스에 따른 권한 및 제한 사항에 대한 자세한 내용은
+ * 라이센스를 참조하십시오.
+>>>>>>> master
  *
  */
 
@@ -39,7 +52,11 @@ import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
 /**
+<<<<<<< HEAD
  * Synthetic Wikipedia Data Loader
+=======
+ * 합성 위키피디아 데이터 로더
+>>>>>>> master
  *
  * @author pavlo
  * @author djellel
@@ -56,7 +73,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
   private final int[] page_last_rev_length;
 
   /**
+<<<<<<< HEAD
    * Constructor
+=======
+   * 생성자
+>>>>>>> master
    *
    * @param benchmark
    */
@@ -100,10 +121,17 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
             String sql =
                 SQLUtil.getInsertSQL(
                     catalog_tbl, benchmark.getWorkloadConfiguration().getDatabaseType());
+<<<<<<< HEAD
             // Empty string which is treated as NULL in Oracle DB
             String dummyString = getDatabaseType() == DatabaseType.ORACLE ? " " : "";
 
             // load anonymous user
+=======
+            // Oracle DB에서 NULL로 처리되는 빈 문자열
+            String dummyString = getDatabaseType() == DatabaseType.ORACLE ? " " : "";
+
+            // 익명 사용자 로드
+>>>>>>> master
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
               int param = 1;
               stmt.setInt(param++, WikipediaConstants.ANONYMOUS_USER_ID); // user_id
@@ -235,7 +263,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     return threads;
   }
 
+<<<<<<< HEAD
   /** USERACCTS */
+=======
+  /** 사용자 계정 */
+>>>>>>> master
   private void loadUsers(Connection conn, int lo, int hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_USER);
 
@@ -252,9 +284,14 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
       int batchSize = 0;
       int lastPercent = -1;
       for (int i = lo; i <= hi; i++) {
+<<<<<<< HEAD
         // The name will be prefixed with their UserId. This increases
         // the likelihood that all of our usernames are going to be unique
         // It's not a guarantee, but it's good enough...
+=======
+        // 이름 앞에 UserId를 붙입니다. 이렇게 하면 모든 사용자 이름이 고유할 가능성이 높아집니다
+        // 보장은 아니지만 충분합니다...
+>>>>>>> master
         String name = i + TextGenerator.randomStr(rng(), h_nameLength.nextValue());
         String realName = TextGenerator.randomStr(rng(), h_realNameLength.nextValue());
         int revCount = h_revCount.nextValue();
@@ -317,7 +354,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
+<<<<<<< HEAD
   /** PAGE */
+=======
+  /** 페이지 */
+>>>>>>> master
   private void loadPages(Connection conn, int lo, int hi) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_PAGE);
 
@@ -381,7 +422,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
+<<<<<<< HEAD
   /** WATCHLIST */
+=======
+  /** 관심 목록 */
+>>>>>>> master
   private void loadWatchlist(Connection conn) throws SQLException {
     Table catalog_tbl = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_WATCHLIST);
 
@@ -394,7 +439,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
       Zipf h_pageId =
           new Zipf(rng(), 1, this.benchmark.num_pages, WikipediaConstants.WATCHLIST_PAGE_SIGMA);
 
+<<<<<<< HEAD
       // Use a large max batch size for tables with smaller tuples
+=======
+      // 작은 튜플을 가진 테이블에 대해 큰 최대 배치 크기를 사용합니다
+>>>>>>> master
       int maxBatchSize = workConf.getBatchSize() * 5;
 
       int batchSize = 0;
@@ -413,7 +462,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
         userPages.clear();
         for (int i = 0; i < num_watches; i++) {
           int pageId = -1;
+<<<<<<< HEAD
           // HACK: Work around for testing with small database sizes
+=======
+          // HACK: 작은 데이터베이스 크기로 테스트할 때의 해결책
+>>>>>>> master
           if (num_watches == max_watches_per_user) {
             pageId = i + 1;
           } else {
@@ -463,7 +516,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
     }
   }
 
+<<<<<<< HEAD
   /** REVISIONS */
+=======
+  /** 리비전 */
+>>>>>>> master
   private void loadRevision(Connection conn) throws SQLException {
 
     // TEXT
@@ -492,21 +549,38 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
         PreparedStatement revisionInsert = conn.prepareStatement(revSQL)) {
 
       for (int page_id = 1; page_id <= this.benchmark.num_pages; page_id++) {
+<<<<<<< HEAD
         // There must be at least one revision per page
         int num_revised = h_numRevisions.nextValue();
         LOG.debug(String.format("# Revisions for Page %d: %d", page_id, num_revised));
 
         // Generate what the new revision is going to be
+=======
+        // 페이지당 최소 하나의 리비전이 있어야 합니다
+        int num_revised = h_numRevisions.nextValue();
+        LOG.debug(String.format("페이지 %d의 리비전 수: %d", page_id, num_revised));
+
+        // 새 리비전이 무엇일지 생성합니다
+>>>>>>> master
         int old_text_length = h_textLength.nextValue();
         char[] old_text = TextGenerator.randomChars(rng(), old_text_length);
 
         for (int i = 0; i < num_revised; i++) {
+<<<<<<< HEAD
           // Generate the User who's doing the revision and the Page revised
           // Makes sure that we always update their counter
           int user_id = h_users.nextInt();
           this.user_revision_ctr[user_id - 1]++;
 
           // Generate what the new revision is going to be
+=======
+          // 리비전을 수행하는 사용자와 수정된 페이지를 생성합니다
+          // 항상 그들의 카운터를 업데이트하는지 확인합니다
+          int user_id = h_users.nextInt();
+          this.user_revision_ctr[user_id - 1]++;
+
+          // 새 리비전이 무엇일지 생성합니다
+>>>>>>> master
           if (i > 0) {
             old_text = this.benchmark.generateRevisionText(old_text);
             old_text_length = old_text.length;
@@ -515,8 +589,12 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
           int rev_comment_len = Math.min(rev_comment_max, h_commentLength.nextValue() + 1); // HACK
           String rev_comment = TextGenerator.randomStr(rng(), rev_comment_len);
 
+<<<<<<< HEAD
           // The REV_USER_TEXT field is usually the username, but we'll
           // just put in gibberish for now
+=======
+          // REV_USER_TEXT 필드는 일반적으로 사용자 이름이지만, 지금은 그냥 무의미한 텍스트를 넣겠습니다
+>>>>>>> master
           String user_text = TextGenerator.randomStr(rng(), h_nameLength.nextValue() + 1);
 
           // Insert the text
@@ -542,7 +620,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
           revisionInsert.setInt(col++, 0); // rev_parent_id
           revisionInsert.addBatch();
 
+<<<<<<< HEAD
           // Update Last Revision Stuff
+=======
+          // 마지막 리비전 정보 업데이트
+>>>>>>> master
           this.page_last_rev_id[page_id - 1] = rev_id;
           this.page_last_rev_length[page_id - 1] = old_text_length;
           rev_id++;
@@ -578,7 +660,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
       this.updateAutoIncrement(conn, revTable.getColumn(0), rev_id);
     }
 
+<<<<<<< HEAD
     // UPDATE USER
+=======
+    // 사용자 업데이트
+>>>>>>> master
     revTable = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_USER);
     String revTableName =
         (this.getDatabaseType().shouldEscapeNames())
@@ -597,7 +683,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
         int col = 1;
         userUpdate.setInt(col++, this.user_revision_ctr[i]);
         userUpdate.setString(col++, TimeUtil.getCurrentTimeString14());
+<<<<<<< HEAD
         userUpdate.setInt(col++, i + 1); // ids start at 1
+=======
+        userUpdate.setInt(col++, i + 1); // id는 1부터 시작
+>>>>>>> master
         userUpdate.addBatch();
         if ((++batchSize % workConf.getBatchSize()) == 0) {
           userUpdate.executeBatch();
@@ -611,7 +701,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
       }
     }
 
+<<<<<<< HEAD
     // UPDATE PAGES
+=======
+    // 페이지 업데이트
+>>>>>>> master
     revTable = benchmark.getCatalog().getTable(WikipediaConstants.TABLENAME_PAGE);
 
     revTableName =
@@ -639,7 +733,11 @@ public final class WikipediaLoader extends Loader<WikipediaBenchmark> {
         pageUpdate.setInt(col++, this.page_last_rev_id[i]);
         pageUpdate.setString(col++, TimeUtil.getCurrentTimeString14());
         pageUpdate.setInt(col++, this.page_last_rev_length[i]);
+<<<<<<< HEAD
         pageUpdate.setInt(col++, i + 1); // ids start at 1
+=======
+        pageUpdate.setInt(col++, i + 1); // id는 1부터 시작
+>>>>>>> master
         pageUpdate.addBatch();
         if ((++batchSize % workConf.getBatchSize()) == 0) {
           pageUpdate.executeBatch();
