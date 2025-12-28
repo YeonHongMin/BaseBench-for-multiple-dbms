@@ -3,6 +3,7 @@
 BaseBench의 한국어 번역 버전입니다.
 
 **버전: 0.2**
+Download : https://drive.google.com/file/d/1dA6KDLoMnrHuiAjjMsGjCQ24hiUQGSQe/view?usp=drive_link
 
 [![BenchBase (Java with Maven)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml)
 
